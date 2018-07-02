@@ -26,10 +26,12 @@
 
 }
 
-body {
+@media screen and (min-width: 1150px){
+    .ui.centered.huge.header {
 
-    background-image: linear-gradient(to right, #FFFFFF, #C0C0C0);
+        font-size: 350%;
 
+    }
 }
 
 @media screen and (min-width: 600px){

@@ -4,13 +4,16 @@
 
         <div class="ui very padded red segment">
 
-                <img src="../../../assets/img/logo.png" alt="PBPrev" class="ui centered medium image">
+                <img src="../../../assets/img/logo.png" alt="PBPrev" class="ui medium centered image">
+                <div class="ui sizer vertical segment">
+                    <div class="ui centered huge header">Portal do Segurado</div>
+                </div>
 
         </div>
     
         <div class="ui very padded red segment">
             
-            <form class="ui large form">
+            <form class="ui large form" (submit)="login($event)">
 
                 <div class="field">
                     <label>CPF:</label>
