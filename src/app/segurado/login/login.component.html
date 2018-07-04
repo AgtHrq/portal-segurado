@@ -13,16 +13,16 @@
     
         <div class="ui very padded red segment">
             
-            <form class="ui large form" (submit)="login($event)">
+            <form class="ui large form" (submit)="login($event, formLogin.value)" #formLogin="ngForm">
 
                 <div class="field">
                     <label>CPF:</label>
-                    <input name="cpf" placeholder="" type="text">
+                    <input ngModel id="cpf" name="email" placeholder="" type="text">
                 </div>
 
                 <div class="field">
                     <label>Senha:</label>
-                    <input name="password" type="password">
+                    <input ngModel id="password" name="password" type="password">
                 </div>
 
                     <button type="submit" class="ui submit button">Entrar</button>
