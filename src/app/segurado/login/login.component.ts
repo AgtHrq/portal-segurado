@@ -27,7 +27,7 @@ export class LoginComponent {
                 this.userService.updateLoggedUser(data);
                 this.route.navigate(["/logado"]);
             },
-            erro => alert(erro)
+            erro => alert(erro._body)
         );
 
     }
