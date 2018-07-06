@@ -17,7 +17,7 @@
 
                 <div class="field">
                     <label>CPF:</label>
-                    <input ngModel id="cpf" name="cpf" placeholder="" type="text">
+                    <input ngModel (keypress)="fortmaterr()" id="cpf" name="cpf" placeholder="" type="text">
                 </div>
 
                 <div class="field">
