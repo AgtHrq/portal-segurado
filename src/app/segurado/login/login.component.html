@@ -13,21 +13,47 @@
     
         <div class="ui very padded red segment">
             
-            <form class="ui large form" (submit)="login($event, formLogin.value)" #formLogin="ngForm">
+            <form class="ui large form error" (submit)="login($event, formGroup.value)" [formGroup]="formGroup">
 
                 <div class="field">
                     <label>CPF:</label>
-                    <input ngModel (keypress)="fortmaterr()" id="cpf" name="cpf" placeholder="" type="text">
+                    <input formControlName="cpf" (focus)="hideError()" id="cpf" name="cpf" placeholder="" type="text">
+                    
+                    <!-- Erros do campo -->
+                    <div *ngIf="formGroup.controls.cpf.invalid && (formGroup.controls.cpf.touched)" class="ui error message">
+                            
+                        <p *ngIf="formGroup.controls.cpf.errors.minlength">O campo CPF deve conter 11 números.</p>
+                        <p *ngIf="formGroup.controls.cpf.errors.required">O campo CPF é obrigatório.</p>
+                            
+                    </div>
                 </div>
 
                 <div class="field">
                     <label>Senha:</label>
-                    <input ngModel id="password" name="password" type="password">
+                    <input formControlName="password" (focus)="hideError()" id="password" name="password" type="password">
+
+                    <!-- Erros do campo -->
+                    <div *ngIf="formGroup.controls.password.invalid && formGroup.controls.password.touched" class="ui error message">
+                            
+                            <p *ngIf="formGroup.controls.password.errors.minlength">A senha deve ter no mínimo 6 caracteres.</p>
+                            <p *ngIf="formGroup.controls.password.errors.required">A senha é obrigatória.</p>
+                                
+                    </div>
                 </div>
 
-                    <button type="submit" class="ui submit button">Entrar</button>
+                <button [disabled]="formGroup.invalid" type="submit" class="ui submit button">Entrar</button>
 
-                <div class="content first-item">
+            </form>
+            
+            <!-- Erro de informaçoes incorretas -->
+            <div *ngIf="showMessage" class="ui negative message">
+
+                <app-error-message title="{{ erroTitle }}" message="{{ erroMessage }}"></app-error-message>
+            
+            </div>
+
+
+            <div class="content first-item">
                     <p>Esqueceu a senha? <a href="#">Clique aqui</a>.</p>
                 </div>
 
@@ -35,9 +61,7 @@
                     <p>É novo aqui? <a href="#">Cadastre-se</a>.</p>
                 </div>
 
-            </form>
-
-        </div>
+            </div>
 
     </div>
 

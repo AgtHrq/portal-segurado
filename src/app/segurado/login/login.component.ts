@@ -1,8 +1,9 @@
 import { UserService } from './../../services/user.service';
-import { Component, ViewChild, OnInit } from "@angular/core";
+import { Component, ViewChild, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-declare var $;
+declare var $: any;
 
 @Component({
     selector: 'login-segurado',
@@ -11,38 +12,69 @@ declare var $;
 })
 export class LoginComponent {
 
+    private erroTitle: string = "Erro ao realizar login";
+    private erroMessage: string = "Erro ao realizar login";
+    private showMessage: boolean = false;
+    formGroup: FormGroup;
+
     ngOnInit(){
 
         this.fortmaterr();
 
     }
 
-    constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService){
+    constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
 
         if (userService.isLogged()) {
             this.route.navigate(["/logado"]);
         }
+
+        this.formGroup = formBuilder.group({
+
+            cpf: ["", Validators.compose(
+                [Validators.required, Validators.minLength(14)]
+            )],
+            password: ["", Validators.compose(
+                [Validators.required, Validators.minLength(6)]
+            )]
+
+        });
 
     }
 
     login(event, credentials){
 
         event.preventDefault();
-
+        credentials.cpf = this.formatCpf(credentials.cpf);
 
         this.userService.authenticate(credentials).subscribe(
             data => {
                 this.userService.updateLoggedUser(data);
                 this.route.navigate(["/logado"]);
             },
-            erro => alert(erro._body)
+            erro => {
+                this.erroMessage = erro._body;
+                this.showMessage = true;
+            }
         );
+
+    }
+
+    hideError() {
+
+        this.showMessage = false;
+
+    }
+
+    formatCpf(cpf: String): String {
+
+        return cpf.replace(/\.|\-/gi, "");
 
     }
 
     fortmaterr(){
 
-        $("#cpf").mask("000.000.000-00", {reverse: true});
+        $("#cpf").mask("000.000.000-00", { reverse: true });
 
     }
 
