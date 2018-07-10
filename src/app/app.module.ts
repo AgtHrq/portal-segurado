@@ -12,12 +12,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LogadoComponent } from './logado/logado.component';
 import { UserService } from './services/user.service';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     LoginComponent, 
-    LogadoComponent, ErrorMessageComponent
+    LogadoComponent, ErrorMessageComponent, ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
