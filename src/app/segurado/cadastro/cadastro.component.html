@@ -1,0 +1,123 @@
+<div class="painel">
+
+  <div class="ui horizontal segments">
+
+    <div class="ui very padded red segment">
+
+      <form class="ui large form" #myForm="ngForm">
+        
+        <div class="fields"> <!--Inicio Campo CPF e DTNascimento-->
+
+          <div class="eight wide field"> 
+            <label>CPF</label>
+            <input 
+              type="text"
+              name="cpf"
+              id="cpf"
+              [(ngModel)]="cpf"
+              #nCpf="ngModel"
+              [textMask]="{mask: maskCpf}" required>
+
+              <div class="ui red message" *ngIf="nCpf.errors && (nCpf.dirty || nCpf.touched)">
+                  <ul>
+                    <li *ngIf="nCpf.errors.required">
+                      Campor Obrigatório, digite os 11 numeros de seu CPF.
+                    </li>
+                    <li *ngIf="(nomeM < 14)">
+                      CPF incompleto.
+                    </li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="eight wide field">
+            <label>Data de Nascimento</label>
+            <input 
+              type="text"
+              name="dtNascimento"
+              [(ngModel)]="dtNascimento"
+              [textMask]="{mask: maskDtNascimento}" >
+          </div>
+
+        </div> <!--Fechamento Campo CPF e DTNascimento-->
+
+        <div class="field" [ngClass]="{'input error': !nomeC.valid && (nomeC.dirty || nomeC.touched)}">
+          <label>Nome Completo</label>
+          <input
+            type="text"
+            name="nomeCompleto"
+            id="nomeCompleto"
+            [(ngModel)]="nomeCompleto"
+            #nomeC="ngModel" required>
+
+            <div class="ui red message" *ngIf="nomeC.errors && (nomeC.dirty || nomeC.touched)">
+              <ul>
+                <li *ngIf="nomeC.errors.required">
+                  Campo Obrigatório, digite seu nome completo.
+                </li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="field" [ngClass]="{'input error': !nomeM.valid && (nomeM.dirty || nomeM.touched)}">
+            <label>Primeiro nome da mâe</label>
+            <input
+              type="text"
+              name="nomeMae"
+              id="nomeMae"
+              [(ngModel)]="nomeMae"
+              #nomeM="ngModel" required>
+  
+              <div class="ui red message" *ngIf="nomeM.errors && (nomeM.dirty || nomeM.touched)">
+                <ul>
+                  <li *ngIf="nomeM.errors.required">
+                    Campo Obrigatório, só o primeiro nome.
+                  </li>
+                </ul>
+              </div>
+          </div>
+
+        
+     <!--   <div class="field">
+          <label>E-mail</label>
+          <input type="email" name="email">
+        </div>
+
+        <div class="field">
+          <label>Pergunta Secreta</label>
+          <select class="ui fluid dropdown" name="pergSecreta">
+          <option value="">Selecione</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Resposta secreta</label>
+          <input type="text" name="respSecreta">
+        </div>
+        
+        <div class="fields">
+          <div class="eight wide field">
+          <label>Senha</label>
+          <input type="text" name="senha">
+          </div>
+
+          <div class="eight wide field">
+          <label>Confirmar senha</label>
+          <input type="text" name="confirmeSenha">
+          </div>
+        </div>-->
+
+
+        <div class="">
+          <button class="ui right floated button" type="submit" [disabled]="!myForm.valid" >
+            Próximo
+          </button>
+          <a [routerLink]="['']" class="ui right floated button">Voltar</a>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+  
+</div>
