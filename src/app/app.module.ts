@@ -18,7 +18,9 @@ import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-passw
   declarations: [
     AppComponent, 
     LoginComponent, 
-    LogadoComponent, ErrorMessageComponent, ForgotPasswordComponent
+    LogadoComponent, 
+    ErrorMessageComponent, 
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
