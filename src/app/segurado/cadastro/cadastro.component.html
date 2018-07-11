@@ -4,29 +4,23 @@
 
     <div class="ui very padded red segment">
 
-      <form class="ui large form" #myForm="ngForm">
+      <form class="ui large form" [formGroup]="meuForm">
         
         <div class="fields"> <!--Inicio Campo CPF e DTNascimento-->
 
           <div class="eight wide field"> 
             <label>CPF</label>
             <input 
-              type="text"
-              name="cpf"
+              formControlName="cpf"
               id="cpf"
-              [(ngModel)]="cpf"
-              #nCpf="ngModel"
-              [textMask]="{mask: maskCpf}" required>
-
-              <div class="ui red message" *ngIf="nCpf.errors && (nCpf.dirty || nCpf.touched)">
-                  <ul>
-                    <li *ngIf="nCpf.errors.required">
-                      Campor Obrigatório, digite os 11 numeros de seu CPF.
-                    </li>
-                    <li *ngIf="(nomeM < 14)">
-                      CPF incompleto.
-                    </li>
-                  </ul>
+              name="cpf"
+              type="text"
+              [textMask]="{mask: maskCpf}">
+                <!--Mensagens de validação-->
+              <div class="ui red message" 
+                *ngIf="meuForm.controls.cpf.invalid && (meuForm.controls.cpf.touched)">
+                <p *ngIf="meuForm.controls.cpf.errors.minlength">O campo CPF deve conter 11 números.</p>
+                <p *ngIf="meuForm.controls.cpf.errors.required">O campo CPF é obrigatório.</p>
               </div>
           </div>
 
@@ -35,9 +29,17 @@
             <input 
               type="text"
               name="dtNascimento"
-              [(ngModel)]="dtNascimento"
+              formControlName="dtNascimento"
               [textMask]="{mask: maskDtNascimento}" >
+
+              <div class="ui red message" 
+                *ngIf="meuForm.controls.dtNascimento.invalid && (meuForm.controls.dtNascimento.touched)">
+
+                <p *ngIf="meuForm.controls.dtNascimento.errors.required">O campo é obrigatório</p>
+            
+              </div>
           </div>
+
 
         </div> <!--Fechamento Campo CPF e DTNascimento-->
 
@@ -47,26 +49,17 @@
             type="text"
             name="nomeCompleto"
             id="nomeCompleto"
-            [(ngModel)]="nomeCompleto"
-            #nomeC="ngModel" required>
-
-            <div class="ui red message" *ngIf="nomeC.errors && (nomeC.dirty || nomeC.touched)">
-              <ul>
-                <li *ngIf="nomeC.errors.required">
-                  Campo Obrigatório, digite seu nome completo.
-                </li>
-              </ul>
-            </div>
+            formControlName="nomeC"
+            required>
         </div>
 
-        <div class="field" [ngClass]="{'input error': !nomeM.valid && (nomeM.dirty || nomeM.touched)}">
-            <label>Primeiro nome da mâe</label>
+        <!-- <div class="field" [ngClass]="{'input error': !nomeM.valid && (nomeM.dirty || nomeM.touched)}">
+            <label>Primeiro Nome da Mâe</label>
             <input
               type="text"
               name="nomeMae"
               id="nomeMae"
-              [(ngModel)]="nomeMae"
-              #nomeM="ngModel" required>
+              formControlName="nomeMae">
   
               <div class="ui red message" *ngIf="nomeM.errors && (nomeM.dirty || nomeM.touched)">
                 <ul>
@@ -75,7 +68,7 @@
                   </li>
                 </ul>
               </div>
-          </div>
+          </div> -->
 
         
      <!--   <div class="field">
@@ -109,7 +102,7 @@
 
 
         <div class="">
-          <button class="ui right floated button" type="submit" [disabled]="!myForm.valid" >
+          <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
             Próximo
           </button>
           <a [routerLink]="['']" class="ui right floated button">Voltar</a>
