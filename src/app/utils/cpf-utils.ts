@@ -2,13 +2,13 @@ declare var $: any;
 
 export class CpfUtils {
 
-    public maskField(): void {
+    public maskField(id: string): void {
 
-        $("#cpf").mask("000.000.000-00", { reverse: true });
+        $(`#${id}`).mask("000.000.000-00", { reverse: true });
 
     }
 
-    public formatCpf(cpf: string): string {
+    public formtCpf(cpf: string): string {
 
         return cpf.replace(/\.|\-/gi, "");
 
