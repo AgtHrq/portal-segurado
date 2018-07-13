@@ -6,12 +6,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './segurado/login/login.component';
 import { routing } from './app.routes';
+import { CadastroComponent } from './segurado/cadastro/cadastro.component';
 
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LogadoComponent } from './logado/logado.component';
 import { UserService } from './services/user.service';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { Cadastro2Component } from './segurado/cadastro2/cadastro2.component';
+import { CadastrarService } from './services/cadastrar.service';
 import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
 import { FirstVerificationComponent } from './segurado/forgot-password/first-verification/first-verification.component';
 import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
@@ -23,7 +26,8 @@ import { SendEmailComponent } from './segurado/forgot-password/send-email/send-e
   declarations: [
     AppComponent, 
     LoginComponent, 
-    LogadoComponent, 
+    CadastroComponent,
+    LogadoComponent, ErrorMessageComponent, Cadastro2Component, 
     ErrorMessageComponent, 
     ForgotPasswordComponent, 
     FirstVerificationComponent, 
@@ -40,7 +44,8 @@ import { SendEmailComponent } from './segurado/forgot-password/send-email/send-e
   providers: [
     Authorization,
     BackendService,
-    UserService
+    UserService,
+    CadastrarService
   ],
   bootstrap: [ AppComponent ]
 })

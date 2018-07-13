@@ -13,7 +13,7 @@
     
         <div class="ui very padded red segment">
             
-            <form class="ui large form error" (submit)="login($event, formGroup.value)" [formGroup]="formGroup">
+            <form appCpfMask class="ui large form error" (submit)="login($event, formGroup.value)" [formGroup]="formGroup">
 
                 <div class="field">
                     <label>CPF:</label>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="content">
-                    <p>É novo aqui? <a href="#">Cadastre-se</a>.</p>
+                    <p>É novo aqui? <a [routerLink]="['cadastro']">Cadastre-se</a>.</p>
                 </div>
 
             </div>

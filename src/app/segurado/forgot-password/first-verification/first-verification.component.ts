@@ -1,8 +1,7 @@
-import { Pergunta } from './../../../models/pergunta';
-import { PerguntaService } from './../../../services/perguntas/pergunta.service';
-import { CpfUtils } from './../../../utils/cpf-utils';
+import { Pergunta } from '../../../models/pergunta';
+import { PerguntaService } from '../../../services/perguntas/pergunta.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder } from '../../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-first-verification',
@@ -12,7 +11,7 @@ import { FormGroup, FormBuilder } from '../../../../../node_modules/@angular/for
 export class FirstVerificationComponent implements OnInit {
 
   @Input() cpf: string = "";
-  util: CpfUtils = new CpfUtils();
+  // util: CpfUtils = new CpfUtils();
   formChange: FormGroup;
   perguntas: any;
 
