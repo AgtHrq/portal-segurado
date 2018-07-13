@@ -1,6 +1,6 @@
 declare var $: any;
 
-export class maskUtils {
+export class MaskUtils {
 
     public cpfMask(id: string): void{
 

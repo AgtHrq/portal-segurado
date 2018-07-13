@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from '../../../node_modules/rxjs';
+import { Subject, Observable } from 'rxjs';
 import { BackendService } from './backend.service';
 import { Authorization } from './jwt.service';
 

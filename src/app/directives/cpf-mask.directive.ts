@@ -1,20 +1,21 @@
 import { OnInit, HostListener, HostBinding } from '@angular/core';
 import { Directive } from '@angular/core';
-import { CpfUtils } from '../utils/cpf-utils';
+import { MaskUtils } from '../utils/mask-utils';
 
 @Directive({
   selector: '[appCpfMask]'
 })
 export class CpfMaskDirective implements OnInit{
   
+  private utils: MaskUtils = new MaskUtils();
   
   ngOnInit() {
 
-    this.utils.maskField("cpf");
+    this.utils.cpfMask("cpf");
+    this.utils.dtMask("dataNascimento");
 
   }
 
-  private utils: CpfUtils = new CpfUtils();
 
   constructor() { }
 

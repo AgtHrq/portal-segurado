@@ -14,7 +14,8 @@
               formControlName="cpf"
               id="cpf"
               name="cpf"
-              type="text">
+              type="text"
+              appCpfMask>
                 <!--Mensagens de validação-->
               <div class="ui red message" 
                 *ngIf="meuForm.controls.cpf.invalid && (meuForm.controls.cpf.touched)">

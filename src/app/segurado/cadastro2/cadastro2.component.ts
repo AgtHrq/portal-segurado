@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { maskUtils } from '../mask-utils';
 
 @Component({
   selector: 'app-cadastro2',
@@ -24,7 +23,7 @@ export class Cadastro2Component implements OnInit {
   cadastra(event){
 
     event.preventDefault();
-    
+
   }
 
 }

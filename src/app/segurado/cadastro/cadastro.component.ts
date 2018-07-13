@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { maskUtils } from '../mask-utils';
 import { CadastrarService } from '../../services/cadastrar.service';
+import { MaskUtils } from '../../utils/mask-utils';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,13 +11,13 @@ import { CadastrarService } from '../../services/cadastrar.service';
 })
 export class CadastroComponent implements OnInit {
   meuForm: FormGroup;
-  cpfMask: maskUtils;
-  dataNascimentoMask: maskUtils;
+  cpfMask: MaskUtils;
+  dataNascimentoMask: MaskUtils;
   proximo: boolean = true;
 
   constructor(formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
-    this.cpfMask = new maskUtils();
-    this.dataNascimentoMask = new maskUtils();
+    this.cpfMask = new MaskUtils();
+    this.dataNascimentoMask = new MaskUtils();
 
     this.meuForm = formBuilder.group({
 
