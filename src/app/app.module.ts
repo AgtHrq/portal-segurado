@@ -15,13 +15,23 @@ import { UserService } from './services/user.service';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { Cadastro2Component } from './segurado/cadastro2/cadastro2.component';
 import { CadastrarService } from './services/cadastrar.service';
+import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
+import { FirstVerificationComponent } from './segurado/forgot-password/first-verification/first-verification.component';
+import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
+import { CpfMaskDirective } from './directives/cpf-mask.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent, 
     LoginComponent, 
     CadastroComponent,
-    LogadoComponent, ErrorMessageComponent, Cadastro2Component
+    LogadoComponent, ErrorMessageComponent, Cadastro2Component, 
+    ErrorMessageComponent, 
+    ForgotPasswordComponent, 
+    FirstVerificationComponent, 
+    ChangePasswordComponent, 
+    CpfMaskDirective
   ],
   imports: [
     BrowserModule,

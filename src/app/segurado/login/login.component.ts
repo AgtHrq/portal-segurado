@@ -2,8 +2,7 @@ import { UserService } from '../../services/user.service';
 import { Component, ViewChild, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-declare var $: any;
+import { CpfUtils } from '../../utils/cpf-utils';
 
 @Component({
     selector: 'login-segurado',
@@ -15,11 +14,12 @@ export class LoginComponent {
     private erroTitle: string = "Erro ao realizar login";
     private erroMessage: string = "Erro ao realizar login";
     private showMessage: boolean = false;
+    private utils: CpfUtils;
     formGroup: FormGroup;
 
     ngOnInit(){
 
-        //this.fortmaterr();
+        this.utils.maskField("cpf");
 
     }
 
@@ -28,6 +28,8 @@ export class LoginComponent {
         if (userService.isLogged()) {
             this.route.navigate(["/logado"]);
         }
+
+        this.utils = new CpfUtils();
 
         this.formGroup = formBuilder.group({
 
@@ -45,7 +47,7 @@ export class LoginComponent {
     login(event, credentials){
 
         event.preventDefault();
-        credentials.cpf = this.formatCpf(credentials.cpf);
+        credentials.cpf = this.utils.formtCpf(credentials.cpf);
 
         this.userService.authenticate(credentials).subscribe(
             data => {
@@ -63,12 +65,6 @@ export class LoginComponent {
     hideError() {
 
         this.showMessage = false;
-
-    }
-
-    formatCpf(cpf: String): String {
-
-        return cpf.replace(/\.|\-/gi, "");
 
     }
 

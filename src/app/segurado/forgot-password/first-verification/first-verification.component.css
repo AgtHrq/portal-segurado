@@ -1,0 +1,40 @@
+.ui.form input {
+
+    border-radius: 0px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+
+}
+
+.ui.form select {
+
+    border-style: none;
+    border-radius: 0px;
+    border-bottom: 1px solid;
+
+}
+
+.ui.form input:focus {
+
+    border-color: #72B5A4; 
+
+}
+
+.fields {
+
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+}
+
+@media screen and (min-width: 900px){
+
+    .painel {
+        
+        padding: 15% 30% 0 30%;
+        
+    }
+
+}
