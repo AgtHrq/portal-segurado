@@ -4,7 +4,7 @@
 
     <div class="ui very padded red segment">
 
-      <form class="ui large form" [formGroup]="meuForm">
+      <form class="ui large form"  [formGroup]="meuForm"  (submit)="verifica($event, meuForm.value)" *ngIf="proximo">
         
         <div class="fields"> <!--Inicio Campo CPF e DTNascimento-->
 
@@ -14,8 +14,7 @@
               formControlName="cpf"
               id="cpf"
               name="cpf"
-              type="text"
-              [textMask]="{mask: maskCpf}">
+              type="text">
                 <!--Mensagens de validação-->
               <div class="ui red message" 
                 *ngIf="meuForm.controls.cpf.invalid && (meuForm.controls.cpf.touched)">
@@ -28,77 +27,47 @@
             <label>Data de Nascimento</label>
             <input 
               type="text"
-              name="dtNascimento"
-              formControlName="dtNascimento"
-              [textMask]="{mask: maskDtNascimento}" >
-
+              name="dataNascimento"
+              id="dataNascimento"
+              formControlName="dataNascimento">
+                <!--Mensagens de validação-->
               <div class="ui red message" 
-                *ngIf="meuForm.controls.dtNascimento.invalid && (meuForm.controls.dtNascimento.touched)">
-
-                <p *ngIf="meuForm.controls.dtNascimento.errors.required">O campo é obrigatório</p>
-            
+                *ngIf="meuForm.controls.dataNascimento.invalid && (meuForm.controls.dataNascimento.touched)">
+                <p *ngIf="meuForm.controls.dataNascimento.errors.minlength">O campo DATA incompleto.</p>
+                <p *ngIf="meuForm.controls.dataNascimento.errors.required">O campo é obrigatório</p>
               </div>
           </div>
 
 
         </div> <!--Fechamento Campo CPF e DTNascimento-->
 
-        <div class="field" [ngClass]="{'input error': !nomeC.valid && (nomeC.dirty || nomeC.touched)}">
+        <div class="field">
           <label>Nome Completo</label>
           <input
             type="text"
-            name="nomeCompleto"
-            id="nomeCompleto"
-            formControlName="nomeC"
-            required>
-        </div>
-
-        <!-- <div class="field" [ngClass]="{'input error': !nomeM.valid && (nomeM.dirty || nomeM.touched)}">
-            <label>Primeiro Nome da Mâe</label>
-            <input
-              type="text"
-              name="nomeMae"
-              id="nomeMae"
-              formControlName="nomeMae">
-  
-              <div class="ui red message" *ngIf="nomeM.errors && (nomeM.dirty || nomeM.touched)">
-                <ul>
-                  <li *ngIf="nomeM.errors.required">
-                    Campo Obrigatório, só o primeiro nome.
-                  </li>
-                </ul>
+            name="nome"
+            id="nome"
+            formControlName="nome">
+              <!--Mensagens de validação-->
+            <div class="ui red message" 
+                *ngIf="meuForm.controls.nome.invalid && (meuForm.controls.nome.touched)">
+                <p *ngIf="meuForm.controls.nome.errors.required">O campo é obrigatório</p>
               </div>
-          </div> -->
-
-        
-     <!--   <div class="field">
-          <label>E-mail</label>
-          <input type="email" name="email">
         </div>
 
         <div class="field">
-          <label>Pergunta Secreta</label>
-          <select class="ui fluid dropdown" name="pergSecreta">
-          <option value="">Selecione</option>
-          </select>
+          <label>Primeiro Nome da Mãe</label>
+          <input
+            type="text"
+            name="nomeMae"
+            id="nomeMae"
+            formControlName="nomeMae">
+              <!--Mensagens de validação-->
+            <div class="ui red message" 
+                *ngIf="meuForm.controls.nomeMae.invalid && (meuForm.controls.nomeMae.touched)">
+                <p *ngIf="meuForm.controls.nomeMae.errors.required">O campo é obrigatório</p>
+            </div>
         </div>
-
-        <div class="field">
-          <label>Resposta secreta</label>
-          <input type="text" name="respSecreta">
-        </div>
-        
-        <div class="fields">
-          <div class="eight wide field">
-          <label>Senha</label>
-          <input type="text" name="senha">
-          </div>
-
-          <div class="eight wide field">
-          <label>Confirmar senha</label>
-          <input type="text" name="confirmeSenha">
-          </div>
-        </div>-->
 
 
         <div class="">
@@ -108,6 +77,8 @@
           <a [routerLink]="['']" class="ui right floated button">Voltar</a>
         </div>
       </form>
+
+      <app-cadastro2 *ngIf="!proximo"></app-cadastro2>
 
     </div>
 

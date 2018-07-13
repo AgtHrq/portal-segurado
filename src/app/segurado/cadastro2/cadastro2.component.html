@@ -1,0 +1,54 @@
+<form class="ui large form" [formGroup]="meuForm" (submit)="cadastra($event)">
+
+  <div class="fields">
+    
+    <div class="eight wide field">
+        <label>E-mail (Opcional)</label>
+        <input type="email" name="email">
+    </div>
+
+    <div class="two wide field">
+        <label>DDD</label>
+        <input type="number" name="celular" id="celular">
+    </div>
+    
+    <div class="eight wide field">
+        <label>Celular</label>
+        <input type="number" name="celular" id="celular">
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Pergunta Secreta</label>
+    <select class="ui fluid dropdown" name="pergSecreta">
+    <option value="">Selecione</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Resposta secreta</label>
+    <input type="text" name="respSecreta">
+  </div>
+
+  <div class="fields">
+
+    <div class="eight wide field">
+    <label>Senha</label>
+    <input type="text" name="senha">
+    </div>
+
+    <div class="eight wide field">
+    <label>Confirmar senha</label>
+    <input type="text" name="confirmeSenha">
+    </div>
+
+    <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
+        Cadastrar
+    </button>
+    
+  </div>
+
+</form>
+
+

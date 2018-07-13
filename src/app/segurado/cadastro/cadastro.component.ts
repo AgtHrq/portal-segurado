@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { maskUtils } from '../mask-utils';
+import { CadastrarService } from '../../services/cadastrar.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -8,31 +10,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
-  public dtNascimento: string;
-  //public cpf: string;
-  public nomeC: string;
-  public nomeMae: String;
-  public modelWithValue: string;
-  public formControlInput: FormControl = new FormControl()
-  public maskDtNascimento: Array<string | RegExp>
-  public maskCpf: Array<string | RegExp>
   meuForm: FormGroup;
-  
+  cpfMask: maskUtils;
+  dataNascimentoMask: maskUtils;
+  proximo: boolean = true;
 
-  constructor(formBuilder: FormBuilder) { 
-    this.maskDtNascimento = [/[1-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
-    this.maskCpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
-    this.dtNascimento = '';
-    // this.cpf = '';
-    this.nomeC = '';
-    this.nomeMae = '';
+  constructor(formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
+    this.cpfMask = new maskUtils();
+    this.dataNascimentoMask = new maskUtils();
 
     this.meuForm = formBuilder.group({
 
       cpf: ["", Validators.compose(
-          [Validators.minLength(16), Validators.required]
+          [Validators.minLength(14), Validators.required]
         )],
-      dtNascimento: ["", Validators.compose(
+      dataNascimento: ["", Validators.compose(
+        [Validators.required, Validators.minLength(10)]
+      )],
+
+      nome:["", Validators.compose(
+        [Validators.required]
+      )],
+
+      nomeMae:["", Validators.compose(
         [Validators.required]
       )],
 
@@ -40,6 +40,40 @@ export class CadastroComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cpfMask.cpfMask("cpf");
+    this.dataNascimentoMask.dtMask("dataNascimento");
+  }
+
+  verifica(event, segurado){
+    event.preventDefault();
+
+    segurado.cpf = this.formatCpf(segurado.cpf);
+    segurado.dataNascimento = this.formatData(segurado.dataNascimento);
+
+    this.cadastrarService.verificarSegurado(segurado).subscribe(
+      proximo => {
+        this.proximo = false;
+
+        console.log("json", proximo.json());
+      
+      },
+      error => {
+        console.log("error");
+        alert(error._body);
+      }
+    )
+  }
+
+  formatCpf(cpf: String): String {
+
+    return cpf.replace(/\.|\-/gi, "");
+
+  }
+
+  formatData(date: String): String {
+
+    return date.split('/').reverse().join('-');
+
   }
 
 }

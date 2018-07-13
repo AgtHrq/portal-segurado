@@ -1,4 +1,4 @@
-.ui.very.padded.red.segment .ui.form input {
+.ui.form input {
 
     border-radius: 0px;
     border-top: none;
@@ -8,7 +8,7 @@
 
 }
 
-.ui.very.padded.red.segment .ui.form input:focus {
+.ui.form input:focus {
 
     border-color: #72B5A4; 
 
@@ -26,19 +26,21 @@
 
 }
 
-@media screen and (min-width: 1150px){
-    .ui.centered.huge.header {
+body {
 
-        font-size: 350%;
+    background-image: linear-gradient(to right, #FFFFFF, #C0C0C0);
 
-    }
 }
 
 @media screen and (min-width: 600px){
 
     .painel {
-        
-        padding: 15%;
+
+        margin-top: -300px; 
+        padding: 20%;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
         
     }
 
