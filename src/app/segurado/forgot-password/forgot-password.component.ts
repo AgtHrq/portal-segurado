@@ -1,6 +1,7 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CpfUtils } from '../../utils/cpf-utils';
+import { ForgotPasswordService } from '../../services/forgot-password/forgot-password.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,16 +10,17 @@ import { CpfUtils } from '../../utils/cpf-utils';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  private formSearch: FormGroup;
-  private formChange: FormGroup;
-  private showContent: boolean = false;
-  private utils: CpfUtils;
-  private cpf: string = "";
+  formSearch: FormGroup;
+  showContent: boolean = false;
+  showChangePassword: boolean = false;
+  showQuestion: boolean = false;
+  showEmail: boolean = false;
+  utils: CpfUtils = new CpfUtils();
+  cpf: string = "";
+  
+  ngOnInit() { }
 
-  constructor(private formBuilder: FormBuilder) {
-
-    this.utils = new CpfUtils();
-    this.utils.maskField("cpf");
+  constructor(private formBuilder: FormBuilder, private service: ForgotPasswordService) {
 
     this.formSearch = this.formBuilder.group({
       cpf: ["", Validators.compose([
@@ -27,24 +29,28 @@ export class ForgotPasswordComponent implements OnInit {
       ]
     });
 
-    this.formChange = this.formBuilder.group({
-      pergunta: "",
-      resposta: ""
-    });
-
    }
 
   forgotPassword(event, cpf){
 
     event.preventDefault();
-    this.showContent = true;
     this.cpf = cpf.cpf;
+    cpf.cpf = this.utils.formtCpf(cpf.cpf);
 
-  }
+    this.service.verificaUsuario(cpf)
+    .subscribe(
+      user => {
+        if (user.json().email != null || user.json().email != "") {
 
-  ngOnInit() {
+          this.showContent = true;
+          this.showQuestion = true;
 
-    this.utils.maskField("cpf");
+        }
+      },
+      erro => console.log(erro._body)
+    );
+
+    
 
   }
 

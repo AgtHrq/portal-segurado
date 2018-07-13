@@ -13,6 +13,10 @@ import { LogadoComponent } from './logado/logado.component';
 import { UserService } from './services/user.service';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
+import { FirstVerificationComponent } from './segurado/forgot-password/first-verification/first-verification.component';
+import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
+import { CpfMaskDirective } from './directives/cpf-mask.directive';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-passw
     LoginComponent, 
     LogadoComponent, 
     ErrorMessageComponent, 
-    ForgotPasswordComponent
+    ForgotPasswordComponent, 
+    FirstVerificationComponent, 
+    ChangePasswordComponent, 
+    CpfMaskDirective
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<form class="ui large form error" [formGroup]="formChange" (submit)="changePassword($event, formChange.value)">
+
+  <div class="disabled field">
+      <label>CPF:</label>
+      <input type="text" value="{{ cpf }}">
+  </div>
+
+  <div class="field">
+    <label>Pergunta secreta:</label>
+    <select formControlName="pergunta" class="ui fluid dropdown">
+      <option value="">Selecione</option>
+      <option *ngFor="let p of perguntas">{{ p.descricao }}</option>
+    </select>
+  </div>
+
+  <div class="field">
+      <label>Resposta:</label>
+      <input formControlName="resposta" type="text" id="resposta" name="resposta">
+  </div>
+
+    <button class="ui right floated teal button" type="submit" [disabled]="formChange.invalid">Confirmar</button>
+    <a [routerLink]="['']" class="ui right floated button">Voltar</a>
+
+</form>
