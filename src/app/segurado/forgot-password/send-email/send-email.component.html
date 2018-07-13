@@ -1,0 +1,9 @@
+<h4>Deseja enviar para o email? xxx</h4>
+<form class="ui large form error">
+
+  <input type="hide" name="email">
+
+    <button class="ui right floated teal button" type="submit" [disabled]="formChange.invalid">Enviar</button>
+    <a [routerLink]="['']" class="ui right floated button">Não enviar</a>
+
+</form>

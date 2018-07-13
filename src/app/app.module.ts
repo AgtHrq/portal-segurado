@@ -16,6 +16,7 @@ import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-passw
 import { FirstVerificationComponent } from './segurado/forgot-password/first-verification/first-verification.component';
 import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 import { CpfMaskDirective } from './directives/cpf-mask.directive';
+import { SendEmailComponent } from './segurado/forgot-password/send-email/send-email.component';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { CpfMaskDirective } from './directives/cpf-mask.directive';
     ForgotPasswordComponent, 
     FirstVerificationComponent, 
     ChangePasswordComponent, 
-    CpfMaskDirective
+    CpfMaskDirective, SendEmailComponent
   ],
   imports: [
     BrowserModule,
