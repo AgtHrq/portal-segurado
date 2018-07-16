@@ -14,22 +14,16 @@ export class LoginComponent {
     private erroTitle: string = "Erro ao realizar login";
     private erroMessage: string = "Erro ao realizar login";
     private showMessage: boolean = false;
-    // private utils: MaskUtils;
+    private utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
 
-    ngOnInit(){
-
-        // this.utils.maskField("cpf");
-
-    }
+    ngOnInit(){ }
 
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
 
         if (userService.isLogged()) {
             this.route.navigate(["/logado"]);
         }
-
-        // this.utils = new CpfUtils();
 
         this.formGroup = formBuilder.group({
 
@@ -47,7 +41,7 @@ export class LoginComponent {
     login(event, credentials){
 
         event.preventDefault();
-        // credentials.cpf = this.utils.formtCpf(credentials.cpf);
+        credentials.cpf = this.utils.removeMascara(credentials.cpf);
 
         this.userService.authenticate(credentials).subscribe(
             data => {

@@ -1,3 +1,4 @@
+import { MaskUtils } from './../../utils/mask-utils';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ForgotPasswordService } from '../../services/forgot-password/forgot-password.service';
@@ -14,7 +15,7 @@ export class ForgotPasswordComponent implements OnInit {
   showChangePassword: boolean = false;
   showQuestion: boolean = false;
   showEmail: boolean = false;
-  // utils: CpfUtils = new CpfUtils();
+  utils: MaskUtils = new MaskUtils();
   cpf: string = "";
   
   ngOnInit() { }
@@ -34,7 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     event.preventDefault();
     this.cpf = cpf.cpf;
-    // cpf.cpf = this.utils.formtCpf(cpf.cpf);
+    cpf.cpf = this.utils.removeMascara(cpf.cpf);
 
     this.service.verificaUsuario(cpf)
     .subscribe(
