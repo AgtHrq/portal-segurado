@@ -1,9 +1,23 @@
-<h4>Deseja enviar para o email? xxx</h4>
-<form class="ui large form error">
+<div *ngIf="!showContent; else elseBlock">
 
-  <input type="hide" name="email">
+  <h3>Deseja enviar a senha para o e-mail?</h3>
+  <h4>{{ email }}</h4>
+  <h5>* O botão 'Outra Opção' redireciona para a recuperação de senha através da pergunta de segurança.</h5>
 
-    <button class="ui right floated teal button" type="submit" [disabled]="formChange.invalid">Enviar</button>
-    <a [routerLink]="['']" class="ui right floated button">Não enviar</a>
+  <div *ngIf="errorMessage" class="ui negative message">
 
-</form>
+    <div class="header">Erro ao enviar e-mail</div>
+    <p>Desculpe, não conseguimos enviar o e-mail. Clique no botão 'Outra Opção' e tente recuperar a senha através de sua pergunta de segurança.
+      Ou tente enviar novamente.
+    </p>
+
+  </div>
+
+  <button class="ui right floated teal button" type="submit" (click)="sendEmail()">Enviar</button>
+  <button type="button" class="ui right floated button" (click)="showQuestion()">Outra Opção</button>
+
+</div>
+
+<ng-template #elseBlock>
+  <app-first-verification cpf="{{ cpf }}"></app-first-verification>
+</ng-template>

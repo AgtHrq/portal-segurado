@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ForgotPasswordService } from './../../../services/forgot-password/forgot-password.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { MaskUtils } from '../../../utils/mask-utils';
 
 @Component({
   selector: 'app-send-email',
@@ -7,9 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendEmailComponent implements OnInit {
 
-  constructor() { }
+  @Input() cpf: string = "";
+  email: string;
+  showContent: boolean = false;
+  utils: MaskUtils = new MaskUtils();
+  errorMessage: boolean = false;
+
+  constructor(private service: ForgotPasswordService) {  }
 
   ngOnInit() {
+
+    this.service.verificaUsuario({ cpf: this.cpf })
+      .subscribe(
+        user => {
+          this.email = user.json().usuario.email;
+        }
+      )
+    
+  }
+
+  sendEmail(){
+    
+    this.errorMessage = false;
+    this.service.enviaEmail({ email: this.email })
+      .subscribe(data => console.log(data),
+      erro => {
+        this.errorMessage = true;
+      }
+    );
+
+  }
+
+  showQuestion(){
+
+    this.showContent = true;
+    this.cpf = this.utils.addMascara(this.cpf);
+
   }
 
 }

@@ -14,4 +14,10 @@ export class ForgotPasswordService {
 
   }
 
+  enviaEmail(email) {
+
+    return this.backendService.unprotectedRequest("usuarios/esqueceuSenhaEmail", "post", email);
+
+  }
+
 }

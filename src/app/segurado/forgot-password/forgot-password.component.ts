@@ -1,7 +1,9 @@
+import { Usuario } from './../../models/usuario';
 import { MaskUtils } from './../../utils/mask-utils';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ForgotPasswordService } from '../../services/forgot-password/forgot-password.service';
+import { Jsonp } from '../../../../node_modules/@angular/http';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,6 +19,7 @@ export class ForgotPasswordComponent implements OnInit {
   showEmail: boolean = false;
   utils: MaskUtils = new MaskUtils();
   cpf: string = "";
+  usuario: any;
   
   ngOnInit() { }
 
@@ -40,7 +43,13 @@ export class ForgotPasswordComponent implements OnInit {
     this.service.verificaUsuario(cpf)
     .subscribe(
       user => {
-        if (user.json().email != null || user.json().email != "") {
+        if (user.json().usuario.email != null && user.json().usuario.email != "") {
+
+          this.usuario = user.json();
+          this.showEmail = true;
+          this.showContent = true;
+          
+        } else {
 
           this.showContent = true;
           this.showQuestion = true;
