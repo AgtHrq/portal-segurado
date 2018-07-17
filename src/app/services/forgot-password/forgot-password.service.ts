@@ -20,4 +20,10 @@ export class ForgotPasswordService {
 
   }
 
+  verificaPergunta(pergunta) {
+
+    return this.backendService.unprotectedRequest("usuarios/esqueceuSenhaPergunta", "post", pergunta)
+
+  }
+
 }

@@ -22,3 +22,7 @@
     <a [routerLink]="['']" class="ui right floated button">Voltar</a>
 
 </form>
+
+<div *ngIf="error" class="ui error message">
+  <app-error-message></app-error-message>
+</div>
