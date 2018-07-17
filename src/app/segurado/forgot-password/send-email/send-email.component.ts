@@ -14,6 +14,7 @@ export class SendEmailComponent implements OnInit {
   showContent: boolean = false;
   utils: MaskUtils = new MaskUtils();
   errorMessage: boolean = false;
+  showLoader: boolean = false;
 
   constructor(private service: ForgotPasswordService) {  }
 
@@ -30,10 +31,15 @@ export class SendEmailComponent implements OnInit {
 
   sendEmail(){
     
+    this.showLoader = true;
     this.errorMessage = false;
     this.service.enviaEmail({ email: this.email })
-      .subscribe(data => console.log(data),
+      .subscribe(data => {
+        console.log(data);
+        this.showLoader = false;
+      },
       erro => {
+        this.showLoader = false;
         this.errorMessage = true;
       }
     );

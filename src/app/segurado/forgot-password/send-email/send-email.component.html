@@ -1,3 +1,7 @@
+<div *ngIf="showLoader">
+  <app-loader message="Enviando..."></app-loader>
+</div>
+
 <div *ngIf="!showContent; else elseBlock">
 
   <h3>Deseja enviar a senha para o e-mail?</h3>

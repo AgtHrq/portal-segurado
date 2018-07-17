@@ -17,6 +17,8 @@ export class ForgotPasswordComponent implements OnInit {
   showChangePassword: boolean = false;
   showQuestion: boolean = false;
   showEmail: boolean = false;
+  errorMessage: string = "";
+  showErrorMessage: boolean = false;
   utils: MaskUtils = new MaskUtils();
   cpf: string = "";
   usuario: any;
@@ -56,10 +58,19 @@ export class ForgotPasswordComponent implements OnInit {
 
         }
       },
-      erro => console.log(erro._body)
+      erro => {
+        this.errorMessage = erro._body;
+        this.showErrorMessage = true;
+      }
     );
 
     
+
+  }
+
+  hideError() {
+
+    this.showErrorMessage = false;
 
   }
 
