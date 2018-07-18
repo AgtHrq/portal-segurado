@@ -16,8 +16,10 @@ export class FirstVerificationComponent implements OnInit {
   util: MaskUtils = new MaskUtils();
   formChange: FormGroup;
   perguntas: any;
-  errrorMessage: string = "";
+  errorMessage: string = "";
   error: boolean = false;
+  showNewPassword: boolean = false;
+  hash: any = "";
 
   constructor(private formBuilder: FormBuilder, private perguntaService: PerguntaService, private forgotServive: ForgotPasswordService) {
 
@@ -39,12 +41,21 @@ export class FirstVerificationComponent implements OnInit {
     
     this.forgotServive.verificaPergunta(questionAnswer)
       .subscribe(
-        data => console.log(data),
+        data => {
+          this.showNewPassword = true;
+          this.hash = data;
+        },
         error => {
-          this.errrorMessage = error._body;
+          this.errorMessage = error._body;
           this.error = true;
         }
       );
+
+    }
+
+    hideError() {
+
+      this.error = false;
 
     }
 
