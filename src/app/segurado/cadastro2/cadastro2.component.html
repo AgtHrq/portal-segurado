@@ -1,53 +1,146 @@
-<form class="ui large form" [formGroup]="meuForm" (submit)="cadastra($event)">
+<form class="ui large form" [formGroup]="meuForm" (submit)="cadastra($event, meuForm.value)">
 
   <div class="fields">
     
     <div class="eight wide field">
         <label>E-mail (Opcional)</label>
-        <input type="email" name="email">
+        <input
+          type="email"
+          name="email"
+          formControlName="email">
+
+          <!--Mensagem de validação-->
+        <div class="ui red message" 
+          *ngIf="meuForm.controls.email.invalid && (meuForm.controls.email.touched)">
+          <p *ngIf="meuForm.controls.email.errors.email">E-mail não estar válido</p>
+        </div>
     </div>
 
     <div class="two wide field">
         <label>DDD</label>
-        <input type="number" name="celular" id="celular">
+        <input
+          type="text"
+          name="ddd"
+          id="ddd"
+          formControlName="ddd"
+          appCpfMask>
+
+          <!-- Mensagem de validação -->
+          <div class="ui red message" 
+            *ngIf="meuForm.controls.ddd.invalid && (meuForm.controls.ddd.touched)">
+
+            <p *ngIf="meuForm.controls.ddd.errors.minlength">DDD inválido, ex: (83)</p>
+
+          </div>
     </div>
     
     <div class="eight wide field">
         <label>Celular</label>
-        <input type="number" name="celular" id="celular">
+        <input
+          type="text"
+          name="celular"
+          id="celular"
+          formControlName="celular">
+
+          <!-- Mensagem de validação -->
+          <div class="ui red message" 
+            *ngIf="meuForm.controls.celular.invalid && (meuForm.controls.celular.touched)">
+
+            <p *ngIf="meuForm.controls.celular.errors.minlength">Número inválido</p>
+
+          </div>
     </div>
 
   </div>
 
   <div class="field">
     <label>Pergunta Secreta</label>
-    <select class="ui fluid dropdown" name="pergSecreta">
-    <option value="">Selecione</option>
+    <select  class="ui fluid dropdown" name="pergSecreta" formControlName="pergunta">
+      <option value="" selected disabled>Selecione</option>
+      <option *ngFor="let pergunta of perguntas" value="{{pergunta.descricao}}">
+        {{pergunta.descricao}}
+        <input type="hidden" value="{{pergunta.id}}" formControlName="idPergunta"/>
+      </option>
     </select>
+     <!-- Mensagem de validação -->
+    <div class="ui red message" 
+      *ngIf="meuForm.controls.pergunta.invalid && (meuForm.controls.pergunta.touched)">
+
+      <p *ngIf="meuForm.controls.pergunta.errors.required">Selecione uma pergunta</p>
+
+    </div>
   </div>
 
   <div class="field">
     <label>Resposta secreta</label>
-    <input type="text" name="respSecreta">
+    <input
+      type="text"
+      name="resposta"
+      id="resposta"
+      formControlName="resposta">
+
+       <!-- Mensagem de validação -->
+       <div class="ui red message" 
+          *ngIf="meuForm.controls.resposta.invalid && (meuForm.controls.resposta.touched)">
+
+          <p *ngIf="meuForm.controls.resposta.errors.required">Preciso de uma resposta</p>
+          <p *ngIf="meuForm.controls.resposta.errors.minlength">Resposta inválida</p>
+
+     </div>
   </div>
 
   <div class="fields">
 
     <div class="eight wide field">
-    <label>Senha</label>
-    <input type="text" name="senha">
+
+      <label>Senha</label>
+      <input
+        type="text"
+        name="senha"
+        id="senha"
+        #senha1
+        formControlName="senha">
+
+        <!-- Mensagem de validação -->
+      <div class="ui red message" 
+        *ngIf="meuForm.controls.senha.invalid && (meuForm.controls.senha.touched)">
+
+        <p *ngIf="meuForm.controls.senha.errors.minlength">Número de caracteres inválido</p>
+        <p *ngIf="meuForm.controls.senha.errors.required">Campo obrigatório</p>
+
+      </div>
+
     </div>
 
     <div class="eight wide field">
-    <label>Confirmar senha</label>
-    <input type="text" name="confirmeSenha">
+
+      <label>Confirmar senha</label>
+      <input
+        type="text"
+        name="confirmeSenha"
+        id="confirmeSenha"
+        #senha2
+        formControlName="confirmeSenha">
+      
+        <!-- Mensagem de validação -->
+        
+        <p class="ui red message" *ngIf="senha1.value != senha2.value">Senhas divergentes</p>
+        <div class="ui red message"
+        *ngIf="meuForm.controls.confirmeSenha.invalid && (meuForm.controls.confirmeSenha.touched)">
+        
+          <p *ngIf="meuForm.controls.confirmeSenha.errors.required">Campo obrigatório</p>
+
+
+        </div>
+
     </div>
 
-    <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
-        Cadastrar
-    </button>
     
   </div>
+
+  <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
+      Cadastrar
+  </button>
 
 </form>
 

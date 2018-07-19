@@ -48,6 +48,7 @@
             type="text"
             name="nome"
             id="nome"
+            value="{{pergunta}}"
             formControlName="nome">
               <!--Mensagens de validação-->
             <div class="ui red message" 
@@ -80,7 +81,7 @@
       </form>
 
       <app-cadastro2 *ngIf="!proximo"></app-cadastro2>
-
+      
     </div>
 
   </div>

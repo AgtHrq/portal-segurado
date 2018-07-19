@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CadastrarService } from '../../services/cadastrar.service';
-import { MaskUtils } from '../../utils/mask-utils';
+import { CadastrarService } from '../../services/cadastrar/cadastrar.service';
+import { Pergunta } from '../../models/pergunta';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,13 +11,10 @@ import { MaskUtils } from '../../utils/mask-utils';
 })
 export class CadastroComponent implements OnInit {
   meuForm: FormGroup;
-  cpfMask: MaskUtils;
-  dataNascimentoMask: MaskUtils;
   proximo: boolean = true;
+  perguntas= [];
 
   constructor(formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
-    this.cpfMask = new MaskUtils();
-    this.dataNascimentoMask = new MaskUtils();
 
     this.meuForm = formBuilder.group({
 
@@ -40,8 +37,6 @@ export class CadastroComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cpfMask.cpfMask("cpf");
-    this.dataNascimentoMask.dtMask("dataNascimento");
   }
 
   verifica(event, segurado){
@@ -54,7 +49,9 @@ export class CadastroComponent implements OnInit {
       proximo => {
         this.proximo = false;
 
-        console.log("json", proximo.json());
+        this.perguntas = proximo.json();
+
+        console.log("perguntas", this.perguntas);
       
       },
       error => {
@@ -64,13 +61,13 @@ export class CadastroComponent implements OnInit {
     )
   }
 
-  formatCpf(cpf: String): String {
+  formatCpf(cpf: string): string {
 
     return cpf.replace(/\.|\-/gi, "");
 
   }
 
-  formatData(date: String): String {
+  formatData(date: string): string {
 
     return date.split('/').reverse().join('-');
 
