@@ -17,10 +17,12 @@ export class LoginComponent {
     private utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
 
-    ngOnInit(){ }
+    ngOnInit(){ 
+        console.log(this.route);
+     }
 
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
-
+        
         if (userService.isLogged()) {
             this.route.navigate(["/logado"]);
         }

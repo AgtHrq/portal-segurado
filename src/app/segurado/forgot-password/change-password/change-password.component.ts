@@ -1,8 +1,8 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ForgotPasswordService } from '../../../services/forgot-password/forgot-password.service';
 import { upperCase, lowerCase, containNumber, equal } from '../../../validators/password.validator';
-import { Router } from '../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -18,7 +18,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
   classLetraMai: string = "error";
   showSuccessMessage: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private forgotService: ForgotPasswordService) {
+  constructor(private formBuilder: FormBuilder, private forgotService: ForgotPasswordService, private router: Router, private activatedRoute: ActivatedRoute) {
 
     this.formNewPassword = formBuilder.group({
       hash: "",
@@ -40,8 +40,6 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
 
     delete data.confirmPassword;
 
-    console.log(data);
-
     this.forgotService.novaSenha(data).subscribe(
       data => {
         this.showSuccessMessage = true;
@@ -50,7 +48,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
 
    }
 
-  ngOnInit() { }
+  ngOnInit() { console.log(this.activatedRoute.outlet)}
 
   ngOnChanges(){
 
