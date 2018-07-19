@@ -14,4 +14,16 @@ export class ForgotPasswordService {
 
   }
 
+  enviaEmail(email) {
+
+    return this.backendService.unprotectedRequest("usuarios/esqueceuSenhaEmail", "post", email);
+
+  }
+
+  verificaPergunta(pergunta) {
+
+    return this.backendService.unprotectedRequest("usuarios/esqueceuSenhaPergunta", "post", pergunta)
+
+  }
+
 }

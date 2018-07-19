@@ -1,6 +1,9 @@
+import { Usuario } from '../../models/usuario';
+import { MaskUtils } from '../../utils/mask-utils';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ForgotPasswordService } from '../../services/forgot-password/forgot-password.service';
+import { Jsonp } from '@angular/http';
 
 @Component({
   selector: 'app-forgot-password',
@@ -14,8 +17,11 @@ export class ForgotPasswordComponent implements OnInit {
   showChangePassword: boolean = false;
   showQuestion: boolean = false;
   showEmail: boolean = false;
-  // utils: CpfUtils = new CpfUtils();
+  errorMessage: string = "";
+  showErrorMessage: boolean = false;
+  utils: MaskUtils = new MaskUtils();
   cpf: string = "";
+  usuario: any;
   
   ngOnInit() { }
 
@@ -34,22 +40,37 @@ export class ForgotPasswordComponent implements OnInit {
 
     event.preventDefault();
     this.cpf = cpf.cpf;
-    // cpf.cpf = this.utils.formtCpf(cpf.cpf);
+    cpf.cpf = this.utils.removeMascara(cpf.cpf);
 
     this.service.verificaUsuario(cpf)
     .subscribe(
       user => {
-        if (user.json().email != null || user.json().email != "") {
+        if (user.json().usuario.email != null && user.json().usuario.email != "") {
+
+          this.usuario = user.json();
+          this.showEmail = true;
+          this.showContent = true;
+          
+        } else {
 
           this.showContent = true;
           this.showQuestion = true;
 
         }
       },
-      erro => console.log(erro._body)
+      erro => {
+        this.errorMessage = erro._body;
+        this.showErrorMessage = true;
+      }
     );
 
     
+
+  }
+
+  hideError() {
+
+    this.showErrorMessage = false;
 
   }
 

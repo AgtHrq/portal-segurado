@@ -8,6 +8,14 @@
 
 }
 
+.ui.form select {
+
+    border-style: none;
+    border-radius: 0px;
+    border-bottom: 1px solid;
+
+}
+
 .ui.form input:focus {
 
     border-color: #72B5A4; 
@@ -21,14 +29,12 @@
 
 }
 
-.error {
-    
-    color: #8B0000;
+@media screen and (min-width: 900px){
 
-}
-
-.success {
-
-    color: #3CB371
+    .painel {
+        
+        padding: 15% 30% 0 30%;
+        
+    }
 
 }

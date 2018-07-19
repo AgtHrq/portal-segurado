@@ -1,4 +1,4 @@
-<form class="ui large form error" [formGroup]="formChange" (submit)="changePassword($event, formChange.value)">
+<form *ngIf="!showNewPassword" class="ui large form error" [formGroup]="formChange" (submit)="changePassword($event, formChange.value)">
 
   <div class="disabled field">
       <label>CPF:</label>
@@ -7,18 +7,37 @@
 
   <div class="field">
     <label>Pergunta secreta:</label>
-    <select formControlName="pergunta" class="ui fluid dropdown">
+    <select formControlName="pergunta" (focus)="hideError()" class="ui fluid dropdown">
       <option value="">Selecione</option>
       <option *ngFor="let p of perguntas">{{ p.descricao }}</option>
     </select>
+
+    <div *ngIf="formChange.controls.pergunta.invalid && (formChange.controls.pergunta.touched)" class="ui error message">
+      <p *ngIf="formChange.controls.pergunta.errors.required">O campo pergunta é obrigatório.</p>
+    </div>
+
   </div>
 
   <div class="field">
       <label>Resposta:</label>
-      <input formControlName="resposta" type="text" id="resposta" name="resposta">
+      <input formControlName="resposta" (focus)="hideError()" type="text" id="resposta" name="resposta">
+
+      <div *ngIf="formChange.controls.resposta.invalid && (formChange.controls.resposta.touched)" class="ui error message">
+        <p *ngIf="formChange.controls.resposta.errors.required">O campo resposta é obrigatório.</p>
+        <p *ngIf="formChange.controls.resposta.errors.minlength">A resposta deve ter no mínimo 4 caracteres.</p>
+      </div>
+
+  </div>
+
+  <div *ngIf="error" class="ui negative message">
+    <app-error-message title="Erro!" message="{{ errorMessage }}"></app-error-message>
   </div>
 
     <button class="ui right floated teal button" type="submit" [disabled]="formChange.invalid">Confirmar</button>
     <a [routerLink]="['']" class="ui right floated button">Voltar</a>
 
 </form>
+
+<div *ngIf="showNewPassword">
+  <app-change-password hash="{{ hash._body }}"></app-change-password>
+</div>

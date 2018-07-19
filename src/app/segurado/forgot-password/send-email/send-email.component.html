@@ -1,0 +1,27 @@
+<div *ngIf="showLoader">
+  <app-loader message="Enviando..."></app-loader>
+</div>
+
+<div *ngIf="!showContent; else elseBlock">
+
+  <h3>Deseja enviar a senha para o e-mail?</h3>
+  <h4>{{ email }}</h4>
+  <h5>* O botão 'Outra Opção' redireciona para a recuperação de senha através da pergunta de segurança.</h5>
+
+  <div *ngIf="errorMessage" class="ui negative message">
+
+    <div class="header">Erro ao enviar e-mail</div>
+    <p>Desculpe, não conseguimos enviar o e-mail. Clique no botão 'Outra Opção' e tente recuperar a senha através de sua pergunta de segurança.
+      Ou tente enviar novamente.
+    </p>
+
+  </div>
+
+  <button class="ui right floated teal button" type="submit" (click)="sendEmail()">Enviar</button>
+  <button type="button" class="ui right floated button" (click)="showQuestion()">Outra Opção</button>
+
+</div>
+
+<ng-template #elseBlock>
+  <app-first-verification cpf="{{ cpf }}"></app-first-verification>
+</ng-template>

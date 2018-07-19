@@ -1,7 +1,9 @@
+import { MaskUtils } from '../../../utils/mask-utils';
 import { Pergunta } from '../../../models/pergunta';
 import { PerguntaService } from '../../../services/perguntas/pergunta.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ForgotPasswordService } from '../../../services/forgot-password/forgot-password.service';
 
 @Component({
   selector: 'app-first-verification',
@@ -11,15 +13,20 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class FirstVerificationComponent implements OnInit {
 
   @Input() cpf: string = "";
-  // util: CpfUtils = new CpfUtils();
+  util: MaskUtils = new MaskUtils();
   formChange: FormGroup;
   perguntas: any;
+  errorMessage: string = "";
+  error: boolean = false;
+  showNewPassword: boolean = false;
+  hash: any = "";
 
-  constructor(private formBuilder: FormBuilder, private perguntaService: PerguntaService) {
+  constructor(private formBuilder: FormBuilder, private perguntaService: PerguntaService, private forgotServive: ForgotPasswordService) {
 
     this.formChange = this.formBuilder.group({
-      pergunta: "",
-      resposta: ""
+      cpf: this.cpf,
+      pergunta: ["", Validators.compose([Validators.required])],
+      resposta: ["", Validators.compose([Validators.required, Validators.minLength(4)])]
     });
 
     this.perguntaService.getPerguntas().subscribe(p => this.perguntas = p.json());
@@ -30,14 +37,28 @@ export class FirstVerificationComponent implements OnInit {
     changePassword(event, questionAnswer){
 
     event.preventDefault();
+    questionAnswer.cpf = this.util.removeMascara(this.cpf);
     
+    this.forgotServive.verificaPergunta(questionAnswer)
+      .subscribe(
+        data => {
+          this.showNewPassword = true;
+          this.hash = data;
+        },
+        error => {
+          this.errorMessage = error._body;
+          this.error = true;
+        }
+      );
 
     }
 
-  ngOnInit() { 
+    hideError() {
 
-    // this.cpf  = this.util.formtCpf(this.cpf);
+      this.error = false;
 
-  }
+    }
+
+  ngOnInit() { }
 
 }
