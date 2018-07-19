@@ -11,11 +11,12 @@ import { MaskUtils } from '../../utils/mask-utils';
 })
 export class LoginComponent {
 
-    private erroTitle: string = "Erro ao realizar login";
-    private erroMessage: string = "Erro ao realizar login";
-    private showMessage: boolean = false;
-    private utils: MaskUtils = new MaskUtils();
+    erroTitle: string = "Erro ao realizar login";
+    erroMessage: string = "Erro ao realizar login";
+    showMessage: boolean = false;
+    utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
+    showLoader: boolean = false;
 
     ngOnInit(){ 
         console.log(this.route);
@@ -44,13 +45,16 @@ export class LoginComponent {
 
         event.preventDefault();
         credentials.cpf = this.utils.removeMascara(credentials.cpf);
+        this.showLoader = true;
 
         this.userService.authenticate(credentials).subscribe(
             data => {
+                this.showLoader = false;
                 this.userService.updateLoggedUser(data);
                 this.route.navigate(["/logado"]);
             },
             erro => {
+                this.showLoader = false;
                 this.erroMessage = erro._body;
                 this.showMessage = true;
             }

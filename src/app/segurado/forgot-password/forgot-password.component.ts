@@ -19,6 +19,7 @@ export class ForgotPasswordComponent implements OnInit {
   showEmail: boolean = false;
   errorMessage: string = "";
   showErrorMessage: boolean = false;
+  showLoader: boolean = false;
   utils: MaskUtils = new MaskUtils();
   cpf: string = "";
   usuario: any;
@@ -39,12 +40,15 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPassword(event, cpf){
 
     event.preventDefault();
+    this.showLoader = true;
     this.cpf = cpf.cpf;
     cpf.cpf = this.utils.removeMascara(cpf.cpf);
 
     this.service.verificaUsuario(cpf)
     .subscribe(
       user => {
+
+        this.showLoader = false;
         if (user.json().usuario.email != null && user.json().usuario.email != "") {
 
           this.usuario = user.json();
@@ -59,8 +63,11 @@ export class ForgotPasswordComponent implements OnInit {
         }
       },
       erro => {
+        
+        this.showLoader = false;
         this.errorMessage = erro._body;
         this.showErrorMessage = true;
+        
       }
     );
 

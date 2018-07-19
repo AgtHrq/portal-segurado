@@ -20,6 +20,7 @@ export class FirstVerificationComponent implements OnInit, OnChanges {
   error: boolean = false;
   showNewPassword: boolean = false;
   hash: any = "";
+  showLoader: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private perguntaService: PerguntaService, private forgotServive: ForgotPasswordService) {
 
@@ -37,15 +38,18 @@ export class FirstVerificationComponent implements OnInit, OnChanges {
     changePassword(event, questionAnswer){
 
     event.preventDefault();
+    this.showLoader = true;
     questionAnswer.cpf = this.util.removeMascara(this.cpf);
     
     this.forgotServive.verificaPergunta(questionAnswer)
       .subscribe(
         data => {
+          this.showLoader = false;
           this.showNewPassword = true;
           this.hash = data;
         },
         error => {
+          this.showLoader = false;
           this.errorMessage = error._body;
           this.error = true;
         }

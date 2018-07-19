@@ -17,6 +17,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
   classLetraMin: string = "error";
   classLetraMai: string = "error";
   showSuccessMessage: boolean = false;
+  showLoader: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private forgotService: ForgotPasswordService, private router: Router, private activatedRoute: ActivatedRoute) {
 
@@ -37,13 +38,15 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
    novaSenha(event, data){
 
     event.preventDefault();
+    this.showLoader = true;
 
     delete data.confirmPassword;
 
     this.forgotService.novaSenha(data).subscribe(
       data => {
+        this.showLoader = false;
         this.showSuccessMessage = true;
-      }
+      }, erro => this.showLoader = false
     );
 
    }
