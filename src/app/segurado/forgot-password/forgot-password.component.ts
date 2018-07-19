@@ -1,9 +1,9 @@
-import { Usuario } from './../../models/usuario';
-import { MaskUtils } from './../../utils/mask-utils';
+import { Usuario } from '../../models/usuario';
+import { MaskUtils } from '../../utils/mask-utils';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ForgotPasswordService } from '../../services/forgot-password/forgot-password.service';
-import { Jsonp } from '../../../../node_modules/@angular/http';
+import { Jsonp } from '@angular/http';
 
 @Component({
   selector: 'app-forgot-password',

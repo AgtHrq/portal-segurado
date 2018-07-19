@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '../../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ForgotPasswordService } from '../../../services/forgot-password/forgot-password.service';
+import { upperCase, lowerCase, containNumber, equal } from '../../../validators/password.validator';
 
 @Component({
   selector: 'app-change-password',
@@ -19,26 +20,18 @@ export class ChangePasswordComponent implements OnInit {
 
     this.formNewPassword = formBuilder.group({
       hash: "",
-      newPassword: ["", Validators.compose([
-        Validators.required, Validators.minLength(6), Validators.maxLength(14), Validators.pattern("[a-zA-Z]*")
-      ])],
-      reNewPassword: ""
+      newPassword: ["", 
+        [
+          Validators.required, Validators.minLength(6), Validators.maxLength(14), upperCase, lowerCase, containNumber
+        ]
+      ],
+      confirmPassword: ""
     });
 
-   }
-
-   verificaSenha(senha){
-
-    if(senha.newPassword.includes("\d")){
-      console.log("OK");
-    }
+    this.formNewPassword.setValidators([ equal ]);
 
    }
 
-  ngOnInit() {
-
-    console.log(this.hash);
-
-  }
+  ngOnInit() { }
 
 }

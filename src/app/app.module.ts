@@ -28,12 +28,16 @@ import { LoaderComponent } from './loader/loader.component';
     AppComponent, 
     LoginComponent, 
     CadastroComponent,
-    LogadoComponent, ErrorMessageComponent, Cadastro2Component, 
+    LogadoComponent, 
+    ErrorMessageComponent, 
+    Cadastro2Component, 
     ErrorMessageComponent, 
     ForgotPasswordComponent, 
     FirstVerificationComponent, 
     ChangePasswordComponent, 
-    CpfMaskDirective, SendEmailComponent, LoaderComponent
+    CpfMaskDirective, 
+    SendEmailComponent, 
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { MaskUtils } from './../../../utils/mask-utils';
+import { MaskUtils } from '../../../utils/mask-utils';
 import { Pergunta } from '../../../models/pergunta';
 import { PerguntaService } from '../../../services/perguntas/pergunta.service';
 import { Component, OnInit, Input } from '@angular/core';

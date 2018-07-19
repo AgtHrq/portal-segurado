@@ -1,4 +1,4 @@
-import { ForgotPasswordService } from './../../../services/forgot-password/forgot-password.service';
+import { ForgotPasswordService } from '../../../services/forgot-password/forgot-password.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { MaskUtils } from '../../../utils/mask-utils';
 
