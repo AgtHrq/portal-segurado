@@ -18,9 +18,7 @@ export class LoginComponent {
     formGroup: FormGroup;
     showLoader: boolean = false;
 
-    ngOnInit(){ 
-        console.log(this.route);
-     }
+    ngOnInit(){ }
 
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
         
