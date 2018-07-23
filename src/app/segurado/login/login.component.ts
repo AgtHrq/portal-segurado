@@ -44,23 +44,22 @@ export class LoginComponent {
 
     login(event, credentials){
 
-        // event.preventDefault();
-        console.log(credentials);
-        // credentials.cpf = this.utils.removeMascara(credentials.cpf);
-        // this.showLoader = true;
+        event.preventDefault();
+        credentials.cpf = this.utils.removeMascara(credentials.cpf);
+        this.showLoader = true;
 
-        // this.userService.authenticate(credentials).subscribe(
-        //     data => {
-        //         this.showLoader = false;
-        //         this.userService.updateLoggedUser(data);
-        //         this.route.navigate(["/logado"]);
-        //     },
-        //     erro => {
-        //         this.showLoader = false;
-        //         this.erroMessage = erro._body;
-        //         this.showMessage = true;
-        //     }
-        // );
+        this.userService.authenticate(credentials).subscribe(
+            data => {
+                this.showLoader = false;
+                this.userService.updateLoggedUser(data);
+                this.route.navigate(["/logado"]);
+            },
+            erro => {
+                this.showLoader = false;
+                this.erroMessage = erro._body;
+                this.showMessage = true;
+            }
+        );
 
     }
 
