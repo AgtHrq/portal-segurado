@@ -21,6 +21,7 @@ import { ChangePasswordComponent } from './segurado/forgot-password/change-passw
 import { CpfMaskDirective } from './directives/cpf-mask.directive';
 import { SendEmailComponent } from './segurado/forgot-password/send-email/send-email.component';
 import { LoaderComponent } from './loader/loader.component';
+import { NgxCaptchaModule } from "ngx-captcha";
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { LoaderComponent } from './loader/loader.component';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
+    NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q" }),
     routing
   ],
   providers: [

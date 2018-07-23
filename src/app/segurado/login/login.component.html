@@ -43,6 +43,11 @@
                     </div>
                 </div>
 
+                <div class="field">
+                    <ngx-recaptcha2 [hl]="pt-BR" (expire)="handleExpire()" (success)="handleSuccess($event)"></ngx-recaptcha2>
+                    <input type="hidden" value="" formControlName="cap">
+                </div>
+                
                 <button [disabled]="formGroup.invalid" type="submit" class="ui submit button">Entrar</button>
 
             </form>
