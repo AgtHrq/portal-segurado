@@ -23,9 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/semantic.min.css",
+              "src/assets/css/index.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/semantic.min.js",
+              "src/assets/js/jquery.mask.js"
+            ]
           },
           "configurations": {
             "production": {
