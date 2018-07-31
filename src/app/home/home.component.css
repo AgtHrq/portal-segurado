@@ -1,0 +1,618 @@
+body {
+
+    background-image: linear-gradient(to right, #DCDCDC, #A9A9A9);
+
+}
+
+.conteudo .segments {
+
+    border-radius: 0%;
+
+}
+
+.conteudo .segments .segment {
+
+    border-radius: 0%;
+
+}
+
+@media (min-width: 1176px) and (max-width: 2455px){
+
+    .ui.segment.cab {
+    
+        background-color: #2E8B57;
+        border-radius: 0%;
+        color: #FFFFFF;
+        height: 90px;
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+    
+    }
+    
+    .segment.cab .header {
+        
+        margin-left: 3.5%;
+        color: #FFFFFF;
+    
+    }
+    
+    .segment.cab .header h3 {
+    
+        margin-top: 10px;
+    
+    }
+    
+    .segment.cab .header.cab{
+    
+        float: left;
+    
+    }
+    
+    .ui.header .ui.small.image {
+    
+        width: 165px;
+        height: 65px;
+        margin-top: -25px;
+    
+    }
+    
+    .segment.cab .logout {
+    
+        float: right;
+        margin-right: 2.5%;
+    
+    }
+    
+    .segment.cab .logout:hover {
+    
+        cursor: pointer;
+        color: #008000;
+        text-shadow: 0 0 10px #FFFFFF;
+    
+    }
+    
+    .menu .cards .small {
+    
+        background-color: #008000;
+    
+    }
+    
+    .menu .cards .card i {
+    
+        color: #008000;
+    
+    }
+    
+    .menu .cards span {
+    
+        margin-left: 30px;
+    
+    }
+
+    .menu .green.cards .card {
+
+        border-radius: 0%;
+
+    }
+    
+    .menu {
+    
+        float: left;
+        margin-left: 3.5%;
+        position: absolute;
+        top: 100px;
+    
+    }
+    
+    .notificacao {
+    
+        margin-top: 100px;
+        margin-right: 15px;
+        position: fixed;
+        right: 0%;
+        z-index: 1;
+
+    }
+
+    .notificacao .ui.card.ntf {
+
+        max-height: 80vh;
+        overflow: auto;
+
+    }
+    
+    .notificacao i.icon:hover {
+    
+        cursor: pointer;
+    
+    }
+    
+    .notificacao .ntf {
+    
+       margin-top: -15px;
+       border-radius: 0%;
+    
+    }
+    
+    .notificacao .card:first-child {
+    
+        align-items: center;
+        border-radius: 0%;
+    
+    }
+    
+    .menu .green.cards .card:hover {
+    
+        cursor: pointer;
+        box-shadow: 10px 10px 10px 0px #008000;
+        transform: scale(1.05);
+        transition: 0.5s;
+    
+    }
+
+    .menu .green.cards .card:focus {
+    
+        cursor: pointer;
+        box-shadow: 10px 10px 10px 0px #008000;
+        transform: scale(1.05);
+        transition: 0.5s;
+    
+    }
+
+    .menu .green.cards .card:hover .content .description span {
+    
+        color: #008000;
+    
+    }
+
+    .menu .green.cards .card:focus .content .description span {
+    
+        color: #008000;
+    
+    }
+    
+    .menu .search {
+    
+        margin-bottom: 25px;
+        color: #008000;
+    
+    }
+    
+    .menu .items {
+    
+        float: right;
+        color: #008000;
+        margin-top: 10px;
+    
+    }
+    
+    .menu .search .input input {
+    
+        background-color: inherit;
+        width: 290px;
+        border-radius: 0;
+        border: 0;
+        border-bottom: 1px solid;
+        color: #008000; 
+    
+    }
+    
+    .menu .search .input input:focus {
+    
+        border-bottom: 2px solid;
+    
+    }
+    
+    .menu .search .input input::placeholder {
+    
+        color: #008000;
+    
+    }
+
+    .conteudo {
+
+        margin-left: 385px;
+        width: 100%;
+        padding-right: 705px;
+        position: fixed;
+        top: 100px;
+
+    }
+
+    .conteudo .ui.segment.tela {
+        
+        max-height: 80vh;
+        overflow: auto;
+
+    }
+    
+    /* #008000 */
+
+}
+
+/* TABLETS GRNADES */
+
+@media (min-width: 768px) and (max-width: 1175px){
+
+    .ui.segment.cab {
+    
+        background-color: #2E8B57;
+        border-radius: 0%;
+        color: #FFFFFF;
+        height: 90px;
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+    
+    }
+    
+    .segment.cab .header {
+        
+        margin-left: 3.5%;
+        color: #FFFFFF;
+    
+    }
+    
+    .segment.cab .header h3 {
+    
+        margin-top: 10px;
+    
+    }
+    
+    .segment.cab .header.cab{
+    
+        float: left;
+    
+    }
+    
+    .ui.header .ui.small.image {
+    
+        width: 165px;
+        height: 65px;
+        margin-top: -25px;
+    
+    }
+    
+    .segment.cab .logout {
+    
+        margin-right: 2.5%;
+        float: right;
+    
+    }
+    
+    .segment.cab .logout:hover {
+    
+        cursor: pointer;
+        color: #008000;
+        text-shadow: 0 0 10px #FFFFFF;
+    
+    }
+    
+    .menu .cards .small {
+    
+        background-color: #008000;
+    
+    }
+    
+    .menu .cards .card i {
+    
+        color: #008000;
+    
+    }
+    
+    .menu .cards span {
+    
+        margin-left: 30px;
+    
+    }
+
+    .menu .green.cards .card {
+
+        border-radius: 0%;
+
+    }
+    
+    .menu {
+    
+        /* float: left; */
+        margin-left: 3.5%;
+        padding-top: 100px;
+    
+    }
+    
+    .notificacao {
+        
+        margin-left: 3.5%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    
+    }
+    
+    .notificacao .icon:hover {
+    
+        cursor: pointer;
+    
+    }
+    
+    .notificacao .ntf {
+    
+       border-radius: 0%;
+       margin-top: -15px;
+    
+    }
+    
+    .notificacao .card:first-child {
+    
+        align-items: center;
+        border-radius: 0%;
+    
+    }
+    
+    .menu .green.cards .card:hover {
+    
+        cursor: pointer;
+        box-shadow: 10px 10px 10px 0px #008000;
+        transform: scale(1.05);
+        transition: 0.5s;
+    
+    }
+
+    .menu .green.cards .card:focus {
+    
+        cursor: pointer;
+        box-shadow: 10px 10px 10px 0px #008000;
+        transform: scale(1.05);
+        transition: 0.5s;
+    
+    }
+
+    .menu .green.cards .card:hover .content .description span {
+    
+        color: #008000;
+    
+    }
+
+    .menu .green.cards .card:focus .content .description span {
+    
+        color: #008000;
+    
+    }
+    
+    .menu .search {
+    
+        margin-bottom: 25px;
+        color: #008000;
+    
+    }
+    
+    .menu .items {
+    
+        float: right;
+        color: #008000;
+        margin-top: 10px;
+    
+    }
+    
+    .menu .search .input input {
+    
+        background-color: inherit;
+        width: 290px;
+        border-radius: 0;
+        border: 0;
+        border-bottom: 1px solid;
+        color: #008000; 
+    
+    }
+    
+    .menu .search .input input:focus {
+    
+        border-bottom: 2px solid;
+    
+    }
+    
+    .menu .search .input input::placeholder {
+    
+        color: #008000;
+    
+    }
+
+    .conteudo {
+
+        position: fixed;
+        top: 130px;
+        margin-left: 360px;
+        width: 100%;
+        padding-right: 380px;
+
+    }
+
+    .conteudo .ui.segment.tela {
+        
+        max-height: 80vh;
+        overflow: auto;
+
+    }
+    
+    
+    /* #008000 */
+    
+}
+
+/* TELEFONE E TABLETS PORTATEIS */
+
+@media (max-width: 767px){
+
+    .ui.segment.cab {
+    
+        background-color: #2E8B57;
+        border-radius: 0%;
+        color: #FFFFFF;
+        height: 60px;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+    
+    }
+    
+    .segment.cab .header {
+        
+        margin-left: 3.5%;
+        color: #FFFFFF;
+    
+    }
+    
+    .segment.cab .header h3 {
+    
+        margin-top: 0px;
+    
+    }
+    
+    .segment.cab .header.cab {
+    
+        float: left;
+    
+    }
+    
+    .ui.header .ui.small.image {
+    
+        width: 65px;
+        height: 35px;
+        margin-top: -15px;
+    
+    }
+    
+    .segment.cab .logout {
+    
+        float: right;
+        margin-right: 2.5%;
+    
+    }
+    
+    .segment.cab .logout:hover {
+    
+        cursor: pointer;
+        color: #008000;
+        text-shadow: 0 0 10px #FFFFFF;
+    
+    }
+    
+    .menu .cards .small {
+    
+        background-color: #008000;
+    
+    }
+    
+    .menu .cards .card i {
+    
+        color: #008000;
+    
+    }
+    
+    .menu .cards .card {
+
+        width: 100%;
+        height: 100px;
+        border-radius: 0%;
+
+    }
+
+    .menu {
+    
+        margin: 0 4% 0 4%;
+        padding-top: 70px;
+        z-index: 2;
+    
+    }
+    
+    .menu .green.cards .card:hover {
+    
+        cursor: pointer;
+        box-shadow: 10px 10px 10px 0px #008000;
+        transform: scale(1.05);
+        transition: 0.5s;
+    
+    }
+
+    .menu .green.cards .card:focus {
+    
+        cursor: pointer;
+        box-shadow: 10px 10px 10px 0px #008000;
+        transform: scale(1.05);
+        transition: 0.5s;
+    
+    }
+
+    .menu .green.cards .card:hover .content .description span {
+    
+        color: #008000;
+    
+    }
+
+    .menu .green.cards .card:focus .content .description span {
+    
+        color: #008000;
+    
+    }
+    
+    .menu .search {
+        
+        margin-top: -20px;
+        visibility: hidden;
+
+    }
+    
+    .notificacao {
+        
+        margin: 30px 4% 0 4%;
+        margin-bottom: 30px;
+    
+    }
+
+    .notificacao .ui.card {
+
+        width: 100%;
+        border-radius: 0%;
+
+    }
+    
+    .notificacao .icon:hover {
+    
+        cursor: pointer;
+    
+    }
+    
+    .notificacao .ntf {
+    
+       margin-top: -15px;
+       border-radius: 0%;
+    
+    }
+    
+    .notificacao .card:first-child {
+    
+        align-items: center;
+    
+    }
+    
+    .ui.basic.segment {
+    
+        display: none;
+    
+    }
+    
+    .segment .teal.header {
+    
+        width: 40%;
+    
+    }
+
+    .conteudo {
+
+        display: none;
+
+    }
+    
+    /* #008000 */
+    
+}
