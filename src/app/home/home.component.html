@@ -17,54 +17,38 @@
 <!-- MENU -->
 <div class="menu">
 
-    <div class="ui category search">
-            <div class="ui left icon input">
-                <input class="prompt" placeholder="Digite para buscar menus..." type="text">
-                <i class="search icon"></i>
-            </div>
+  <div class="ui category search">
+    <div class="ui left icon input">
+        <input class="prompt" placeholder="Digite para buscar menus..." type="text" (keyup)="filter = $event.target.value">
+        <i class="search icon"></i>
     </div>
-   
-    <div *ngFor="let menu of menus">
-      <app-menu descricao="{{ menu.desc }}" icon="{{ menu.icon }}"></app-menu>
-    </div>
+  </div>
+  
+  <div *ngFor="let menu of menus">
+    <app-menu descricao="{{ menu.desc }}" icon="{{ menu.icon }}"></app-menu>
+  </div>
     
 </div>
 <!-- NOTIFICAÇÃO -->
 <div class="notificacao">
 
-    <div class="ui card">
-        <div class="content">
-            <div class="ui left floated header">Notificações</div>
-            <div class="ui left pointing label">{{ numNotificacoes }}</div>
-            <i class="angle down icon"></i>
-        </div>
+  <div class="ui card">
+    <div class="content">
+      <div class="ui left floated header">Notificações</div>
+      <div class="ui left pointing label">{{ numNotificacoes }}</div>
+      <i class="angle down icon"></i>
     </div>
+  </div>
 
-    <div class="notificacoes">
-      <ng-template ngFor let-item [ngForOf]="notificacoes" let-i="index">
-        <app-notificacao></app-notificacao>
-      </ng-template>
-    </div>
+  <div class="notificacoes">
+    <ng-template ngFor let-item [ngForOf]="notificacoes" let-i="index">
+      <app-notificacao></app-notificacao>
+    </ng-template>
+  </div>
 
 </div>
 <!-- CONTEÚDO -->
 
 <div class="conteudo">
-
-    <div class="ui very padded segments">
-
-        <div class="ui secondary segment">
-            TITLE
-        </div>
-        
-        <div class="ui segment tela">
-    
-            <h2 class="ui teal header">Bem vindo ao Portal do Segurado!</h2>
-            <h3 class="ui teal header">Aqui você terá acesso a suas informações de uma forma rápida e fácil.</h3>
-            <h4 class="ui teal header">Ao lado esquerdo da tela está posicionado o menu de navegação, 
-                já à direita está locazido as notificações existentes para você. Esteja sempre atento a suas notificações!</h4>
-        
-        </div>
-    </div>
-
+  <router-outlet></router-outlet>
 </div>

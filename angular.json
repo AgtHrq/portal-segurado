@@ -30,8 +30,7 @@
             "scripts": [
               "src/assets/js/jquery.min.js",
               "src/assets/js/semantic.min.js",
-              "src/assets/js/jquery.mask.js",
-              "src/assets/js/animations.js"
+              "src/assets/js/jquery.mask.js"
             ]
           },
           "configurations": {

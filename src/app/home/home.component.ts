@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
     new Menu("PBConsig", "dollar"), new Menu("Solicitações", "paper plane outline"), new Menu("Ouvidoria", "users")];
   notificacoes = ["1", "2", "3"];
   numNotificacoes: number = 0;
+  filter: string = "";
 
   constructor() { }
 

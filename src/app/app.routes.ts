@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from "./segurado/login/login.component";
 import { CadastroComponent } from './segurado/cadastro/cadastro.component';
 import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
+import { WelcomeComponent } from "./home/welcome/welcome.component";
 
 const APP_ROUTES: Routes = [
 
@@ -14,10 +15,18 @@ const APP_ROUTES: Routes = [
         path: "cadastro", component: CadastroComponent 
     },
     { 
-        path: "home/segurado", component: HomeComponent 
+        path: "esqueci/senha", component: ForgotPasswordComponent 
     },
     { 
-        path: "esqueci/senha", component: ForgotPasswordComponent 
+        path: "home/segurado", component: HomeComponent, 
+        children: [
+            { 
+                path: "", component: WelcomeComponent
+            },
+            {
+                path: "**", redirectTo: ""
+            }
+        ]
     },
     { 
         path: "**", redirectTo: "" 
