@@ -23,67 +23,11 @@
                 <i class="search icon"></i>
             </div>
     </div>
-        
-    <div class="ui green cards">
-        <a class="ui card" href="#">
-            <div class="content">
-                <div class="description">
-                        <i class="big circular inverted green book icon"></i><span>Meus processos</span>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="ui green cards">
-        <a class="card" href="#">
-            <div class="content">
-                <div class="description">
-                        <i class="big circular inverted green money bill alternate icon"></i><span>Pagamentos</span>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    
-    <div class="ui green cards">
-        <a class="card" href="#">
-            <div class="content">
-                <div class="description">
-                    <i class="big circular inverted green newspaper icon"></i><span>Ficha financeira</span>
-                </div>
-            </div>
-        </a>
+   
+    <div *ngFor="let menu of menus">
+      <app-menu descricao="{{ menu.desc }}" icon="{{ menu.icon }}"></app-menu>
     </div>
     
-    <div class="ui green cards">
-        <a class="card" href="#">
-            <div class="content">
-                <div class="description">
-                    <i class="big circular inverted green dollar icon"></i><span>PBConsig</span>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="ui green cards">
-        <a class="card" href="#">
-            <div class="content">
-                <div class="description">
-                    <i class="big circular inverted green dollar icon"></i><span>Solicitações</span>
-                </div>
-            </div>
-        </a>
-    </div>
-    
-    <div class="ui green cards">
-        <a class="card" href="#">
-            <div class="content">
-                <div class="description">
-                        <i class="big circular inverted green users icon"></i><span>Ouvidoria</span>
-                </div>
-            </div>
-        </a>
-    </div>
 </div>
 <!-- NOTIFICAÇÃO -->
 <div class="notificacao">
