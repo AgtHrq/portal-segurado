@@ -134,6 +134,14 @@ body {
        border-radius: 0%;
     
     }
+
+    .notificacoes {
+
+        margin-top: -15px;
+        max-height: 80vh;
+        overflow: auto;
+
+    }
     
     .notificacao .card:first-child {
     
@@ -347,6 +355,12 @@ body {
         align-items: center;
         border-radius: 0%;
     
+    }
+
+    .notificacoes {
+
+        margin-top: -15px;
+
     }
     
     .menu .green.cards .card:hover {
@@ -593,6 +607,12 @@ body {
     
         align-items: center;
     
+    }
+
+    .notificacoes {
+
+        margin-top: -15px;
+
     }
     
     .ui.basic.segment {

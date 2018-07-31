@@ -7,11 +7,21 @@ import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-passw
 
 const APP_ROUTES: Routes = [
 
-    { path: "", component: LoginComponent },
-    { path: "cadastro", component: CadastroComponent },
-    { path: "segurado/home", component: HomeComponent },
-    { path: "esqueci/senha", component: ForgotPasswordComponent },
-    { path: "**", redirectTo: "" }
+    { 
+        path: "", component: LoginComponent 
+    },
+    {
+        path: "cadastro", component: CadastroComponent 
+    },
+    { 
+        path: "home/segurado", component: HomeComponent 
+    },
+    { 
+        path: "esqueci/senha", component: ForgotPasswordComponent 
+    },
+    { 
+        path: "**", redirectTo: "" 
+    }
 
 ];
 

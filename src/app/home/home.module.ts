@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home.component';
 import { MenuComponent } from './menu/menu.component';
+import { NotificacaoComponent } from './notificacao/notificacao.component';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { MenuComponent } from './menu/menu.component';
   ],
   declarations: [ 
     HomeComponent, 
-    MenuComponent 
+    MenuComponent, 
+    NotificacaoComponent 
   ]
 })
 export class HomeModule { }

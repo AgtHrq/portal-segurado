@@ -1,0 +1,95 @@
+@media (min-width: 1176px) and (max-width: 2455px){
+
+    .ui.card.ntf {
+
+        max-height: 80vh;
+        overflow: auto;
+
+    }
+    
+    i.icon:hover {
+    
+        cursor: pointer;
+    
+    }
+    
+    .ntf {
+    
+       margin-top: -15px;
+       border-radius: 0%;
+    
+    }
+    
+    .card:first-child {
+    
+        align-items: center;
+        border-radius: 0%;
+    
+    }
+    
+    /* #008000 */
+
+}
+
+/* TABLETS GRNADES */
+
+@media (min-width: 768px) and (max-width: 1175px){
+    
+    .icon:hover {
+    
+        cursor: pointer;
+    
+    }
+    
+    .ntf {
+    
+       border-radius: 0%;
+       margin-top: -15px;
+    
+    }
+    
+    .card:first-child {
+    
+        align-items: center;
+        border-radius: 0%;
+    
+    }
+    
+    
+    /* #008000 */
+    
+}
+
+/* TELEFONE E TABLETS PORTATEIS */
+
+@media (max-width: 767px){
+
+    .ui.card {
+
+        width: 100%;
+        border-radius: 0%;
+
+    }
+    
+    .icon:hover {
+    
+        cursor: pointer;
+    
+    }
+    
+    .ntf {
+    
+       margin-top: -15px;
+       border-radius: 0%;
+    
+    }
+    
+    .card:first-child {
+    
+        align-items: center;
+    
+    }
+    
+    /* #008000 */
+    
+}

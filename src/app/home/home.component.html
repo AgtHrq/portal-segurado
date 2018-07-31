@@ -35,29 +35,15 @@
     <div class="ui card">
         <div class="content">
             <div class="ui left floated header">Notificações</div>
-            <div class="ui left pointing label">3</div>
+            <div class="ui left pointing label">{{ numNotificacoes }}</div>
             <i class="angle down icon"></i>
         </div>
     </div>
 
-    <div class="ui card ntf">
-
-        <div class="content">
-            <div class="ui samll feed">
-                sakjdsalk jsalkjdslakjd laskjdla
-            </div>
-        </div>
-        <div class="content">
-            <div class="ui samll feed">
-                sakjdsalk jsalkjdslakjd laskjdla asdsaklj ha bas bdkab skjdb a. 
-            </div>
-        </div>
-        <div class="content">
-            <div class="ui samll feed">
-                sakjdsalk jsalkjdslakjd laskjdla
-            </div>
-        </div>
-    
+    <div class="notificacoes">
+      <ng-template ngFor let-item [ngForOf]="notificacoes" let-i="index">
+        <app-notificacao></app-notificacao>
+      </ng-template>
     </div>
 
 </div>
