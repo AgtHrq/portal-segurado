@@ -23,7 +23,7 @@ export class LoginComponent {
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
         
         if (userService.isLogged()) {
-            this.route.navigate(["/logado"]);
+            this.route.navigate(["/segurado/home"]);
         }
 
         this.formGroup = formBuilder.group({
