@@ -1,0 +1,33 @@
+@media (min-width: 1176px) and (max-width: 2455px){
+    
+    .ui.segments .ui.segment .processos {
+
+        width: 15%;
+        float: left;
+
+    }
+
+    .ui.segments {
+
+        border-radius: 0%;
+        height: 80vh;
+
+    }
+
+    .ui.segments .ui.segment {
+
+        border-radius: 0%;
+        max-height: 80vh;
+        overflow: auto;
+
+    }
+
+    .ui.segments .ui.segment .aba {
+
+        float: left;
+        margin-left: 15px;
+        width: 80%;
+        height: 75vh;
+
+    }
+}

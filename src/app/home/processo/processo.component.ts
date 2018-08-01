@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HomeUtils } from '../../utils/home-utils';
+
 @Component({
   selector: 'app-processo',
   templateUrl: './processo.component.html',
@@ -9,11 +11,11 @@ export class ProcessoComponent implements OnInit {
 
   title: string = "processos"
 
-  constructor() { }
+  constructor(private utils: HomeUtils) { }
 
   ngOnInit() {
 
-    $('.ui.segments .ui.segment .ui.dropdown').dropdown({allowAdditions: true});
+  this.utils.processos();
 
   }
 

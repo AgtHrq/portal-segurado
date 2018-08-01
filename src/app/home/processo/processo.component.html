@@ -6,13 +6,31 @@
 
   <div class="ui segment">
 
-    <div class="ui sub header">Processos</div>
-    <select name="processos" class="ui fluid search dropdown">
-      <option value="">Selecione um processo</option>
-      <option value="14-14">0000014-14</option>
-      <option value="14-13">0000014-13</option>
-      <option value="14-12">0000014-12</option>
-    </select>
+    <div class="processos">
+    
+      <div class="ui sub header">Processos</div>
+      <select name="processos" class="ui fluid search dropdown">
+        <option value="">Processos</option>
+        <option value="1414">0000014-14</option>
+        <option value="1413">0000014-13</option>
+        <option value="1412">0000014-12</option>
+      </select>
+
+    </div>
+
+    <div class="aba">
+
+      <div class="ui top attached tabular menu">
+        <a class="item active" data-tab="gerais">Dados Gerais</a>
+        <a class="item" data-tab="tramitacao">Tramitações</a>
+        <a class="item" data-tab="documentos">Documentos</a>
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="gerais">Dados Gerais</div>
+      <div class="ui bottom attached tab segment" data-tab="tramitacao">Tramitações</div>
+      <div class="ui bottom attached tab segment" data-tab="documentos">Doumentos</div>
+    
+    </div>
+
   </div>
 
 </div>
