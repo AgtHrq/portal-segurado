@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 
+import { ProcessoComponent } from './home/processo/processo.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from "./segurado/login/login.component";
 import { CadastroComponent } from './segurado/cadastro/cadastro.component';
@@ -22,6 +23,9 @@ const APP_ROUTES: Routes = [
         children: [
             { 
                 path: "", component: WelcomeComponent
+            },
+            {
+                path: "processos", component: ProcessoComponent
             },
             {
                 path: "**", redirectTo: ""

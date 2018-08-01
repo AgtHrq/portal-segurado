@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FilterByDescricaoPipe } from './menu/filter-by-descricao.pipe';
+import { ProcessoComponent } from './processo/processo.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { FilterByDescricaoPipe } from './menu/filter-by-descricao.pipe';
     HomeComponent, 
     MenuComponent, 
     NotificacaoComponent, 
-    WelcomeComponent, FilterByDescricaoPipe
+    WelcomeComponent, FilterByDescricaoPipe, ProcessoComponent
   ]
 })
 export class HomeModule { }

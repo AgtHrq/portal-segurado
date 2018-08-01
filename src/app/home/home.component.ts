@@ -9,8 +9,8 @@ import { Menu } from './../models/menu';
 })
 export class HomeComponent implements OnInit {
 
-  menus: Menu[] = [new Menu("Meus Processos", "book"), new Menu("Pagamentos", "money bill alternate"), new Menu("Ficha Financeira", "newspaper"),
-    new Menu("PBConsig", "dollar"), new Menu("Solicitações", "paper plane outline"), new Menu("Ouvidoria", "users")];
+  menus: Menu[] = [new Menu("Meus Processos", "book", "processos"), new Menu("Pagamentos", "money bill alternate", ""), new Menu("Ficha Financeira", "newspaper", ""),
+    new Menu("PBConsig", "dollar", ""), new Menu("Solicitações", "paper plane outline", ""), new Menu("Ouvidoria", "users", "")];
   numNotificacoes: number = 0;
   filter: string = "";
 
