@@ -1,8 +1,8 @@
-<div class="ui green cards">
+<div class="ui green cards" *ngFor="let menu of menus">
     <a class="ui card" href="#">
         <div class="content">
             <div class="description">
-                    <i class="big circular inverted green {{ icon }} icon"></i><span>{{ descricao }}</span>
+                    <i class="big circular inverted green {{ menu.icon }} icon"></i><span>{{ menu.desc }}</span>
             </div>
         </div>
     </a>

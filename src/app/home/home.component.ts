@@ -11,14 +11,11 @@ export class HomeComponent implements OnInit {
 
   menus: Menu[] = [new Menu("Meus Processos", "book"), new Menu("Pagamentos", "money bill alternate"), new Menu("Ficha Financeira", "newspaper"),
     new Menu("PBConsig", "dollar"), new Menu("Solicitações", "paper plane outline"), new Menu("Ouvidoria", "users")];
-  notificacoes = ["1", "2", "3"];
   numNotificacoes: number = 0;
   filter: string = "";
 
   constructor() { }
 
-  ngOnInit() {
-    this.numNotificacoes = this.notificacoes.length;
-  }
+  ngOnInit() { }
 
 }

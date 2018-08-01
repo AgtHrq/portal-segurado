@@ -1,54 +1,40 @@
 <div class="ui segment cab">
         
-    <div class="ui header cab">
-        
-        <a href="#" class="ui small image">
-            <img src="../../assets/img/logo.png">
-        </a>
-        <h3>Portal do segurado</h3>
+  <div class="ui header cab">
+      
+      <a href="#" class="ui small image">
+          <img src="../../assets/img/logo.png">
+      </a>
+      <h3>Portal do segurado</h3>
 
-    </div>
-    
-    <div class="logout">
-        <i class="sign out alternate icon"></i><span>Sair.</span>
-    </div>
+  </div>
+  
+  <div class="logout">
+      <i class="sign out alternate icon"></i><span>Sair.</span>
+  </div>
 
 </div>
 <!-- MENU -->
 <div class="menu">
 
-  <div class="ui category search">
-    <div class="ui left icon input">
-        <input class="prompt" placeholder="Digite para buscar menus..." type="text" (keyup)="filter = $event.target.value">
-        <i class="search icon"></i>
-    </div>
+<div class="ui category search">
+  <div class="ui left icon input">
+      <input class="prompt" placeholder="Digite para buscar menus..." type="text" (keyup)="filter = $event.target.value">
+      <i class="search icon"></i>
   </div>
+</div>
+
+<app-menu [menus]="menus | filterByDescricao: filter"></app-menu>
   
-  <div *ngFor="let menu of menus">
-    <app-menu descricao="{{ menu.desc }}" icon="{{ menu.icon }}"></app-menu>
-  </div>
-    
 </div>
 <!-- NOTIFICAÇÃO -->
 <div class="notificacao">
 
-  <div class="ui card">
-    <div class="content">
-      <div class="ui left floated header">Notificações</div>
-      <div class="ui left pointing label">{{ numNotificacoes }}</div>
-      <i class="angle down icon"></i>
-    </div>
-  </div>
-
-  <div class="notificacoes">
-    <ng-template ngFor let-item [ngForOf]="notificacoes" let-i="index">
-      <app-notificacao></app-notificacao>
-    </ng-template>
-  </div>
+  <app-notificacao></app-notificacao>
 
 </div>
 <!-- CONTEÚDO -->
 
 <div class="conteudo">
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-notificacao',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificacaoComponent implements OnInit {
 
+  notificacoes = ["1", "2", "3"];
+  numNotificacoes: number = 0;
   constructor() { }
 
   ngOnInit() {
-  }
 
+    this.numNotificacoes = this.notificacoes.length
+
+  }
+  
 }

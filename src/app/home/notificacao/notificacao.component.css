@@ -20,11 +20,19 @@
     
     }
     
-    .card:first-child {
+    .card.cab {
     
         align-items: center;
         border-radius: 0%;
     
+    }
+
+    .notificacoes {
+
+        max-height: 80vh;
+        margin-top: -15px;
+        overflow: auto;
+
     }
     
     /* #008000 */
@@ -48,13 +56,18 @@
     
     }
     
-    .card:first-child {
+    .card.cab {
     
         align-items: center;
         border-radius: 0%;
     
     }
     
+    .notificacoes {
+
+        margin-top: -15px;
+
+    }
     
     /* #008000 */
     
@@ -84,10 +97,16 @@
     
     }
     
-    .card:first-child {
+    .card.cab {
     
         align-items: center;
     
+    }
+
+    .notificacoes {
+
+        margin-top: -15px;
+
     }
     
     /* #008000 */
