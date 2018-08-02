@@ -12,4 +12,20 @@ export class HomeUtils {
 
     }
 
+    public notificacoes(): void {
+
+        $(".icon").click(function(){
+            if($(this).closest(".icon").hasClass("down")){
+                $(this).removeClass('down').addClass('left');
+            } else {
+                $(this).removeClass('left').addClass('down');
+            }
+            $(".ntf").transition({
+                animation: 'slide down',
+                interval: 100
+            });
+        });
+
+    }
+
 }

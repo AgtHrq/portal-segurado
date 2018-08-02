@@ -10,14 +10,13 @@
     .ui.segments {
 
         border-radius: 0%;
-        height: 80vh;
 
     }
 
     .ui.segments .ui.segment {
 
         border-radius: 0%;
-        max-height: 80vh;
+        max-height: 80vmin;
         overflow: auto;
 
     }
@@ -27,7 +26,18 @@
         float: left;
         margin-left: 15px;
         width: 80%;
+
+    }
+
+    .segment:last-child{
+
         height: 75vh;
+
+    }
+
+    .bottom.segment {
+
+        height: 63vh;
 
     }
 }
