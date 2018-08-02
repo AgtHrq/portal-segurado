@@ -6,6 +6,7 @@ import { LoginComponent } from "./segurado/login/login.component";
 import { CadastroComponent } from './segurado/cadastro/cadastro.component';
 import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
 import { WelcomeComponent } from "./home/welcome/welcome.component";
+import { AuthGuard } from "./services/guards/auth.guard";
 
 const APP_ROUTES: Routes = [
 
@@ -19,7 +20,7 @@ const APP_ROUTES: Routes = [
         path: "esqueci/senha", component: ForgotPasswordComponent 
     },
     { 
-        path: "home/segurado", component: HomeComponent, 
+        path: "home/segurado", component: HomeComponent, canActivate: [AuthGuard], 
         children: [
             { 
                 path: "", component: WelcomeComponent

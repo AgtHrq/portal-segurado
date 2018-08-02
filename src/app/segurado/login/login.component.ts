@@ -23,7 +23,7 @@ export class LoginComponent {
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
         
         if (userService.isLogged()) {
-            this.route.navigate(["/segurado/home"]);
+            this.route.navigate(["/home/segurado"]);
         }
 
         this.formGroup = formBuilder.group({
@@ -52,7 +52,8 @@ export class LoginComponent {
         this.userService.authenticate(credentials).subscribe(
             data => {
                 this.showLoader = false;
-                this.userService.updateLoggedUser(data);
+                this.userService.updateLoggedUser(data.text());
+                console.log(this.userService.getLoggedUser());
                 this.route.navigate(["/home/segurado"]);
             },
             erro => {

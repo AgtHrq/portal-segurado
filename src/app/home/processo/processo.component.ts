@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProcessoService } from './../../services/processos/processo.service';
 import { HomeUtils } from '../../utils/home-utils';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProcessoComponent implements OnInit {
 
   title: string = "processos"
 
-  constructor(private utils: HomeUtils) { }
+  constructor(private utils: HomeUtils, private service: ProcessoService) { }
 
   ngOnInit() {
 

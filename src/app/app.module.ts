@@ -22,6 +22,7 @@ import { CpfMaskDirective } from './directives/cpf-mask.directive';
 import { SendEmailComponent } from './segurado/forgot-password/send-email/send-email.component';
 import { LoaderComponent } from './loader/loader.component';
 import { NgxCaptchaModule } from "ngx-captcha";
+import { AuthGuard } from './services/guards/auth.guard';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { NgxCaptchaModule } from "ngx-captcha";
     routing
   ],
   providers: [
+    AuthGuard,
     Authorization,
     BackendService,
     UserService,
