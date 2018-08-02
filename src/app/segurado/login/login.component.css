@@ -1,4 +1,4 @@
-.ui.very.padded.red.segment .ui.form input {
+.ui.very.padded.green.segment .ui.form input {
 
     border-radius: 0px;
     border-top: none;
@@ -8,7 +8,7 @@
 
 }
 
-.ui.very.padded.red.segment .ui.form input:focus {
+.ui.very.padded.green.segment .ui.form input:focus {
 
     border-color: #72B5A4; 
 
