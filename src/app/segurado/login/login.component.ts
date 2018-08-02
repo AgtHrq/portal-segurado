@@ -45,6 +45,7 @@ export class LoginComponent {
     login(event, credentials){
 
         event.preventDefault();
+        delete credentials.cap;
         credentials.cpf = this.utils.removeMascara(credentials.cpf);
         this.showLoader = true;
 
@@ -52,7 +53,7 @@ export class LoginComponent {
             data => {
                 this.showLoader = false;
                 this.userService.updateLoggedUser(data);
-                this.route.navigate(["/logado"]);
+                this.route.navigate(["/home/segurado"]);
             },
             erro => {
                 this.showLoader = false;
