@@ -9,8 +9,8 @@ export class ProcessoService {
   constructor(private backenService: BackendService) { }
 
   getProcessos(cpf) {
-
-    return this.backenService.protectedRequest('usuarios/processos', 'post', cpf);
+    
+    return this.backenService.protectedRequest('usuarios/processos', 'post', null, cpf);
 
   }
 

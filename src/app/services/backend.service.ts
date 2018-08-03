@@ -38,14 +38,15 @@ export class BackendService {
 
   }
 
-  protectedRequest(url: string, method: string, params?: Object) {
+  protectedRequest(url: string, method: string, params?: Object, paramsHeader?: object) {
 
     let headers = new Headers();
     headers.append('Authorization', `Bearer ${this.auth.getToken()}`);
 
     if (method.toLowerCase() === 'post') {
-      
-      return this.http.post(`http://${this.url}/protegido/${url}`, params, { headers: headers });
+
+      return params === null ? this.http.post(`http://${this.url}/protegido/${url}`, null, { headers: headers , params: { payload: paramsHeader } }) :
+        this.http.post(`http://${this.url}/protegido/${url}`, params, { headers: headers });
     
     } else if (method.toLowerCase() === 'get') {
 

@@ -9,11 +9,11 @@
     <div class="processos">
     
       <div class="ui sub header">Processos</div>
-      <select name="processos" class="ui fluid search dropdown">
+      <select name="processos" class="ui fluid search dropdown" (change)="selectedProcesso($event)">
         <option value="">Processos</option>
-        <option value="1414">0000014-14</option>
-        <option value="1413">0000014-13</option>
-        <option value="1412">0000014-12</option>
+        <option *ngFor="let p of processos" value="{{ p.resumoProcesso.numeroProcesso }}">
+          {{ p.resumoProcesso.numeroProcesso }}
+        </option>
       </select>
 
     </div>
@@ -29,41 +29,132 @@
         <table class="ui single line table">
           <tbody>
             <tr>
-              <td><h4>PROCESSO NÚMERO</h4></td>
-              <td>PROCESSO NÚMERO</td>
+              <td><h4>PROCESSO NÚMERO:</h4></td>
+              <td>{{ numProcesso }}</td>
             </tr>
             <tr>
-              <td><h4>NOME</h4></td>
-              <td>NOME</td>
+              <td><h4>NOME:</h4></td>
+              <td>{{ nome | uppercase}}</td>
             </tr>
             <tr>
-              <td><h4>CPF</h4></td>
-              <td>CPF</td>
+              <td><h4>CPF:</h4></td>
+              <td>{{ cpf }}</td>
             </tr>
             <tr>
-              <td><h4>MATRÍCULA</h4></td>
-              <td>MATRÍCULA</td>
+              <td><h4>MATRÍCULA:</h4></td>
+              <td>{{ matricula }}</td>
             </tr>
             <tr>
-              <td><h4>DATA DE REQUISIÇÃO</h4></td>
-              <td>DATA DE REQUISIÇÃO</td>
+              <td><h4>PORTARIA:</h4></td>
+              <td>{{ numeroPortaria }}</td>
             </tr>
             <tr>
-              <td><h4>DATA DE AGENDAMENTO</h4></td>
-              <td>DATA DE AGENDAMENTO</td>
+              <td><h4>DATA DE REQUISIÇÃO:</h4></td>
+              <td>{{ dataRequerimento | date:'dd/MM/yyyy' }}</td>
             </tr>
             <tr>
-              <td><h4>ASSUNTO</h4></td>
-              <td>ASSUNTO</td>
+              <td><h4>DATA DE PUBLICAÇÃO:</h4></td>
+              <td>{{ dataPublicacao | date:'dd/MM/yyyy' }}</td>
             </tr>
             <tr>
-              <td><h4>STATUS</h4></td>
-              <td>STATUS</td>
+              <td><h4>DATA DE AGENDAMENTO:</h4></td>
+              <td>{{ dataAgendamento | date:'dd/MM/yyyy' }}</td>
+            </tr>
+            <tr>
+              <td><h4>TURNO DE AGENDAMENTO:</h4></td>
+              <td>{{ turnoAgendamento }}</td>
+            </tr>
+            <tr>
+              <td><h4>ASSUNTO:</h4></td>
+              <td>{{ assuntoProcesso }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="ui bottom attached tab segment" data-tab="tramitacao">Tramitações</div>
+      <div class="ui bottom attached tab segment" data-tab="tramitacao">
+        <table class="ui very basic table">
+          <thead>
+            <tr>
+              <th><h4>DATA</h4></th>
+              <th><h4>SETOR</h4></th>
+              <th><h4>DESPACHO</h4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr><tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+            <tr>
+              <td>TTTT</td>
+              <td>TTTT</td>
+              <td>TTTT</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3">
+                <div class="ui right floated pagination menu">
+                  <a class="icon item">
+                    <i class="left chevron icon"></i>
+                  </a>
+                  <a class="item active">1</a>
+                  <a class="item">2</a>
+                  <a class="item">3</a>
+                  <a class="icon item">
+                    <i class="right chevron icon"></i>
+                  </a>
+                </div>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
       <div class="ui bottom attached tab segment" data-tab="documentos">Doumentos</div>
     
     </div>
