@@ -1,4 +1,3 @@
-import { Usuario } from '../../models/usuario';
 import { MaskUtils } from '../../utils/mask-utils';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';

@@ -53,7 +53,6 @@ export class LoginComponent {
             data => {
                 this.showLoader = false;
                 this.userService.updateLoggedUser(data.text());
-                console.log(this.userService.getLoggedUser());
                 this.route.navigate(["/home/segurado"]);
             },
             erro => {

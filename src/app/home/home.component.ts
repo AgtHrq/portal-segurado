@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { Menu } from './../models/menu';
@@ -14,7 +15,9 @@ export class HomeComponent implements OnInit {
   numNotificacoes: number = 0;
   filter: string = "";
 
-  constructor() { }
+  constructor(private userService : UserService) {
+
+   }
 
   ngOnInit() { }
 
