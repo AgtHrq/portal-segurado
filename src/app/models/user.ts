@@ -1,9 +1,8 @@
-export class User {
+export interface User {
 
-    cpf: string;
-    name: string;
-    registered: Date;
-    role: string;
-    lastLogin: Date;
+    user_id: number;
+    user_cpf: string;
+    user_name: string;
+    user_role: string;
 
 }

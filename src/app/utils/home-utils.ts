@@ -14,7 +14,7 @@ export class HomeUtils {
 
     public notificacoes(): void {
 
-        $(".icon").click(function(){
+        $(".caret.icon").click(function(){
             if($(this).closest(".icon").hasClass("down")){
                 $(this).removeClass('down').addClass('left');
             } else {

@@ -1,7 +1,13 @@
-export class Processo {
+export interface Processo {
 
-    resumoProcesso: any;
-    tramitacao: any[];
-    documentos: any[];
+    assuntoProcesso: string;
+    cpf: string;
+    dataAgendamento: Date;
+    dataPublicacao: Date;
+    matricula: string;
+    nome: string;
+    numeroPortaria: number;
+    numeroProcesso: string;
+    turnoAgendamento: string;
 
 }

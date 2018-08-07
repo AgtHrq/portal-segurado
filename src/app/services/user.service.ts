@@ -1,28 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+
+import { BehaviorSubject } from 'rxjs';
 import { Authorization } from './jwt.service';
 import { BackendService } from './backend.service';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private loggedUserSource: Subject<any> = new Subject<any>();
-  loggedUserObservable = this.loggedUserSource.asObservable();
+  private userSubject = new BehaviorSubject<User>(null);
 
-  constructor(private backendService: BackendService, private auth: Authorization) { }
+  constructor(private backendService: BackendService, private auth: Authorization) {
+
+    this.auth.isLogged() && this.decodeAndNotify();
+
+   }
 
   getLoggedUser() {
 
-    return this.auth.loggedInfo();
+    return this.userSubject.asObservable();
 
   }
 
   updateLoggedUser(token) {
 
     this.auth.setToken(token);
-    this.loggedUserSource.next(this.getLoggedUser());
+
+  }
+
+  private decodeAndNotify() {
+
+    const token = this.auth.getToken();
+    const user = this.auth.loggedInfo() as User;
+    this.userSubject.next(user);
 
   }
 

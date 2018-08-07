@@ -8,17 +8,21 @@ import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FilterByDescricaoPipe } from './menu/filter-by-descricao.pipe';
 import { ProcessoComponent } from './processo/processo.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
     CommonModule,
+    NgxPaginationModule,
     RouterModule
   ],
   declarations: [ 
     HomeComponent, 
     MenuComponent, 
     NotificacaoComponent, 
-    WelcomeComponent, FilterByDescricaoPipe, ProcessoComponent
+    WelcomeComponent, 
+    FilterByDescricaoPipe, 
+    ProcessoComponent
   ]
 })
 export class HomeModule { }

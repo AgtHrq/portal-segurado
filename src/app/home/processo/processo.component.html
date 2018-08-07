@@ -30,43 +30,43 @@
           <tbody>
             <tr>
               <td><h4>PROCESSO NÚMERO:</h4></td>
-              <td>{{ numProcesso }}</td>
+              <td>{{ resumoProcesso?.numeroProcesso }}</td>
             </tr>
             <tr>
               <td><h4>NOME:</h4></td>
-              <td>{{ nome | uppercase}}</td>
+              <td>{{ resumoProcesso?.nome | uppercase}}</td>
             </tr>
             <tr>
               <td><h4>CPF:</h4></td>
-              <td>{{ cpf }}</td>
+              <td>{{ resumoProcesso?.cpf }}</td>
             </tr>
             <tr>
               <td><h4>MATRÍCULA:</h4></td>
-              <td>{{ matricula }}</td>
+              <td>{{ resumoProcesso?.matricula }}</td>
             </tr>
             <tr>
               <td><h4>PORTARIA:</h4></td>
-              <td>{{ numeroPortaria }}</td>
+              <td>{{ resumoProcesso?.numeroPortaria }}</td>
             </tr>
             <tr>
               <td><h4>DATA DE REQUISIÇÃO:</h4></td>
-              <td>{{ dataRequerimento | date:'dd/MM/yyyy' }}</td>
+              <td>{{ resumoProcesso?.dataRequerimento | date:'dd/MM/yyyy' }}</td>
             </tr>
             <tr>
               <td><h4>DATA DE PUBLICAÇÃO:</h4></td>
-              <td>{{ dataPublicacao | date:'dd/MM/yyyy' }}</td>
+              <td>{{ resumoProcesso?.dataPublicacao | date:'dd/MM/yyyy' }}</td>
             </tr>
             <tr>
               <td><h4>DATA DE AGENDAMENTO:</h4></td>
-              <td>{{ dataAgendamento | date:'dd/MM/yyyy' }}</td>
+              <td>{{ resumoProcesso?.dataAgendamento | date:'dd/MM/yyyy' }}</td>
             </tr>
             <tr>
               <td><h4>TURNO DE AGENDAMENTO:</h4></td>
-              <td>{{ turnoAgendamento }}</td>
+              <td>{{ resumoProcesso?.turnoAgendamento }}</td>
             </tr>
             <tr>
               <td><h4>ASSUNTO:</h4></td>
-              <td>{{ assuntoProcesso }}</td>
+              <td>{{ resumoProcesso?.assuntoProcesso }}</td>
             </tr>
           </tbody>
         </table>
@@ -81,76 +81,42 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr><tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
-            </tr>
-            <tr>
-              <td>TTTT</td>
-              <td>TTTT</td>
-              <td>TTTT</td>
+            <tr *ngFor="let t of tramitacoes | paginate: { itemsPerPage: 5, currentPage: page }">
+              <td>{{ t?.dataTramitacao | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ t?.setor }}</td>
+              <td>{{ t?.despacho }}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <th colspan="3">
                 <div class="ui right floated pagination menu">
-                  <a class="icon item">
-                    <i class="left chevron icon"></i>
-                  </a>
-                  <a class="item active">1</a>
-                  <a class="item">2</a>
-                  <a class="item">3</a>
-                  <a class="icon item">
-                    <i class="right chevron icon"></i>
-                  </a>
+                
+                  <pagination-template #p="paginationApi" (pageChange)="page = ($event)">
+    
+                        <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+                          <a (click)="p.previous()" class="icon item">
+                            <i class="left chevron icon"></i>
+                          </a>
+                        </div>
+                        <div class="current-page" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                          <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value" class="item">
+                            {{ page.label }}
+                          </a>
+                          <div class="current-page" *ngIf="p.getCurrent() === page.value">
+                            <a class="item active">{{ page.label }}</a>
+                          </div>
+                        </div>
+                        <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                          <a (click)="p.next()" class="icon item"><i class="right chevron icon"></i></a>
+                        </div>
+                    
+                  </pagination-template>
+
                 </div>
               </th>
+
+
             </tr>
           </tfoot>
         </table>
