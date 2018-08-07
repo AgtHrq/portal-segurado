@@ -18,7 +18,7 @@ export class ProcessoComponent implements OnInit {
   page: number = 1;
   user: User;
   processos: any[];
-  resumoProcesso: Processo;
+  resumoProcesso: Processo = null;
   tramitacoes: Tramitacao[];
 
   constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService) {
@@ -44,7 +44,6 @@ export class ProcessoComponent implements OnInit {
     this.resumoProcesso = this.processos[event.target.selectedIndex - 1].resumoProcesso as Processo;
     this.tramitacoes = this.processos[event.target.selectedIndex - 1].tramitacaoProcesso as Tramitacao[];
     this.tramitacoes.sort((a, b) => a.dataTramitacao > b.dataTramitacao ? -1 : 1);
-    console.log(this.resumoProcesso);
     console.log(this.processos);
 
   }

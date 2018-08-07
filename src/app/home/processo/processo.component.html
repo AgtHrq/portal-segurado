@@ -34,11 +34,11 @@
             </tr>
             <tr>
               <td><h4>NOME:</h4></td>
-              <td>{{ resumoProcesso?.nome | uppercase}}</td>
+              <td>{{ resumoProcesso?.nome | uppercase }}</td>
             </tr>
             <tr>
               <td><h4>CPF:</h4></td>
-              <td>{{ resumoProcesso?.cpf }}</td>
+              <td>{{ resumoProcesso?.cpf | maskCpf }}</td>
             </tr>
             <tr>
               <td><h4>MATRÍCULA:</h4></td>
