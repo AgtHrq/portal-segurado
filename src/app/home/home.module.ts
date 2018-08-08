@@ -10,6 +10,7 @@ import { FilterByDescricaoPipe } from './menu/filter-by-descricao.pipe';
 import { ProcessoComponent } from './processo/processo.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaskCpfPipe } from './processo/mask-cpf.pipe';
+import { NomePipePipe } from './nome-pipe.pipe';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { MaskCpfPipe } from './processo/mask-cpf.pipe';
     WelcomeComponent, 
     FilterByDescricaoPipe,
     MaskCpfPipe,
-    ProcessoComponent
+    ProcessoComponent,
+    NomePipePipe
   ]
 })
 export class HomeModule { }

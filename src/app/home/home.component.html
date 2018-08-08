@@ -9,8 +9,19 @@
 
   </div>
   
-  <div class="logout">
-      <i class="sign out alternate icon"></i><span>Sair.</span>
+  <div *ngIf="(user$ | async) as user" class="logout">
+      <i class="user icon"></i>
+      Bem vindo(a)!
+      <div class="ui inline pointing dropdown">
+          <div class="text">
+            {{ user.user_name | nomePipe }}
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item">Alterar dados</div>
+                <div class="item"><i class="sign out alternate icon"></i><span>Sair.</span></div>
+            </div>
+      </div>
   </div>
 
 </div>

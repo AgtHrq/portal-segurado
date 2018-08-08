@@ -64,14 +64,6 @@ body {
     
     }
     
-    .segment.cab .logout:hover {
-    
-        cursor: pointer;
-        color: #008000;
-        text-shadow: 0 0 10px #FFFFFF;
-    
-    }
-    
     .menu {
     
         float: left;
@@ -189,14 +181,6 @@ body {
     
         margin-right: 2.5%;
         float: right;
-    
-    }
-    
-    .segment.cab .logout:hover {
-    
-        cursor: pointer;
-        color: #008000;
-        text-shadow: 0 0 10px #FFFFFF;
     
     }
     
@@ -329,14 +313,6 @@ body {
     
         float: right;
         margin-right: 2.5%;
-    
-    }
-    
-    .segment.cab .logout:hover {
-    
-        cursor: pointer;
-        color: #008000;
-        text-shadow: 0 0 10px #FFFFFF;
     
     }
     

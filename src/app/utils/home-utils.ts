@@ -28,4 +28,10 @@ export class HomeUtils {
 
     }
 
+    public home(): void {
+
+        $(".ui.dropdown").dropdown();
+        
+    }
+
 }

@@ -23,6 +23,7 @@ export class ProcessoComponent implements OnInit {
   resumoProcesso: Processo = null;
   tramitacoes: Tramitacao[];
   documentos: DocumentoProcesso[];
+  url_docs: string = "file://///10.10.1.6/digitalizados/541811/";
 
   constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService) { }
   
@@ -47,6 +48,7 @@ export class ProcessoComponent implements OnInit {
     this.documentos = this.processos[event.target.selectedIndex - 1].documentoProcesso as DocumentoProcesso[];
     this.tramitacoes = this.processos[event.target.selectedIndex - 1].tramitacaoProcesso as Tramitacao[];
     this.tramitacoes.sort((a, b) => a.dataTramitacao > b.dataTramitacao ? -1 : 1);
+    console.log(this.documentos);
   }
 
 }
