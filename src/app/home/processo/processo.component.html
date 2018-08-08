@@ -133,7 +133,7 @@
           <tbody>
             <tr *ngFor="let d of documentos | paginate: { id: 'docs', itemsPerPage: 5, currentPage: pageDoc }">
               <td>{{ d?.descricaoArquivo }}</td>
-              <td><i *ngIf="d?.caminhoArquivo" class="file pdf icon"></i></td>
+              <td><a *ngIf="d?.caminhoArquivo" class="icon item"><i class="black file pdf link icon"></i></a></td>
             </tr>
           </tbody>
           <tfoot>
