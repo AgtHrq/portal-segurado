@@ -24,21 +24,20 @@ export class ProcessoComponent implements OnInit {
   tramitacoes: Tramitacao[];
   documentos: DocumentoProcesso[];
 
-  constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService) {
-    
-    this.userService.getLoggedUser().subscribe(user => this.user = user);
-
-   }
-
+  constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService) { }
+  
   ngOnInit() {
-
-  this.utils.processos();
-  this.processoService.getProcessos(this.user.user_cpf).subscribe(
-    data => {
-      this.processos = data.json();
-    },
-    error=> console.log(error._body)
-  );
+    
+    this.utils.processos();
+    this.userService.getLoggedUser().subscribe(user => {
+      this.user = user;
+    });
+    this.processoService.getProcessos(this.user.user_cpf).subscribe(
+      data => {
+        this.processos = data.json();
+      },
+      error=> console.log(error._body)
+    );
 
   }
 
@@ -48,8 +47,6 @@ export class ProcessoComponent implements OnInit {
     this.documentos = this.processos[event.target.selectedIndex - 1].documentoProcesso as DocumentoProcesso[];
     this.tramitacoes = this.processos[event.target.selectedIndex - 1].tramitacaoProcesso as Tramitacao[];
     this.tramitacoes.sort((a, b) => a.dataTramitacao > b.dataTramitacao ? -1 : 1);
-    console.log(this.processos);
-
   }
 
 }

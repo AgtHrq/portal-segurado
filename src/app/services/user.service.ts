@@ -27,12 +27,14 @@ export class UserService {
   updateLoggedUser(token) {
 
     this.auth.setToken(token);
+    this.userSubject.next(this.auth.loggedInfo() as User);
 
   }
 
   private decodeAndNotify() {
 
     const token = this.auth.getToken();
+    this.auth.setToken(token);
     const user = this.auth.loggedInfo() as User;
     this.userSubject.next(user);
 
