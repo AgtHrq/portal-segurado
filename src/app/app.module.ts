@@ -20,9 +20,9 @@ import { FirstVerificationComponent } from './segurado/forgot-password/first-ver
 import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 import { CpfMaskDirective } from './directives/cpf-mask.directive';
 import { SendEmailComponent } from './segurado/forgot-password/send-email/send-email.component';
-import { LoaderComponent } from './loader/loader.component';
 import { NgxCaptchaModule } from "ngx-captcha";
 import { AuthGuard } from './services/guards/auth.guard';
+import { LoaderModule } from './loader/loader.module';
 
 
 @NgModule({
@@ -37,8 +37,7 @@ import { AuthGuard } from './services/guards/auth.guard';
     FirstVerificationComponent, 
     ChangePasswordComponent, 
     CpfMaskDirective, 
-    SendEmailComponent, 
-    LoaderComponent
+    SendEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +46,7 @@ import { AuthGuard } from './services/guards/auth.guard';
     ReactiveFormsModule,
     NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q" }),
     HomeModule,
+    LoaderModule,
     routing
   ],
   providers: [
