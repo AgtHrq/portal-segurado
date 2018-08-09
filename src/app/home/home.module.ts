@@ -11,11 +11,13 @@ import { ProcessoComponent } from './processo/processo.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaskCpfPipe } from './processo/mask-cpf.pipe';
 import { NomePipePipe } from './nome-pipe.pipe';
+import { SolicitacaoModule } from './solicitacao/solicitacao.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NgxPaginationModule,
+    SolicitacaoModule,
     RouterModule
   ],
   declarations: [ 
