@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { UserService } from './../services/user.service';
@@ -19,10 +20,17 @@ export class HomeComponent implements AfterViewInit {
   filter: string = "";
   user$: Observable<User>;
 
-  constructor(private userService : UserService, private utils: HomeUtils) {
+  constructor(private userService : UserService, private utils: HomeUtils, private router: Router) {
 
     this.user$ = this.userService.getLoggedUser();
     this.utils.home();
+
+   }
+
+   logout() {
+
+    this.userService.logoffUser();
+    this.router.navigate(['/']);
 
    }
 
