@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { User } from './../../models/user';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-solicitacao',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitacaoComponent implements OnInit {
 
-  constructor() { }
+  @Input() title: string = "SOLICITAÇÕES";
+  user: User
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+
+    this.userService.getLoggedUser()
+      .subscribe(user => this.user = user);
+
   }
 
 }

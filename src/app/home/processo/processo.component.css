@@ -31,13 +31,13 @@
 
     .segment:last-child{
 
-        height: 75vh;
+        height: 70vmin;
 
     }
 
     .bottom.segment {
 
-        height: 63vh;
+        height: 60vmin;
 
     }
 
