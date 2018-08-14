@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SolicitacaoComponent } from './solicitacao.component';
 import { NewSolicitacaoComponent } from './new-solicitacao/new-solicitacao.component';
+import { ListSolicitacaoComponent } from './list-solicitacao/list-solicitacao.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import { NewSolicitacaoComponent } from './new-solicitacao/new-solicitacao.compo
   ],
   declarations: [
     SolicitacaoComponent,
-    NewSolicitacaoComponent
+    NewSolicitacaoComponent,
+    ListSolicitacaoComponent
   ]
 })
 export class SolicitacaoModule { }

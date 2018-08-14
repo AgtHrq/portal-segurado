@@ -1,0 +1,19 @@
+<table class="ui selectable very basic table">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of solicitacoes" (click)="click(s)">
+      <td class="{{ s.showTd }}">{{ s.titulo }}</td>
+      <td class="{{ s.showTd }}">{{ s.data }}</td>
+      <td colspan="2" class="{{ s.showDetail }}">
+        <div class="ui segment">
+          {{ s.desc }} - {{ s.data }} - {{ s.titulo }}
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
