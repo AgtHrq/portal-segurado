@@ -12,6 +12,7 @@ export class SolicitacaoComponent implements OnInit {
 
   @Input() title: string = "SOLICITAÇÕES";
   user: User
+  class: string = "hidden";
 
   constructor(private userService: UserService) { }
 
@@ -19,6 +20,12 @@ export class SolicitacaoComponent implements OnInit {
 
     this.userService.getLoggedUser()
       .subscribe(user => this.user = user);
+
+  }
+
+  newSolicitacao(event) {
+
+    event.preventDefault();
 
   }
 

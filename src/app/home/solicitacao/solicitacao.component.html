@@ -7,22 +7,28 @@
   <div class="ui segment bottom">
     
     <div class="ui grid">
-      <div class="four wide column">
+      <div class="doubling four wide column">
         <div class="ui vertical fluid menu">
           <a class="active teal item">
             Entrada
             <div class="ui teal left pointing label">2</div>
           </a>
-          <a class="item">
+          <a (click) = "class = 'new'" class="item">
             Abrir nova solicitação
             <i class="plus square outline icon"></i>
           </a>
         </div>
       </div>
-      <div class="twelve wide stretched column">
+      <div class="doubling twelve wide stretched column">
         <div class="ui tall stacked segment">
-          <p>Segmento floated.</p>
+          <p>Solicitações</p>
         </div>
+        <div [ngClass]="class">
+          <div class="ui top attached right aligned segment">
+            <h3 class="ui floated header">Nova Solicitação</h3>
+            <i (click) = "class ='hidden'" class="link window close outline icon"></i>
+          </div>
+          <app-new-solicitacao></app-new-solicitacao>
       </div>
 
     </div>

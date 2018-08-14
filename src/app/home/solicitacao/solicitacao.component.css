@@ -31,5 +31,20 @@
         height: 100%;
 
     }
+    
+    .new {
+
+        width: 60%;
+        position: absolute;
+        right: 0%;
+        bottom: 0%;
+
+    }
+
+    .hidden {
+        
+        display: none;
+
+    }
 
 }
