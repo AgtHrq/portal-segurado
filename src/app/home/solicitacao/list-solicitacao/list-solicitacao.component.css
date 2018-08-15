@@ -3,3 +3,20 @@
     display: none;
 
 }
+.pagination-previous{
+
+    float: left;
+
+}
+
+.current-page {
+
+    float: left;
+
+}
+
+.pagination-next {
+
+    float: left;
+
+}
