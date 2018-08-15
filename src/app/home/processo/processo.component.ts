@@ -7,6 +7,7 @@ import { HomeUtils } from '../../utils/home-utils';
 import { Processo } from '../../models/processo';
 import { User } from '../../models/user';
 import { Tramitacao } from '../../models/tramitacao';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-processo',
@@ -25,7 +26,7 @@ export class ProcessoComponent implements OnInit {
   documentos: DocumentoProcesso[];
   url_docs: string = "file://///10.10.1.6/digitalizados/541811/";
 
-  constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService) { }
+  constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService, private router: Router) { }
   
   ngOnInit() {
     
@@ -38,7 +39,10 @@ export class ProcessoComponent implements OnInit {
         this.processos = data.json();
       },
       error=> {
-        console.log(error._body);
+        if (JSON.parse(error._body).message.trim() === "Invalid Token"){
+          this.userService.logoffUser();
+          this.router.navigate(['/']);
+        }
       }
     );
 

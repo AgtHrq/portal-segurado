@@ -15,7 +15,8 @@ export class SolicitacaoComponent implements OnInit {
   solicitacoes: any = [
     { titulo: "XXX", descricao: "YYYYYYYYYY", data: "XXX", showDetail: "hidden", showTd: "show" },
     { titulo: "BBB", descricao: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
-    { titulo: "BBB", descricao: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
+    { titulo: "BBB", descricao: "CCCCCCCCCCCCCCCCCCCCCCC CCCCCCCCCCC CCCCCCCCCCCCCC CCCCCCCCCCCCCCCCCCCCCCCC CCCCCCCCCCCCCCCCCC CCCCCCCCCCCCCC CCCCC CCCCCCCCCC",
+      data: "BBB", showDetail: "hidden", showTd: "show" },
     { titulo: "BBB", descricao: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
     { titulo: "BBB", descricao: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
     { titulo: "BBB", descricao: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" }
