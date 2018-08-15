@@ -37,7 +37,9 @@ export class ProcessoComponent implements OnInit {
       data => {
         this.processos = data.json();
       },
-      error=> console.log(error._body)
+      error=> {
+        console.log(error._body);
+      }
     );
 
   }
@@ -48,7 +50,6 @@ export class ProcessoComponent implements OnInit {
     this.documentos = this.processos[event.target.selectedIndex - 1].documentoProcesso as DocumentoProcesso[];
     this.tramitacoes = this.processos[event.target.selectedIndex - 1].tramitacaoProcesso as Tramitacao[];
     this.tramitacoes.sort((a, b) => a.dataTramitacao > b.dataTramitacao ? -1 : 1);
-    console.log(this.documentos);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 
 import { Solicitacao } from './../../../models/solicitacao';
 
@@ -9,22 +9,12 @@ import { Solicitacao } from './../../../models/solicitacao';
 })
 export class ListSolicitacaoComponent implements OnInit, OnChanges {
 
-    solicitacoes1: any = [{ titulo: "XXX", desc: "YYYYYYYYYY", data: "XXX", showDetail: "hidden", showTd: "show" },
-     { titulo: "BBB", desc: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
-     { titulo: "BBB", desc: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
-     { titulo: "BBB", desc: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
-     { titulo: "BBB", desc: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" },
-     { titulo: "BBB", desc: "CCCCCCCCCC", data: "BBB", showDetail: "hidden", showTd: "show" }];
-    solicitacoes: Solicitacao[];
+    @Input() solicitacoes: Solicitacao[];
     page: number = 1;
 
   constructor() { }
 
-  ngOnInit() {
-
-    this.solicitacoes = this.solicitacoes1 as Solicitacao[];
-    
-  }
+  ngOnInit() { }
 
   showDetail(event) {
 
