@@ -19,11 +19,18 @@ export class HomeComponent implements AfterViewInit {
   numNotificacoes: number = 0;
   filter: string = "";
   user$: Observable<User>;
+  state: string = 'inactive';
 
   constructor(private userService : UserService, private utils: HomeUtils, private router: Router) {
 
     this.user$ = this.userService.getLoggedUser();
     this.utils.home();
+
+   }
+
+   toggleState() {
+
+    this.state.trim() === "inactive" ? this.state = "active" : this.state = "inactive";
 
    }
 

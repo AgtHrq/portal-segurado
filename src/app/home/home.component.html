@@ -16,12 +16,11 @@
             {{ user.user_name | nomePipe }}
             <i class="dropdown icon"></i>
             <div class="menu">
-                <div class="item">Alterar dados</div>
+                <div class="item" (click)="toggleState()">Alterar dados</div>
                 <div (click)="logout()" class="item"><i class="sign out alternate icon"></i><span>Sair.</span></div>
             </div>
       </div>
   </div>
-
 </div>
 <!-- MENU -->
 <div class="menu">
@@ -45,5 +44,9 @@
 <!-- CONTEÚDO -->
 
 <div class="conteudo">
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</div>
+
+<div class="alterar-dados">
+    <app-alterar-dados [state]="state" (toggle)="state = $event"></app-alterar-dados>
 </div>
