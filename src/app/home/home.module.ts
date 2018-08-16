@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,7 @@ import { SolicitacaoModule } from './solicitacao/solicitacao.module';
 @NgModule({
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     NgxPaginationModule,
     SolicitacaoModule,
     AlterarDadosModule,

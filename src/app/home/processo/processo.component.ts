@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations'
 
 import { DocumentoProcesso } from './../../models/documento-processo';
 import { UserService } from './../../services/user.service';
@@ -7,12 +9,20 @@ import { HomeUtils } from '../../utils/home-utils';
 import { Processo } from '../../models/processo';
 import { User } from '../../models/user';
 import { Tramitacao } from '../../models/tramitacao';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-processo',
   templateUrl: './processo.component.html',
-  styleUrls: ['./processo.component.css']
+  styleUrls: ['./processo.component.css'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateY(-100%)' }),
+        animate(300)
+      ])
+    ])
+  ]
 })
 export class ProcessoComponent implements OnInit {
 

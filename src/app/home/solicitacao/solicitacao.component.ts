@@ -1,13 +1,23 @@
-import { Solicitacao } from './../../models/solicitacao';
 import { Component, OnInit, Input } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import { Solicitacao } from './../../models/solicitacao';
 import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-solicitacao',
   templateUrl: './solicitacao.component.html',
-  styleUrls: ['./solicitacao.component.css']
+  styleUrls: ['./solicitacao.component.css'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateY(-100%)' }),
+        animate(300)
+      ])
+    ])
+  ]
 })
 export class SolicitacaoComponent implements OnInit {
 
