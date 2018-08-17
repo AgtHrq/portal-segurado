@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { LoaderModule } from './../loader/loader.module';
 import { AlterarDadosModule } from './alterar-dados/alterar-dados.module';
 import { HomeComponent } from './home.component';
 import { MenuComponent } from './menu/menu.component';
@@ -22,6 +23,7 @@ import { SolicitacaoModule } from './solicitacao/solicitacao.module';
     NgxPaginationModule,
     SolicitacaoModule,
     AlterarDadosModule,
+    LoaderModule,
     RouterModule
   ],
   declarations: [ 

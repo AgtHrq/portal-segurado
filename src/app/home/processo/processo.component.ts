@@ -27,6 +27,7 @@ import { Tramitacao } from '../../models/tramitacao';
 export class ProcessoComponent implements OnInit {
 
   title: string = "processos";
+  showLoader: boolean = true;
   page: number = 1;
   pageDoc: number = 1;
   user: User;
@@ -46,6 +47,7 @@ export class ProcessoComponent implements OnInit {
     });
     this.processoService.getProcessos(this.user.user_cpf).subscribe(
       data => {
+        this.showLoader = false;
         this.processos = data.json();
       },
       error=> {
