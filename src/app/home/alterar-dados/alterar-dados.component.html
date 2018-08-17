@@ -8,23 +8,23 @@
       <form class="ui form" [formGroup]="formAlterarDados" (submit)="alterarDados($event, formAlterarDados.value)">
         <div class="disabled field">
           <label>CPF:</label>
-          <input type="text" readonly formControlName="cpf">
+          <input type="text" formControlName="cpf">
         </div>
         <div class="field">
           <label>email:</label>
-          <input type="text" readonly formControlName="email">
+          <input type="text" formControlName="email">
         </div>
         <div class="field">
           <label>Senha antiga:</label>
-          <input type="password" readonly formControlName="senhaAntiga">
+          <input type="password" formControlName="senhaAntiga">
         </div>
         <div class="field">
           <label>Nova senha:</label>
-          <input type="password" readonly formControlName="novaSenha">
+          <input type="password" formControlName="novaSenha">
         </div>
         <div class="field">
           <label>Confirmar senha:</label>
-          <input type="password" readonly formControlName="confirmaSenha">
+          <input type="password" formControlName="confirmaSenha">
         </div>
         <div class="actions">
           <button type="submit" class="ui teal button">Confirmar</button>
