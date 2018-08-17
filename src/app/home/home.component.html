@@ -47,6 +47,4 @@
     <router-outlet></router-outlet>
 </div>
 
-<div class="alterar-dados">
-    <app-alterar-dados [state]="state" (toggle)="state = $event"></app-alterar-dados>
-</div>
+<app-alterar-dados [state]="state" [user]="user$ | async" (toggle)="state = $event"></app-alterar-dados>

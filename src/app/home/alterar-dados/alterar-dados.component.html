@@ -1,18 +1,35 @@
-<div [@flyInOut]="state" class="ui fullscreen active modal">
-  <i class="close icon" (click)="toggleState('inactive')"></i>
-  <div class="header">
-    Modal Title
-  </div>
-  <div class="image content">
-    <div class="image">
-      An image can appear on left or an icon
+<div [@flyInOut]="state" class="ui dimmer modals page transition active">
+  <div class="ui modal transition active">
+    <i class="close icon" (click)="toggleState('inactive')"></i>
+    <div class="header">
+      Alterar Dados
     </div>
-    <div class="description">
-      A description can appear on the right
+    <div class="content">
+      <form class="ui form" [formGroup]="formAlterarDados" (submit)="alterarDados($event, formAlterarDados.value)">
+        <div class="disabled field">
+          <label>CPF:</label>
+          <input type="text" readonly formControlName="cpf">
+        </div>
+        <div class="field">
+          <label>email:</label>
+          <input type="text" readonly formControlName="email">
+        </div>
+        <div class="field">
+          <label>Senha antiga:</label>
+          <input type="password" readonly formControlName="senhaAntiga">
+        </div>
+        <div class="field">
+          <label>Nova senha:</label>
+          <input type="password" readonly formControlName="novaSenha">
+        </div>
+        <div class="field">
+          <label>Confirmar senha:</label>
+          <input type="password" readonly formControlName="confirmaSenha">
+        </div>
+        <div class="actions">
+          <button type="submit" class="ui teal button">Confirmar</button>
+        </div>
+      </form>
     </div>
-  </div>
-  <div class="actions">
-    <div class="ui button">Cancel</div>
-    <div class="ui button">OK</div>
   </div>
 </div>

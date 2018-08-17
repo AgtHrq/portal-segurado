@@ -1,5 +1,9 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { User } from './../../models/user';
+import { MaskUtils } from '../../utils/mask-utils';
 
 @Component({
   selector: 'app-alterar-dados',
@@ -8,13 +12,13 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations:[
     trigger('flyInOut', [
       state('inactive', style({ display: 'none' })),
-      state('active', style({ transform: 'translateX(0)' })),
+      state('active', style({ transform: 'scale(1, 1)' })),
       transition('inactive => active', [
-        style({ transform: 'translateX(-100%)' }),
+        style({ transform: 'scale(0, 0)' }),
         animate(100)
       ]),
       transition('active => inactive', [
-        animate(100, style({ transform: 'translateY(-100%)' }))
+        animate(100, style({ transform: 'scale(0, 0)' }))
       ])
     ])
   ]
@@ -22,9 +26,11 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class AlterarDadosComponent implements OnInit, OnChanges {
 
   @Input() state: string = 'inactive';
+  @Input() user: User;
   @Output() toggle = new EventEmitter<string>();
+  formAlterarDados: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils) { }
 
   toggleState(state: string){
 
@@ -33,7 +39,25 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnInit() { }
+  alterarDados(event, data) {
+
+    event.preventDefault();
+
+  }
+
+  ngOnInit() { 
+
+    this.formAlterarDados = this.formBuilder.group({
+      
+      cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
+      email: [this.user.user_email, Validators.email],
+      senhaAntiga: ["", Validators.required],
+      novaSenha: ["", Validators.required],
+      confirmaSenha: ["", Validators.required]
+
+    });
+
+  }
 
   ngOnChanges() { }
 
