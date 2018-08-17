@@ -13,7 +13,7 @@
             Entrada
             <div class="ui teal left pointing label">{{ solicitacoes.length }}</div>
           </a>
-          <a (click) = "class = 'new'" class="item">
+          <a (click) = "class = 'new'; toggleState()" class="item">
             Abrir nova solicitação
             <i class="plus square outline icon"></i>
           </a>
@@ -24,11 +24,7 @@
           <app-list-solicitacao [solicitacoes]="solicitacoes"></app-list-solicitacao>
         </div>
         <div [ngClass]="class">
-          <div class="ui top attached right aligned segment">
-            <h3 class="ui floated header">Nova Solicitação</h3>
-            <i (click) = "class ='hidden'" class="link window close outline icon"></i>
-          </div>
-          <app-new-solicitacao></app-new-solicitacao>
+          <app-new-solicitacao (classEmitter)="class = $event" (stateEmitter)="state = $event" [state]="state"></app-new-solicitacao>
       </div>
     </div>
   </div>

@@ -34,6 +34,7 @@ export class SolicitacaoComponent implements OnInit {
   num: number;
   user: User
   class: string = "hidden";
+  state: string = "inactive";
 
   constructor(private userService: UserService) { 
   }
@@ -48,6 +49,12 @@ export class SolicitacaoComponent implements OnInit {
   newSolicitacao(event) {
 
     event.preventDefault();
+
+  }
+
+  toggleState(){
+    
+    this.state.trim() === "inactive" ? this.state = "active" : this.state = "inactive";
 
   }
 
