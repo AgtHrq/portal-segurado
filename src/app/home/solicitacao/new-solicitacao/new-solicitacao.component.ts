@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from './../../../models/user';
 import { UserService } from './../../../services/user.service';
@@ -24,13 +25,24 @@ export class NewSolicitacaoComponent implements OnInit {
   @Input() state: string = "inactive";
   @Output() classEmitter = new EventEmitter<string>();
   @Output() stateEmitter = new EventEmitter<string>();
+  formNovaSolicitacao: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
     this.userService.getLoggedUser()
       .subscribe(user => this.user = user);
+      this.formNovaSolicitacao = this.formBuilder.group({
+        titulo: ["", Validators.required],
+        descricao: ["", Validators.required]
+      });
+
+  }
+
+  newSolicitacao(event, data) {
+
+    event.preventDefault();
 
   }
 
@@ -38,6 +50,13 @@ export class NewSolicitacaoComponent implements OnInit {
 
     this.classEmitter.emit(classCss);
     this.stateEmitter.emit(state);
+
+  }
+
+  limpaCampos() {
+
+    this.formNovaSolicitacao.get("titulo").setValue("");
+    this.formNovaSolicitacao.get("descricao").setValue("");
 
   }
 

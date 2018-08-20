@@ -1,18 +1,18 @@
 <div [@flyInOut]="state" class="ui segments">
   <div class="ui top attached right aligned segment">
     <h3 class="ui floated header">Nova Solicitação</h3>
-    <i (click) = "emitter('hidden', 'inactive')" class="link window close outline icon"></i>
+    <i (click) = "emitter('hidden', 'inactive'); limpaCampos()" class="link window close outline icon"></i>
   </div>
   <div class="ui attached segment">
-    <form class="ui form" (submit)="newSolicitacao($event)">
+    <form class="ui form" (submit)="newSolicitacao($event, formNovaSolicitacao.value)" [formGroup]="formNovaSolicitacao">
       <div class="field">
         <label>Solicitação:</label>
-        <input type="text">
+        <input type="text" formControlName="titulo">
       </div>
       <div class="ui divider"></div>
       <div class="field">
         <label>Descrição:</label>
-        <textarea></textarea>
+        <textarea formControlName="descricao"></textarea>
       </div>
       <button class="ui teal button" type="submit">Abrir Solicitação</button>
     </form>
