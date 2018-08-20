@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from './../../models/user';
 import { MaskUtils } from '../../utils/mask-utils';
+import { upperCase, lowerCase, containNumber } from '../../validators/password.validator';
 
 @Component({
   selector: 'app-alterar-dados',
@@ -36,6 +37,9 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
     this.toggle.emit(state);
     this.state = state ;
+    this.formAlterarDados.get("senhaAntiga").setValue("");
+    this.formAlterarDados.get("novaAntiga").setValue("");
+    this.formAlterarDados.get("confirmaSenha").setValue("");
 
   }
 
@@ -51,9 +55,16 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
       
       cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
       email: [this.user.user_email, Validators.email],
-      senhaAntiga: ["", Validators.required],
-      novaSenha: ["", Validators.required],
-      confirmaSenha: ["", Validators.required]
+      senhaAntiga: [""],
+      novaSenha: ["", Validators.compose([
+        upperCase,
+        lowerCase,
+        containNumber,
+        Validators.minLength(6),
+        Validators.maxLength(14)
+      ])
+      ],
+      confirmaSenha: [""]
 
     });
 
