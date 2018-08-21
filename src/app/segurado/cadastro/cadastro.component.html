@@ -4,7 +4,7 @@
 
     <div class="ui very padded red segment">
 
-      <form class="ui large form"  [formGroup]="meuForm"  (submit)="verifica($event, meuForm.value)" *ngIf="proximo">
+      <form class="ui large form"  [formGroup]="meuForm"  (submit)="verifica($event, meuForm.value)" *ngIf="cadastro">
         
         <div class="fields"> <!--Inicio Campo CPF e DTNascimento-->
 
@@ -22,6 +22,10 @@
                 <p *ngIf="meuForm.controls.cpf.errors.minlength">O campo CPF deve conter 11 números.</p>
                 <p *ngIf="meuForm.controls.cpf.errors.required">O campo CPF é obrigatório.</p>
               </div>
+
+              <!-- <div class="ui red messag" *ngIf="meuForm.errors?.testaCPF && (meuForm.touched)">
+                <p>CPF inválido</p>
+              </div> -->
           </div>
 
           <div class="eight wide field">
@@ -48,7 +52,6 @@
             type="text"
             name="nome"
             id="nome"
-            value="{{pergunta}}"
             formControlName="nome">
               <!--Mensagens de validação-->
             <div class="ui red message" 
@@ -80,7 +83,18 @@
         </div>
       </form>
 
-      <app-cadastro2 *ngIf="!proximo"></app-cadastro2>
+      <app-cadastro-verifica-vinculo *ngIf="verificaVinculos" numInputs="{{ numVinculos }}"
+        nomeSeguradoValidacao="{{ nomeSegurado }}"
+        cpfSeguradoValidacao="{{ cpfSegurado }}"
+        [vinculosValidacao]="vinculos"
+        (respostaVerificaVinculos)="mudaFlagVerificaVinculos($event)" 
+        (respostaCadastro2)="mudaFlagCadastro2($event)">
+      </app-cadastro-verifica-vinculo>
+      
+      <app-cadastro2 *ngIf="cadastro2" 
+        nomeSegurado="{{ nomeSegurado }}"
+        cpfSegurado="{{ cpfSegurado }}">
+      </app-cadastro2>
       
     </div>
 

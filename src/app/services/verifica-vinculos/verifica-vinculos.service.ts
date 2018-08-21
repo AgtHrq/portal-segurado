@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
 import { BackendService } from '../backend.service';
 import { Authorization } from '../jwt.service';
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CadastrarService {
+export class VerificaVinculosService {
 
   private cadastrarSource: Subject<any> = new Subject<any>();
   cadastrarObservable = this.cadastrarSource.asObservable();
 
-  constructor(private backendService: BackendService, private auth: Authorization) { }
-  
-  verificarSegurado(credentials: Object) {
+  constructor(private backEndService: BackendService, private auth: Authorization) { }
 
-    return this.backendService.unprotectedRequest("usuarios/verificaInfoSegurado", "post", credentials);
-
+  verificarVinculoSegurado(credentials: object){
+    return this.backEndService.unprotectedRequest("usuarios/verificaInfoVinculo", "post", credentials);
   }
 }

@@ -1,8 +1,26 @@
 <form class="ui large form" [formGroup]="meuForm" (submit)="cadastra($event, meuForm.value)">
 
   <div class="fields">
-    
     <div class="eight wide field">
+      <input 
+        type="text"
+        name="nomeSegurado"
+        formControlName="name"
+        Readonly>
+    </div>
+
+    <div class="eight wide field">
+      <input 
+        type="text"
+        name="cpfSegurado"
+        formControlName="cpf"
+        Readonly>
+    </div>
+  </div>
+
+  <div class="field">
+
+    <div>
         <label>E-mail (Opcional)</label>
         <input
           type="email"
@@ -16,7 +34,11 @@
         </div>
     </div>
 
-    <div class="two wide field">
+  </div>
+
+  <div class="fields">
+    
+    <div class="four wide field">
         <label>DDD</label>
         <input
           type="text"
@@ -34,22 +56,25 @@
           </div>
     </div>
     
-    <div class="eight wide field">
+    <div class="twelve wide field">
         <label>Celular</label>
         <input
           type="text"
-          name="celular"
+          name="telefone"
           id="celular"
-          formControlName="celular">
+          formControlName="telefone">
 
           <!-- Mensagem de validação -->
           <div class="ui red message" 
-            *ngIf="meuForm.controls.celular.invalid && (meuForm.controls.celular.touched)">
+            *ngIf="meuForm.controls.telefone.invalid && (meuForm.controls.telefone.touched)">
 
-            <p *ngIf="meuForm.controls.celular.errors.minlength">Número inválido</p>
-
+            <p *ngIf="meuForm.controls.telefone.errors.minlength">Número inválido</p>
+            <p *ngIf="meuForm.errors?.checkContato">Campos DDD e Celular tem que ser preenchido juntos</p>
+            
           </div>
-    </div>
+          
+        </div>
+
 
   </div>
 
@@ -57,12 +82,11 @@
     <label>Pergunta Secreta</label>
     <select  class="ui fluid dropdown" name="pergSecreta" formControlName="pergunta">
       <option value="" selected disabled>Selecione</option>
-      <option *ngFor="let pergunta of perguntas" value="{{pergunta.descricao}}">
-        {{pergunta.descricao}}
-        <input type="hidden" value="{{pergunta.id}}" formControlName="idPergunta"/>
+      <option *ngFor="let pergunta of perguntas" value="{{pergunta.descricao}}-{{pergunta.id}}">
+        {{pergunta.descricao}} 
       </option>
     </select>
-     <!-- Mensagem de validação -->
+    <!-- Mensagem de validação -->
     <div class="ui red message" 
       *ngIf="meuForm.controls.pergunta.invalid && (meuForm.controls.pergunta.touched)">
 
@@ -79,14 +103,14 @@
       id="resposta"
       formControlName="resposta">
 
-       <!-- Mensagem de validação -->
-       <div class="ui red message" 
+      <!-- Mensagem de validação -->
+      <div class="ui red message" 
           *ngIf="meuForm.controls.resposta.invalid && (meuForm.controls.resposta.touched)">
 
           <p *ngIf="meuForm.controls.resposta.errors.required">Preciso de uma resposta</p>
           <p *ngIf="meuForm.controls.resposta.errors.minlength">Resposta inválida</p>
 
-     </div>
+    </div>
   </div>
 
   <div class="fields">
@@ -95,20 +119,11 @@
 
       <label>Senha</label>
       <input
-        type="text"
+        type="password"
         name="senha"
         id="senha"
         #senha1
-        formControlName="senha">
-
-        <!-- Mensagem de validação -->
-      <div class="ui red message" 
-        *ngIf="meuForm.controls.senha.invalid && (meuForm.controls.senha.touched)">
-
-        <p *ngIf="meuForm.controls.senha.errors.minlength">Número de caracteres inválido</p>
-        <p *ngIf="meuForm.controls.senha.errors.required">Campo obrigatório</p>
-
-      </div>
+        formControlName="password">
 
     </div>
 
@@ -116,22 +131,57 @@
 
       <label>Confirmar senha</label>
       <input
-        type="text"
+        type="password"
         name="confirmeSenha"
         id="confirmeSenha"
         #senha2
         formControlName="confirmeSenha">
       
-        <!-- Mensagem de validação -->
+        <!-- Mensagend de validação -->
         
-        <p class="ui red message" *ngIf="senha1.value != senha2.value">Senhas divergentes</p>
         <div class="ui red message"
-        *ngIf="meuForm.controls.confirmeSenha.invalid && (meuForm.controls.confirmeSenha.touched)">
-        
-          <p *ngIf="meuForm.controls.confirmeSenha.errors.required">Campo obrigatório</p>
+          *ngIf="meuForm.controls.password.invalid && (meuForm.controls.password.touched)">
 
+          <ul>
+            <li *ngIf="meuForm.controls.password.errors?.upperCase">
+                A senha deve conter pelo menos uma letra maiúscula.  
+            </li>
+  
+            <li *ngIf="meuForm.controls.password.errors?.lowerCase">
+              A senha deve conter pelo menos uma letra minúscula.
+            </li>
+  
+            <li *ngIf="meuForm.controls.password.errors?.containNumber">
+                A senha deve conter pelo menos um número.
+            </li>
+
+            <li *ngIf="meuForm.controls.password.errors?.minlength">
+              A senha deve conter no mínimo 6 caracteres.
+            </li>
+
+            <li *ngIf="meuForm.controls.password.errors?.maxlength">
+                A senha deve conter no máximo 14 caracteres.
+            </li>
+
+            <li *ngIf="meuForm.controls.password.errors?.required">
+              Campos de senha obrigatórios
+            </li>
+
+          </ul>
 
         </div>
+
+          
+          <div class="ui red message" 
+            *ngIf="meuForm.errors?.equal && (meuForm.controls.password.touched)">
+            <ul>
+
+              <li>
+                  Senhas divergentes.
+              </li>
+
+            </ul>
+          </div>
 
     </div>
 
@@ -143,5 +193,3 @@
   </button>
 
 </form>
-
-

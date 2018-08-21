@@ -34,4 +34,8 @@ export class MaskUtils {
     public dddMask(id: string): void{
         $(`#${id}`).mask("(00)");
     }
+
+    public matriculaMask(id: string): void {
+        $(`.${id}`).mask("000.000-0", {reverse: true});
+    }
 }

@@ -9,7 +9,6 @@ const APP_ROUTES: Routes = [
 
     { path: "", component: LoginComponent },
     { path: "cadastro", component: CadastroComponent},
-    { path: "cadastro2", component: Cadastro2Component},
     { path: "logado", component: LogadoComponent},
     { path: "logado", component: LogadoComponent },
     { path: "esqueci/senha", component: ForgotPasswordComponent },

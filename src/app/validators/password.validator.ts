@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors } from "../../../node_modules/@angular/forms";
+import { AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
 
 export function lowerCase(control: AbstractControl): ValidationErrors | null {
 

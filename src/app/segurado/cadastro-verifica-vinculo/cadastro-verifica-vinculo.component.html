@@ -1,0 +1,64 @@
+<form class="ui karge form" [formGroup]="meuForm2" (submit)="verifica($event, meuForm2.value)">
+
+  <div class="fields">
+    <div class="eight wide field">
+      <input 
+        type="text"
+        name="nomeSegurado"
+        formControlName="nomeSegurado"
+        Readonly>
+    </div>
+
+    <div class="eight wide field">
+      <input 
+        type="text"
+        name="cpfSegurado"
+        formControlName="cpf"
+        Readonly>
+    </div>
+  </div>
+
+  <h3>Voce Possui {{numInputs}} vinculos, informe todos</h3>
+  <div *ngFor="let input of inputs; index as i">
+
+    <br/>
+
+    <div class="ui top attached tabular menu">
+      <div class="active item field">Vinculo</div>
+    </div>
+    <div class="ui bottom attached active tab segment">
+      <select class="ui fluid dropdown" formControlName="idOrgao{{i}}">
+        <option value="" selected disabled>Orgãos</option>
+        <option *ngFor="let orgao of orgaos" value="{{orgao.id}}">{{orgao.descricao}}</option>
+      </select>
+
+      <br/>
+
+      <div class="field">
+          <label>Matrícula</label>
+          <input type="text" 
+            class="matricula" 
+            placeholder="Matrícula" 
+            formControlName="matricula{{i}}"
+            appCpfMask>
+
+          </div>
+        </div>
+
+        <div class="ui red message" *ngIf="meuForm2.controls['matricula' + i].invalid && (meuForm2.controls['matricula' + i].touched)">
+          <p *ngIf="meuForm2.controls['matricula' + i].errors.required">Inserir Matrícula</p>
+          <p *ngIf="meuForm2.controls['matricula' + i].errors.minlength">Matrícula Incompleta</p>
+        </div>
+        
+        <div class="ui red message" *ngIf="meuForm2.controls['idOrgao' + i].invalid && (meuForm2.controls['idOrgao' + i].touched)">
+          <p *ngIf="meuForm2.controls['idOrgao' + i].errors.required">Selecione o ORGÃO que pertence a Matrícula</p>
+        </div>
+  </div>
+
+  <br/>
+
+  <button class="ui right floated button" type="submit" [disabled]="meuForm2.invalid" >
+      Próximo
+  </button>
+
+</form>

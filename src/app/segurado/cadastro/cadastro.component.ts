@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { CadastrarService } from '../../services/cadastrar/cadastrar.service';
-import { Pergunta } from '../../models/pergunta';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,10 +10,16 @@ import { Pergunta } from '../../models/pergunta';
 })
 export class CadastroComponent implements OnInit {
   meuForm: FormGroup;
-  proximo: boolean = true;
-  perguntas= [];
+  cadastro: boolean = true;
+  verificaVinculos: boolean = false;
+  cadastro2: boolean = false;
+  numVinculos:number;
+  nomeSegurado: string;
+  cpfSegurado: string;
+  vinculos = [];
 
   constructor(formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
+
 
     this.meuForm = formBuilder.group({
 
@@ -34,6 +39,8 @@ export class CadastroComponent implements OnInit {
       )],
 
     });
+
+    // this.meuForm.setValidators([ testaCPF ]);
   }
 
   ngOnInit() {
@@ -41,24 +48,25 @@ export class CadastroComponent implements OnInit {
 
   verifica(event, segurado){
     event.preventDefault();
-
+    this.nomeSegurado = segurado.nome;
+    this.cpfSegurado = segurado.cpf;
     segurado.cpf = this.formatCpf(segurado.cpf);
     segurado.dataNascimento = this.formatData(segurado.dataNascimento);
+    
 
     this.cadastrarService.verificarSegurado(segurado).subscribe(
       proximo => {
-        this.proximo = false;
-
-        this.perguntas = proximo.json();
-
-        console.log("perguntas", this.perguntas);
-      
+        this.vinculos = proximo.json();
+        // console.log('cadastro', this.vinculos);
+        this.numVinculos = proximo.json().length;
+        this.cadastro = false;
+        this.verificaVinculos = true;
+        
       },
       error => {
-        console.log("error");
         alert(error._body);
       }
-    )
+    );
   }
 
   formatCpf(cpf: string): string {
@@ -71,6 +79,14 @@ export class CadastroComponent implements OnInit {
 
     return date.split('/').reverse().join('-');
 
+  }
+
+  mudaFlagCadastro2(evento){
+    this.cadastro2 = evento;
+  }
+
+  mudaFlagVerificaVinculos(evento){
+    this.verificaVinculos = evento;
   }
 
 }

@@ -15,6 +15,7 @@ export class CpfMaskDirective implements OnInit{
     this.utils.dtMask("dataNascimento");
     this.utils.dddMask("ddd");
     this.utils.celularMask("celular");
+    this.utils.matriculaMask("matricula");
 
   }
 

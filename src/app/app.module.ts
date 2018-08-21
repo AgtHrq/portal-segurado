@@ -21,6 +21,8 @@ import { ChangePasswordComponent } from './segurado/forgot-password/change-passw
 import { CpfMaskDirective } from './directives/cpf-mask.directive';
 import { SendEmailComponent } from './segurado/forgot-password/send-email/send-email.component';
 import { LoaderComponent } from './loader/loader.component';
+import { CadastroVerificaVinculo } from './segurado/cadastro-verifica-vinculo/cadastro-verifica-vinculo.component';
+
 
 
 @NgModule({
@@ -37,7 +39,7 @@ import { LoaderComponent } from './loader/loader.component';
     ChangePasswordComponent, 
     CpfMaskDirective, 
     SendEmailComponent, 
-    LoaderComponent
+    LoaderComponent, CadastroVerificaVinculo
   ],
   imports: [
     BrowserModule,
