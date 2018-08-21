@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-passw
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AuthGuard } from "./services/guards/auth.guard";
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
+import { RespotaComponent } from "./home/ouvidoria/respota/respota.component";
 
 const APP_ROUTES: Routes = [
 
@@ -34,7 +35,11 @@ const APP_ROUTES: Routes = [
                 path: "solicitacoes", component: SolicitacaoComponent
             },
             {
-                path: "ouvidoria", component: OuvidoriaComponent
+                path: "ouvidoria", component: OuvidoriaComponent, children: [
+                    {
+                        path: "respostas", component: RespotaComponent
+                    }
+                ]
             },
             {
                 path: "**", redirectTo: ""
