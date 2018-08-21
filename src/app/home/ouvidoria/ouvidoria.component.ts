@@ -17,11 +17,25 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class OuvidoriaComponent implements OnInit {
 
-  title: string = "ouvidoria"; 
+  title: string = "ouvidoria";
+  activeAdd: string = "";
+  activeRep: string = "";
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle() {
+
+    if (this.activeAdd.trim() === "active") {
+      this.activeRep = "active ";
+      this.activeAdd = "";
+    } else {
+      this.activeRep = "";
+      this.activeAdd = "active "
+    }
+
   }
 
 }

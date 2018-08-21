@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { OuvidoriaComponent } from './ouvidoria.component';
 import { RespotaComponent } from './respota/respota.component';
 import { AddOuvidoriaComponent } from './add-ouvidoria/add-ouvidoria.component';
+import { InitialComponent } from './initial/initial.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { AddOuvidoriaComponent } from './add-ouvidoria/add-ouvidoria.component';
   declarations: [
     OuvidoriaComponent, 
     RespotaComponent, 
-    AddOuvidoriaComponent
+    AddOuvidoriaComponent, 
+    InitialComponent
   ]
 })
 export class OuvidoriaModule { }

@@ -9,11 +9,11 @@
     <div class="ui grid">
       <div class="doubling four wide column">
         <div class="ui vertical fluid menu">
-          <a [routerLink]="['add/ouvidoria']" class="item">
+          <a (click)="toggle()" [routerLink]="['add/ouvidoria']" class="{{activeAdd}}item">
             Adicionar
             <i class="plus square outline icon"></i>
           </a>
-          <a [routerLink]="['respostas']" class="item">
+          <a (click)="toggle()" [routerLink]="['respostas']" class="{{ activeRep }}item">
             Repostas
           </a>
         </div>

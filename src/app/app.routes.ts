@@ -1,3 +1,4 @@
+import { InitialComponent } from './home/ouvidoria/initial/initial.component';
 import { Routes, RouterModule } from "@angular/router";
 
 import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
@@ -38,10 +39,16 @@ const APP_ROUTES: Routes = [
             {
                 path: "ouvidoria", component: OuvidoriaComponent, children: [
                     {
+                        path:"", component: InitialComponent
+                    },
+                    {
                         path: "respostas", component: RespotaComponent
                     },
                     {
                         path:"add/ouvidoria", component: AddOuvidoriaComponent
+                    },
+                    {
+                        path:"**", redirectTo: ""
                     }
                 ]
             },
