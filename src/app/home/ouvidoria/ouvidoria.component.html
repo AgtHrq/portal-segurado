@@ -1,4 +1,4 @@
-<div class="ui segments">
+<div [@flyInOut]="'in'" class="ui segments">
 
   <div class="ui secondary segment">
     <h1 class="header">{{ title | uppercase }}</h1>
@@ -9,13 +9,12 @@
     <div class="ui grid">
       <div class="doubling four wide column">
         <div class="ui vertical fluid menu">
-          <a class="active teal item">
-            Entrada
-            <div class="ui teal left pointing label">1</div>
+          <a class="item">
+            Adicionar
+            <i class="plus square outline icon"></i>
           </a>
           <a class="item">
-            Abrir nova solicitação
-            <i class="plus square outline icon"></i>
+            Repostas
           </a>
         </div>
       </div>
