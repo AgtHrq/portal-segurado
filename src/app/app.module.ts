@@ -23,6 +23,7 @@ import { SendEmailComponent } from './segurado/forgot-password/send-email/send-e
 import { NgxCaptchaModule } from "ngx-captcha";
 import { AuthGuard } from './services/guards/auth.guard';
 import { LoaderModule } from './loader/loader.module';
+import { OuvidoriaModule } from './home/ouvidoria/ouvidoria.module';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { LoaderModule } from './loader/loader.module';
     ReactiveFormsModule,
     NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q" }),
     HomeModule,
+    OuvidoriaModule,
     LoaderModule,
     routing
   ],
