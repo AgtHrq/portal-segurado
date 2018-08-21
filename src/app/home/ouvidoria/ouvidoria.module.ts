@@ -1,18 +1,25 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { OuvidoriaComponent } from './ouvidoria.component';
 import { RespotaComponent } from './respota/respota.component';
+import { AddOuvidoriaComponent } from './add-ouvidoria/add-ouvidoria.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     RouterModule
   ],
   declarations: [
     OuvidoriaComponent, 
-    RespotaComponent
+    RespotaComponent, 
+    AddOuvidoriaComponent
   ]
 })
 export class OuvidoriaModule { }

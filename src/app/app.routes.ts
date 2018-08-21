@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 
+import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
 import { SolicitacaoComponent } from './home/solicitacao/solicitacao.component';
 import { ProcessoComponent } from './home/processo/processo.component';
 import { HomeComponent } from './home/home.component';
@@ -38,6 +39,9 @@ const APP_ROUTES: Routes = [
                 path: "ouvidoria", component: OuvidoriaComponent, children: [
                     {
                         path: "respostas", component: RespotaComponent
+                    },
+                    {
+                        path:"add/ouvidoria", component: AddOuvidoriaComponent
                     }
                 ]
             },
