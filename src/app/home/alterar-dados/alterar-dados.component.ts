@@ -16,10 +16,10 @@ import { upperCase, lowerCase, containNumber } from '../../validators/password.v
       state('active', style({ transform: 'scale(1, 1)' })),
       transition('inactive => active', [
         style({ transform: 'scale(0, 0)' }),
-        animate(100)
+        animate(300)
       ]),
       transition('active => inactive', [
-        animate(100, style({ transform: 'scale(0, 0)' }))
+        animate(300, style({ transform: 'scale(0, 0)' }))
       ])
     ])
   ]
