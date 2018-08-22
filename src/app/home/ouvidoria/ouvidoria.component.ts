@@ -26,14 +26,14 @@ export class OuvidoriaComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggle() {
+  toggle(menu: string) {
 
-    if (this.activeAdd.trim() === "active") {
-      this.activeRep = "active ";
-      this.activeAdd = "";
-    } else {
+    if(menu.trim() === "add"){
+      this.activeAdd = "active ";
       this.activeRep = "";
-      this.activeAdd = "active "
+    } else {
+      this.activeAdd = "";
+      this.activeRep = "active ";
     }
 
   }

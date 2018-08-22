@@ -36,7 +36,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
   toggleState(state: string){
 
     this.toggle.emit(state);
-    this.state = state ;
+    this.state = state;
     this.formAlterarDados.get("senhaAntiga").setValue("");
     this.formAlterarDados.get("novaSenha").setValue("");
     this.formAlterarDados.get("confirmaSenha").setValue("");
