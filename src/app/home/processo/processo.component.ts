@@ -35,7 +35,7 @@ export class ProcessoComponent implements OnInit {
   resumoProcesso: Processo = null;
   tramitacoes: Tramitacao[];
   documentos: DocumentoProcesso[];
-  url_docs: string = "file://///10.10.1.6/digitalizados/541811/";
+  url_docs: string = "file:///\\\\10.10.1.6/digitalizados/541811/";
 
   constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService, private router: Router) { }
   
