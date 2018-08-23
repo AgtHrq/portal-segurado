@@ -11,18 +11,19 @@ import { MaskUtils } from '../../utils/mask-utils';
 })
 export class LoginComponent {
 
-    private erroTitle: string = "Erro ao realizar login";
-    private erroMessage: string = "Erro ao realizar login";
-    private showMessage: boolean = false;
-    private utils: MaskUtils = new MaskUtils();
+    erroTitle: string = "Erro ao realizar login";
+    erroMessage: string = "Erro ao realizar login";
+    showMessage: boolean = false;
+    utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
+    showLoader: boolean = false;
 
     ngOnInit(){ }
 
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
-
+        
         if (userService.isLogged()) {
-            this.route.navigate(["/logado"]);
+            this.route.navigate(["/home/segurado"]);
         }
 
         this.formGroup = formBuilder.group({
@@ -32,23 +33,30 @@ export class LoginComponent {
             )],
             password: ["", Validators.compose(
                 [Validators.required, Validators.minLength(6)]
-            )]
+            )],
+            cap: ["", Validators.required]
 
         });
+        
+        this.formGroup.setErrors({ "cap": false });
 
     }
 
     login(event, credentials){
 
         event.preventDefault();
+        delete credentials.cap;
         credentials.cpf = this.utils.removeMascara(credentials.cpf);
+        this.showLoader = true;
 
         this.userService.authenticate(credentials).subscribe(
             data => {
-                this.userService.updateLoggedUser(data);
-                this.route.navigate(["/logado"]);
+                this.showLoader = false;
+                this.userService.updateLoggedUser(data.text());
+                this.route.navigate(["/home/segurado"]);
             },
             erro => {
+                this.showLoader = false;
                 this.erroMessage = erro._body;
                 this.showMessage = true;
             }
@@ -59,6 +67,18 @@ export class LoginComponent {
     hideError() {
 
         this.showMessage = false;
+
+    }
+
+    handleSuccess(event) {
+
+        this.formGroup.get("cap").setValue(event);
+
+    }
+
+    handleExpire() {
+
+        this.formGroup.get("cap").setValue(null);
 
     }
 

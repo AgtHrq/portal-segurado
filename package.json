@@ -23,11 +23,12 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
+    "jwt-decode": "^2.2.0",
+    "ngx-captcha": "^3.1.2",
+    "ngx-pagination": "^3.1.1",
     "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26",
-    "jwt-decode": "^2.1.0",
     "ts-helpers": "^1.1.1",
-    "ng2-pagination": "^2.0.2"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.0.3",

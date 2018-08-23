@@ -1,0 +1,32 @@
+<div [@flyInOut]="'in'" class="ui segments">
+
+  <div class="ui secondary segment">
+    <h1 class="header">{{ title | uppercase }}</h1>
+  </div>
+  
+  <div class="ui segment bottom">
+    
+    <div class="ui grid">
+      <div class="doubling four wide column">
+        <div class="ui vertical fluid menu">
+          <a class="active teal item">
+            Entrada
+            <div class="ui teal left pointing label">{{ solicitacoes.length }}</div>
+          </a>
+          <a (click) = "class = 'new'; toggleState()" class="item">
+            Abrir nova solicitação
+            <i class="plus square outline icon"></i>
+          </a>
+        </div>
+      </div>
+      <div class="doubling twelve wide stretched column">
+        <div class="ui tall stacked segment">
+          <app-list-solicitacao [solicitacoes]="solicitacoes"></app-list-solicitacao>
+        </div>
+        <div [ngClass]="class">
+          <app-new-solicitacao (classEmitter)="class = $event" (stateEmitter)="state = $event" [state]="state"></app-new-solicitacao>
+      </div>
+    </div>
+  </div>
+
+</div>

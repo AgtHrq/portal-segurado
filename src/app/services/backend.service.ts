@@ -1,6 +1,7 @@
-import { Authorization } from './jwt.service';
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
+import { Http, Headers } from "@angular/http";
+
+import { Authorization } from './jwt.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,37 @@ export class BackendService {
 
       return this.http.get(`http://${this.url}/${url}`, {
         search: sParams
+      });
+
+    }
+
+  }
+
+  protectedRequest(url: string, method: string, params?: Object, paramsHeader?: object) {
+
+    let headers = new Headers();
+    headers.append('Authorization', `Bearer ${this.auth.getToken()}`);
+
+    if (method.toLowerCase() === 'post') {
+
+      return params === null ? this.http.post(`http://${this.url}/protegido/${url}`, null, { headers: headers , params: { payload: paramsHeader } }) :
+        this.http.post(`http://${this.url}/protegido/${url}`, params, { headers: headers });
+    
+    } else if (method.toLowerCase() === 'get') {
+
+      let sParams: URLSearchParams = new URLSearchParams();
+
+      for(let p in params) {
+
+        if(params.hasOwnProperty(p)) {
+          sParams.set(p, params[p]);
+        }
+
+      }
+
+      return this.http.get(`http://${this.url}/protegido/${url}`, {
+        search: sParams,
+        headers: headers
       });
 
     }

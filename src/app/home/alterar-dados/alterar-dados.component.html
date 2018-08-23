@@ -1,0 +1,63 @@
+<div [@flyInOut]="state" class="ui dimmer modals page transition active">
+  <div class="ui modal transition active">
+    <i class="close icon" (click)="toggleState('inactive')"></i>
+    <div class="header">
+      Alterar Dados
+    </div>
+    <div class="content">
+      <form class="ui form" [formGroup]="formAlterarDados" (submit)="alterarDados($event, formAlterarDados.value)">
+        <div class="disabled field">
+          <label>CPF:</label>
+          <input type="text" formControlName="cpf">
+        </div>
+        <div class="field">
+          <label>E-mail:</label>
+          <input type="text" formControlName="email">
+        </div>
+        <div class="field">
+            <label>Telefone:</label>
+            <input type="text" formControlName="telefone">
+          </div>
+        <div class="field">
+          <label>Senha antiga:</label>
+          <input type="password" formControlName="senhaAntiga">
+        </div>
+        <div class="field">
+          <label>Nova senha:</label>
+          <input type="password" formControlName="novaSenha">
+        </div>
+        <div class="field">
+          <label>Confirmar senha:</label>
+          <input type="password" formControlName="confirmaSenha">
+        </div>
+        <div class="actions">
+          <button type="submit" [disabled]="formAlterarDados.invalid" class="ui teal button">Confirmar</button>
+        </div>
+      </form>
+      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.minlength || formAlterarDados.controls.novaSenha.errors?.required" class="error">
+        <i class="attention icon"></i>A senha deve conter no mínimo 6 caracteres.</p>
+      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.minlength && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
+        <i class="icon checkmark"></i>A senha deve conter no mínimo 6 caracteres.</p>
+      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.maxlength || formAlterarDados.controls.novaSenha.errors?.required" class="error">
+        <i class="attention icon"></i>A senha deve conter no máximo 14 caracteres.</p>
+      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.maxlength && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
+        <i class="icon checkmark"></i>A senha deve conter no máximo 14 caracteres.</p>
+      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.upperCase || formAlterarDados.controls.novaSenha.errors?.required" class="error">
+        <i class="attention icon"></i>A senha deve conter pelo menos uma letra maiúscula.</p>
+      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.upperCase && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
+        <i class="icon checkmark"></i>A senha deve conter pelo menos uma letra maiúscula.</p>
+      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.lowerCase || formAlterarDados.controls.novaSenha.errors?.required" class="error">
+        <i class="attention icon"></i>A senha deve conter pelo menos uma letra minúscula.</p>
+      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.lowerCase && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
+        <i class="icon checkmark"></i>A senha deve conter pelo menos uma letra minúscula.</p>
+      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.containNumber || formAlterarDados.controls.novaSenha.errors?.required" class="error">
+        <i class="attention icon"></i>A senha deve conter pelo menos um número.</p>
+      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.containNumber && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
+        <i class="icon checkmark"></i>A senha deve conter pelo menos um número.</p>
+      <p *ngIf="formAlterarDados.errors?.equal || formAlterarDados.controls.confirmaSenha.errors?.required" class="error">
+        <i class="attention icon"></i>Os campos 'senha' e 'Confirmação de senha' devem ser iguais.</p>
+      <p *ngIf="!formAlterarDados.errors?.equal && !formAlterarDados.controls.confirmaSenha.errors?.required" class="success">
+        <i class="icon checkmark"></i>Os campos 'senha' e 'Confirmação de senha' devem ser iguais.</p>
+    </div>
+  </div>
+</div>

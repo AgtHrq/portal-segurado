@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-//var jwt = require("jwt-decode");
+
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class Authorization {
 
   loggedInfo(){
   
-  //  return jwt(this.getToken());
+   return jwt_decode(this.getToken());
   
   }
 

@@ -1,0 +1,50 @@
+<div class="ui segment cab">
+        
+  <div class="ui header cab">
+      
+      <a [routerLink]="['/']" class="ui small image">
+          <img src="../../assets/img/logo.png">
+      </a>
+      <h3>Portal do segurado</h3>
+
+  </div>
+  
+  <div *ngIf="(user$ | async) as user" class="logout">
+      <i class="user icon"></i>
+      Bem vindo(a)!
+      <div class="ui inline pointing dropdown">
+            {{ user.user_name | nomePipe }}
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item" (click)="toggleState()">Alterar dados</div>
+                <div (click)="logout()" class="item"><i class="sign out alternate icon"></i><span>Sair.</span></div>
+            </div>
+      </div>
+  </div>
+</div>
+<!-- MENU -->
+<div class="menu">
+
+<div class="ui category search">
+  <div class="ui left icon input">
+      <input class="prompt" placeholder="Digite para buscar menus..." type="text" (keyup)="filter = $event.target.value">
+      <i class="search icon"></i>
+  </div>
+</div>
+
+<app-menu [menus]="menus | filterByDescricao: filter"></app-menu>
+  
+</div>
+<!-- NOTIFICAÇÃO -->
+<div class="notificacao">
+
+  <app-notificacao></app-notificacao>
+
+</div>
+<!-- CONTEÚDO -->
+
+<div class="conteudo">
+    <router-outlet></router-outlet>
+</div>
+
+<app-alterar-dados [state]="state" [user]="user$ | async" (toggle)="state = $event"></app-alterar-dados>

@@ -3,3 +3,9 @@ body {
     background-image: linear-gradient(to right, #FFFFFF, #C0C0C0);
 
 }
+
+.ui.segment {
+
+    border-radius: 0%;
+
+}

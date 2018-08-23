@@ -22,7 +22,13 @@ export class ForgotPasswordService {
 
   verificaPergunta(pergunta) {
 
-    return this.backendService.unprotectedRequest("usuarios/esqueceuSenhaPergunta", "post", pergunta)
+    return this.backendService.unprotectedRequest("usuarios/esqueceuSenhaPergunta", "post", pergunta);
+
+  }
+
+  novaSenha(data){
+
+    return this.backendService.unprotectedRequest("usuarios/trocarSenha", "post", data);
 
   }
 

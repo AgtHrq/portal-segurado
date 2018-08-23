@@ -1,0 +1,182 @@
+<div [@flyInOut]="'in'" class="ui segments">
+  
+  <app-loader *ngIf="showLoader"></app-loader>
+  
+  <div class="ui secondary segment">
+    <h1 class="header">{{ title | uppercase }}</h1>
+  </div>
+
+  <div class="ui segment">
+
+    <div class="processos">
+    
+      <div class="ui sub header">Processos</div>
+      <select name="processos" class="ui fluid search dropdown" (change)="selectedProcesso($event)">
+        <option value="">Processos</option>
+        <option *ngFor="let p of processos" value="{{ p.resumoProcesso.numeroProcesso }}">
+          {{ p?.resumoProcesso.numeroProcesso }}
+        </option>
+      </select>
+
+    </div>
+
+    <div class="aba">
+
+      <div class="ui top attached tabular menu">
+        <a class="item active" data-tab="gerais">Dados Gerais</a>
+        <a class="item" data-tab="tramitacao">Tramitações</a>
+        <a class="item" data-tab="documentos">Documentos</a>
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="gerais">
+        <table class="ui single line table">
+          <tbody>
+            <tr>
+              <td><h4>PROCESSO NÚMERO:</h4></td>
+              <td>{{ resumoProcesso?.numeroProcesso }}</td>
+            </tr>
+            <tr>
+              <td><h4>NOME:</h4></td>
+              <td>{{ resumoProcesso?.nome | uppercase }}</td>
+            </tr>
+            <tr>
+              <td><h4>CPF:</h4></td>
+              <td>{{ resumoProcesso?.cpf | maskCpf }}</td>
+            </tr>
+            <tr>
+              <td><h4>MATRÍCULA:</h4></td>
+              <td>{{ resumoProcesso?.matricula }}</td>
+            </tr>
+            <tr>
+              <td><h4>PORTARIA:</h4></td>
+              <td>{{ resumoProcesso?.numeroPortaria }}</td>
+            </tr>
+            <tr>
+              <td><h4>DATA DE REQUISIÇÃO:</h4></td>
+              <td>{{ resumoProcesso?.dataRequerimento | date:'dd/MM/yyyy' }}</td>
+            </tr>
+            <tr>
+              <td><h4>DATA DE PUBLICAÇÃO:</h4></td>
+              <td>{{ resumoProcesso?.dataPublicacao | date:'dd/MM/yyyy' }}</td>
+            </tr>
+            <tr>
+              <td><h4>DATA DE AGENDAMENTO:</h4></td>
+              <td>{{ resumoProcesso?.dataAgendamento | date:'dd/MM/yyyy' }}</td>
+            </tr>
+            <tr>
+              <td><h4>TURNO DE AGENDAMENTO:</h4></td>
+              <td>{{ resumoProcesso?.turnoAgendamento }}</td>
+            </tr>
+            <tr>
+              <td><h4>ASSUNTO:</h4></td>
+              <td>{{ resumoProcesso?.assuntoProcesso }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="tramitacao">
+        <table class="ui very basic table">
+          <thead>
+            <tr>
+              <th><h4>DATA</h4></th>
+              <th><h4>SETOR</h4></th>
+              <th><h4>DESPACHO</h4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of tramitacoes | paginate: { id: 'tramites', itemsPerPage: 5, currentPage: page }">
+              <td>{{ t?.dataTramitacao | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ t?.setor }}</td>
+              <td>{{ t?.despacho }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3">
+                <div class="ui right floated pagination menu">
+                
+                  <pagination-template #p="paginationApi" (pageChange)="page = ($event)" id="tramites">
+    
+                        <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+                          <a (click)="p.previous()" class="icon item">
+                            <i class="left chevron icon"></i>
+                          </a>
+                        </div>
+                        <div class="current-page" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                          <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value" class="item">
+                            {{ page.label }}
+                          </a>
+                          <div class="current-page" *ngIf="p.getCurrent() === page.value">
+                            <a class="item active">{{ page.label }}</a>
+                          </div>
+                        </div>
+                        <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                          <a (click)="p.next()" class="icon item"><i class="right chevron icon"></i></a>
+                        </div>
+                    
+                  </pagination-template>
+
+                </div>
+              </th>
+
+
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="ui bottom attached tab segment" data-tab="documentos">
+        <table class="ui very basic table">
+          <thead>
+            <tr>
+              <th><h4>DESCRIÇÃO</h4></th>
+              <th><h4>ARQUIVO</h4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of documentos | paginate: { id: 'docs', itemsPerPage: 5, currentPage: pageDoc }">
+              <td>{{ d?.descricaoArquivo }}</td>
+              <td><a *ngIf="d?.caminhoArquivo" class="icon item" target="_blank" href="{{ url_docs }}\{{ d?.caminhoArquivo }}">
+                <i class="black file pdf link icon"></i>
+              </a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3">
+                <div class="ui right floated pagination menu">
+                
+                  <pagination-template #pg="paginationApi" (pageChange)="pageDoc = ($event)" id="docs">
+    
+                    <div class="pagination-previous" [class.disabled]="pg.isFirstPage()">
+                      <a (click)="pg.previous()" class="icon item">
+                        <i class="left chevron icon"></i>
+                      </a>
+                    </div>
+                    <div class="current-page" *ngFor="let page of pg.pages" [class.current]="pg.getCurrent() === page.value">
+                      <a (click)="pg.setCurrent(page.value)" *ngIf="pg.getCurrent() !== page.value" class="item">
+                        {{ page.label }}
+                      </a>
+                      <div class="current-page" *ngIf="pg.getCurrent() === page.value">
+                        <a class="item active">{{ page.label }}</a>
+                      </div>
+                    </div>
+                    <div class="pagination-next" [class.disabled]="pg.isLastPage()">
+                      <a (click)="pg.next()" class="icon item"><i class="right chevron icon"></i></a>
+                    </div>
+                    
+                  </pagination-template>
+
+                </div>
+              </th>
+
+
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    
+    </div>
+
+  </div>
+
+</div>
