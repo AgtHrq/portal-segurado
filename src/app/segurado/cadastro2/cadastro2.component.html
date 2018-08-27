@@ -1,54 +1,195 @@
-<form class="ui large form" [formGroup]="meuForm" (submit)="cadastra($event)">
+<form class="ui large form" [formGroup]="meuForm" (submit)="cadastra($event, meuForm.value)">
+
+  <div class="fields">
+    <div class="eight wide field">
+      <input 
+        type="text"
+        name="nomeSegurado"
+        formControlName="name"
+        Readonly>
+    </div>
+
+    <div class="eight wide field">
+      <input 
+        type="text"
+        name="cpfSegurado"
+        formControlName="cpf"
+        Readonly>
+    </div>
+  </div>
+
+  <div class="field">
+
+    <div>
+        <label>E-mail (Opcional)</label>
+        <input
+          type="email"
+          name="email"
+          formControlName="email">
+
+          <!--Mensagem de validação-->
+        <div class="ui red message" 
+          *ngIf="meuForm.controls.email.invalid && (meuForm.controls.email.touched)">
+          <p *ngIf="meuForm.controls.email.errors.email">E-mail não estar válido</p>
+        </div>
+    </div>
+
+  </div>
 
   <div class="fields">
     
-    <div class="eight wide field">
-        <label>E-mail (Opcional)</label>
-        <input type="email" name="email">
-    </div>
-
-    <div class="two wide field">
+    <div class="four wide field">
         <label>DDD</label>
-        <input type="number" name="celular" id="celular">
+        <input
+          type="text"
+          name="ddd"
+          id="ddd"
+          formControlName="ddd"
+          appCpfMask>
+
+          <!-- Mensagem de validação -->
+          <div class="ui red message" 
+            *ngIf="meuForm.controls.ddd.invalid && (meuForm.controls.ddd.touched)">
+
+            <p *ngIf="meuForm.controls.ddd.errors.minlength">DDD inválido, ex: (83)</p>
+
+          </div>
     </div>
     
-    <div class="eight wide field">
+    <div class="twelve wide field">
         <label>Celular</label>
-        <input type="number" name="celular" id="celular">
-    </div>
+        <input
+          type="text"
+          name="telefone"
+          id="celular"
+          formControlName="telefone">
+
+          <!-- Mensagem de validação -->
+          <div class="ui red message" 
+            *ngIf="meuForm.controls.telefone.invalid && (meuForm.controls.telefone.touched)">
+
+            <p *ngIf="meuForm.controls.telefone.errors.minlength">Número inválido</p>
+            <p *ngIf="meuForm.errors?.checkContato">Campos DDD e Celular tem que ser preenchido juntos</p>
+            
+          </div>
+          
+        </div>
+
 
   </div>
 
   <div class="field">
     <label>Pergunta Secreta</label>
-    <select class="ui fluid dropdown" name="pergSecreta">
-    <option value="">Selecione</option>
+    <select  class="ui fluid dropdown" name="pergSecreta" formControlName="pergunta">
+      <option value="" selected disabled>Selecione</option>
+      <option *ngFor="let pergunta of perguntas" value="{{pergunta.descricao}}-{{pergunta.id}}">
+        {{pergunta.descricao}} 
+      </option>
     </select>
+    <!-- Mensagem de validação -->
+    <div class="ui red message" 
+      *ngIf="meuForm.controls.pergunta.invalid && (meuForm.controls.pergunta.touched)">
+
+      <p *ngIf="meuForm.controls.pergunta.errors.required">Selecione uma pergunta</p>
+
+    </div>
   </div>
 
   <div class="field">
     <label>Resposta secreta</label>
-    <input type="text" name="respSecreta">
+    <input
+      type="text"
+      name="resposta"
+      id="resposta"
+      formControlName="resposta">
+
+      <!-- Mensagem de validação -->
+      <div class="ui red message" 
+          *ngIf="meuForm.controls.resposta.invalid && (meuForm.controls.resposta.touched)">
+
+          <p *ngIf="meuForm.controls.resposta.errors.required">Preciso de uma resposta</p>
+          <p *ngIf="meuForm.controls.resposta.errors.minlength">Resposta inválida</p>
+
+    </div>
   </div>
 
   <div class="fields">
 
     <div class="eight wide field">
-    <label>Senha</label>
-    <input type="text" name="senha">
+
+      <label>Senha</label>
+      <input
+        type="password"
+        name="senha"
+        id="senha"
+        #senha1
+        formControlName="password">
+
     </div>
 
     <div class="eight wide field">
-    <label>Confirmar senha</label>
-    <input type="text" name="confirmeSenha">
+
+      <label>Confirmar senha</label>
+      <input
+        type="password"
+        name="confirmeSenha"
+        id="confirmeSenha"
+        #senha2
+        formControlName="confirmeSenha">
+      
+        <!-- Mensagend de validação -->
+        
+        <div class="ui red message"
+          *ngIf="meuForm.controls.password.invalid && (meuForm.controls.password.touched)">
+
+          <ul>
+            <li *ngIf="meuForm.controls.password.errors?.upperCase">
+                A senha deve conter pelo menos uma letra maiúscula.  
+            </li>
+  
+            <li *ngIf="meuForm.controls.password.errors?.lowerCase">
+              A senha deve conter pelo menos uma letra minúscula.
+            </li>
+  
+            <li *ngIf="meuForm.controls.password.errors?.containNumber">
+                A senha deve conter pelo menos um número.
+            </li>
+
+            <li *ngIf="meuForm.controls.password.errors?.minlength">
+              A senha deve conter no mínimo 6 caracteres.
+            </li>
+
+            <li *ngIf="meuForm.controls.password.errors?.maxlength">
+                A senha deve conter no máximo 14 caracteres.
+            </li>
+
+            <li *ngIf="meuForm.controls.password.errors?.required">
+              Campos de senha obrigatórios
+            </li>
+
+          </ul>
+
+        </div>
+
+          
+          <div class="ui red message" 
+            *ngIf="meuForm.errors?.equal && (meuForm.controls.password.touched)">
+            <ul>
+
+              <li>
+                  Senhas divergentes.
+              </li>
+
+            </ul>
+          </div>
+
     </div>
 
-    <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
-        Cadastrar
-    </button>
     
   </div>
 
+  <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
+      Cadastrar
+  </button>
+
 </form>
-
-

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CadastrarService } from '../../services/cadastrar.service';
-import { MaskUtils } from '../../utils/mask-utils';
+
+import { CadastrarService } from '../../services/cadastrar/cadastrar.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,13 +10,16 @@ import { MaskUtils } from '../../utils/mask-utils';
 })
 export class CadastroComponent implements OnInit {
   meuForm: FormGroup;
-  cpfMask: MaskUtils;
-  dataNascimentoMask: MaskUtils;
-  proximo: boolean = true;
+  cadastro: boolean = true;
+  verificaVinculos: boolean = false;
+  cadastro2: boolean = false;
+  numVinculos:number;
+  nomeSegurado: string;
+  cpfSegurado: string;
+  vinculos = [];
 
   constructor(formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
-    this.cpfMask = new MaskUtils();
-    this.dataNascimentoMask = new MaskUtils();
+
 
     this.meuForm = formBuilder.group({
 
@@ -37,43 +39,54 @@ export class CadastroComponent implements OnInit {
       )],
 
     });
+
+    // this.meuForm.setValidators([ testaCPF ]);
   }
 
   ngOnInit() {
-    this.cpfMask.cpfMask("cpf");
-    this.dataNascimentoMask.dtMask("dataNascimento");
   }
 
   verifica(event, segurado){
     event.preventDefault();
-
+    this.nomeSegurado = segurado.nome;
+    this.cpfSegurado = segurado.cpf;
     segurado.cpf = this.formatCpf(segurado.cpf);
     segurado.dataNascimento = this.formatData(segurado.dataNascimento);
+    
 
     this.cadastrarService.verificarSegurado(segurado).subscribe(
       proximo => {
-        this.proximo = false;
-
-        console.log("json", proximo.json());
-      
+        this.vinculos = proximo.json();
+        // console.log('cadastro', this.vinculos);
+        this.numVinculos = proximo.json().length;
+        this.cadastro = false;
+        this.verificaVinculos = true;
+        
       },
       error => {
-        console.log("error");
         alert(error._body);
       }
-    )
+    );
   }
 
-  formatCpf(cpf: String): String {
+  formatCpf(cpf: string): string {
 
     return cpf.replace(/\.|\-/gi, "");
 
   }
 
-  formatData(date: String): String {
+  formatData(date: string): string {
 
     return date.split('/').reverse().join('-');
 
+  }
+
+  mudaFlagCadastro2(evento){
+    this.cadastro2 = evento;
+  }
+
+  mudaFlagVerificaVinculos(evento){
+    this.verificaVinculos = evento;
   }
 
 }

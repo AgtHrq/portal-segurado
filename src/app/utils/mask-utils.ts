@@ -28,4 +28,17 @@ export class MaskUtils {
         return `${cpf.substring(0, 3)}.${cpf.substring(3, 6)}.${cpf.substring(6, 9)}-${cpf.substring(9, 11)}`;
 
     }
+
+    public celularMask(id: string): void{
+        $(`#${id}`).mask("00000-0000");
+    }
+
+    
+    public dddMask(id: string): void{
+        $(`#${id}`).mask("(00)");
+    }
+
+    public matriculaMask(id: string): void {
+        $(`.${id}`).mask("000.000-0", {reverse: true});
+    }
 }

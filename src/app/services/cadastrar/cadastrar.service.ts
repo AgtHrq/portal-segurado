@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { BackendService } from './backend.service';
-import { Authorization } from './jwt.service';
+import { BackendService } from '../backend.service';
+import { Authorization } from '../jwt.service';
 
 @Injectable({
   providedIn: 'root'
