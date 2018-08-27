@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Router } from '@angular/router';
 
 import { Solicitacao } from './../../models/solicitacao';
 import { User } from './../../models/user';
@@ -31,7 +32,7 @@ export class SolicitacaoComponent implements OnInit {
   class: string = "hidden";
   state: string = "inactive";
 
-  constructor(private userService: UserService, private solicitacaoService: SolicitacaoService) { 
+  constructor(private userService: UserService, private solicitacaoService: SolicitacaoService, private router: Router) { 
   }
 
   ngOnInit() {
@@ -47,6 +48,12 @@ export class SolicitacaoComponent implements OnInit {
           s.showDetail = "hidden";
         })
         this.numSolicitacoes = this.solicitacoes.length;
+      },
+      error=> {
+        if (JSON.parse(error._body).message.trim() === "Invalid Token"){
+          this.userService.logoffUser();
+          this.router.navigate(['/']);
+        }
       });
 
   }
