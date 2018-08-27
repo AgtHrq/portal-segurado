@@ -1,13 +1,25 @@
+<app-loader *ngIf="showLoader"></app-loader>
 <div [@flyInOut]="state" class="ui segments">
   <div class="ui top attached right aligned segment">
     <h3 class="ui floated header">Nova Solicitação</h3>
     <i (click) = "emitter('hidden', 'inactive'); limpaCampos()" class="link window close outline icon"></i>
   </div>
   <div class="ui attached segment">
+    <div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
+      <i class="close icon" (click)="showMessage = false"></i>
+      <div class="header">
+        {{ message }}
+      </div>
+    </div>
     <form class="ui form" (submit)="newSolicitacao($event, formNovaSolicitacao.value)" [formGroup]="formNovaSolicitacao">
-      <div class="field">
+      <input type="hidden" formControlName="cpf">
+      <div class="field" formGroupName="tipoSolicitacao">
         <label>Solicitação:</label>
-        <input type="text" formControlName="titulo">
+        <select class="ui fluid dropdown" formControlName="id" (change)="setDescricao($event)">
+          <option value="">Selecione</option>
+          <option *ngFor="let t of tipoSolicitacao" value="{{ t.id }}">{{ t.descricao }}</option>
+        </select>
+        <input type="hidden" formControlName="descricao">
       </div>
       <div class="ui divider"></div>
       <div class="field">

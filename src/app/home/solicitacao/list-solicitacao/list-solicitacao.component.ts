@@ -35,6 +35,14 @@ export class ListSolicitacaoComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnChanges(){ }
+  ngOnChanges(){ 
+
+    if(this.solicitacoes != null){
+
+      this.solicitacoes.sort((a, b) => a.dataCriacao > b.dataCriacao ? -1 : 1);
+      
+    }
+
+  }
 
 }

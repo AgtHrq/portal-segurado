@@ -15,4 +15,10 @@ export class SolicitacaoService {
 
   }
 
+  addSolicitacao(data) {
+
+    return this.backendService.protectedRequest("usuarios/enviarSolicitacao", "post", data);
+
+  }
+
 }
