@@ -20,7 +20,6 @@ import { FirstVerificationComponent } from './segurado/forgot-password/first-ver
 import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 import { CpfMaskDirective } from './directives/cpf-mask.directive';
 import { SendEmailComponent } from './segurado/forgot-password/send-email/send-email.component';
-import { LoaderComponent } from './loader/loader.component';
 import { CadastroVerificaVinculo } from './segurado/cadastro-verifica-vinculo/cadastro-verifica-vinculo.component';
 
 import { NgxCaptchaModule } from "ngx-captcha";
@@ -41,8 +40,8 @@ import { OuvidoriaModule } from './home/ouvidoria/ouvidoria.module';
     FirstVerificationComponent, 
     ChangePasswordComponent, 
     CpfMaskDirective, 
-    SendEmailComponent, 
-    LoaderComponent, CadastroVerificaVinculo
+    SendEmailComponent,
+    CadastroVerificaVinculo,
     SendEmailComponent
   ],
   imports: [
