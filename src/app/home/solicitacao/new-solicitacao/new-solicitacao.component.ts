@@ -34,6 +34,7 @@ export class NewSolicitacaoComponent implements OnInit {
   showMessage: boolean = false;
   success: boolean = false;
   message: string = "";
+  numCaracteres: number = 255;
 
   constructor(private userService: UserService, private solicitacaoService: SolicitacaoService, private formBuilder: FormBuilder) { }
 

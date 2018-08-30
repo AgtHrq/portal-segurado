@@ -24,7 +24,10 @@
       <div class="ui divider"></div>
       <div class="field">
         <label>Descrição:</label>
-        <textarea formControlName="descricao"></textarea>
+        <textarea (keyup)="numCaracteres = 255 - $event.target.value.length" maxlength="255" formControlName="descricao"></textarea>
+        <div class="ui basic right aligned segment">
+          <p [class.attention]="numCaracteres <= 50">Caracteres restantes: {{ numCaracteres }}</p>
+        </div>
       </div>
       <button class="ui teal button" [disabled]="formNovaSolicitacao.invalid" type="submit">Abrir Solicitação</button>
     </form>
