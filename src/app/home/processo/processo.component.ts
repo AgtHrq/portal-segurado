@@ -51,7 +51,10 @@ export class ProcessoComponent implements OnInit {
         this.processos = data.json();
       },
       error=> {
-        if (JSON.parse(error._body).message.trim() === "Invalid Token"){
+        console.log(error);
+        if (error._body.trim() === "O cpf informado não possui processos abertos e/ou fechados!") {
+          this.showLoader = false;
+        }else if (error._body.message.trim() === "Invalid Token"){
           this.userService.logoffUser();
           this.router.navigate(['/']);
         }

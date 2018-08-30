@@ -21,7 +21,7 @@
       </div>
       <div class="doubling twelve wide stretched column">
         <div class="ui tall stacked segment">
-          <app-list-solicitacao [solicitacoes]="solicitacoes"></app-list-solicitacao>
+          <app-list-solicitacao (atualizaLista)="atualizaLista()" [user]="user" [solicitacoes]="solicitacoes"></app-list-solicitacao>
         </div>
         <div [ngClass]="class">
           <app-new-solicitacao (solicitacaoAdded)="atualizaLista()" (classEmitter)="class = $event" (stateEmitter)="state = $event" [state]="state"></app-new-solicitacao>

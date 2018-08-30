@@ -10,7 +10,7 @@ export class ProcessoService {
 
   getProcessos(cpf) {
     
-    return this.backenService.protectedRequest('usuarios/processos', 'post', null, cpf);
+    return this.backenService.protectedRequest('usuarios/processos', 'post', { cpf: cpf });
 
   }
 

@@ -3,13 +3,25 @@
     <tr>
       <th>Tipo</th>
       <th>Data de Criação</th>
+      <th>Ação</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let s of solicitacoes | paginate: { itemsPerPage: 5, currentPage: page }" (click)="showDetail(s)">
-      <td class="{{ s.showTd }}">{{ s.tipoSolicitacao.descricao }}</td>
-      <td class="{{ s.showTd }}">{{ s.dataCriacao | date: 'dd/MM/yyyy' }}</td>
-      <td colspan="2" class="{{ s.showDetail }}">
+    <app-loader *ngIf="showLoader" title="Fechando solicitação"></app-loader>
+    <tr *ngFor="let s of solicitacoes | paginate: { itemsPerPage: 5, currentPage: page }">
+      <td (click)="showDetail(s)" class="{{ s.showTd }}">{{ s.tipoSolicitacao.descricao }}</td>
+      <td (click)="showDetail(s)" class="{{ s.showTd }}">{{ s.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+      <td *ngIf="s.status" class="{{ s.showTd }}">
+        <div class="field">
+          <div (click)="fecharSolicitacao(s.id)" class="ui slider checkbox">
+            <input tabindex="0" class="hidden" type="checkbox">
+            <label>Fechar solicitação aberta</label>
+          </div>
+          <label></label>
+        </div>
+      </td>
+      <td class="{{ s.showTd }}" *ngIf="!s.status"><i class="large green checkmark icon"></i>Solicitação fechada</td>
+      <td (click)="showDetail(s)" colspan="3" class="{{ s.showDetail }}">
         <app-detail-solicitacao [solicitacao]="s"></app-detail-solicitacao>
       </td>
     </tr>

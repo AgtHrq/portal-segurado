@@ -24,7 +24,7 @@ import { SolicitacaoService } from './../../services/solicitacao/solicitacao.ser
 export class SolicitacaoComponent implements OnInit {
 
   @Input() title: string = "SOLICITAÇÕES";
-  solicitacoes: Solicitacao[];
+  solicitacoes: Solicitacao[] = [];
   numSolicitacoes: number = 0;
   aux: any;
   num: number;
@@ -40,7 +40,7 @@ export class SolicitacaoComponent implements OnInit {
     this.userService.getLoggedUser()
       .subscribe(user => this.user = user);
 
-      this.solicitacaoService.getSolicitacoes(this.user.user_cpf).subscribe(solicitacoes => {
+      this.solicitacaoService.getSolicitacoes().subscribe(solicitacoes => {
         this.aux = solicitacoes.json();
         this.solicitacoes = this.aux as Solicitacao[];
         this.solicitacoes.forEach(s => {
@@ -50,6 +50,7 @@ export class SolicitacaoComponent implements OnInit {
         this.numSolicitacoes = this.solicitacoes.length;
       },
       error=> {
+        console.log(error);
         if (JSON.parse(error._body).message.trim() === "Invalid Token"){
           this.userService.logoffUser();
           this.router.navigate(['/']);
@@ -72,7 +73,7 @@ export class SolicitacaoComponent implements OnInit {
 
   atualizaLista(){
 
-    this.solicitacaoService.getSolicitacoes(this.user.user_cpf).subscribe(solicitacoes => {
+    this.solicitacaoService.getSolicitacoes().subscribe(solicitacoes => {
       this.aux = solicitacoes.json();
       this.solicitacoes = this.aux as Solicitacao[];
       this.solicitacoes.forEach(s => {

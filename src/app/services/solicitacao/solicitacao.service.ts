@@ -9,15 +9,27 @@ export class SolicitacaoService {
 
   constructor(private backendService: BackendService) { }
 
-  getSolicitacoes(cpf: string) {
+  getSolicitacoes() {
 
-    return this.backendService.protectedRequest("usuarios/solicitacoes", "post", { cpf: cpf });
+    return this.backendService.protectedRequest("usuarios/solicitacoesUsuario", "get");
 
   }
 
   addSolicitacao(data) {
 
     return this.backendService.protectedRequest("usuarios/enviarSolicitacao", "post", data);
+
+  }
+
+  getTipoSolicitacao() {
+
+    return this.backendService.protectedRequest("usuarios/tipoSolicitacao", "get");
+
+  }
+
+  fecharSolicitacao(id: number) {
+
+    return this.backendService.protectedRequest("usuarios/fecharSolicitacao", "get", null, { id: id });
 
   }
 

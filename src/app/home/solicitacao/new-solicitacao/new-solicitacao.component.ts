@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from './../../../models/user';
 import { UserService } from './../../../services/user.service';
 import { SolicitacaoService } from '../../../services/solicitacao/solicitacao.service';
+import { TipoSolicitacao } from '../../../models/tipo-solicitacao';
 
 @Component({
   selector: 'app-new-solicitacao',
@@ -27,7 +28,7 @@ export class NewSolicitacaoComponent implements OnInit {
   @Output() classEmitter = new EventEmitter<string>();
   @Output() stateEmitter = new EventEmitter<string>();
   @Output() solicitacaoAdded = new EventEmitter();
-  tipoSolicitacao = [{ id: "1", descricao: "Problema" }, { id: "2", descricao: "Sugestão" }, { id: "3", descricao: "Reclamação" }];
+  tipoSolicitacao: TipoSolicitacao[];
   formNovaSolicitacao: FormGroup;
   showLoader: boolean = false;
   showMessage: boolean = false;
@@ -40,15 +41,27 @@ export class NewSolicitacaoComponent implements OnInit {
 
     this.userService.getLoggedUser()
       .subscribe(user => this.user = user);
+
+    this.solicitacaoService.getTipoSolicitacao()
+      .subscribe(
+        tipoSolicitacao => {
+          this.tipoSolicitacao = tipoSolicitacao.json() as TipoSolicitacao[];
+        }
+      )
       
-      this.formNovaSolicitacao = this.formBuilder.group({
-        cpf: [this.user.user_cpf, Validators.required],
-        descricao: ["", Validators.required],
-        tipoSolicitacao: this.formBuilder.group({
-          id: ["", Validators.required],
-          descricao: [""]
-        })
-      });
+    this.formNovaSolicitacao = this.formBuilder.group({
+      cpf: [this.user.user_cpf, Validators.required],
+      descricao: ["", Validators.compose(
+        [
+          Validators.required, 
+          Validators.maxLength(255)
+        ]
+      )],
+      tipoSolicitacao: this.formBuilder.group({
+        id: ["", Validators.required],
+        descricao: [""]
+      })
+    });
 
   }
 

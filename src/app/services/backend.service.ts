@@ -60,6 +60,12 @@ export class BackendService {
 
       }
 
+      if(paramsHeader != null){
+
+        return this.http.get(`http://${this.url}/protegido/${url}`, { params: paramsHeader, headers: headers }); 
+         
+      }
+
       return this.http.get(`http://${this.url}/protegido/${url}`, {
         search: sParams,
         headers: headers
