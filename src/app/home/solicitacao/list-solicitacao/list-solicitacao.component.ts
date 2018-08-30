@@ -45,10 +45,10 @@ export class ListSolicitacaoComponent implements OnInit, OnChanges {
     this.showLoader = true;
     this.solicitacaoService.fecharSolicitacao(id)
       .subscribe(
-        su => {
+        () => {
           this.showLoader = false;
           this.atualizaLista.emit();
-        }, error => {
+        }, () => {
           this.showLoader = false;
         }
       );

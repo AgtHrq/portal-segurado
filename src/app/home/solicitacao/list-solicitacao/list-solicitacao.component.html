@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <app-loader *ngIf="showLoader" title="Fechando solicitação"></app-loader>
+    <app-loader *ngIf="showLoader" message="Fechando solicitação"></app-loader>
     <tr *ngFor="let s of solicitacoes | paginate: { itemsPerPage: 5, currentPage: page }">
       <td (click)="showDetail(s)" class="{{ s.showTd }}">{{ s.tipoSolicitacao.descricao }}</td>
       <td (click)="showDetail(s)" class="{{ s.showTd }}">{{ s.dataCriacao | date: 'dd/MM/yyyy' }}</td>
