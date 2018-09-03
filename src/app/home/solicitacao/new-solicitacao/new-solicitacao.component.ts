@@ -101,7 +101,7 @@ export class NewSolicitacaoComponent implements OnInit {
 
     this.formNovaSolicitacao.get("descricao").setValue("");
     this.formNovaSolicitacao.get("tipoSolicitacao").get("id").setValue("");
-    this.formNovaSolicitacao.untouched;
+    this.formNovaSolicitacao.markAsUntouched();
     this.numCaracteres = 255;
 
   }
