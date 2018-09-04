@@ -12,6 +12,7 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AuthGuard } from "./services/guards/auth.guard";
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { RespotaComponent } from "./home/ouvidoria/respota/respota.component";
+import { ContrachequeComponent } from './home/contracheque/contracheque.component';
 
 const APP_ROUTES: Routes = [
 
@@ -51,6 +52,9 @@ const APP_ROUTES: Routes = [
                         path:"**", redirectTo: ""
                     }
                 ]
+            },
+            {
+                path: "contracheque", component: ContrachequeComponent
             },
             {
                 path: "**", redirectTo: ""

@@ -14,7 +14,11 @@
     <form class="ui form" (submit)="newSolicitacao($event, formNovaSolicitacao.value)" [formGroup]="formNovaSolicitacao" 
       [class.error]="formNovaSolicitacao.touched && formNovaSolicitacao.invalid">
       <input type="hidden" formControlName="cpf">
-      <div class="field" [class.error]="(formNovaSolicitacao.touched || formNovaSolicitacao.controls.tipoSolicitacao.dirty) && formNovaSolicitacao.controls.tipoSolicitacao.invalid" formGroupName="tipoSolicitacao">
+      <div class="field" [hidden]="user.user_email != '' || user.user_email != null">
+        <label>E-mail:</label>
+        <input type="text" formControlName="email">
+      </div>
+      <div class="field" [class.error]="(formNovaSolicitacao.controls.tipoSolicitacao.touched && formNovaSolicitacao.controls.tipoSolicitacao.dirty) && formNovaSolicitacao.controls.tipoSolicitacao.invalid" formGroupName="tipoSolicitacao">
         <label>Solicitação:</label>
         <select class="ui fluid dropdown" formControlName="id" (change)="setDescricao($event)">
           <option value="">Selecione</option>
@@ -26,16 +30,16 @@
         <p>Selecione um tipo de solicitação!</p>
       </div>
       <div class="ui divider"></div>
-      <div class="field" [class.error]="(formNovaSolicitacao.touched || formNovaSolicitacao.controls.descricao.dirty) && (formNovaSolicitacao.controls.descricao.errors?.required || 
+      <div class="field" [class.error]="(formNovaSolicitacao.controls.descricao.touched && formNovaSolicitacao.controls.descricao.dirty) && (formNovaSolicitacao.controls.descricao.errors?.required || 
         formNovaSolicitacao.controls.descricao.errors?.maxlength)">
         <label>Descrição:</label>
         <textarea (keyup)="numCaracteres = 255 - $event.target.value.length" maxlength="255" formControlName="descricao"></textarea>
+        <div class="ui error message" *ngIf="formNovaSolicitacao.controls.descricao.errors?.required">
+          <p>O campo descrição é obrigatório!</p>
+        </div>
         <div class="ui basic right aligned segment">
           <p [class.attention]="numCaracteres <= 50">Caracteres restantes: {{ numCaracteres }}</p>
         </div>
-      </div>
-      <div class="ui error message" *ngIf="formNovaSolicitacao.controls.descricao.errors?.required">
-        <p>O campo descrição é obrigatório!</p>
       </div>
       <button class="ui teal button" [disabled]="formNovaSolicitacao.invalid" type="submit">Abrir Solicitação</button>
     </form>

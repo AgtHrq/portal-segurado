@@ -50,7 +50,6 @@ export class SolicitacaoComponent implements OnInit {
         this.numSolicitacoes = this.solicitacoes.length;
       },
       error=> {
-        console.log(error);
         if (JSON.parse(error._body).message.trim() === "Invalid Token"){
           this.userService.logoffUser();
           this.router.navigate(['/']);

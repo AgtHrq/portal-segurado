@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MaskCpfPipe } from './processo/mask-cpf.pipe';
 import { NomePipePipe } from './nome-pipe.pipe';
 import { SolicitacaoModule } from './solicitacao/solicitacao.module';
+import { ContrachequeModule } from './contracheque/contracheque.module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { SolicitacaoModule } from './solicitacao/solicitacao.module';
     NgxPaginationModule,
     SolicitacaoModule,
     AlterarDadosModule,
+    ContrachequeModule,
     LoaderModule,
     RouterModule
   ],

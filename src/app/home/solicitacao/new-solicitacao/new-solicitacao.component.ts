@@ -52,6 +52,7 @@ export class NewSolicitacaoComponent implements OnInit {
       
     this.formNovaSolicitacao = this.formBuilder.group({
       cpf: [this.user.user_cpf, Validators.required],
+      email: [this.user.user_email],
       descricao: ["", Validators.compose(
         [
           Validators.required, 
@@ -101,6 +102,8 @@ export class NewSolicitacaoComponent implements OnInit {
 
     this.formNovaSolicitacao.get("descricao").setValue("");
     this.formNovaSolicitacao.get("tipoSolicitacao").get("id").setValue("");
+    this.formNovaSolicitacao.get("tipoSolicitacao").get("id").markAsUntouched();
+    this.formNovaSolicitacao.get("descricao").markAsUntouched();
     this.formNovaSolicitacao.markAsUntouched();
     this.numCaracteres = 255;
 
