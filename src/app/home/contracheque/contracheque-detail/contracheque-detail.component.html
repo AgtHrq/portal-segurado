@@ -1,26 +1,6 @@
 <div class="ui top attached tabular menu">
-  <a class="active item" data-tab="first">04/2018</a>
-  <a class="item" data-tab="second">05/2018</a>
-  <a class="item" data-tab="third">06/2018</a>
-  <a class="item" data-tab="fourth">07/2018</a>
-  <a class="item" data-tab="fifth">08/2019</a>
-  <a class="item" data-tab="sixth">09/2019</a>
+  <a *ngFor="let c of vinculo.contracheques; first as isFirst" class="item" [class.active]="c.activate" (click)="deactivate();c.activate = true">{{ c.mes }}/{{ c.ano }}</a>
 </div>
-<div class="ui bottom attached active tab segment" data-tab="first">
-  {{ vinculo.orgao }}
-</div>
-<div class="ui bottom attached tab segment" data-tab="second">
-  {{ vinculo.orgao }}
-</div>
-<div class="ui bottom attached tab segment" data-tab="third">
-  {{ vinculo.orgao }}
-</div>
-<div class="ui bottom attached tab segment" data-tab="fourth">
-  {{ vinculo.orgao }}
-</div>
-<div class="ui bottom attached tab segment" data-tab="fifth">
-  {{ vinculo.orgao }}
-</div>
-<div class="ui bottom attached tab segment" data-tab="sixth">
-  {{ vinculo.orgao }}
+<div *ngFor="let c of vinculo.contracheques; first as isFirst" class="ui bottom attached tab segment" [class.active]="c.activate">
+  {{ vinculo.orgao }} - {{ c.mes }}/{{ c.ano }}
 </div>

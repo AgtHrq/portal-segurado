@@ -19,6 +19,14 @@ export class ContrachequeDetailComponent implements OnInit, OnChanges {
 
   }
 
+  deactivate() {
+
+    this.vinculo.contracheques.forEach( c => {
+      c.activate = false;
+    });
+
+  }
+
   ngOnChanges() { }
 
 }
