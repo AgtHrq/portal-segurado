@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { HomeUtils } from '../../../utils/home-utils';
 
@@ -7,7 +7,9 @@ import { HomeUtils } from '../../../utils/home-utils';
   templateUrl: './contracheque-detail.component.html',
   styleUrls: ['./contracheque-detail.component.css']
 })
-export class ContrachequeDetailComponent implements OnInit {
+export class ContrachequeDetailComponent implements OnInit, OnChanges {
+
+  @Input() vinculo: any;
 
   constructor(private utils: HomeUtils) { }
 
@@ -16,5 +18,7 @@ export class ContrachequeDetailComponent implements OnInit {
     this.utils.contracheque();
 
   }
+
+  ngOnChanges() { }
 
 }

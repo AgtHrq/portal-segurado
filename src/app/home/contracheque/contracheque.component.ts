@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { HomeUtils } from '../../utils/home-utils';
@@ -17,12 +17,37 @@ import { HomeUtils } from '../../utils/home-utils';
     ])
   ]
 })
-export class ContrachequeComponent implements OnInit {
+export class ContrachequeComponent implements OnInit, OnChanges {
 
-  title: string = "contracheque"
+  title: string = "contracheque";
+  vinculo: any;
+  vinculos = [
+    { orgao: "Vinculo 1", activate: true }, 
+    { orgao: "Vinculo 2", activate: false }, 
+    { orgao: "Vinculo 3", activate: false }
+  ];
 
   constructor() { }
 
-  ngOnInit() { }
+  deactivate(vinculo) {
 
+    this.vinculo = vinculo;
+
+    this.vinculos.forEach(v => {
+      v.activate = false;
+    });
+
+  }
+
+  ngOnInit() { 
+
+    this.vinculos.forEach(v => {
+      if (v.activate === true) {
+        this.vinculo = v;
+      }
+    })
+
+   }
+  
+  ngOnChanges() { }
 }
