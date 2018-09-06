@@ -22,7 +22,7 @@ export class ContrachequeComponent implements OnInit, OnChanges {
   title: string = "contracheque";
   vinculo: any;
   vinculos = [
-    { orgao: "Vinculo 1", activate: true, contracheques: 
+    { orgao: "Vinculo 1", matricula: "1236812", activate: true, contracheques: 
       [
         { mes: "04", ano: "2018", activate: true }, 
         { mes: "05", ano: "2018", activate: false },
@@ -31,7 +31,7 @@ export class ContrachequeComponent implements OnInit, OnChanges {
         { mes: "08", ano: "2018", activate: false },
         { mes: "09", ano: "2018", activate: false }
       ] }, 
-    { orgao: "Vinculo 2", activate: false, contracheques:
+    { orgao: "Vinculo 2", matricula: "1236812", activate: false, contracheques:
       [
         { mes: "04", ano: "2018", activate: true }, 
         { mes: "05", ano: "2018", activate: false },
@@ -40,7 +40,7 @@ export class ContrachequeComponent implements OnInit, OnChanges {
         { mes: "08", ano: "2018", activate: false },
         { mes: "09", ano: "2018", activate: false }
       ] }, 
-    { orgao: "Vinculo 3", activate: false, contracheques: 
+    { orgao: "Vinculo", matricula: "1236812", activate: false, contracheques: 
       [
         { mes: "04", ano: "2018", activate: true }, 
         { mes: "05", ano: "2018", activate: false },

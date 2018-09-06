@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 
 import { HomeUtils } from '../../../utils/home-utils';
 
@@ -7,26 +7,24 @@ import { HomeUtils } from '../../../utils/home-utils';
   templateUrl: './contracheque-detail.component.html',
   styleUrls: ['./contracheque-detail.component.css']
 })
-export class ContrachequeDetailComponent implements OnInit, OnChanges {
+export class ContrachequeDetailComponent implements AfterViewInit {
 
   @Input() vinculo: any;
 
   constructor(private utils: HomeUtils) { }
 
-  ngOnInit() {
+  deactivate() {
+    
+    this.vinculo.contracheques.forEach( c => {
+      c.activate = false;
+    });
+    
+  }
+
+  ngAfterViewInit() {
 
     this.utils.contracheque();
 
   }
-
-  deactivate() {
-
-    this.vinculo.contracheques.forEach( c => {
-      c.activate = false;
-    });
-
-  }
-
-  ngOnChanges() { }
 
 }

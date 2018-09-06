@@ -9,7 +9,18 @@
     <div class="ui grid">
       <div class="doubling four wide column">
         <div class="ui vertical fluid tabular menu">
-          <a *ngFor="let v of vinculos" class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true">{{ v.orgao }}</a>
+          <ng-template ngFor let-v [ngForOf]="vinculos">
+            <a *ngIf="v.orgao.length > 7; else elseBlock" [attr.data-content]="v.orgao | uppercase"  
+              data-variation="basic" data-position="top center" class="item" 
+              [class.active]="v.activate" (click)="deactivate(v);v.activate = true">
+                {{ v.matricula }} - {{ v.orgao | orgaoAbv }}
+            </a>
+            <ng-template #elseBlock>
+              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true">
+                {{ v.matricula }} - {{ v.orgao | orgaoAbv }}
+              </a>
+            </ng-template>
+          </ng-template>
         </div>
       </div>
       <div class="doubling twelve wide stretched column">

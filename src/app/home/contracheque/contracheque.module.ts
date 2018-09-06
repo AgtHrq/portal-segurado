@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ContrachequeComponent } from './contracheque.component';
 import { ContrachequeDetailComponent } from './contracheque-detail/contracheque-detail.component';
+import { OrgaoAbvPipe } from './orgao-abv.pipe';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ContrachequeDetailComponent } from './contracheque-detail/contracheque-
   ],
   declarations: [
     ContrachequeComponent,
-    ContrachequeDetailComponent
+    ContrachequeDetailComponent,
+    OrgaoAbvPipe
   ]
 })
 export class ContrachequeModule { }

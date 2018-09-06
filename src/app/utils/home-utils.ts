@@ -37,6 +37,7 @@ export class HomeUtils {
     public contracheque(): void {
 
         $(".menu .item").tab();
+        $("a").popup();
 
     }
 
