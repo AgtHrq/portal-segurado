@@ -39,7 +39,10 @@
 
                 <div class="field">
                     <label>Senha:</label>
-                    <input formControlName="password" (focus)="hideError()" id="password" name="password" type="password">
+                    <div class="ui icon input">
+                        <i class="eye link icon" (mousedown)="type = 'text'" (mouseup)="type = 'password'"></i>
+                        <input formControlName="password" (focus)="hideError()" id="password" name="password" type="{{type}}">
+                    </div>
 
                     <!-- Erros do campo -->
                     <div *ngIf="formGroup.controls.password.invalid && formGroup.controls.password.touched" class="ui error message">

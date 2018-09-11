@@ -17,6 +17,7 @@ export class LoginComponent {
     utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
     showLoader: boolean = false;
+    type = "password";
 
     ngOnInit(){ }
 
