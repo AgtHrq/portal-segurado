@@ -41,7 +41,7 @@
                     <label>Senha:</label>
                     <div class="ui icon input">
                         <i class="eye link icon" (mousedown)="type = 'text'" (mouseup)="type = 'password'"></i>
-                        <input formControlName="password" (focus)="hideError()" id="password" name="password" type="{{type}}">
+                        <input formControlName="password" (focus)="hideError()" id="password" name="password" [type]="type">
                     </div>
 
                     <!-- Erros do campo -->
