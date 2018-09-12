@@ -36,12 +36,10 @@ import { AdminModule } from './admin/admin.module';
     CadastroComponent,
     ErrorMessageComponent, 
     Cadastro2Component, 
-    ErrorMessageComponent, 
     ForgotPasswordComponent, 
     FirstVerificationComponent, 
     ChangePasswordComponent, 
     CpfMaskDirective, 
-    SendEmailComponent,
     CadastroVerificaVinculo,
     SendEmailComponent
   ],
