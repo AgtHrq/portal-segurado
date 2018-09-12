@@ -13,6 +13,7 @@ import { AuthGuard } from "./services/guards/auth.guard";
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { RespotaComponent } from "./home/ouvidoria/respota/respota.component";
 import { ContrachequeComponent } from './home/contracheque/contracheque.component';
+import { AdminComponent } from './admin/admin.component';
 
 const APP_ROUTES: Routes = [
 
@@ -60,6 +61,9 @@ const APP_ROUTES: Routes = [
                 path: "**", redirectTo: ""
             }
         ]
+    },
+    {
+        path: "admin", component: AdminComponent
     },
     { 
         path: "**", redirectTo: "" 

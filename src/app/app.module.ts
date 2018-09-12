@@ -26,6 +26,7 @@ import { NgxCaptchaModule } from "ngx-captcha";
 import { AuthGuard } from './services/guards/auth.guard';
 import { LoaderModule } from './loader/loader.module';
 import { OuvidoriaModule } from './home/ouvidoria/ouvidoria.module';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { OuvidoriaModule } from './home/ouvidoria/ouvidoria.module';
     HomeModule,
     OuvidoriaModule,
     LoaderModule,
+    AdminModule,
     routing
   ],
   providers: [
