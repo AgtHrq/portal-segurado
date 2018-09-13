@@ -25,7 +25,14 @@ export class LoginComponent {
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
         
         if (userService.isLogged()) {
-            this.route.navigate(["/home/segurado"]);
+            this.userService.getLoggedUser().subscribe(user => {
+                user as User;
+                if(user.user_role.trim() === "Segurado"){
+                    this.route.navigate(["/home/segurado"]);
+                } else if(user.user_role.trim() === "Super Administrador" || user.user_role.trim() === "Administrador"){
+                    this.route.navigate(["/admin"]);
+                }
+            });
         }
 
         this.formGroup = formBuilder.group({
@@ -57,7 +64,7 @@ export class LoginComponent {
                 this.userService.updateLoggedUser(data.text());
                 this.userService.getLoggedUser().subscribe(user => {
                     user as User;
-                    if (user.user_role === "Super Administrador"){
+                    if (user.user_role.trim() === "Super Administrador" || user.user_role.trim() === "Administrador"){
                         this.route.navigate(["/admin"]);
                     } else {
                         this.route.navigate(["/home/segurado"]);

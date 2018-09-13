@@ -22,7 +22,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     
-    if (this.user.user_role.trim() === "Super Administrador" ){
+    if (this.user.user_role.trim() === "Super Administrador" || this.user.user_role.trim() === "Administrador"){
 
       return true;
 
