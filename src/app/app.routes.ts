@@ -1,6 +1,6 @@
-import { InitialComponent } from './home/ouvidoria/initial/initial.component';
 import { Routes, RouterModule } from "@angular/router";
 
+import { InitialComponent } from './home/ouvidoria/initial/initial.component';
 import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
 import { SolicitacaoComponent } from './home/solicitacao/solicitacao.component';
 import { ProcessoComponent } from './home/processo/processo.component';
@@ -9,7 +9,7 @@ import { LoginComponent } from './segurado/login/login.component';
 import { CadastroComponent } from './segurado/cadastro/cadastro.component';
 import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
-import { AuthGuard } from "./services/guards/auth.guard";
+import { AuthGuard } from './services/guards/auth.guard';
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { RespotaComponent } from "./home/ouvidoria/respota/respota.component";
 import { ContrachequeComponent } from './home/contracheque/contracheque.component';

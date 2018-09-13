@@ -3,6 +3,7 @@ import { Component, ViewChild, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MaskUtils } from '../../utils/mask-utils';
+import { User } from '../../models/user';
 
 @Component({
     selector: 'login-segurado',
@@ -54,7 +55,14 @@ export class LoginComponent {
             data => {
                 this.showLoader = false;
                 this.userService.updateLoggedUser(data.text());
-                this.route.navigate(["/home/segurado"]);
+                this.userService.getLoggedUser().subscribe(user => {
+                    user as User;
+                    if (user.user_role === "Super Administrador"){
+                        this.route.navigate(["/admin"]);
+                    } else {
+                        this.route.navigate(["/home/segurado"]);
+                    }
+                })
             },
             erro => {
                 this.showLoader = false;
