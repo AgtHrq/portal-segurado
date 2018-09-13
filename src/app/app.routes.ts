@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 
+import { AdminGuard } from './services/guards/admin.guard';
 import { InitialComponent } from './home/ouvidoria/initial/initial.component';
 import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
 import { SolicitacaoComponent } from './home/solicitacao/solicitacao.component';
@@ -14,6 +15,7 @@ import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { RespotaComponent } from "./home/ouvidoria/respota/respota.component";
 import { ContrachequeComponent } from './home/contracheque/contracheque.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 const APP_ROUTES: Routes = [
 
@@ -63,7 +65,12 @@ const APP_ROUTES: Routes = [
         ]
     },
     {
-        path: "admin", component: AdminComponent
+        path: "admin", component: AdminComponent, canActivate: [AdminGuard], 
+        children: [
+            { 
+                path: "", component: AdminHomeComponent 
+            }
+        ]
     },
     { 
         path: "**", redirectTo: "" 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { User } from './../../models/user';
 
 @Component({
   selector: 'app-admin-submenu',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSubmenuComponent implements OnInit {
 
-  menus: string[] = ["Alterar dados"];
+  @Input() menus: string[];
+  @Input() user: User;
 
   constructor() { }
 
