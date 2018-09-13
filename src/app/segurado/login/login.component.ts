@@ -1,9 +1,11 @@
-import { UserService } from '../../services/user.service';
-import { Component, ViewChild, OnInit, Input } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { MaskUtils } from '../../utils/mask-utils';
+import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { UserRole } from '../../models/user-role.enum';
 
 @Component({
     selector: 'login-segurado',
@@ -27,9 +29,9 @@ export class LoginComponent {
         if (userService.isLogged()) {
             this.userService.getLoggedUser().subscribe(user => {
                 user as User;
-                if(user.user_role.trim() === "Segurado"){
+                if(user.user_role.trim() === UserRole.segurado){
                     this.route.navigate(["/home/segurado"]);
-                } else if(user.user_role.trim() === "Super Administrador" || user.user_role.trim() === "Administrador"){
+                } else if(user.user_role.trim() === UserRole.super_admin || user.user_role.trim() === UserRole.admin){
                     this.route.navigate(["/admin"]);
                 }
             });
@@ -64,7 +66,7 @@ export class LoginComponent {
                 this.userService.updateLoggedUser(data.text());
                 this.userService.getLoggedUser().subscribe(user => {
                     user as User;
-                    if (user.user_role.trim() === "Super Administrador" || user.user_role.trim() === "Administrador"){
+                    if (user.user_role.trim() === UserRole.super_admin || user.user_role.trim() === UserRole.admin){
                         this.route.navigate(["/admin"]);
                     } else {
                         this.route.navigate(["/home/segurado"]);

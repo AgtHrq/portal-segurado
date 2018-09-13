@@ -4,6 +4,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { UserService } from '../user.service';
+import { UserRole } from '../../models/user-role.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     
-    if (this.user.user_role.trim() === "Super Administrador" || this.user.user_role.trim() === "Administrador"){
+    if (this.user.user_role.trim() === UserRole.super_admin || this.user.user_role.trim() === UserRole.admin){
 
       return true;
 
