@@ -2,5 +2,5 @@
   <div class="header item">
     Portal Segurado - ADM
   </div>
-  <a *ngFor="let m of menus" class="item">{{ m }}</a>
+  <a *ngFor="let m of menus" [routerLink]="m.router" class="item">{{ m.desc }}</a>
 </div>

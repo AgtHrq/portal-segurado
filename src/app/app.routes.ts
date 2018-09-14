@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule } from '@angular/router';
 
 import { AdminGuard } from './services/guards/admin.guard';
 import { InitialComponent } from './home/ouvidoria/initial/initial.component';
@@ -12,10 +12,12 @@ import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-passw
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
-import { RespotaComponent } from "./home/ouvidoria/respota/respota.component";
+import { RespotaComponent } from './home/ouvidoria/respota/respota.component';
 import { ContrachequeComponent } from './home/contracheque/contracheque.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CadastroUsuarioComponent } from './admin/admin-home/cadastro-usuario/cadastro-usuario.component';
+import { SuperAdminGuard } from './services/guards/super-admin.guard';
 
 const APP_ROUTES: Routes = [
 
@@ -68,7 +70,12 @@ const APP_ROUTES: Routes = [
         path: "admin", component: AdminComponent, canActivate: [AdminGuard], 
         children: [
             { 
-                path: "", component: AdminHomeComponent 
+                path: "", component: AdminHomeComponent, children: 
+                [
+                    { 
+                        path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
+                    }
+                ]
             }
         ]
     },

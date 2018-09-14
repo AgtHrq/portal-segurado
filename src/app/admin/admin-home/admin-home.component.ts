@@ -1,7 +1,9 @@
+import { UserRole } from './../../models/user-role.enum';
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from './../../services/user.service';
 import { User } from '../../models/user';
+import { Menu } from '../../models/menu';
 
 @Component({
   selector: 'app-admin-home',
@@ -10,10 +12,7 @@ import { User } from '../../models/user';
 })
 export class AdminHomeComponent implements OnInit {
 
-  menus: string[] = [
-    "Alterar Dados", 
-    "Cadastro de usuários",
-  ];
+  menus: Menu[];
   user: User;
   constructor(private userService: UserService) { }
 
@@ -22,6 +21,15 @@ export class AdminHomeComponent implements OnInit {
     this.userService.getLoggedUser().subscribe(user => {
       this.user = user;
     });
+
+    if (this.user.user_role === UserRole.admin){
+      this.menus = [new Menu("Alterar dados", "", "")];
+    } else if(this.user.user_role === UserRole.super_admin) {
+      this.menus = [
+        new Menu("Alterar dados", "", ""),
+        new Menu("Cadastro de usuários", "", "usuarios/cadastro")
+      ];
+    }
 
   }
 
