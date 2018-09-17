@@ -37,6 +37,9 @@ import { ContrachequeModule } from './contracheque/contracheque.module';
     MaskCpfPipe,
     ProcessoComponent,
     NomePipePipe
+  ],
+  exports: [
+    NomePipePipe
   ]
 })
 export class HomeModule { }

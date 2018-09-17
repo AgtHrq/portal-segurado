@@ -7,11 +7,13 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { AdminSubmenuComponent } from './admin-submenu/admin-submenu.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { CadastroUsuarioComponent } from './admin-home/cadastro-usuario/cadastro-usuario.component';
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    HomeModule
   ],
   declarations: [
     AdminComponent, 

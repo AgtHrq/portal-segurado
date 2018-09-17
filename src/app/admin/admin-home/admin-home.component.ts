@@ -1,6 +1,6 @@
-import { UserRole } from './../../models/user-role.enum';
 import { Component, OnInit } from '@angular/core';
 
+import { UserRole } from './../../models/user-role.enum';
 import { UserService } from './../../services/user.service';
 import { User } from '../../models/user';
 import { Menu } from '../../models/menu';
