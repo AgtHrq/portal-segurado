@@ -18,6 +18,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CadastroUsuarioComponent } from './admin/admin-home/cadastro-usuario/cadastro-usuario.component';
 import { SuperAdminGuard } from './services/guards/super-admin.guard';
+import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
 
 const APP_ROUTES: Routes = [
 
@@ -76,6 +77,9 @@ const APP_ROUTES: Routes = [
                         path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
                     }
                 ]
+            },
+            {
+                path: "ouvidoria", component: AdminOuvidoriaComponent
             }
         ]
     },

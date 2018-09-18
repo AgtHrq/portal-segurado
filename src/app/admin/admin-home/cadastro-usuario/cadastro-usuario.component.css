@@ -12,6 +12,6 @@ input, select, .ui.form input, .ui.form select {
 
 .ui.form input:focus, .ui.form select:focus {
 
-    border-color: #4682B4;
+    border-color: steelblue;
 
 }

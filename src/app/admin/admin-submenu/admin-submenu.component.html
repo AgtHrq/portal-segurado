@@ -5,7 +5,7 @@
   <a *ngFor="let m of menus" [routerLink]="m.router" class="item">{{ m.desc }}</a>
   <div class="right menu">
     <div class="item">
-      Bem-vindo, {{ user.user_name | nomePipe }}!
+      <span><i class="icon user"></i></span>Bem-vindo, {{ user.user_name | nomePipe }}!
     </div>
   </div>
 </div>
