@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CadastrarService } from '../../services/cadastrar/cadastrar.service';
+import { validatorsCPF } from '../../validators/validators-cpf.validator';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,10 +19,10 @@ export class CadastroComponent implements OnInit {
   cpfSegurado: string;
   vinculos = [];
 
-  constructor(formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
+  constructor(private formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
 
 
-    this.meuForm = formBuilder.group({
+    this.meuForm = this.formBuilder.group({
 
       cpf: ["", Validators.compose(
           [Validators.minLength(14), Validators.required]
@@ -40,7 +41,7 @@ export class CadastroComponent implements OnInit {
 
     });
 
-    // this.meuForm.setValidators([ testaCPF ]);
+    // this.meuForm.setValidators([ validatorsCPF ]);
   }
 
   ngOnInit() {
@@ -52,18 +53,17 @@ export class CadastroComponent implements OnInit {
     this.cpfSegurado = segurado.cpf;
     segurado.cpf = this.formatCpf(segurado.cpf);
     segurado.dataNascimento = this.formatData(segurado.dataNascimento);
-    
 
     this.cadastrarService.verificarSegurado(segurado).subscribe(
       proximo => {
-        this.vinculos = proximo.json();
-        // console.log('cadastro', this.vinculos);
-        this.numVinculos = proximo.json().length;
+        console.log('verifica ' , proximo.json());
+        this.numVinculos = proximo.json();
         this.cadastro = false;
         this.verificaVinculos = true;
         
       },
       error => {
+        console.log('error ' + error)
         alert(error._body);
       }
     );
@@ -88,5 +88,4 @@ export class CadastroComponent implements OnInit {
   mudaFlagVerificaVinculos(evento){
     this.verificaVinculos = evento;
   }
-
 }

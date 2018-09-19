@@ -12,6 +12,8 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { AuthGuard } from "./services/guards/auth.guard";
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { RespotaComponent } from "./home/ouvidoria/respota/respota.component";
+import { FichaFinanceiraComponent } from './home/ficha-financeira/ficha-financeira.component';
+import { VizualizaFichaComponent } from './home/ficha-financeira/vizualiza-ficha/vizualiza-ficha.component';
 
 const APP_ROUTES: Routes = [
 
@@ -32,6 +34,13 @@ const APP_ROUTES: Routes = [
             },
             {
                 path: "processos", component: ProcessoComponent
+            },
+            {
+                path: "ficha-financeira", component: FichaFinanceiraComponent, children: [
+                    {
+                        path: "visualizar/ficha", component: VizualizaFichaComponent
+                    }
+                ]
             },
             {
                 path: "solicitacoes", component: SolicitacaoComponent

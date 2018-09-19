@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
+import {FormGroup, ValidationErrors } from "@angular/forms";
 
 export function equal(control: FormGroup): ValidationErrors | null {
     

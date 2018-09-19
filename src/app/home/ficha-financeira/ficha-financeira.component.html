@@ -9,21 +9,21 @@
     <div class="ui grid">
       <div class="doubling four wide column">
         <div class="ui vertical fluid menu">
-          <a (click)="toggle()" [routerLink]="['add/ouvidoria']" class="{{activeAdd}}item">
-            Adicionar
+          <a (click)="toggle()" [routerLink]="['visualizar/ficha']" class="{{activeAdd}}item">
+            Visualizar
             <i class="plus square outline icon"></i>
           </a>
-          <a (click)="toggle()" [routerLink]="['respostas']" class="{{ activeRep }}item">
-            Repostas
+          <a (click)="toggle()" [routerLink]="['']" class="{{ activeRep }}item">
+            Imprimir por período
           </a>
         </div>
       </div>
       <div class="doubling twelve wide stretched column">
         <div class="ui tall stacked segment">
-          <router-outlet></router-outlet>
+          
+          <!-- <router-outlet></router-outlet> -->
         </div>
-      </div>
     </div>
-
   </div>
+
 </div>

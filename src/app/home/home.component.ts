@@ -14,7 +14,7 @@ import { HomeUtils } from './../utils/home-utils';
 })
 export class HomeComponent implements AfterViewInit {
 
-  menus: Menu[] = [new Menu("Meus Processos", "book", "processos"), new Menu("Pagamentos", "money bill alternate", ""), new Menu("Ficha Financeira", "newspaper", ""),
+  menus: Menu[] = [new Menu("Meus Processos", "book", "processos"), new Menu("Pagamentos", "money bill alternate", ""), new Menu("Ficha Financeira", "newspaper", "ficha-financeira"),
     new Menu("PBConsig", "dollar", ""), new Menu("Solicitações", "paper plane outline", "solicitacoes"), new Menu("Ouvidoria", "users", "ouvidoria")];
   numNotificacoes: number = 0;
   filter: string = "";

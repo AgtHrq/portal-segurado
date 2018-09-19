@@ -20,41 +20,38 @@ import { FirstVerificationComponent } from './segurado/forgot-password/first-ver
 import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 import { CpfMaskDirective } from './directives/cpf-mask.directive';
 import { SendEmailComponent } from './segurado/forgot-password/send-email/send-email.component';
-import { LoaderComponent } from './loader/loader.component';
 import { CadastroVerificaVinculo } from './segurado/cadastro-verifica-vinculo/cadastro-verifica-vinculo.component';
 
 import { NgxCaptchaModule } from "ngx-captcha";
 import { AuthGuard } from './services/guards/auth.guard';
 import { LoaderModule } from './loader/loader.module';
-import { OuvidoriaModule } from './home/ouvidoria/ouvidoria.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent, 
-    LoginComponent, 
-    CadastroComponent,
-    ErrorMessageComponent, 
-    Cadastro2Component, 
-    ErrorMessageComponent, 
-    ForgotPasswordComponent, 
-    FirstVerificationComponent, 
-    ChangePasswordComponent, 
-    CpfMaskDirective, 
-    SendEmailComponent, 
-    LoaderComponent, CadastroVerificaVinculo
-    SendEmailComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    ReactiveFormsModule,
-    NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q" }),
-    HomeModule,
-    OuvidoriaModule,
-    LoaderModule,
-    routing
+   declarations: [
+      AppComponent,
+      LoginComponent,
+      CadastroComponent,
+      ErrorMessageComponent,
+      Cadastro2Component,
+      ErrorMessageComponent,
+      ForgotPasswordComponent,
+      FirstVerificationComponent,
+      ChangePasswordComponent,
+      CpfMaskDirective,
+      SendEmailComponent,
+      CadastroVerificaVinculo,
+      SendEmailComponent,
+   ],
+   imports: [
+      BrowserModule,
+      FormsModule,
+      HttpModule,
+      ReactiveFormsModule,
+      NgxCaptchaModule.forRoot({reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q"}),
+      HomeModule,
+      LoaderModule,
+      routing   
   ],
   providers: [
     AuthGuard,

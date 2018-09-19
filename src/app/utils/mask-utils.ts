@@ -38,7 +38,7 @@ export class MaskUtils {
         $(`#${id}`).mask("(00)");
     }
 
-    public matriculaMask(id: string): void {
-        $(`.${id}`).mask("000.000-0", {reverse: true});
+    public matriculaMask(clazz: string): void {
+        $(`.${clazz}`).mask("000.000-0", {reverse: true});
     }
 }
