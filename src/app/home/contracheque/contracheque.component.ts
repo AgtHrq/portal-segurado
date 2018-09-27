@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 import { HomeUtils } from '../../utils/home-utils';
 import { ContrachequeService } from '../../services/contracheque/contracheque.service';
@@ -33,7 +34,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   private periodos: Periodo[];
   showLoader: boolean = true;
 
-  constructor(private utils: HomeUtils, private contrachequeService: ContrachequeService, private userService: UserService) { }
+  constructor(private utils: HomeUtils, private contrachequeService: ContrachequeService, private userService: UserService, private router: Router) { }
 
   deactivate(vinculo) {
 
@@ -44,8 +45,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit() {
 
     this.userService.getLoggedUser().subscribe(user => this.user = user);
-    this.getVinculos();
-    this.getContracheques();
+    this.initContracheque();
     this.utils.contracheque();
    }
   
@@ -54,21 +54,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit(){this.utils.contracheque();}
 
-  getContracheques(): any {
-     this.contrachequeService.gerarContracheque().subscribe(c => {
-       console.log(c.json());
-    })
-    // return null;
-  }
-
-  getPeriodos(idVinculo: string): Periodo[] {
-    this.contrachequeService.consultarPeriodos(idVinculo).subscribe(p => {
-      return p.json() as Periodo[];
-    });
-    return null;
-  }
-
-  getVinculos(): void{
+  initContracheque(): void {
     this.contrachequeService.consultarVinculos().subscribe(v => {
       this.vinculos = v.json() as Array<Vinculo>;
       this.vinculos.forEach(v => v.activate = false);
@@ -109,6 +95,14 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
           });
         });
       });
+    },
+    error=> {
+      if (error._body === "O cpf informado não possui processos abertos e/ou fechados!") {
+        this.showLoader = false;
+      } else if (error.json().message.trim() === "Invalid Token") {
+        this.userService.logoffUser();
+        this.router.navigate(['/']);
+      }
     });
   }
 }
