@@ -40,7 +40,8 @@
                 <div class="field">
                     <label>Senha:</label>
                     <div class="ui icon input">
-                        <i class="eye link icon" (mousedown)="type = 'text'" (mouseleave)="type = 'password'" (mouseup)="type = 'password'"></i>
+                        <i [class]="icon" (mousedown)="type = 'text'; icon = 'eye link icon'" (mouseleave)="type = 'password'; icon = 'eye slash link icon'" 
+                            (mouseup)="type = 'password'; icon = 'eye slash link icon'"></i>
                         <input formControlName="password" (focus)="hideError()" id="password" name="password" [type]="type">
                     </div>
 

@@ -1,6 +1,6 @@
 <div class="ui top attached tabular menu">
-  <a *ngFor="let c of vinculo.contracheques" class="item" [class.active]="c.activate" (click)="deactivate();c.activate = true">{{ c.mes }}/{{ c.ano }}</a>
+  <a *ngFor="let c of vinculo.periodos" class="item" [class.active]="c.activate" (click)="deactivate();c.activate = true">{{ c.mesReferencia }}/{{ c.anoReferencia }}</a>
 </div>
-<div *ngFor="let c of vinculo.contracheques" class="ui bottom attached tab segment" [class.active]="c.activate">
-  {{ vinculo.orgao }} - {{ c.mes }}/{{ c.ano }}
+<div *ngFor="let p of vinculo.periodos; index as i" class="ui bottom attached tab segment" [class.active]="p.activate">
+  <app-contracheque-periodo-detail [contracheques]="vinculo.periodos[i].contracheque"></app-contracheque-periodo-detail>
 </div>

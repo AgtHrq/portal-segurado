@@ -20,7 +20,8 @@ export class LoginComponent {
     utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
     showLoader: boolean = false;
-    type = "password";
+    type: string = "password";
+    icon: string = "eye slash link icon";
 
     ngOnInit(){ }
 
