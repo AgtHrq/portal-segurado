@@ -1,72 +1,25 @@
-<table *ngIf="contracheques.length > 1; else elseBlock" class="ui very basic table">
-  <ng-template ngFor let-c [ngForOf]="contracheques | paginate: { itemsPerPage: 1, currentPage: page }">
+<table *ngIf="contracheques.length >= 1; else elseBlock" class="ui very basic fixed table">
+  <thead>
     <tr>
-      <td><h4 class="ui header">Evento:</h4></td>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Valor(R$)</th>
+      <th>Prazo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of contracheques">
       <td>{{ c?.evento }}</td>
-    </tr>
-    <tr>
-      <td><h4 class="ui header">Descrição:</h4></td>
       <td>{{ c?.descricao }}</td>
-    </tr>
-    <tr>
-      <td><h4 class="ui header">Valor:</h4></td>
-      <td>{{ c?.valor }}</td>
-    </tr>
-    <tr>
-      <td><h4 class="ui header">Prazo:</h4></td>
+      <td>{{ c?.valor | number: '1.2-2' }}</td>
       <td>{{ c?.prazo }}</td>
     </tr>
-  </ng-template>
+  </tbody>
   <tfoot>
     <tr>
-      <th colspan="3">
-        <div class="ui right floated pagination menu">
-        
-          <pagination-template #p="paginationApi" (pageChange)="page = ($event)">
-
-                <div *ngIf="!p.isFirstPage()" class="pagination-previous">
-                  <a (click)="p.previous()" class="icon item">
-                    <i class="left chevron icon"></i>
-                  </a>
-                </div>
-                <div class="current-page" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-                  <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value" class="item">
-                    {{ page.label }}
-                  </a>
-                  <div class="current-page" *ngIf="p.getCurrent() === page.value">
-                    <a class="item active">{{ page.label }}</a>
-                  </div>
-                </div>
-                <div *ngIf="!p.isLastPage()" class="pagination-next">
-                  <a (click)="p.next()" class="icon item"><i class="right chevron icon"></i></a>
-                </div>
-            
-          </pagination-template>
-
-        </div>
-      </th>
+      <th colspan="2">Total Bruto: {{ totalBruto | number: '1.2-2' }}</th>
+      <th>Total Desconto: {{ totalDesconto | number: '1.2-2' }}</th>
+      <th>Total Líquido: {{ totalLiquido | number: '1.2-2' }}</th>
     </tr>
   </tfoot>
 </table>
-<ng-template #elseBlock>
-  <table *ngIf="contracheques.length == 1" class="ui very basic table">
-    <ng-template ngFor let-c [ngForOf]="contracheques">
-      <tr>
-        <td><h4 class="ui header">Evento:</h4></td>
-        <td>{{ c?.evento }}</td>
-      </tr>
-      <tr>
-        <td><h4 class="ui header">Descrição:</h4></td>
-        <td>{{ c?.descricao }}</td>
-      </tr>
-      <tr>
-        <td><h4 class="ui header">Valor:</h4></td>
-        <td>{{ c?.valor }}</td>
-      </tr>
-      <tr>
-        <td><h4 class="ui header">Prazo:</h4></td>
-        <td>{{ c?.prazo }}</td>
-      </tr>
-    </ng-template>
-  </table>
-</ng-template>

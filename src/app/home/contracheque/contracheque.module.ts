@@ -25,6 +25,10 @@ import { IdVinculoPipe } from './id-vinculo.pipe';
     OrgaoAbvPipe,
     ContrachequePeriodoDetailComponent,
     IdVinculoPipe
+  ],
+  exports: [
+    OrgaoAbvPipe,
+    IdVinculoPipe
   ]
 })
 export class ContrachequeModule { }
