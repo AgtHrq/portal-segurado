@@ -95,8 +95,8 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
       });
     },
     error=> {
+      this.showLoader = false;
       if (error._body === "O cpf informado não possui processos abertos e/ou fechados!") {
-        this.showLoader = false;
       } else if (error.json().message.trim() === "Invalid Token") {
         this.userService.logoffUser();
         this.router.navigate(['/']);
