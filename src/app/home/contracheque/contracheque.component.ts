@@ -39,7 +39,6 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   deactivate(vinculo) {
 
     this.vinculo = vinculo;
-    console.log(vinculo);
     this.vinculos.forEach(v => v.activate = false);
 
   }
