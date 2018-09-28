@@ -39,6 +39,8 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   deactivate(vinculo) {
 
     this.vinculo = vinculo;
+    console.log(vinculo);
+    this.vinculos.forEach(v => v.activate = false);
 
   }
 
@@ -49,8 +51,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
     this.utils.contracheque();
    }
   
-  ngOnChanges() {
-   }
+  ngOnChanges() { }
 
   ngAfterViewInit(){this.utils.contracheque();}
 
@@ -71,26 +72,24 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
             this.periodos.forEach(p => p.activate = false);
             this.periodos[0].activate = true;
             this.vinculo = this.vinculos[0];
-            this.vinculos.forEach(v => {
-              v.periodos = [];
-              v.contracheques = [];
-              this.contracheques.forEach(c => {
-                if(v.idVinculo.trim() === c.id_vinculo.trim()){
-                  v.contracheques.push(c);
+            v.periodos = [];
+            v.contracheques = [];
+            this.contracheques.forEach(c => {
+              if(v.idVinculo.trim() === c.id_vinculo.trim()){
+                v.contracheques.push(c);
+              }
+            });
+            this.periodos.forEach((p, i:number = 0) => {
+              if(v.idVinculo.trim() === p.idVinculo.trim()){
+                v.periodos.push(p);
+                if(i === 0){
+                  p.activate = true;
                 }
-              });
-              this.periodos.forEach((p, i:number = 0) => {
-                if(v.idVinculo.trim() === p.idVinculo.trim()){
-                  v.periodos.push(p);
-                  if(i === 0){
-                    p.activate = true;
-                  }
-                  else {
-                    p.activate = false;
-                  }
+                else {
+                  p.activate = false;
                 }
-                i++;
-              });
+              }
+              i++;
             });
           });
         });
