@@ -9,6 +9,7 @@ import { OrgaoAbvPipe } from './orgao-abv.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ContrachequePeriodoDetailComponent } from './contracheque-detail/contracheque-periodo-detail/contracheque-periodo-detail.component';
 import { LoaderModule } from '../../loader/loader.module';
+import { IdVinculoPipe } from './id-vinculo.pipe';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { LoaderModule } from '../../loader/loader.module';
     ContrachequeComponent,
     ContrachequeDetailComponent,
     OrgaoAbvPipe,
-    ContrachequePeriodoDetailComponent
+    ContrachequePeriodoDetailComponent,
+    IdVinculoPipe
   ]
 })
 export class ContrachequeModule { }
