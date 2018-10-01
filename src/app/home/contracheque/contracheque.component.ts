@@ -70,7 +70,9 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
             this.periodos = p.json() as Periodo[];
             this.periodos.forEach(p => p.activate = false);
             this.periodos[0].activate = true;
-            this.vinculo = this.vinculos[0];
+            if(v.activate === true){
+              this.vinculo = v;
+            }
             v.periodos = [];
             v.contracheques = [];
             this.contracheques.forEach(c => {
