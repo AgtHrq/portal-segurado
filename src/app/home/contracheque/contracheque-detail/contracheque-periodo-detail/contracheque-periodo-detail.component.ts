@@ -11,7 +11,6 @@ import { ContrachequeEnum } from '../../../../models/contracheque.enum';
 export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
 
   @Input() contracheques: Contracheque[] = [];
-  page: number = 1;
   totalLiquido: number = 0;
   totalDesconto: number = 0;
   totalBruto: number = 0;
@@ -30,8 +29,6 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
         this.totalDesconto += parseFloat(c.valor.toString());
       }
     });
-    this.totalBruto.toPrecision(2);
-    this.totalLiquido.toPrecision(2);
     this.totalLiquido = this.totalBruto - this.totalDesconto;
 
   }

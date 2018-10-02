@@ -17,7 +17,7 @@ export class ContrachequeDetailComponent implements AfterViewInit, OnChanges {
 
   deactivate() {
     
-    this.vinculo.periodos.forEach( c => {
+    this.vinculo.periodos.forEach(c => {
       c.activate = false;
     });
     
