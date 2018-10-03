@@ -4,16 +4,29 @@
 <table class="ui very basic table">
     <tbody>
       <tr>
-        <td><h4 class="ui header">Titulo:</h4></td>
-        <td>{{ solicitacao.titulo }}</td>
+        <td><h4 class="ui header">Tipo:</h4></td>
+        <td>{{ solicitacao.tipoSolicitacao.descricao }}</td>
       </tr>
         <tr>
           <td><h4 class="ui header">Descrição:</h4></td>
           <td>{{ solicitacao.descricao }}</td>
         </tr>
         <tr>
-          <td><h4 class="ui header">Data:</h4></td>
-          <td>{{ solicitacao.data }}</td>
+          <td><h4 class="ui header">Data de criação:</h4></td>
+          <td>{{ solicitacao.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+        <tr *ngIf="!solicitacao.status">
+          <td><h4 class="ui header">Data de encerramento:</h4></td>
+          <td>{{ solicitacao.dataEncerramento | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+        <tr *ngIf="resposta">
+          <td><h4 class="ui header">Resposta:</h4></td>
+          <td>{{ solicitacao.resposta }}</td>
+        </tr>
+        <tr>
+          <td><h4 class="ui header">Status:</h4></td>
+          <td *ngIf="solicitacao.status">Aberto</td>
+          <td *ngIf="!solicitacao.status">Concluído</td>
         </tr>
     </tbody>
 </table>

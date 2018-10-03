@@ -1,8 +1,11 @@
-import { UserService } from '../../services/user.service';
-import { Component, ViewChild, OnInit, Input } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { MaskUtils } from '../../utils/mask-utils';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
+import { UserRole } from '../../models/user-role.enum';
 
 @Component({
     selector: 'login-segurado',
@@ -17,13 +20,21 @@ export class LoginComponent {
     utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
     showLoader: boolean = false;
+    type = "password";
 
     ngOnInit(){ }
 
     constructor(private route: Router, private activeRoute: ActivatedRoute, private userService: UserService, formBuilder: FormBuilder){
         
         if (userService.isLogged()) {
-            this.route.navigate(["/home/segurado"]);
+            this.userService.getLoggedUser().subscribe(user => {
+                user as User;
+                if(user.user_role.trim() === UserRole.segurado){
+                    this.route.navigate(["/home/segurado"]);
+                } else if(user.user_role.trim() === UserRole.super_admin || user.user_role.trim() === UserRole.admin){
+                    this.route.navigate(["/admin"]);
+                }
+            });
         }
 
         this.formGroup = formBuilder.group({
@@ -53,7 +64,14 @@ export class LoginComponent {
             data => {
                 this.showLoader = false;
                 this.userService.updateLoggedUser(data.text());
-                this.route.navigate(["/home/segurado"]);
+                this.userService.getLoggedUser().subscribe(user => {
+                    user as User;
+                    if (user.user_role.trim() === UserRole.super_admin || user.user_role.trim() === UserRole.admin){
+                        this.route.navigate(["/admin"]);
+                    } else {
+                        this.route.navigate(["/home/segurado"]);
+                    }
+                })
             },
             erro => {
                 this.showLoader = false;

@@ -11,7 +11,7 @@
         <div class="ui vertical fluid menu">
           <a class="active teal item">
             Entrada
-            <div class="ui teal left pointing label">{{ solicitacoes.length }}</div>
+            <div class="ui teal left pointing label">{{ numSolicitacoes }}</div>
           </a>
           <a (click) = "class = 'new'; toggleState()" class="item">
             Abrir nova solicitação
@@ -21,10 +21,10 @@
       </div>
       <div class="doubling twelve wide stretched column">
         <div class="ui tall stacked segment">
-          <app-list-solicitacao [solicitacoes]="solicitacoes"></app-list-solicitacao>
+          <app-list-solicitacao (atualizaLista)="atualizaLista()" [user]="user" [solicitacoes]="solicitacoes"></app-list-solicitacao>
         </div>
         <div [ngClass]="class">
-          <app-new-solicitacao (classEmitter)="class = $event" (stateEmitter)="state = $event" [state]="state"></app-new-solicitacao>
+          <app-new-solicitacao (solicitacaoAdded)="atualizaLista()" (classEmitter)="class = $event" (stateEmitter)="state = $event" [state]="state"></app-new-solicitacao>
       </div>
     </div>
   </div>

@@ -8,9 +8,6 @@ import {Subject} from "rxjs";
 })
 export class VerificaVinculosService {
 
-  private cadastrarSource: Subject<any> = new Subject<any>();
-  cadastrarObservable = this.cadastrarSource.asObservable();
-
   constructor(private backEndService: BackendService, private auth: Authorization) { }
 
   verificarVinculoSegurado(credentials: object){

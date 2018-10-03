@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '../../../../../node_modules/
 import { AddOuvidoriaService } from '../../../services/add-ouvidoria/add-ouvidoria.service';
 import { UserService } from '../../../services/user.service';
 import { TipoOuvidoriaService } from '../../../services/tipo-ouvidoria/tipo-ouvidoria.service';
-import { TargetLocator } from '../../../../../node_modules/@types/selenium-webdriver';
 import { User } from '../../../models/user';
 
 @Component({

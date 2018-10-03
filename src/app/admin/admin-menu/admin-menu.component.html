@@ -1,0 +1,8 @@
+<a *ngFor="let m of menus" class="item" [routerLink]="m.router">
+  <i [class]="m.icon"></i>
+  {{ m.desc }}
+</a>
+<a class="item" (click)="logOut()">
+  <i class="sign-out icon"></i>
+  Sair
+</a>

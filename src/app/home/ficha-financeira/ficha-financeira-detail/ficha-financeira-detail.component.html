@@ -1,0 +1,6 @@
+<div class="ui top attached tabular menu">
+    <a *ngFor="let c of ficha.contracheques" class="item" [class.active]="c.activate" (click)="deactivate();c.activate = true">{{ c.mes }}/{{ c.ano }}</a>
+  </div>
+  <div *ngFor="let c of ficha.contracheques" class="ui bottom attached tab segment" [class.active]="c.activate">
+    {{ ficha.orgao }} - {{ c.mes }}/{{ c.ano }}
+  </div>

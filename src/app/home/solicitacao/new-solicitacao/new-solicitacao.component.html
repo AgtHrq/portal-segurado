@@ -1,18 +1,45 @@
+<app-loader *ngIf="showLoader"></app-loader>
 <div [@flyInOut]="state" class="ui segments">
   <div class="ui top attached right aligned segment">
     <h3 class="ui floated header">Nova Solicitação</h3>
     <i (click) = "emitter('hidden', 'inactive'); limpaCampos()" class="link window close outline icon"></i>
   </div>
   <div class="ui attached segment">
-    <form class="ui form" (submit)="newSolicitacao($event, formNovaSolicitacao.value)" [formGroup]="formNovaSolicitacao">
-      <div class="field">
+    <div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
+      <i class="close icon" (click)="showMessage = false"></i>
+      <div class="header">
+        {{ message }}
+      </div>
+    </div>
+    <form class="ui form" (submit)="newSolicitacao($event, formNovaSolicitacao.value)" [formGroup]="formNovaSolicitacao" 
+      [class.error]="formNovaSolicitacao.touched && formNovaSolicitacao.invalid">
+      <input type="hidden" formControlName="cpf">
+      <div class="field" [hidden]="user.user_email != '' || user.user_email != null">
+        <label>E-mail:</label>
+        <input type="text" formControlName="email">
+      </div>
+      <div class="field" [class.error]="(formNovaSolicitacao.controls.tipoSolicitacao.touched && formNovaSolicitacao.controls.tipoSolicitacao.dirty) && formNovaSolicitacao.controls.tipoSolicitacao.invalid" formGroupName="tipoSolicitacao">
         <label>Solicitação:</label>
-        <input type="text" formControlName="titulo">
+        <select class="ui fluid dropdown" formControlName="id" (change)="setDescricao($event)">
+          <option value="">Selecione</option>
+          <option *ngFor="let t of tipoSolicitacao" value="{{ t.id }}">{{ t.descricao }}</option>
+        </select>
+        <input type="hidden" formControlName="descricao">
+      </div>
+      <div class="ui error message" *ngIf="formNovaSolicitacao.controls.tipoSolicitacao.invalid">
+        <p>Selecione um tipo de solicitação!</p>
       </div>
       <div class="ui divider"></div>
-      <div class="field">
+      <div class="field" [class.error]="(formNovaSolicitacao.controls.descricao.touched && formNovaSolicitacao.controls.descricao.dirty) && (formNovaSolicitacao.controls.descricao.errors?.required || 
+        formNovaSolicitacao.controls.descricao.errors?.maxlength)">
         <label>Descrição:</label>
-        <textarea formControlName="descricao"></textarea>
+        <textarea (keyup)="numCaracteres = 255 - $event.target.value.length" maxlength="255" formControlName="descricao"></textarea>
+        <div class="ui error message" *ngIf="formNovaSolicitacao.controls.descricao.errors?.required">
+          <p>O campo descrição é obrigatório!</p>
+        </div>
+        <div class="ui basic right aligned segment">
+          <p [class.attention]="numCaracteres <= 50">Caracteres restantes: {{ numCaracteres }}</p>
+        </div>
       </div>
       <button class="ui teal button" [disabled]="formNovaSolicitacao.invalid" type="submit">Abrir Solicitação</button>
     </form>

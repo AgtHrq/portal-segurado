@@ -35,7 +35,7 @@ export class ProcessoComponent implements OnInit {
   resumoProcesso: Processo = null;
   tramitacoes: Tramitacao[];
   documentos: DocumentoProcesso[];
-  url_docs: string = "file://///10.10.1.6/digitalizados/541811/";
+  url_docs: string = "file:///\\\\10.10.1.6/digitalizados/541811/";
 
   constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService, private router: Router) { }
   
@@ -51,7 +51,9 @@ export class ProcessoComponent implements OnInit {
         this.processos = data.json();
       },
       error=> {
-        if (JSON.parse(error._body).message.trim() === "Invalid Token"){
+        if (error._body === "O cpf informado não possui processos abertos e/ou fechados!") {
+          this.showLoader = false;
+        } else if (error.json().message.trim() === "Invalid Token") {
           this.userService.logoffUser();
           this.router.navigate(['/']);
         }

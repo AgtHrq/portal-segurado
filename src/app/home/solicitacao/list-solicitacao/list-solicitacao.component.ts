@@ -1,6 +1,8 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 import { Solicitacao } from './../../../models/solicitacao';
+import { SolicitacaoService } from '../../../services/solicitacao/solicitacao.service';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-list-solicitacao',
@@ -10,9 +12,12 @@ import { Solicitacao } from './../../../models/solicitacao';
 export class ListSolicitacaoComponent implements OnInit, OnChanges {
 
     @Input() solicitacoes: Solicitacao[];
+    @Input() user: User;
+    @Output() atualizaLista = new EventEmitter();
     page: number = 1;
+    showLoader: boolean = false;
 
-  constructor() { }
+  constructor(private solicitacaoService: SolicitacaoService) { }
 
   ngOnInit() { }
 
@@ -35,6 +40,29 @@ export class ListSolicitacaoComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnChanges(){ }
+  fecharSolicitacao(id: number) {
+
+    this.showLoader = true;
+    this.solicitacaoService.fecharSolicitacao(id)
+      .subscribe(
+        () => {
+          this.showLoader = false;
+          this.atualizaLista.emit();
+        }, () => {
+          this.showLoader = false;
+        }
+      );
+
+  }
+
+  ngOnChanges(){ 
+
+    if(this.solicitacoes != null){
+
+      this.solicitacoes.sort((a, b) => a.dataCriacao > b.dataCriacao ? -1 : 1);
+
+    }
+
+  }
 
 }

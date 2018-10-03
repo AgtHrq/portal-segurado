@@ -36,7 +36,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
   toggleState(state: string){
 
     this.toggle.emit(state);
-    this.state = state ;
+    this.state = state;
     this.formAlterarDados.get("senhaAntiga").setValue("");
     this.formAlterarDados.get("novaSenha").setValue("");
     this.formAlterarDados.get("confirmaSenha").setValue("");
@@ -45,7 +45,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
   alterarDados(event, data) {
 
-    event.preventDefault();
+    // event.preventDefault();
 
   }
 
@@ -53,8 +53,8 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
     this.formAlterarDados = this.formBuilder.group({
       
-      cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
-      email: [this.user.user_email, Validators.email],
+      cpf: [Validators.required],
+      email: [],
       telefone: [""],
       senhaAntiga: [""],
       novaSenha: ["", Validators.compose([

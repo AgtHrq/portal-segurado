@@ -1,9 +1,15 @@
-export class Solicitacao {
+import { TipoSolicitacao } from './tipo-solicitacao';
 
-    titulo: string;
-    data: string;
+export interface Solicitacao {
+
+    id: number;
+    status: boolean;
+    dataCriacao: Date;
+    dataEncerramento: Date;
     descricao: string;
-    showDetail:string = "hidden";
-    showTd: string = "show";
+    resposta: string;
+    tipoSolicitacao: TipoSolicitacao;
+    showTd: string;
+    showDetail: string;
 
 }

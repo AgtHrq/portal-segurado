@@ -25,33 +25,33 @@ import { CadastroVerificaVinculo } from './segurado/cadastro-verifica-vinculo/ca
 import { NgxCaptchaModule } from "ngx-captcha";
 import { AuthGuard } from './services/guards/auth.guard';
 import { LoaderModule } from './loader/loader.module';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      LoginComponent,
-      CadastroComponent,
-      ErrorMessageComponent,
-      Cadastro2Component,
-      ErrorMessageComponent,
-      ForgotPasswordComponent,
-      FirstVerificationComponent,
-      ChangePasswordComponent,
-      CpfMaskDirective,
-      SendEmailComponent,
-      CadastroVerificaVinculo,
-      SendEmailComponent,
-   ],
-   imports: [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-      ReactiveFormsModule,
-      NgxCaptchaModule.forRoot({reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q"}),
-      HomeModule,
-      LoaderModule,
-      routing   
+  declarations: [
+    AppComponent, 
+    LoginComponent, 
+    CadastroComponent,
+    ErrorMessageComponent, 
+    Cadastro2Component, 
+    ForgotPasswordComponent, 
+    FirstVerificationComponent, 
+    ChangePasswordComponent, 
+    CpfMaskDirective, 
+    CadastroVerificaVinculo,
+    SendEmailComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q" }),
+    HomeModule,
+    LoaderModule,
+    AdminModule,
+    routing
   ],
   providers: [
     AuthGuard,

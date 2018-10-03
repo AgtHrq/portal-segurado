@@ -15,6 +15,7 @@ import { OuvidoriaModule } from './ouvidoria/ouvidoria.module';
 import { ProcessoModule } from './processo/processo.module';
 import { FichaFinanceiraModule } from './ficha-financeira/ficha-financeira.module';
 import { LoaderModule } from '../loader/loader.module';
+import { ContrachequeModule } from './contracheque/contracheque.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,10 @@ import { LoaderModule } from '../loader/loader.module';
     OuvidoriaModule,
     ProcessoModule,
     FichaFinanceiraModule,
-    LoaderModule
+    LoaderModule,
+    ContrachequeModule,
+    LoaderModule,
+    RouterModule
   ],
   declarations: [ 
     HomeComponent, 
@@ -34,6 +38,9 @@ import { LoaderModule } from '../loader/loader.module';
     NotificacaoComponent,  
     WelcomeComponent, 
     FilterByDescricaoPipe,
+    NomePipePipe
+  ],
+  exports: [
     NomePipePipe
   ]
 })

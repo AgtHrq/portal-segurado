@@ -8,6 +8,7 @@ import { NewSolicitacaoComponent } from './new-solicitacao/new-solicitacao.compo
 import { ListSolicitacaoComponent } from './list-solicitacao/list-solicitacao.component';
 import { DetailSolicitacaoComponent } from './detail-solicitacao/detail-solicitacao.component';
 import { NgxPaginationModule } from '../../../../node_modules/ngx-pagination';
+import { LoaderModule } from '../../loader/loader.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgxPaginationModule } from '../../../../node_modules/ngx-pagination';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    LoaderModule
   ],
   declarations: [
     SolicitacaoComponent,

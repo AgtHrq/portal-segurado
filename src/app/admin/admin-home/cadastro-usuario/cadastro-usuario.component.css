@@ -1,0 +1,17 @@
+input, select, .ui.form input, .ui.form select {
+
+    border-radius: 0%;
+    max-width: 40vmax;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid;
+    background-color: inherit;
+
+}
+
+.ui.form input:focus, .ui.form select:focus {
+
+    border-color: steelblue;
+
+}
