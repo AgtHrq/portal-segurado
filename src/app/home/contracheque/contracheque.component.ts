@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { HomeUtils } from '../../utils/home-utils';
 import { ContrachequeService } from '../../services/contracheque/contracheque.service';
 import { Contracheque } from '../../models/contracheque';
-import { Vinculo } from '../../models/vinculo';
+import { VinculoModel } from '../../models/vinculo-model';
 import { User } from './../../models/user';
 import { UserService } from '../../services/user.service';
 import { Periodo } from '../../models/periodo';
@@ -30,7 +30,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   vinculo: any = [];
   private user: User;
   private contracheques: Contracheque[];
-  private vinculos: Vinculo[];
+  private vinculos: VinculoModel[];
   private periodos: Periodo[];
   showLoader: boolean = true;
 
@@ -56,7 +56,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
 
   initContracheque(): void {
     this.contrachequeService.consultarVinculos().subscribe(v => {
-      this.vinculos = v.json() as Array<Vinculo>;
+      this.vinculos = v.json() as Array<VinculoModel>;
       this.vinculos.forEach(v => v.activate = false);
       this.vinculos[0].activate = true;
       this.contrachequeService.gerarContracheque().subscribe(c => {

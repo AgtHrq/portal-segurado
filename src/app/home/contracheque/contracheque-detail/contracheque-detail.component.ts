@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, AfterViewInit } from '@angular/core';
 
 import { HomeUtils } from '../../../utils/home-utils';
-import { Vinculo } from '../../../models/vinculo';
+import { VinculoModel } from '../../../models/vinculo-model';
 
 @Component({
   selector: 'app-contracheque-detail',
@@ -10,7 +10,7 @@ import { Vinculo } from '../../../models/vinculo';
 })
 export class ContrachequeDetailComponent implements AfterViewInit, OnChanges {
 
-  @Input() vinculo: Vinculo = new Vinculo();
+  @Input() vinculo: VinculoModel = new VinculoModel();
   page: number = 1;
 
   constructor(private utils: HomeUtils) { }
