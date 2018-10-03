@@ -22,6 +22,7 @@ import { CadastroUsuarioComponent } from './admin/admin-home/cadastro-usuario/ca
 import { SuperAdminGuard } from './services/guards/super-admin.guard';
 import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
 import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/imprimir-ficha.component';
+import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
 
 const APP_ROUTES: Routes = [
 
@@ -92,6 +93,9 @@ const APP_ROUTES: Routes = [
             },
             {
                 path: "ouvidoria", component: AdminOuvidoriaComponent
+            },
+            {
+                path: "solicitacao", component: AdminSolicitacaoComponent
             }
         ]
     },

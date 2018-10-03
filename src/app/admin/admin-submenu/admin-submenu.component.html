@@ -1,6 +1,6 @@
 <div class="ui stckable menu">
   <div class="header active item">
-    Portal Segurado - ADM
+    Portal Segurado - ADM - {{ descricao }}
   </div>
   <a *ngFor="let m of menus" [routerLink]="m.router" class="item">{{ m.desc }}</a>
   <div class="right menu">

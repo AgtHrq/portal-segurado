@@ -12,6 +12,7 @@ export class AdminSubmenuComponent implements OnInit {
 
   @Input() menus: Menu[];
   @Input() user: User;
+  @Input() descricao: string;
 
   constructor() { }
 

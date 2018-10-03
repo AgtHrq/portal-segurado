@@ -9,10 +9,22 @@ export class ContrachequeService {
 
   constructor(private backendService: BackendService) { }
 
-  gerarContracheque(cpf: string) {
+  gerarContracheque() {
 
-    return this.backendService.protectedRequest("usuarios/gerarContraCheque", "post", cpf);
+    return this.backendService.protectedRequest("usuarios/gerarContraCheque", "get");
 
+  }
+
+  consultarVinculos() {
+
+    return this.backendService.protectedRequest("usuarios/consultaVinculosUsuario", "get");
+
+  }
+
+  consultarPeriodos(idVinculo: string) {
+
+    return this.backendService.protectedRequest("usuarios/consultaPeriodosUsuario", "post", { idVinculo: idVinculo });
+  
   }
 
 }

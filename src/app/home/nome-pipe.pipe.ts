@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NomePipePipe implements PipeTransform {
 
-  transform(nome: string, ): string {
+  transform(nome: string): string {
     
     return nome.split(' ')[0];
 
