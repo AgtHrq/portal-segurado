@@ -1,0 +1,47 @@
+
+<div class="ui segment bottom" >
+
+  <div class="ui grid" *ngIf="pageVisualizar">
+    <div class="doubling four wide column">
+      <div class="ui vertical fluid tabular menu">
+        <ng-template ngFor let-v [ngForOf]="vinculos">
+          <a *ngIf="v.orgao.length > 7; else elseBlock" [attr.data-content]="v.orgao | uppercase" 
+            data-variation="wide" data-position="right center" class="item" 
+            [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v.idVinculo)">
+            {{ v.idVinculo }} - {{ v.orgao | orgaoAbv }}
+          </a>
+          <ng-template #elseBlock>
+            <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="sendIdVinculo(v.idVinculo)">
+              {{ v.idVinculo }} - {{ v.orgao | orgaoAbv }}
+            </a>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
+    <div class="doubling twelve wide stretched column">
+      <form class="ui large form" [formGroup]="meuForm" (submit)="sendAno($event, meuForm.value)">
+        <div class="field">
+          <label>Ano referente</label>
+          <select class="ui fluid dropdown" name="anoFicha" formControlName="anoReferencia">
+            <option value="" selected disabled>Selecione</option>
+            <option *ngFor="let ano of anos" value="{{ano}}">{{ano}}</option>
+          </select>
+        </div>
+        <input type="hidden" formControlName="idVinculo"/>
+        <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid">
+          Visualizar
+        </button>
+        <a class="ui right floated button" (click)="voltar()">
+            Voltar
+        </a>
+      </form>
+    </div>
+  </div>
+  <div class="" *ngIf="detail">
+    <app-ficha-financeira-detail [ficha]="vinculoFicha"></app-ficha-financeira-detail>
+    <a class="ui right floated button" (click)="voltar()">
+        Voltar
+    </a>
+  </div>
+
+</div>

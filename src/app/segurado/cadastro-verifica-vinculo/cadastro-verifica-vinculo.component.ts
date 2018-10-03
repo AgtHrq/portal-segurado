@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { OrgaosService } from '../../services/orgaos/orgaos.service';
 import { VerificaVinculosService } from '../../services/verifica-vinculos/verifica-vinculos.service';
 import { Router } from '../../../../node_modules/@angular/router';
-import { vinculo } from './vinculo';
+import { Vinculo } from '../../models/vinculo';
 
 @Component({
   selector: 'app-cadastro-verifica-vinculo',
@@ -20,7 +20,7 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
   @Input() numInputs: number;
   @Input() nomeSeguradoValidacao;
   @Input() cpfSeguradoValidacao;
-  @Input() vinculosValidacao = [];
+  //@Input() vinculosValidacao = [];
   @Output() respostaCadastro2 = new EventEmitter();
   @Output() respostaVerificaVinculos = new EventEmitter();
 
@@ -33,20 +33,23 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
     
     
     ngOnInit() {
-      // console.log("numero de input: " + this.numInputs);
-      // console.log("nome: " + this.nomeSeguradoValidacao);
-      // console.log("cpf: " + this.cpfSeguradoValidacao);
-      console.log('validacao', this.vinculosValidacao);
       
       this.meuForm2 = this.formBuilder.group({
         nomeSegurado: [this.nomeSeguradoValidacao],
-        cpf: [this.cpfSeguradoValidacao]
+        cpf: [this.cpfSeguradoValidacao],
       });
       
       for(let i = 0; i < this.numInputs; i++){
+
         this.meuForm2.addControl(`matricula${i}`, new FormControl('', [Validators.required, Validators.minLength(9)]));
-        this.meuForm2.addControl(`idOrgao${i}`, new FormControl('', Validators.required));
+        this.meuForm2.addControl(`idOrgao${i}`, new FormGroup({
+          idOrgao: new FormControl(''),
+          codigo: new FormControl(''),
+          descricao: new FormControl('')
+        }));
       }
+
+      
       
       this.inputs.length = this.numInputs;
       
@@ -54,20 +57,26 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
         orgaos => {
           this.orgaos = orgaos.json();
           console.log("orgaos back", this.orgaos);
-
-        },
+        }
       );
 
+  }
+
+  setOrgao(event, index){
+    this.meuForm2.get(`idOrgao${index}`).get('codigo').setValue(this.orgaos[event].codigo);
+    this.meuForm2.get(`idOrgao${index}`).get('descricao').setValue(this.orgaos[event].descricao);
+    this.meuForm2.get(`idOrgao${index}`).get('idOrgao').setValue(this.orgaos[event].id);
   }
   
   verifica(event, vinculos){
     event.preventDefault();
+  
     vinculos.cpf = vinculos.cpf.replace(/\.|\-/gi, "");
-    let vinculosList: vinculo[] = [];
+    let vinculosList: Vinculo[] = [];
 
     for(let i = 0; i < this.numInputs; i++){
       vinculos[`matricula${i}`] = vinculos[`matricula${i}`].replace(/\.|\-/gi, "");
-      let pessoaVinculo = new vinculo(vinculos[`idOrgao${i}`], vinculos[`matricula${i}`], vinculos.cpf);
+      let pessoaVinculo = new Vinculo(vinculos[`idOrgao${i}`], vinculos[`matricula${i}`], vinculos.cpf);
       vinculosList.push(pessoaVinculo);
     }
 
@@ -75,9 +84,9 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
 
     this.verificaVinculosService.verificarVinculoSegurado(vinculosList).subscribe(
       proximo => {
-        console.log(proximo);
-        this.nomeSegurado = vinculos.nomeSegurado;
-        console.log(this.nomeSegurado);
+        console.log("aqui", proximo.json());
+        this.nomeSegurado = proximo.json().segurado.nome;
+        console.log("segurado back" + this.nomeSegurado);
         this.respostaVerificaVinculos.emit(false);
         this.respostaCadastro2.emit(true);
       },

@@ -27,10 +27,15 @@
       <div class="active item field">Vinculo</div>
     </div>
     <div class="ui bottom attached active tab segment">
-      <select class="ui fluid dropdown" formControlName="idOrgao{{i}}">
-        <option value="" selected disabled>Orgãos</option>
-        <option *ngFor="let orgao of orgaos" value="{{orgao.id}}">{{orgao.descricao}}</option>
-      </select>
+      <div formGroupName="idOrgao{{i}}">
+        <select class="ui fluid dropdown" (change)="setOrgao($event.target.value, i)">
+          <option value="" selected disabled>Orgãos</option>
+          <option *ngFor="let orgao of orgaos; index as e" value="{{e}}">{{orgao.descricao}}</option>
+        </select>
+        <input type="hidden" formControlName="idOrgao" />
+        <input type="hidden" formControlName="codigo"/>
+        <input type="hidden" formControlName="descricao"/>
+      </div>
 
       <br/>
 

@@ -23,9 +23,11 @@
                 <p *ngIf="meuForm.controls.cpf.errors.required">O campo CPF é obrigatório.</p>
               </div>
 
-              <!-- <div class="ui red messag" *ngIf="meuForm.errors?.testaCPF && (meuForm.touched)">
-                <p>CPF inválido</p>
-              </div> -->
+              <!-- <div class="ui red message"
+              *ngIf="meuForm.errors?.validatorsCPF && (meuForm.controls.password.touched || meuForm.controls.password.dirty)">
+              <p>Tem algo errado com o cpf informado!</p>
+            </div> -->
+            
           </div>
 
           <div class="eight wide field">
@@ -86,7 +88,7 @@
       <app-cadastro-verifica-vinculo *ngIf="verificaVinculos" numInputs="{{ numVinculos }}"
         nomeSeguradoValidacao="{{ nomeSegurado }}"
         cpfSeguradoValidacao="{{ cpfSegurado }}"
-        [vinculosValidacao]="vinculos"
+        
         (respostaVerificaVinculos)="mudaFlagVerificaVinculos($event)" 
         (respostaCadastro2)="mudaFlagCadastro2($event)">
       </app-cadastro-verifica-vinculo>

@@ -1,16 +1,56 @@
-<form [@flyInOut]="'in'" class="ui form">
+<form [@flyInOut]="'in'" [formGroup]="formOuvidoria" class="ui form" (submit)="sendOuvidoria($event, formOuvidoria.value)">
+  
   <div class="field">
+      <label>E-mail</label>
+      <input type="email"
+        formControlName="email">
+  
+        <div class="ui red message" 
+        *ngIf="formOuvidoria.controls.email.invalid && (formOuvidoria.controls.email.touched)">
+          <p *ngIf="formOuvidoria.controls.email.errors?.required">E-mail é obrigatório</p>
+          <p *ngIf="formOuvidoria.controls.email.errors?.email">E-mail inválido</p>
+        </div>
+  
+    </div>
+  
+  <div class="field" formGroupName="ouvidoriaTipo">
     <label>Tipo:</label>
-    <select class="ui fluid dropdown">
-      <option value="">Selecione</option>
-      <option value="1">Elogio</option>
-      <option value="2">Sugestão</option>
-      <option value="3">Reclamação</option>
+    <select class="ui fluid dropdown" formControlName="descricao" (change)="setId($event)">
+      <option value="" selected disabled>Selecione</option>
+      <option *ngFor="let tipo of tiposOuvidoria" value="{{tipo.descricao}}">{{tipo.descricao}}</option>
     </select>
+
+    <input type="hidden" formControlName="id"> <!-- id do valor do select-->
+
+    <div class="ui red message" 
+    *ngIf="formOuvidoria.controls.descricao.invalid && (formOuvidoria.controls.descricao.touched)">
+      <p *ngIf="formOuvidoria.controls.descricao.errors?.required">Selecione o Tipo</p>
+    </div>
   </div>
+
+  <div class="field">
+    <label>Assunto</label>
+    <input type="text"
+      formControlName="assunto">
+
+      <div class="ui red message" 
+      *ngIf="formOuvidoria.controls.assunto.invalid && (formOuvidoria.controls.assunto.touched)">
+        <p *ngIf="formOuvidoria.controls.assunto.errors?.required">Informe o assunto</p>
+      </div>
+
+  </div>
+
   <div class="field">
     <label>Descrição:</label>
-    <textarea></textarea>
+    <textarea formControlName="descricao" maxlength="255" #txtarea></textarea>
+    <p *ngIf="txtarea.value.length < 200; else redMenssage" class="">{{255 - txtarea.value.length}} Caratere(s) restantes</p>
+    
+    <ng-template #redMenssage>
+        <p class="mudarCortexto">
+            "{{255 - txtarea.value.length}}" Caractere(s) restante(s)!
+        </p>
+    </ng-template>
+
   </div>
-  <button class="ui teal button" type="submit">Cadastrar</button>
+  <button class="ui teal button" type="submit" [disabled]="formOuvidoria.invalid">Cadastrar</button>
 </form>

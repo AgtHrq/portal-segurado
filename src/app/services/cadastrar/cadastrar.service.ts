@@ -7,10 +7,7 @@ import { Authorization } from '../jwt.service';
   providedIn: 'root'
 })
 export class CadastrarService {
-
-  private cadastrarSource: Subject<any> = new Subject<any>();
-  cadastrarObservable = this.cadastrarSource.asObservable();
-
+  
   constructor(private backendService: BackendService, private auth: Authorization) { }
   
   verificarSegurado(credentials: Object) {

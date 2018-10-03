@@ -25,7 +25,6 @@ import { CadastroVerificaVinculo } from './segurado/cadastro-verifica-vinculo/ca
 import { NgxCaptchaModule } from "ngx-captcha";
 import { AuthGuard } from './services/guards/auth.guard';
 import { LoaderModule } from './loader/loader.module';
-import { OuvidoriaModule } from './home/ouvidoria/ouvidoria.module';
 import { AdminModule } from './admin/admin.module';
 
 
@@ -41,7 +40,7 @@ import { AdminModule } from './admin/admin.module';
     ChangePasswordComponent, 
     CpfMaskDirective, 
     CadastroVerificaVinculo,
-    SendEmailComponent
+    SendEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +49,6 @@ import { AdminModule } from './admin/admin.module';
     ReactiveFormsModule,
     NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q" }),
     HomeModule,
-    OuvidoriaModule,
     LoaderModule,
     AdminModule,
     routing

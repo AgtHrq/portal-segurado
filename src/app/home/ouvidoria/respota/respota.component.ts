@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations'
+import { RespostaOuvidoriaService } from '../../../services/resposta-ouvidoria/resposta-ouvidoria.service';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-respota',
@@ -17,9 +20,23 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class RespotaComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+
+  constructor(private respostaOuvidoriaService: RespostaOuvidoriaService, 
+      private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getLoggedUser().subscribe(
+      user => {
+        this.user = user;
+      }
+    );
+
+    this.respostaOuvidoriaService.getRespostasOuvidoria().subscribe(
+      respostas => {
+        console.log("respostas", respostas);
+      }
+    )
   }
 
 }

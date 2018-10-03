@@ -1,0 +1,56 @@
+
+<div class="ui segment bottom" >
+
+    <div class="ui grid">
+      <div class="doubling four wide column">
+        <div class="ui vertical fluid tabular menu">
+          <ng-template ngFor let-v [ngForOf]="vinculos">
+            <a *ngIf="v.orgao.length > 7; else elseBlock" [attr.data-content]="v.orgao | uppercase" 
+              data-variation="wide" data-position="right center" class="item" 
+              [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v.idVinculo)">
+              {{ v.idVinculo }} - {{ v.orgao | orgaoAbv }}
+            </a>
+            <ng-template #elseBlock>
+              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="sendIdVinculo(v.idVinculo)">
+                {{ v.idVinculo }} - {{ v.orgao | orgaoAbv }}
+              </a>
+            </ng-template>
+          </ng-template>
+        </div>
+      </div>
+      <div class="doubling twelve wide stretched column">
+        <form class="ui large form" [formGroup]="meuForm" (submit)="sendPeriodo($event, meuForm.value)">
+          <div class="fields">
+            <div class="eight wide field">
+              <label>Ano Inicio</label>
+              <select class="ui fluid dropdown" name="anoInicio" formControlName="anoReferencia" (change)="setAnosFim($event.target.value)">
+                <option value="" selected disabled>Selecione</option>
+                <option *ngFor="let ano of anosInicio" value="{{ano}}">{{ano}}</option>
+              </select>
+            </div>
+            <div class="eight wide field">
+              <label>Ano Fim</label>
+              <select class="ui fluid dropdown" name="anoFim" formControlName="anoReferenciaFim" [class.disabled]="element">
+                <option value="" selected disabled>Selecione</option>
+                <option *ngFor="let ano1 of anosFim" value="{{ano1}}">{{ano1}}</option>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" formControlName="idVinculo"/>
+          <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid">
+            Visualizar
+          </button>
+          <a class="ui right floated button" (click)="voltar()">
+              Voltar
+          </a>
+        </form>
+      </div>
+    </div>
+    <div class="" *ngIf="detail">
+      <app-ficha-financeira-detail [ficha]="vinculoFicha"></app-ficha-financeira-detail>
+      <a class="ui right floated button" (click)="voltar()">
+          Voltar
+      </a>
+    </div>
+  
+  </div>

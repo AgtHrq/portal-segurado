@@ -57,7 +57,7 @@
     </div>
     
     <div class="twelve wide field">
-        <label>Celular</label>
+        <label>Celular (Opcional)</label>
         <input
           type="text"
           name="telefone"
@@ -75,22 +75,24 @@
           
         </div>
 
-
   </div>
 
   <div class="field">
     <label>Pergunta Secreta</label>
-    <select  class="ui fluid dropdown" name="pergSecreta" formControlName="pergunta">
+    <select  class="ui fluid dropdown" name="pergSecreta" formControlName="idPergunta" >
       <option value="" selected disabled>Selecione</option>
-      <option *ngFor="let pergunta of perguntas" value="{{pergunta.descricao}}-{{pergunta.id}}">
+      <option *ngFor="let pergunta of perguntas" value="{{pergunta.id}}">
         {{pergunta.descricao}} 
       </option>
     </select>
+
+    <!-- <input type="hidden" formControlName="descricao"/> -->
+
     <!-- Mensagem de validação -->
     <div class="ui red message" 
-      *ngIf="meuForm.controls.pergunta.invalid && (meuForm.controls.pergunta.touched)">
+      *ngIf="meuForm.controls.idPergunta.invalid && (meuForm.controls.idPergunta.touched)">
 
-      <p *ngIf="meuForm.controls.pergunta.errors.required">Selecione uma pergunta</p>
+      <p *ngIf="meuForm.controls.idPergunta.errors?.required">Selecione uma pergunta</p>
 
     </div>
   </div>
@@ -118,24 +120,31 @@
     <div class="eight wide field">
 
       <label>Senha</label>
+      <div class="ui icon input">
       <input
-        type="password"
+        [type]="type"
         name="senha"
         id="senha"
         #senha1
         formControlName="password">
+        <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+
+      </div>
 
     </div>
 
     <div class="eight wide field">
 
       <label>Confirmar senha</label>
+      <div class="ui icon input">
       <input
-        type="password"
+        [type]="type"
         name="confirmeSenha"
         id="confirmeSenha"
-        #senha2
         formControlName="confirmeSenha">
+        <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+
+      </div>
       
         <!-- Mensagend de validação -->
         
@@ -175,11 +184,9 @@
           <div class="ui red message" 
             *ngIf="meuForm.errors?.equal && (meuForm.controls.password.touched)">
             <ul>
-
               <li>
                   Senhas divergentes.
               </li>
-
             </ul>
           </div>
 
