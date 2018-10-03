@@ -17,7 +17,7 @@ export class AdminMenuComponent implements OnInit {
     new Menu("Home", "home icon", ""), 
     new Menu("Ouvidoria", "users icon", "ouvidoria"),
     new Menu("Solicitação", "paper plane icon", "solicitacao"),
-    new Menu("Notificação", "comment alternate icon", "")
+    new Menu("Notificação", "comment alternate icon", "notificacao")
   ];
 
   constructor(private userService: UserService, private router: Router) { }

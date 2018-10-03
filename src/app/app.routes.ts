@@ -20,6 +20,7 @@ import { CadastroUsuarioComponent } from './admin/admin-home/cadastro-usuario/ca
 import { SuperAdminGuard } from './services/guards/super-admin.guard';
 import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
 import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
+import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notificacao.component';
 
 const APP_ROUTES: Routes = [
 
@@ -84,6 +85,9 @@ const APP_ROUTES: Routes = [
             },
             {
                 path: "solicitacao", component: AdminSolicitacaoComponent
+            },
+            {
+                path: "notificacao", component: AdminNotificacaoComponent
             }
         ]
     },
