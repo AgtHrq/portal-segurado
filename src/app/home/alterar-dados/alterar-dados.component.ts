@@ -45,7 +45,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
   alterarDados(event, data) {
 
-    // event.preventDefault();
+    event.preventDefault();
 
   }
 
@@ -53,8 +53,8 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
     this.formAlterarDados = this.formBuilder.group({
       
-      cpf: [Validators.required],
-      email: [],
+      cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
+      email: [this.user.user_email, Validators.email],
       telefone: [""],
       senhaAntiga: [""],
       novaSenha: ["", Validators.compose([
