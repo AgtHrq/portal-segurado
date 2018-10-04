@@ -30,6 +30,12 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
   @Input() user: User;
   @Output() toggle = new EventEmitter<string>();
   formAlterarDados: FormGroup;
+  typeOldPass: String = "password";
+  typeNewPass: String = "password";
+  typeConfirmPass: String = "password";
+  iconOld: String = "eye link slash icon";
+  iconNew: String = "eye link slash icon";
+  iconConfirm: String = "eye link slash icon";
 
   constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils) { }
 

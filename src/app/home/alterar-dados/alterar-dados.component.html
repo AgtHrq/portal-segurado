@@ -20,15 +20,28 @@
           </div>
         <div class="field">
           <label>Senha antiga:</label>
-          <input type="password" formControlName="senhaAntiga">
+          <div class="ui icon input">
+            <i [class]="iconOld" (mousedown)="typeOldPass='text'; iconOld='eye link icon'" (mouseleave)="typeOldPass='password'; iconOld='eye link slash icon'"
+             (mouseup)="typeOldPass='password'; iconOld='eye link slash icon'"></i>
+            <input [type]="typeOldPass" formControlName="senhaAntiga">
+          </div>
         </div>
         <div class="field">
           <label>Nova senha:</label>
-          <input type="password" formControlName="newPassword">
+          <div class="ui icon input">
+            <i [class]="iconNew" (mousedown)="typeNewPass='text'; iconNew='eye link icon'" (mouseleave)="typeNewPass='password'; iconNew='eye link slash icon'" 
+            (mouseup)="typeNewPass='password'; iconNew='eye link slash icon'"></i>
+            <input [type]="typeNewPass" formControlName="newPassword">
+          </div>
         </div>
         <div class="field">
           <label>Confirmar senha:</label>
-          <input type="password" formControlName="confirmPassword">
+          <div class="ui icon input">
+            <i [class]="iconConfirm" (mousedown)="typeConfirmPass='text'; iconConfirm='eye link icon'" 
+             (mouseleave)="typeConfirmPass='password'; iconConfirm='eye link slash icon'"
+             (mouseup)="typeConfirmPass='password'; iconConfirm='eye link slash icon'"></i>
+            <input [type]="typeConfirmPass" formControlName="confirmPassword">
+          </div>
         </div>
         <div class="actions">
           <button type="submit" [disabled]="formAlterarDados.invalid" class="ui teal button">Confirmar</button>
