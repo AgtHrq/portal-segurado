@@ -5,10 +5,10 @@
       Alterar Dados
     </div>
     <div class="content">
-      <form appCpfMask class="ui form" [formGroup]="formAlterarDados" (submit)="alterarDados($event, formAlterarDados.value)">
-        <div class="field">
+      <form class="ui form" [formGroup]="formAlterarDados" (submit)="alterarDados($event, formAlterarDados.value)">
+        <div class="disabled field">
           <label>CPF:</label>
-          <input type="text" formControlName="cpf" id="cpf">
+          <input type="text" formControlName="cpf">
         </div>
         <div class="field">
           <label>E-mail:</label>
