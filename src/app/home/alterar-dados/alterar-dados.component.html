@@ -21,25 +21,25 @@
         <div class="field">
           <label>Senha antiga:</label>
           <div class="ui icon input">
-            <i [class]="iconOld" (mousedown)="typeOldPass='text'; iconOld='eye link icon'" (mouseleave)="typeOldPass='password'; iconOld='eye link slash icon'"
-             (mouseup)="typeOldPass='password'; iconOld='eye link slash icon'"></i>
+            <i [class]="iconOld" (mousedown)="typeOldPass='text'; iconOld='eye slash link icon'" (mouseleave)="typeOldPass='password'; iconOld='eye link icon'"
+             (mouseup)="typeOldPass='password'; iconOld='eye link icon'"></i>
             <input [type]="typeOldPass" formControlName="senhaAntiga">
           </div>
         </div>
         <div class="field">
           <label>Nova senha:</label>
           <div class="ui icon input">
-            <i [class]="iconNew" (mousedown)="typeNewPass='text'; iconNew='eye link icon'" (mouseleave)="typeNewPass='password'; iconNew='eye link slash icon'" 
-            (mouseup)="typeNewPass='password'; iconNew='eye link slash icon'"></i>
+            <i [class]="iconNew" (mousedown)="typeNewPass='text'; iconNew='eye slash link icon'" (mouseleave)="typeNewPass='password'; iconNew='eye link icon'" 
+            (mouseup)="typeNewPass='password'; iconNew='eye link icon'"></i>
             <input [type]="typeNewPass" formControlName="newPassword">
           </div>
         </div>
         <div class="field">
           <label>Confirmar senha:</label>
           <div class="ui icon input">
-            <i [class]="iconConfirm" (mousedown)="typeConfirmPass='text'; iconConfirm='eye link icon'" 
-             (mouseleave)="typeConfirmPass='password'; iconConfirm='eye link slash icon'"
-             (mouseup)="typeConfirmPass='password'; iconConfirm='eye link slash icon'"></i>
+            <i [class]="iconConfirm" (mousedown)="typeConfirmPass='text'; iconConfirm='eye slash link icon'" 
+             (mouseleave)="typeConfirmPass='password'; iconConfirm='eye link icon'"
+             (mouseup)="typeConfirmPass='password'; iconConfirm='eye link icon'"></i>
             <input [type]="typeConfirmPass" formControlName="confirmPassword">
           </div>
         </div>

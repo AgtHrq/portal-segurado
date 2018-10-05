@@ -33,9 +33,9 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
   typeOldPass: String = "password";
   typeNewPass: String = "password";
   typeConfirmPass: String = "password";
-  iconOld: String = "eye link slash icon";
-  iconNew: String = "eye link slash icon";
-  iconConfirm: String = "eye link slash icon";
+  iconOld: String = "eye link icon";
+  iconNew: String = "eye link icon";
+  iconConfirm: String = "eye link icon";
 
   constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils) { }
 
