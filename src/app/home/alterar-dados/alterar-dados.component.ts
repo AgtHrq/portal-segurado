@@ -61,7 +61,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
       
       cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
       email: [this.user.user_email, Validators.email],
-      telefone: [""],
+      telefone: [this.user.user_tel],
       senhaAntiga: ["", Validators.compose(
         [
           Validators.required,

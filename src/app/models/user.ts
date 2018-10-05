@@ -5,5 +5,6 @@ export interface User {
     user_name: string;
     user_role: string;
     user_email: string;
+    user_tel: string;
 
 }
