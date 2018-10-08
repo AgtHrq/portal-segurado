@@ -1,3 +1,4 @@
+import { DirectivesModule } from './../../directives/directives.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,8 @@ import { AlterarDadosComponent } from './alterar-dados.component';
     CommonModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DirectivesModule
   ],
   declarations: [AlterarDadosComponent],
   exports: [AlterarDadosComponent]

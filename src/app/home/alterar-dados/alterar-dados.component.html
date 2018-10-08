@@ -10,7 +10,7 @@
           <label>CPF:</label>
           <input type="text" formControlName="cpf">
         </div>
-        <div class="field">
+        <div class="field" [class.error]="formAlterarDados.controls.email.errors?.email">
           <label>E-mail:</label>
           <input type="text" formControlName="email">
         </div>
@@ -20,43 +20,56 @@
           </div>
         <div class="field">
           <label>Senha antiga:</label>
-          <input type="password" formControlName="senhaAntiga">
+          <div class="ui icon input">
+            <i [class]="iconOld" (mousedown)="typeOldPass='text'; iconOld='eye slash link icon'" (mouseleave)="typeOldPass='password'; iconOld='eye link icon'"
+             (mouseup)="typeOldPass='password'; iconOld='eye link icon'"></i>
+            <input [type]="typeOldPass" formControlName="senhaAntiga">
+          </div>
         </div>
-        <div class="field">
+        <div class="field" [class.error]="formAlterarDados.controls.newPassword.errors && formAlterarDados.controls.newPassword.touched">
           <label>Nova senha:</label>
-          <input type="password" formControlName="novaSenha">
+          <div class="ui icon input">
+            <i [class]="iconNew" (mousedown)="typeNewPass='text'; iconNew='eye slash link icon'" (mouseleave)="typeNewPass='password'; iconNew='eye link icon'" 
+            (mouseup)="typeNewPass='password'; iconNew='eye link icon'"></i>
+            <input [type]="typeNewPass" formControlName="newPassword">
+          </div>
         </div>
-        <div class="field">
+        <div class="field" [class.error]="formAlterarDados.errors?.equal && formAlterarDados.controls.confirmPassword.touched">
           <label>Confirmar senha:</label>
-          <input type="password" formControlName="confirmaSenha">
+          <div class="ui icon input">
+            <i [class]="iconConfirm" (mousedown)="typeConfirmPass='text'; iconConfirm='eye slash link icon'" 
+             (mouseleave)="typeConfirmPass='password'; iconConfirm='eye link icon'"
+             (mouseup)="typeConfirmPass='password'; iconConfirm='eye link icon'"></i>
+            <input [type]="typeConfirmPass" formControlName="confirmPassword">
+          </div>
         </div>
         <div class="actions">
           <button type="submit" [disabled]="formAlterarDados.invalid" class="ui teal button">Confirmar</button>
         </div>
       </form>
-      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.minlength || formAlterarDados.controls.novaSenha.errors?.required" class="error">
-        <i class="attention icon"></i>A senha deve conter no mínimo 6 caracteres.</p>
-      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.minlength && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
-        <i class="icon checkmark"></i>A senha deve conter no mínimo 6 caracteres.</p>
-      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.maxlength || formAlterarDados.controls.novaSenha.errors?.required" class="error">
-        <i class="attention icon"></i>A senha deve conter no máximo 14 caracteres.</p>
-      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.maxlength && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
-        <i class="icon checkmark"></i>A senha deve conter no máximo 14 caracteres.</p>
-      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.upperCase || formAlterarDados.controls.novaSenha.errors?.required" class="error">
-        <i class="attention icon"></i>A senha deve conter pelo menos uma letra maiúscula.</p>
-      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.upperCase && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
-        <i class="icon checkmark"></i>A senha deve conter pelo menos uma letra maiúscula.</p>
-      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.lowerCase || formAlterarDados.controls.novaSenha.errors?.required" class="error">
-        <i class="attention icon"></i>A senha deve conter pelo menos uma letra minúscula.</p>
-      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.lowerCase && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
-        <i class="icon checkmark"></i>A senha deve conter pelo menos uma letra minúscula.</p>
-      <p *ngIf="formAlterarDados.controls.novaSenha.errors?.containNumber || formAlterarDados.controls.novaSenha.errors?.required" class="error">
-        <i class="attention icon"></i>A senha deve conter pelo menos um número.</p>
-      <p *ngIf="!formAlterarDados.controls.novaSenha.errors?.containNumber && !formAlterarDados.controls.novaSenha.errors?.required" class="success">
-        <i class="icon checkmark"></i>A senha deve conter pelo menos um número.</p>
-      <p *ngIf="formAlterarDados.errors?.equal || formAlterarDados.controls.confirmaSenha.errors?.required" class="error">
+      <p *ngIf="formAlterarDados.controls.newPassword.errors?.minlength || formAlterarDados.controls.newPassword.errors?.required" class="error">
+        <i class="attention icon"></i>A nova senha deve conter no mínimo 6 caracteres.</p>
+      <p *ngIf="!formAlterarDados.controls.newPassword.errors?.minlength && !formAlterarDados.controls.newPassword.errors?.required" class="success">
+        <i class="icon checkmark"></i>A nova senha deve conter no mínimo 6 caracteres.</p>
+      <p *ngIf="formAlterarDados.controls.newPassword.errors?.maxlength || formAlterarDados.controls.newPassword.errors?.required" class="error">
+        <i class="attention icon"></i>A nova senha deve conter no máximo 14 caracteres.</p>
+      <p *ngIf="!formAlterarDados.controls.newPassword.errors?.maxlength && !formAlterarDados.controls.newPassword.errors?.required" class="success">
+        <i class="icon checkmark"></i>A nova senha deve conter no máximo 14 caracteres.</p>
+      <p *ngIf="formAlterarDados.controls.newPassword.errors?.upperCase || formAlterarDados.controls.newPassword.errors?.required" class="error">
+        <i class="attention icon"></i>A nova senha deve conter pelo menos uma letra maiúscula.</p>
+      <p *ngIf="!formAlterarDados.controls.newPassword.errors?.upperCase && !formAlterarDados.controls.newPassword.errors?.required" class="success">
+        <i class="icon checkmark"></i>A nova senha deve conter pelo menos uma letra maiúscula.</p>
+      <p *ngIf="formAlterarDados.controls.newPassword.errors?.lowerCase || formAlterarDados.controls.newPassword.errors?.required" class="error">
+        <i class="attention icon"></i>A nova senha deve conter pelo menos uma letra minúscula.</p>
+      <p *ngIf="!formAlterarDados.controls.newPassword.errors?.lowerCase && !formAlterarDados.controls.newPassword.errors?.required" class="success">
+        <i class="icon checkmark"></i>A nova senha deve conter pelo menos uma letra minúscula.</p>
+      <p *ngIf="formAlterarDados.controls.newPassword.errors?.containNumber || formAlterarDados.controls.newPassword.errors?.required" class="error">
+        <i class="attention icon"></i>A nova senha deve conter pelo menos um número.</p>
+      <p *ngIf="!formAlterarDados.controls.newPassword.errors?.containNumber && !formAlterarDados.controls.newPassword.errors?.required" class="success">
+        <i class="icon checkmark"></i>A nova senha deve conter pelo menos um número.</p>
+      <p *ngIf="formAlterarDados.errors?.equal || formAlterarDados.controls.confirmPassword.errors?.required" class="error">
         <i class="attention icon"></i>Os campos 'senha' e 'Confirmação de senha' devem ser iguais.</p>
-      <p *ngIf="!formAlterarDados.errors?.equal && !formAlterarDados.controls.confirmaSenha.errors?.required" class="success">
+      <p *ngIf="!formAlterarDados.errors?.equal && !formAlterarDados.controls.confirmPassword.errors?.required" class="success">
         <i class="icon checkmark"></i>Os campos 'senha' e 'Confirmação de senha' devem ser iguais.</p>
     </div>
   </div>
