@@ -43,6 +43,7 @@ export class ImprimirFichaComponent implements OnInit {
   }
 
   setIdVinculo(evento){
+    evento = evento.substr(10, 16);
     this.meuForm.get('idVinculo').setValue(evento);
   }
 

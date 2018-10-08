@@ -3,11 +3,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { OuvidoriaComponent } from './ouvidoria.component';
-import { RespotaComponent } from './respota/respota.component';
+import { RespostaComponent } from './resposta/resposta.component';
 import { AddOuvidoriaComponent } from './add-ouvidoria/add-ouvidoria.component';
 import { InitialComponent } from './initial/initial.component';
+import { DatailOuvidoriaComponent } from './datail-ouvidoria/datail-ouvidoria.component';
 
 @NgModule({
   imports: [
@@ -15,13 +17,14 @@ import { InitialComponent } from './initial/initial.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   declarations: [
     OuvidoriaComponent, 
-    RespotaComponent, 
+    RespostaComponent, 
     AddOuvidoriaComponent, 
-    InitialComponent
+    InitialComponent, DatailOuvidoriaComponent
   ]
 })
 export class OuvidoriaModule { }
