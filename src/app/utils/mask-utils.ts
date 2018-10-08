@@ -41,4 +41,10 @@ export class MaskUtils {
     public matriculaMask(clazz: string): void {
         $(`.${clazz}`).mask("000.000-0", {reverse: true});
     }
+    
+    public telMask(id): void {
+        
+        $('#' + id.nativeElement.id).mask('(00) 0 0000-0000');
+
+    }
 }

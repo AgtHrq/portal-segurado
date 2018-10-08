@@ -38,7 +38,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
   iconConfirm: String = "eye link icon";
 
   constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils) { }
-
+  
   toggleState(state: string){
 
     this.toggle.emit(state);
@@ -62,7 +62,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
       
       cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
       email: [this.user.user_email, Validators.email],
-      telefone: [this.user.user_tel],
+      telefone: [this.user.user_tel, Validators.minLength(15)],
       senhaAntiga: ["", Validators.compose(
         [
           Validators.required,
