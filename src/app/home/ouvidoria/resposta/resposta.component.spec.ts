@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RespotaComponent } from './respota.component';
+import { RespostaComponent } from './resposta.component';
 
 describe('RespotaComponent', () => {
-  let component: RespotaComponent;
-  let fixture: ComponentFixture<RespotaComponent>;
+  let component: RespostaComponent;
+  let fixture: ComponentFixture<RespostaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RespotaComponent ]
+      declarations: [ RespostaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RespotaComponent);
+    fixture = TestBed.createComponent(RespostaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

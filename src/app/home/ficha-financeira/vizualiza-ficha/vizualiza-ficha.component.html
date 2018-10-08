@@ -8,11 +8,11 @@
           <a *ngIf="v.orgao.length > 7; else elseBlock" [attr.data-content]="v.orgao | uppercase" 
             data-variation="wide" data-position="right center" class="item" 
             [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v.idVinculo)">
-            {{ v.idVinculo }} - {{ v.orgao | orgaoAbv }}
+            {{ v.idVinculo | idVinculo }} | {{ v.orgao | orgaoAbv }}
           </a>
           <ng-template #elseBlock>
             <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="sendIdVinculo(v.idVinculo)">
-              {{ v.idVinculo }} - {{ v.orgao | orgaoAbv }}
+              {{ v.idVinculo | idVinculo }} | {{ v.orgao | orgaoAbv }}
             </a>
           </ng-template>
         </ng-template>

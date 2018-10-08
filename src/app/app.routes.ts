@@ -14,7 +14,7 @@ import { AuthGuard } from './services/guards/auth.guard';
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { FichaFinanceiraComponent } from './home/ficha-financeira/ficha-financeira.component';
 import { VizualizaFichaComponent } from './home/ficha-financeira/vizualiza-ficha/vizualiza-ficha.component';
-import { RespotaComponent } from './home/ouvidoria/respota/respota.component';
+import { RespostaComponent } from './home/ouvidoria/resposta/resposta.component';
 import { ContrachequeComponent } from './home/contracheque/contracheque.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
@@ -62,7 +62,7 @@ const APP_ROUTES: Routes = [
                         path:"", component: InitialComponent
                     },
                     {
-                        path: "respostas", component: RespotaComponent
+                        path: "respostas", component: RespostaComponent
                     },
                     {
                         path:"add/ouvidoria", component: AddOuvidoriaComponent

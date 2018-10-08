@@ -127,7 +127,7 @@ export class VizualizaFichaComponent implements OnInit {
   }
 
   setIdVinculo(evento){
-    console.log(evento);
+    evento = evento.substr(10, 16);
     this.meuForm.get('idVinculo').setValue(evento);
   }
 
