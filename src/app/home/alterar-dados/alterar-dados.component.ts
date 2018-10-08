@@ -46,6 +46,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
     this.formAlterarDados.get("senhaAntiga").setValue("");
     this.formAlterarDados.get("newPassword").setValue("");
     this.formAlterarDados.get("confirmPassword").setValue("");
+    this.formAlterarDados.markAsUntouched();
 
   }
 
