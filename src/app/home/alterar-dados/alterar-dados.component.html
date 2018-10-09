@@ -10,6 +10,10 @@
           <label>CPF:</label>
           <input type="text" formControlName="cpf">
         </div>
+        <div class="disabled field">
+          <label>Nome:</label>
+          <input type="text" formControlName="nome">
+        </div>
         <div class="field" [class.error]="formAlterarDados.controls.email.errors?.email">
           <label>E-mail:</label>
           <input type="text" formControlName="email">
