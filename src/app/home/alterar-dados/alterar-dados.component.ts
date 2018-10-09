@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from './../../models/user';
 import { MaskUtils } from '../../utils/mask-utils';
-import { upperCase, lowerCase, containNumber, equal } from '../../validators/password.validator';
 
 @Component({
   selector: 'app-alterar-dados',
@@ -30,12 +29,6 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
   @Input() user: User;
   @Output() toggle = new EventEmitter<string>();
   formAlterarDados: FormGroup;
-  typeOldPass: String = "password";
-  typeNewPass: String = "password";
-  typeConfirmPass: String = "password";
-  iconOld: String = "eye link icon";
-  iconNew: String = "eye link icon";
-  iconConfirm: String = "eye link icon";
 
   constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils) { }
   
@@ -43,9 +36,6 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
     this.toggle.emit(state);
     this.state = state;
-    this.formAlterarDados.get("senhaAntiga").setValue("");
-    this.formAlterarDados.get("newPassword").setValue("");
-    this.formAlterarDados.get("confirmPassword").setValue("");
     this.formAlterarDados.markAsUntouched();
 
   }
@@ -63,27 +53,7 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
       cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
       email: [this.user.user_email, Validators.email],
       telefone: [this.user.user_tel, Validators.minLength(15)],
-      senhaAntiga: ["", Validators.compose(
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(14)
-        ]
-      )],
-      newPassword: ["", Validators.compose([
-        upperCase,
-        lowerCase,
-        containNumber,
-        Validators.minLength(6),
-        Validators.maxLength(14),
-        Validators.required
-      ])
-      ],
-      confirmPassword: ["", Validators.required]
-
     });
-
-    this.formAlterarDados.setValidators([ equal ]);
 
   }
 

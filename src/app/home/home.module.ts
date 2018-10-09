@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AlterarSenhaModule } from './alterar-senha/alterar-senha.module';
 import { AlterarDadosModule } from './alterar-dados/alterar-dados.module';
 import { HomeComponent } from './home.component';
 import { MenuComponent } from './menu/menu.component';
@@ -23,6 +24,7 @@ import { ContrachequeModule } from './contracheque/contracheque.module';
     BrowserAnimationsModule,
     SolicitacaoModule,
     AlterarDadosModule,
+    AlterarSenhaModule,
     RouterModule,
     OuvidoriaModule,
     ProcessoModule,

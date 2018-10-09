@@ -42,9 +42,9 @@ export class MaskUtils {
         $(`.${clazz}`).mask("000.000-0", {reverse: true});
     }
     
-    public telMask(id): void {
+    public telMask(id: string, value: string, flag?: number): void {
         
-        $('#' + id.nativeElement.id).mask('(00) 0 0000-0000');
+        $('#' + id).mask('(00) 0 0000-0000');
 
     }
 }
