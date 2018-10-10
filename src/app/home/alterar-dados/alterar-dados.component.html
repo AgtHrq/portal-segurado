@@ -5,7 +5,7 @@
       Alterar Dados
     </div>
     <div class="content">
-      <form class="ui form" [formGroup]="formAlterarDados" (submit)="alterarDados($event, formAlterarDados.value)">
+      <form class="ui form" [class.error]="formAlterarDados.invalid" [formGroup]="formAlterarDados" (submit)="alterarDados($event, formAlterarDados.value)">
         <div class="disabled field">
           <label>CPF:</label>
           <input type="text" formControlName="cpf">
@@ -14,14 +14,20 @@
           <label>Nome:</label>
           <input type="text" formControlName="nome">
         </div>
-        <div class="field" [class.error]="formAlterarDados.controls.email.errors?.email">
+        <div class="field" [class.error]="formAlterarDados.controls.email.errors?.email && formAlterarDados.controls.email.touched">
           <label>E-mail:</label>
           <input type="text" formControlName="email">
         </div>
-        <div class="field">
+        <div *ngIf="formAlterarDados.controls.email.errors?.email && formAlterarDados.controls.email.touched" class="ui error message">
+          <p>Informe um e-mail válido.</p>
+        </div>
+        <div class="field error" [class.error]="formAlterarDados.controls.telefone.errors?.minlength && formAlterarDados.controls.telefone.touched">
             <label>Telefone:</label>
             <input appTelefoneMask type="text" formControlName="telefone" id="telefone" placeholder="(XX) X XXXX-XXXX">
-          </div>
+        </div>
+        <div *ngIf="formAlterarDados.controls.telefone.errors?.minlength && formAlterarDados.controls.telefone.touched" class="ui error message">
+          <p>Informe telefone com ddd.</p>
+        </div>
         <div class="actions">
           <button type="submit" [disabled]="formAlterarDados.invalid" class="ui teal button">Confirmar</button>
         </div>
