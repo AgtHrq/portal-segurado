@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -23,7 +23,7 @@ import { MaskUtils } from '../../utils/mask-utils';
     ])
   ]
 })
-export class AlterarDadosComponent implements OnInit, OnChanges {
+export class AlterarDadosComponent implements OnInit {
 
   @Input() state: string = 'inactive';
   @Input() user: User;
@@ -36,6 +36,8 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
 
     this.toggle.emit(state);
     this.state = state;
+    this.formAlterarDados.get('email').setValue(this.user.user_email);
+    this.formAlterarDados.get('telefone').setValue(this.user.user_tel);
     this.formAlterarDados.markAsUntouched();
 
   }
@@ -53,11 +55,16 @@ export class AlterarDadosComponent implements OnInit, OnChanges {
       cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
       nome:[this.user.user_name, Validators.required],
       email: [this.user.user_email, Validators.email],
-      telefone: [this.user.user_tel, Validators.minLength(15)],
+      telefone: [this.user.user_tel, Validators.minLength(16)],
     });
 
+    !(this.user.user_tel === null || this.user.user_tel === '') ? this.user.user_tel = this.maskTel() : '';
   }
 
-  ngOnChanges() { }
+  maskTel(): string {
+
+    return `(${this.user.user_tel.substr(0, 2)}) ${this.user.user_tel.substr(2, 1)} ${this.user.user_tel.substr(3, 4)}-${this.user.user_tel.substr(7, 4)}`;
+
+  }
 
 }

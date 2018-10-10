@@ -34,9 +34,6 @@ export class HomeComponent implements AfterViewInit {
     senha ? this.stateSenha.trim() === "inactive" ? this.stateSenha = "active" : this.stateSenha = "inactive" : 
       this.stateDados.trim() === "inactive" ? this.stateDados = "active" : this.stateDados = "inactive";
 
-    // this.stateDados.trim() === "inactive" ? this.stateDados = "active" : this.stateDados = "inactive";
-    // this.stateSenha.trim() === "inactive" ? this.stateSenha = "active" : this.stateSenha = "inactive";
-
    }
 
    logout() {

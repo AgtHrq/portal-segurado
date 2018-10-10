@@ -11,19 +11,19 @@ export class TelefoneMaskDirective implements OnInit {
 
   ngOnInit() {
 
-    this.maskUtils.telMask(this.el.nativeElement.id, this.el.nativeElement.value, 1);
+    this.maskUtils.telMask(this.el.nativeElement.id);
 
   }
 
   @HostListener('keypress') onkeypress() {
 
-    this.maskUtils.telMask(this.el.nativeElement.id, this.el.nativeElement.value);
+    this.maskUtils.telMask(this.el.nativeElement.id);
     
   }
 
   @HostListener('keyup') onkeyup() {
 
-    this.maskUtils.telMask(this.el.nativeElement.id, this.el.nativeElement.value);
+    this.maskUtils.telMask(this.el.nativeElement.id);
     
   }
 
