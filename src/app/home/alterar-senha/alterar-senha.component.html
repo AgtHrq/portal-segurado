@@ -5,14 +5,19 @@
       Alterar Senha
     </div>
     <div class="content">
-      <form class="ui form" [formGroup]="formAlterarSenha" (submit)="alterarSenha($event, formAlterarSenha.value)">
-        <div class="field">
+      <form class="ui form" [class.error]="formAlterarSenha.invalid" [formGroup]="formAlterarSenha" (submit)="alterarSenha($event, formAlterarSenha.value)">
+        <div class="field" [class.error]="formAlterarSenha.controls.newPassword.value != ''
+          && formAlterarSenha.controls.confirmPassword.value != '' && formAlterarSenha.controls.senhaAntiga.value == ''">
           <label>Senha antiga:</label>
           <div class="ui icon input">
             <i [class]="iconOld" (mousedown)="typeOldPass='text'; iconOld='eye slash link icon'" (mouseleave)="typeOldPass='password'; iconOld='eye link icon'"
              (mouseup)="typeOldPass='password'; iconOld='eye link icon'"></i>
             <input [type]="typeOldPass" formControlName="senhaAntiga">
           </div>
+          <div *ngIf="formAlterarSenha.controls.newPassword.value != ''
+            && formAlterarSenha.controls.confirmPassword.value != '' && formAlterarSenha.controls.senhaAntiga.value == ''" class="ui error message">
+            <p>O campo 'Senha antiga' é obrigatório.</p>
+        </div>
         </div>
         <div class="field" [class.error]="formAlterarSenha.controls.newPassword.errors && formAlterarSenha.controls.newPassword.touched">
           <label>Nova senha:</label>
