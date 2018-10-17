@@ -60,7 +60,6 @@ export class AlterarDadosComponent implements OnInit {
     event.preventDefault();
     data.telefone = this.unmaskTel(data.telefone);
     data.ddd = this.getDDD(data.telefone);
-    console.log(data);
     data.telefone = this.remeveDDD(data.telefone);
     data.cpf = this.maskUltil.removeMascara(data.cpf);
     this.userService.alterarDados(data).subscribe(tk => {
