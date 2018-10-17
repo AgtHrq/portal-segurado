@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AlterarDadosComponent } from './alterar-dados.component';
+import { LoaderModule } from 'src/app/loader/loader.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { AlterarDadosComponent } from './alterar-dados.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    DirectivesModule
+    DirectivesModule,
+    LoaderModule
   ],
   declarations: [AlterarDadosComponent],
   exports: [AlterarDadosComponent]

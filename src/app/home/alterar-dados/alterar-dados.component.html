@@ -1,5 +1,6 @@
 <div [@flyInOut]="state" class="ui dimmer modals page transition active">
   <div class="ui modal transition active">
+    <app-loader *ngIf="showLoader"></app-loader>
     <i class="close icon" (click)="toggleState('inactive')"></i>
     <div class="header">
       Alterar Dados
@@ -32,6 +33,9 @@
           <button type="submit" [disabled]="formAlterarDados.invalid" class="ui teal button">Confirmar</button>
         </div>
       </form>
+      <div *ngIf="showMessage" class="ui message {{ typeMessage }}">
+        <p>{{ message }}</p>
+      </div>
     </div>
   </div>
 </div>
