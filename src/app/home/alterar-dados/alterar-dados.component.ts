@@ -32,8 +32,9 @@ export class AlterarDadosComponent implements OnInit {
   formAlterarDados: FormGroup;
   showLoader: boolean = false;
   showMessage: boolean = false;
-  message: string = "";
-  typeMessage: string = "";
+  message: string = '';
+  typeMessage: string = '';
+  tel: string = '';
 
   constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils, private userService: UserService) { }
   
@@ -41,12 +42,14 @@ export class AlterarDadosComponent implements OnInit {
 
     this.toggle.emit(state);
     this.state = state;
+    this.user.user_tel = this.tel;
+    this.user.user_tel = this.user.user_ddd + this.tel;
     this.user.user_tel = this.unmaskTel(this.user.user_tel);
     this.user.user_tel = this.maskTel();
     this.formAlterarDados.get('email').setValue(this.user.user_email);
     this.formAlterarDados.get('telefone').setValue(this.user.user_tel);
     this.formAlterarDados.markAsUntouched();
-    this.message = "";
+    this.message = '';
     this.showMessage = false;
 
   }
@@ -56,22 +59,29 @@ export class AlterarDadosComponent implements OnInit {
     this.showLoader = true;
     event.preventDefault();
     data.telefone = this.unmaskTel(data.telefone);
+    data.ddd = this.getDDD(data.telefone);
+    console.log(data);
+    data.telefone = this.remeveDDD(data.telefone);
     data.cpf = this.maskUltil.removeMascara(data.cpf);
     this.userService.alterarDados(data).subscribe(tk => {
      
       this.userService.updateLoggedUser(tk.text());
+      this.userService.getLoggedUser().subscribe(u => {
+        this.user = u as User;
+        this.tel = this.user.user_tel;
+      });
       this.showLoader = false;
       this.showMessage = true;
-      this.message = "Dados atualizados com sucesso!";
-      this.typeMessage = "positive";
+      this.message = 'Dados atualizados com sucesso!';
+      this.typeMessage = 'positive';
 
     },
       () => {
       
         this.showLoader = false;
         this.showMessage = true;
-        this.message = "Falha ao tentar atualizar os dados, tente novamente. Caso persista o erro abra uma solicitação informando o erro.";
-        this.typeMessage = "negative";
+        this.message = 'Falha ao tentar atualizar os dados, tente novamente. Caso persista o erro abra uma solicitação informando o erro.';
+        this.typeMessage = 'negative';
 
       }
     );
@@ -80,6 +90,9 @@ export class AlterarDadosComponent implements OnInit {
 
   ngOnInit() { 
     
+    this.tel = this.user.user_tel;
+    this.user.user_tel = this.user.user_ddd + this.tel;
+    this.remeveDDD(this.user.user_tel);
     !(this.user.user_tel === null || this.user.user_tel === '') ? this.user.user_tel = this.maskTel() : '';
 
     this.formAlterarDados = this.formBuilder.group({
@@ -100,7 +113,19 @@ export class AlterarDadosComponent implements OnInit {
 
   unmaskTel(tel: string): string {
 
-    return tel.replace(/\(|\)| |\-/gi, "");
+    return tel.replace(/\(|\)| |\-/gi, '');
+
+  }
+
+  remeveDDD(tel: string): string {
+
+    return tel.substr(2, tel.length);
+
+  }
+
+  getDDD(tel: string): string {
+
+    return tel.substr(0, 2);
 
   }
 
