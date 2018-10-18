@@ -42,10 +42,12 @@ export class AlterarDadosComponent implements OnInit {
 
     this.toggle.emit(state);
     this.state = state;
-    this.user.user_tel = this.tel;
-    this.user.user_tel = this.user.user_ddd + this.tel;
-    this.user.user_tel = this.unmaskTel(this.user.user_tel);
-    this.user.user_tel = this.maskTel();
+    if(this.user.user_tel){
+      this.user.user_tel = this.tel;
+      this.user.user_tel = this.user.user_ddd + this.tel;
+      this.user.user_tel = this.unmaskTel(this.user.user_tel);
+      this.user.user_tel = this.maskTel();
+    }
     this.formAlterarDados.get('email').setValue(this.user.user_email);
     this.formAlterarDados.get('telefone').setValue(this.user.user_tel);
     this.formAlterarDados.markAsUntouched();
@@ -58,16 +60,21 @@ export class AlterarDadosComponent implements OnInit {
 
     this.showLoader = true;
     event.preventDefault();
-    data.telefone = this.unmaskTel(data.telefone);
-    data.ddd = this.getDDD(data.telefone);
-    data.telefone = this.remeveDDD(data.telefone);
+    data.ddd = '';
+    if(data.telefone){
+      data.telefone = this.unmaskTel(data.telefone);
+      data.ddd = this.getDDD(data.telefone);
+      data.telefone = this.remeveDDD(data.telefone);
+    } else {
+      data.telefone = '';
+    }
     data.cpf = this.maskUltil.removeMascara(data.cpf);
     this.userService.alterarDados(data).subscribe(tk => {
      
       this.userService.updateLoggedUser(tk.text());
       this.userService.getLoggedUser().subscribe(u => {
         this.user = u as User;
-        this.tel = this.user.user_tel;
+        data.telefone != '' ? this.tel = this.user.user_tel : '';
       });
       this.showLoader = false;
       this.showMessage = true;
@@ -89,10 +96,12 @@ export class AlterarDadosComponent implements OnInit {
 
   ngOnInit() { 
     
-    this.tel = this.user.user_tel;
-    this.user.user_tel = this.user.user_ddd + this.tel;
-    this.remeveDDD(this.user.user_tel);
-    !(this.user.user_tel === null || this.user.user_tel === '') ? this.user.user_tel = this.maskTel() : '';
+    if(this.user.user_tel){
+      this.tel = this.user.user_tel;
+      this.user.user_tel = this.user.user_ddd + this.tel;
+    }
+
+    (this.user.user_tel) ? this.user.user_tel = this.maskTel() : '';
 
     this.formAlterarDados = this.formBuilder.group({
       

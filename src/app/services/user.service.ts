@@ -60,7 +60,6 @@ export class UserService {
 
   alterarDados(dados: any) {
 
-    console.log(dados);
     return this.backendService.protectedRequest('usuarios/alterarDados', 'post', dados);
 
   }
