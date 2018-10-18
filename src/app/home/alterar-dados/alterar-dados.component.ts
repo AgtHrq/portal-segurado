@@ -58,8 +58,8 @@ export class AlterarDadosComponent implements OnInit {
 
   alterarDados(event, data) {
 
-    this.showLoader = true;
     event.preventDefault();
+    this.showLoader = true;
     data.ddd = '';
     if(data.telefone){
       data.telefone = this.unmaskTel(data.telefone);
