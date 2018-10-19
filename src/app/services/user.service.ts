@@ -64,8 +64,10 @@ export class UserService {
 
   }
 
-  updateUser(user: User){
-    return this.backendService.protectedRequest('usuarios/editar', 'post', user)
+  updateUser(dados: any){
+
+    return this.backendService.protectedRequest('usuarios/editar', 'post', dados)
+
   }
 
 }

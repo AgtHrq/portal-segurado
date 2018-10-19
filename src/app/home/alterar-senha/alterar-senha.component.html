@@ -1,5 +1,6 @@
 <div [@flyInOut]="state" class="ui dimmer modals page transition active">
   <div class="ui modal transition active">
+    <app-loader *ngIf="showLoader"></app-loader>
     <i class="close icon" (click)="toggleState('inactive')"></i>
     <div class="header">
       Alterar Senha
@@ -8,11 +9,11 @@
       <form class="ui form" [class.error]="formAlterarSenha.invalid" [formGroup]="formAlterarSenha" (submit)="alterarSenha($event, formAlterarSenha.value)">
         <div class="field" [class.error]="formAlterarSenha.controls.newPassword.value != ''
           && formAlterarSenha.controls.confirmPassword.value != '' && formAlterarSenha.controls.senhaAntiga.value == ''">
-          <label>Senha antiga:</label>
+          <label>Senha atual:</label>
           <div class="ui icon input">
             <i [class]="iconOld" (mousedown)="typeOldPass='text'; iconOld='eye slash link icon'" (mouseleave)="typeOldPass='password'; iconOld='eye link icon'"
              (mouseup)="typeOldPass='password'; iconOld='eye link icon'"></i>
-            <input [type]="typeOldPass" formControlName="senhaAntiga">
+            <input (keyup)="showMessage = false" [type]="typeOldPass" formControlName="senhaAntiga">
           </div>
           <div *ngIf="formAlterarSenha.controls.newPassword.value != ''
             && formAlterarSenha.controls.confirmPassword.value != '' && formAlterarSenha.controls.senhaAntiga.value == ''" class="ui error message">
@@ -24,7 +25,7 @@
           <div class="ui icon input">
             <i [class]="iconNew" (mousedown)="typeNewPass='text'; iconNew='eye slash link icon'" (mouseleave)="typeNewPass='password'; iconNew='eye link icon'" 
             (mouseup)="typeNewPass='password'; iconNew='eye link icon'"></i>
-            <input [type]="typeNewPass" formControlName="newPassword">
+            <input (keyup)="showMessage = false" [type]="typeNewPass" formControlName="newPassword">
           </div>
         </div>
         <div class="field" [class.error]="formAlterarSenha.errors?.equal && formAlterarSenha.controls.confirmPassword.touched">
@@ -33,13 +34,16 @@
             <i [class]="iconConfirm" (mousedown)="typeConfirmPass='text'; iconConfirm='eye slash link icon'" 
              (mouseleave)="typeConfirmPass='password'; iconConfirm='eye link icon'"
              (mouseup)="typeConfirmPass='password'; iconConfirm='eye link icon'"></i>
-            <input [type]="typeConfirmPass" formControlName="confirmPassword">
+            <input (keyup)="showMessage = false" [type]="typeConfirmPass" formControlName="confirmPassword">
           </div>
         </div>
         <div class="actions">
           <button type="submit" [disabled]="formAlterarSenha.invalid" class="ui teal button">Confirmar</button>
         </div>
       </form>
+      <div *ngIf="showMessage" class="ui {{ typeMessage }} message">
+        <p>{{ message }}</p>
+      </div>
       <p *ngIf="formAlterarSenha.controls.newPassword.errors?.minlength || formAlterarSenha.controls.newPassword.errors?.required" class="error">
         <i class="attention icon"></i>A nova senha deve conter no mínimo 6 caracteres.</p>
       <p *ngIf="!formAlterarSenha.controls.newPassword.errors?.minlength && !formAlterarSenha.controls.newPassword.errors?.required" class="success">

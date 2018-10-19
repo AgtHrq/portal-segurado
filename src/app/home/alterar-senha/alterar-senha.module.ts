@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AlterarSenhaComponent } from './alterar-senha.component';
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { LoaderModule } from 'src/app/loader/loader.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    DirectivesModule
+    DirectivesModule,
+    LoaderModule
   ],
   declarations: [AlterarSenhaComponent],
   exports: [AlterarSenhaComponent]
