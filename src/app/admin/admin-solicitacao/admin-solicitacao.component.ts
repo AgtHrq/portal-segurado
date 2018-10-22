@@ -19,7 +19,7 @@ export class AdminSolicitacaoComponent implements OnInit {
   ngOnInit() {
 
     this.menus = [
-      new Menu("Listar Solicitações Abertas", "", ""),
+      new Menu("Listar Solicitações Abertas", "", "aberta"),
       new Menu("Listar Solicitações Fechadas", "", "")
     ];
 
