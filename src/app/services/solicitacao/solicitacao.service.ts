@@ -33,4 +33,16 @@ export class SolicitacaoService {
 
   }
 
+  getSolicitacaosAbertasAdmin() {
+
+    return this.backendService.protectedRequest("usuarios/solicitacoesGeralAtiva", "get");
+
+  }
+
+  getSolicitacoesRespondidasAdmin() {
+
+    return this.backendService.protectedRequest("usuarios/solicitacoesGeralRespondida", "get");
+
+  }
+
 }
