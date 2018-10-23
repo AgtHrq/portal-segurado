@@ -32,8 +32,8 @@ export class ResponderSolicitacaoComponent implements OnInit {
   responderSolicitacao(event, data){
 
     event.preventDefault();
-
-    this.solicitacaoService.responderSolicitacaoAdmin({ resposta: data.resposta, id: this.solicitacao.id }).subscribe(
+    data.id = this.solicitacao.id;
+    this.solicitacaoService.responderSolicitacaoAdmin(data).subscribe(
       () => this.success.emit('Solicitação respondida com sucesso'),
       () => this.message = 'Erro ao responder! Tente novamente em caso de persistir o error entre em contato com a informática.'
     )
