@@ -1,0 +1,25 @@
+<div class="ui dimmer modals page active">
+  <div class="ui modal active">
+    <i class="close icon" (click)="toggleState()"></i>
+    <div class="header">
+      Responder Solicitacao
+    </div>
+    <div class="content">
+      <form class="ui form">
+        <div class="disabled field">
+          <label>Segurado:</label>
+          <input type="text" value="{{ solicitacao.idUsuario.name }}">
+        </div>
+        <div class="disabled field">
+          <label>Tipo de Solicitacao:</label>
+          <input type="text" value="{{ solicitacao.tipoSolicitacao.descricao }}">
+        </div>
+        <div class="field">
+          <label>Resposta:</label>
+          <textarea></textarea>
+        </div>
+        <button class="ui teal button" type="submit">Responder</button>
+      </form>
+    </div>
+  </div>
+</div>

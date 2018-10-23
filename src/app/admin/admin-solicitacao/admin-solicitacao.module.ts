@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AdminSolicitacaoComponent } from './admin-solicitacao.component';
 import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
 import { ListarSolicitacaoComponent } from './listar-solicitacao/listar-solicitacao.component';
+import { ResponderSolicitacaoComponent } from './responder-solicitacao/responder-solicitacao.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ListarSolicitacaoComponent } from './listar-solicitacao/listar-solicita
   ],
   declarations: [
     AdminSolicitacaoComponent,
-    ListarSolicitacaoComponent
+    ListarSolicitacaoComponent,
+    ResponderSolicitacaoComponent
   ]
 })
 export class AdminSolicitacaoModule { }
