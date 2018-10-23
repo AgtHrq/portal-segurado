@@ -11,37 +11,43 @@ export class SolicitacaoService {
 
   getSolicitacoes() {
 
-    return this.backendService.protectedRequest("usuarios/solicitacoesUsuario", "get");
+    return this.backendService.protectedRequest('usuarios/solicitacoesUsuario', 'get');
 
   }
 
   addSolicitacao(data) {
 
-    return this.backendService.protectedRequest("usuarios/enviarSolicitacao", "post", data);
+    return this.backendService.protectedRequest('usuarios/enviarSolicitacao', 'post', data);
 
   }
 
   getTipoSolicitacao() {
 
-    return this.backendService.protectedRequest("usuarios/tipoSolicitacao", "get");
+    return this.backendService.protectedRequest('usuarios/tipoSolicitacao', 'get');
 
   }
 
   fecharSolicitacao(id: number) {
 
-    return this.backendService.protectedRequest("usuarios/fecharSolicitacao", "get", null, { id: id });
+    return this.backendService.protectedRequest('usuarios/fecharSolicitacao', 'get', null, { id: id });
 
   }
 
   getSolicitacaosAbertasAdmin() {
 
-    return this.backendService.protectedRequest("usuarios/solicitacoesGeralAtiva", "get");
+    return this.backendService.protectedRequest('usuarios/solicitacoesGeralAtiva', 'get');
 
   }
 
   getSolicitacoesRespondidasAdmin() {
 
-    return this.backendService.protectedRequest("usuarios/solicitacoesGeralRespondida", "get");
+    return this.backendService.protectedRequest('usuarios/solicitacoesGeralRespondida', 'get');
+
+  }
+
+  responderSolicitacaoAdmin(data) {
+
+    return this.backendService.protectedRequest('usuarios/responderSolicitacao', 'post', data)
 
   }
 

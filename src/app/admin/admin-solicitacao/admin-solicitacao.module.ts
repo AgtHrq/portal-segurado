@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminSolicitacaoComponent } from './admin-solicitacao.component';
 import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
@@ -11,7 +12,9 @@ import { ResponderSolicitacaoComponent } from './responder-solicitacao/responder
   imports: [
     CommonModule,
     RouterModule,
-    AdminSubmenuModule
+    AdminSubmenuModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdminSolicitacaoComponent,

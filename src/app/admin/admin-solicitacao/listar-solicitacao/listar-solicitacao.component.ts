@@ -29,7 +29,6 @@ export class ListarSolicitacaoComponent implements OnInit {
 
     this.solicitacaoService.getSolicitacaosAbertasAdmin().subscribe(res => {
       this.solicitacoes = res.json() as Solicitacao[];
-      console.log(this.solicitacoes);
     },
     error => {
       if(error.json().message == 'Login expirado, efetue o login novamente!'){

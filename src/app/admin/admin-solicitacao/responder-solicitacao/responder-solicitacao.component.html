@@ -2,10 +2,10 @@
   <div class="ui modal active">
     <i class="close icon" (click)="toggleState()"></i>
     <div class="header">
-      Responder Solicitacao
+      Responder Solicitação
     </div>
     <div class="content">
-      <form class="ui form">
+      <form class="ui form" [formGroup]="formResponder" (submit)="responderSolicitacao($event, formResponder.value)">
         <div class="disabled field">
           <label>Segurado:</label>
           <input type="text" value="{{ solicitacao.idUsuario.name }}">
@@ -14,11 +14,15 @@
           <label>Tipo de Solicitacao:</label>
           <input type="text" value="{{ solicitacao.tipoSolicitacao.descricao }}">
         </div>
+        <div class="disabled field">
+          <label>Descrição:</label>
+          <textarea>{{ solicitacao.descricao }}</textarea>
+        </div>
         <div class="field">
           <label>Resposta:</label>
-          <textarea></textarea>
+          <textarea formControlName="resposta"></textarea>
         </div>
-        <button class="ui teal button" type="submit">Responder</button>
+        <button class="ui teal button" [disabled]="formResponder.invalid" type="submit">Responder</button>
       </form>
     </div>
   </div>
