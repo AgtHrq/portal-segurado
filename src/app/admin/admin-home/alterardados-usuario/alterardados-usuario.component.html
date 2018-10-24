@@ -5,63 +5,44 @@
       {{ message }}
     </div>
   </div>
-  <form class="ui form" [formGroup]="meuForm" (submit)="cadastraAdm($event, meuForm.value)">
-    <h4 class="ui dividing header">Cadastrar usuário</h4>
-    <div class="field">
-      <label>Nome:</label>
-      <input
-        type="text"
-        name="nome"
-        id="nome"
-        placeholder="Nome"
-        formControlName="name">
-          <!--Mensagens de validação-->
-        <div class="ui red message" 
-            *ngIf="meuForm.controls.name.invalid && (meuForm.controls.name.touched)">
-            <p *ngIf="meuForm.controls.name.errors.required">O campo Nome é obrigatório</p>
-        </div>
-    </div>
-    <div class="field">
-      <label>CPF:</label>
-      <input 
-        formControlName="cpf"
-        type="text"
-        id="cpf"
-        name="cpf"
-        formControlName="cpf"
-        placeholder="CPF"
-        appCpfMask>
-        <!--Mensagens de validação-->
-        <div class="ui red message" 
-          *ngIf="meuForm.controls.cpf.invalid && (meuForm.controls.cpf.touched)">
-          <p *ngIf="meuForm.controls.cpf.errors.minlength">O campo CPF deve conter 11 números.</p>
-          <p *ngIf="meuForm.controls.cpf.errors.required">O campo CPF é obrigatório.</p>
-        </div>
-    </div>
+  <form class="ui form" [formGroup]="meuForm" (submit)="alterarDadosAdm($event, meuForm.value)">
+    <h4 class="ui dividing header">Alterar dados</h4>
     <div class="field">
       <label>EMAIL:</label>
       <input
         type="email"
         name="email"
         id="email"
-        formControlName="email"
-        placeholder="Email">
+        formControlName="email">
           <!--Mensagens de validação-->
         <div class="ui red message" 
             *ngIf="meuForm.controls.email.invalid && (meuForm.controls.email.touched)">
-            <p *ngIf="meuForm.controls.email.errors?.required">O campo Email é obrigatório!</p>
             <p *ngIf="meuForm.controls.email.errors?.email">E-mail informado inválido!</p>
         </div>
     </div>
     <div class="field">
       <div class="eight wide field">
-        <label>Senha</label>
+        <label>Senha atual</label>
+        <div class="ui icon input">
+        <input
+          [type]="type"
+          name="senhaAtual"
+          id="senhaAtual"
+          placeholder="Senha atual"
+          formControlName="senhaAtual">
+          <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="eight wide field">
+        <label>Nova Senha</label>
         <div class="ui icon input">
         <input
           [type]="type"
           name="senha"
           id="senha"
-          placeholder="Senha"
+          placeholder="Nova Senha"
           #senha1
           formControlName="password">
           <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
@@ -119,8 +100,36 @@
             </div>
       </div>
     </div>
-      <button class="ui blue button" type="submit" [disabled]="meuForm.invalid" >
-        Cadastrar
+    <div class="ui red message"
+            *ngIf="meuForm.controls.senhaAtual.invalid && (meuForm.controls.senhaAtual.touched)">
+            <ul>
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.upperCase">
+                  A senha deve conter pelo menos uma letra maiúscula.  
+              </li>
+    
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.lowerCase">
+                A senha deve conter pelo menos uma letra minúscula.
+              </li>
+    
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.containNumber">
+                  A senha deve conter pelo menos um número.
+              </li>
+
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.minlength">
+                A senha deve conter no mínimo 6 caracteres.
+              </li>
+
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.maxlength">
+                  A senha deve conter no máximo 14 caracteres.
+              </li>
+
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.required">
+                Campos de senha obrigatórios
+              </li>
+            </ul>
+          </div>
+      <button class="ui blue button" type="submit">
+        Salvar alterações
       </button>
   </form>
 </div>

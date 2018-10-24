@@ -23,6 +23,8 @@ import { SuperAdminGuard } from './services/guards/super-admin.guard';
 import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
 import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/imprimir-ficha.component';
 import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
+import { AlterardadosUsuarioComponent } from './admin/admin-home/alterardados-usuario/alterardados-usuario.component';
+import { ListaUsuariosComponent } from './admin/admin-home/lista-usuarios/lista-usuarios.component';
 
 const APP_ROUTES: Routes = [
 
@@ -88,6 +90,12 @@ const APP_ROUTES: Routes = [
                 [
                     { 
                         path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
+                    },
+                    {
+                        path: "usuarios/alterardados", component: AlterardadosUsuarioComponent
+                    },
+                    {
+                        path: "usuarios/lista", component: ListaUsuariosComponent
                     }
                 ]
             },

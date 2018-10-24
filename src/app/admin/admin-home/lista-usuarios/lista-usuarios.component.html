@@ -1,0 +1,33 @@
+<div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
+  <i class="close icon" (click)="showMessage = false"></i>
+  <div class="header">
+    {{ message }}
+  </div>
+</div>
+<table class="ui selectable table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>CPF</th>
+      <th>Função</th>
+      <th>Bloqueado</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let u of usuarios">
+    <tr>
+      <td>{{ u.id }}</td>
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.cpf }}</td>
+      <td>{{ u.role }}</td>
+      <td>
+        <div class="ui toggle checkbox">
+            <input [checked]="u.blocked == true" type="checkbox" name="checkboxBloq" (change)="bloquearDesbloquearUsuario($event, u)">
+            <label>{{ u.bloqueado }}</label>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

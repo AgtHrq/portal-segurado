@@ -89,19 +89,10 @@ export class Cadastro2Component implements OnInit {
 
     event.preventDefault();
     
-    // usuario.cpf = usuario.cpf.replace(/\.|\-/gi, "");
-    // usuario.ddd = usuario.ddd.substr(1, 2);
-    // usuario.telefone = usuario.telefone.replace(/\-/, "");
-    // delete(usuario.confirmeSenha);
-
-    usuario.name = 'ABDIAS FREIRE BARRETO';
-    usuario.cpf = '02343541434';
-    usuario.Pergunta = 'Qual seu primeiro time?';
-    usuario.idPergunta = '2';
-    usuario.resposta = 'qualquer coisa';
-    usuario.password = 'Aa123123'
-
-
+    usuario.cpf = usuario.cpf.replace(/\.|\-/gi, "");
+    usuario.ddd = usuario.ddd.substr(1, 2);
+    usuario.telefone = usuario.telefone.replace(/\-/, "");
+    delete(usuario.confirmeSenha);
 
     this.cadastraService2.cadastrarSegurado(usuario).subscribe(
       user => {
