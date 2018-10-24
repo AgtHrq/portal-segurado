@@ -23,6 +23,10 @@ import { SuperAdminGuard } from './services/guards/super-admin.guard';
 import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
 import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/imprimir-ficha.component';
 import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
+import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notificacao.component';
+import { CadastroNotificacaoComponent } from './admin/admin-notificacao/cadastro-notificacao/cadastro-notificacao.component';
+import { ExcluirNotificacaoComponent } from './admin/admin-notificacao/excluir-notificacao/excluir-notificacao.component';
+import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
 
 const APP_ROUTES: Routes = [
 
@@ -92,10 +96,26 @@ const APP_ROUTES: Routes = [
                 ]
             },
             {
-                path: "ouvidoria", component: AdminOuvidoriaComponent
+                path: "ouvidoria", component: AdminOuvidoriaComponent, children: 
+                [
+                    {
+                        path: "listar/ouvidoria", component: ListarOuvidoriaComponent
+                    }
+                ]
             },
             {
                 path: "solicitacao", component: AdminSolicitacaoComponent
+            },
+            {
+                path: "notificacao", component: AdminNotificacaoComponent, children:
+                [
+                    {
+                        path: "cadastrar", component: CadastroNotificacaoComponent
+                    },
+                    {
+                        path: "excluir", component: ExcluirNotificacaoComponent
+                    }
+                ]
             }
         ]
     },

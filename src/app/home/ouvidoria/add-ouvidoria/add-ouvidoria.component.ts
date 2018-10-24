@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '../../../../../node_modules/@angular/forms';
 import { AddOuvidoriaService } from '../../../services/add-ouvidoria/add-ouvidoria.service';

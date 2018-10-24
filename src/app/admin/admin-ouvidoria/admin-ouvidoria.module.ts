@@ -4,15 +4,23 @@ import { RouterModule } from '@angular/router';
 
 import { AdminOuvidoriaComponent } from './admin-ouvidoria.component';
 import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
+import { ListarOuvidoriaComponent } from './listar-ouvidoria/listar-ouvidoria.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DetailOuvidoriaComponent } from './listar-ouvidoria/detail-ouvidoria/detail-ouvidoria.component';
+import { ResponderOuvidoriaComponent } from './listar-ouvidoria/detail-ouvidoria/responder-ouvidoria/responder-ouvidoria.component';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminSubmenuModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   declarations: [
-    AdminOuvidoriaComponent
+    AdminOuvidoriaComponent,
+    ListarOuvidoriaComponent,
+    DetailOuvidoriaComponent,
+    ResponderOuvidoriaComponent
   ]
 })
 export class AdminOuvidoriaModule { }

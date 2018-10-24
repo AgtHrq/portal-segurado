@@ -1,7 +1,5 @@
-<div class="doubling twelve wide stretched column">
-  <div class="ui tall stacked segment">
     <table  class="ui selectable very basic table" >
-    
+
       <thead>
           <tr>
             <th>Tipo</th>
@@ -10,19 +8,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let r of respOuvidoria | paginate: { itemsPerPage: 5, currentPage: page }">
-            <td (click)="showDetail(r)" class="{{ r.showTd }}">{{ r.ouvidoriaTipo.descricao }}</td>
-            <td (click)="showDetail(r)" class="{{ r.showTd }}" *ngIf="r.status">
+          <tr *ngFor="let n of listNotificacoes | paginate: { itemsPerPage: 10, currentPage: page }">
+            <td (click)="showDetail(n)" class="{{ n.showTd }}">{{ n.descricao }}</td>
+            <td (click)="showDetail(n)" class="{{ n.showTd }}" *ngIf="n.status">
               <i class="yellow attention icon"></i>
               Aberto
             </td>
-            <td (click)="showDetail(r)" class="{{ r.showTd }}" *ngIf="!r.status">
+            <td (click)="showDetail(n)" class="{{ n.showTd }}" *ngIf="!n.status">
               <i class="green checkmark icon"></i>
               Concluído
             </td>
-            <td (click)="showDetail(r)" class="{{ r.showTd }}">{{ r.dataCriacao | date: 'dd/MM/yyyy' }}</td>
-            <td (click)="showDetail(r)" colspan="3" class="{{ r.showDetail }}">
-              <app-detail-ouvidoria [respostaOuvidoria]="r"></app-detail-ouvidoria>
+            <td (click)="showDetail(n)" class="{{ n.showTd }}">{{ n.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+            <td (click)="showDetail(n)" colspan="3" class="{{ n.showDetail }}">
+              <app-detail-excluir-notificacao [listNotificacoes]="n"></app-detail-excluir-notificacao>
             </td>
           </tr>
         </tbody>
@@ -50,6 +48,3 @@
         </tfoot>
     
       </table>
-
-  </div>
-</div>

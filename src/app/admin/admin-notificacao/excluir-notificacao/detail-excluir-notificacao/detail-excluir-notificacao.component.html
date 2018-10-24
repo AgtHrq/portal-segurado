@@ -1,0 +1,25 @@
+<div class="ui very center aligned basic segment">
+  <h3 class="ui header">Detalhamento</h3>
+</div>
+<table class="ui very basic table">
+  <tbody>
+    <!-- <tr>
+        <td><h4 class="ui header">Tipo:</h4></td>
+        <td>{{ listNotificacoes.ouvidoriaTipo.descricao }}</td>
+      </tr> -->
+      <tr>
+          <td><h4 class="ui header">Descrição:</h4></td>
+          <td>{{ listNotificacoes.descricao }}</td>
+        </tr>
+        <tr>
+          <td><h4 class="ui header">Data de criação:</h4></td>
+          <td>{{ listNotificacoes.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+        <tr>
+          <td><h4 class="ui header">Data de encerramento:</h4></td>
+          <td>{{ listNotificacoes.dataValidade | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <button class="ui right floated active button" (click)="deleteNotificacao($event, listNotificacoes.id)" type="submit" >Excluir</button>

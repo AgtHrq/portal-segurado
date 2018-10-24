@@ -12,7 +12,7 @@ export class BackendService {
   
   constructor(private http: Http, private auth: Authorization) { }
   
-  unprotectedRequest(url: string, method: string, params?: Object) {
+  unprotectedRequest(url: string, method: string, params?: Object, paramHeader?: boolean) {
     
     if (method.toLowerCase() === "post") {
 
@@ -29,7 +29,8 @@ export class BackendService {
         }
 
       }
-
+      
+      if(paramHeader) return this.http.get(`http://${this.url}/${url}`, { params:  params });
       return this.http.get(`http://${this.url}/${url}`, {
         search: sParams
       });

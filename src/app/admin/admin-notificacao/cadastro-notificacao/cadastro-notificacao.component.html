@@ -1,0 +1,46 @@
+<form class="ui form" [formGroup]="formNotificacao" (submit)="sendNotificacao($event, formNotificacao.value)">
+
+  <h3>Cadastrar Notificação</h3>
+ 
+  <div class="field">
+      <label>Descrição:</label>
+      <textarea class="five wide field" formControlName="descricao" maxlength="255" #txtarea></textarea>
+      <p *ngIf="txtarea.value.length < 200; else redMenssage">{{255 - txtarea.value.length}} Caratere(s) restantes</p>
+      
+      <ng-template #redMenssage>
+          <p class="mudarCortexto">
+              "{{255 - txtarea.value.length}}" Caractere(s) restante(s)!
+          </p>
+      </ng-template>
+    </div>
+
+    <div class="field">
+      <label>Tempo de duração:</label>
+      <select class="ui fluid dropdown five wide field" formControlName="tempoExpiracao">
+        <option value="" selected disabled>Selecione</option>
+        <option value="30" >30 Dias</option>
+        <option value="60" >60 Dias</option>
+        <option value="90" >90 Dias</option>
+      </select>
+    </div>
+
+    <div class="field">
+        <label>Orgão:</label>
+        <select class="ui fluid dropdown five wide field" formControlName="idOrgao" (change)="sendIdOrgao($event.target.value)">
+          <option value="" selected disabled>Selecione</option>
+          <option *ngFor="let orgao of orgaos" value="{{orgao.idOrgao}}">
+            {{orgao.descricao}}
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+          <label>Cargo:</label>
+          <select class="ui fluid dropdown five wide field" formControlName="idCargo" [class.disabled]="element">
+            <option value="" selected disabled>Selecione</option>
+            <option *ngFor="let cargo of cargos" value="{{cargo.id_cargo}}">{{cargo.descricao}}</option>
+          </select>
+        </div>
+
+    <button class="ui teal button" type="submit" [disabled]="formNotificacao.invalid">Cadastrar</button>
+</form>

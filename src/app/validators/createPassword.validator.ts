@@ -16,3 +16,13 @@ export function checkContato(control: FormGroup): ValidationErrors | null {
         return null;
     }
 }
+
+export function checkOrgaoCargo(control: FormGroup): ValidationErrors | null {
+    if(control.get("idOrgao").value === "" && control.get("idCargo").value != ""){
+        return {checkOrgaoCargo: false};
+    }else if(control.get("idOrgao").value != "" && control.get("idCargo").value === ""){
+        return {checkContato: false};
+    }else {
+        return null;
+    }
+}

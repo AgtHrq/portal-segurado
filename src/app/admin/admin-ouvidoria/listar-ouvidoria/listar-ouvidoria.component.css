@@ -1,0 +1,32 @@
+.hidden {
+
+    display: none;
+
+}
+.pagination-previous{
+
+    float: left;
+
+}
+
+.current-page {
+
+    float: left;
+
+}
+
+.pagination-next {
+
+    float: left;
+
+}
+
+table {
+    border-radius: 0%;
+    max-width: 40vmax;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid;
+    background-color: inherit;
+}
