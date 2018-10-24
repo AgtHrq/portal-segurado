@@ -1,18 +1,110 @@
-<form class="ui form">
+<form class="ui form" [formGroup]="meuForm" (submit)="cadastraAdm($event, meuForm.value)" *ngIf="cadastro-usuario">
+  
   <h4 class="ui dividing header">Cadastrar usuário</h4>
   <div class="field">
     <label>Nome:</label>
-    <input type="text" placeholder="nome">
+    <input
+      type="text"
+      name="nome"
+      id="nome"
+      placeholder="Nome"
+      formControlName="nome">
+        <!--Mensagens de validação-->
+      <div class="ui red message" 
+          *ngIf="meuForm.controls.nome.invalid && (meuForm.controls.nome.touched)">
+          <p *ngIf="meuForm.controls.nome.errors.required">O campo é obrigatório</p>
+  </div>
   </div>
   <div class="field">
     <label>CPF:</label>
-    <input type="text" placeholder="CPF">
+    <input 
+      formControlName="cpf"
+      type="text"
+      id="cpf"
+      name="cpf"
+      placeholder="CPF"
+      appCpfMask>
+      <!--Mensagens de validação-->
+      <div class="ui red message" 
+        *ngIf="meuForm.controls.cpf.invalid && (meuForm.controls.cpf.touched)">
+        <p *ngIf="meuForm.controls.cpf.errors.minlength">O campo CPF deve conter 11 números.</p>
+        <p *ngIf="meuForm.controls.cpf.errors.required">O campo CPF é obrigatório.</p>
+  </div>
   </div>
   <div class="field">
-    <label>Função</label>
-    <select class="ui fluid dropdown">
-      <option value="">Selecione...</option>
-    </select>
+    <label>EMAIL:</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Email"
+      formControlName="email"
+      placeholder="Email">
+        <!--Mensagens de validação-->
+      <div class="ui red message" 
+          *ngIf="meuForm.controls.nome.invalid && (meuForm.controls.nome.touched)">
+          <p *ngIf="meuForm.controls.nome.errors.required">O campo é obrigatório</p>
+      </div>
   </div>
-  <button type="submit" tabindex="0" class="ui teal button">Cadastrar</button>
+  <div class="fields">
+    <div class="eight wide field">
+      <label>Senha</label>
+      <div class="ui icon input">
+      <input
+        [type]="type"
+        name="senha"
+        id="senha"
+        #senha1
+        formControlName="password">
+        <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="eight wide field">
+        <label>Confirmar senha</label>
+        <div class="ui icon input">
+        <input
+          [type]="type"
+          name="confirmeSenha"
+          id="confirmeSenha"
+          formControlName="confirmeSenha">
+          <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+        </div>     
+          <!-- Mensagend de validação -->        
+          <div class="ui red message"
+            *ngIf="meuForm.controls.password.invalid && (meuForm.controls.password.touched)">
+            <ul>
+              <li *ngIf="meuForm.controls.password.errors?.upperCase">
+                  A senha deve conter pelo menos uma letra maiúscula.  
+              </li>
+              <li *ngIf="meuForm.controls.password.errors?.lowerCase">
+                A senha deve conter pelo menos uma letra minúscula.
+              </li>
+              <li *ngIf="meuForm.controls.password.errors?.containNumber">
+                  A senha deve conter pelo menos um número.
+              </li>
+              <li *ngIf="meuForm.controls.password.errors?.minlength">
+                A senha deve conter no mínimo 6 caracteres.
+              </li>
+              <li *ngIf="meuForm.controls.password.errors?.maxlength">
+                  A senha deve conter no máximo 14 caracteres.
+              </li>
+              <li *ngIf="meuForm.controls.password.errors?.required">
+                Campos de senha obrigatórios
+              </li>
+            </ul>
+          </div>
+            <div class="ui red message" 
+              *ngIf="meuForm.errors?.equal && (meuForm.controls.password.touched)">
+              <ul>
+                <li>
+                    Senhas divergentes.
+                </li>
+              </ul>
+            </div>
+      </div>
+    </div>
+    <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
+      Cadastrar
+  </button>
 </form>
