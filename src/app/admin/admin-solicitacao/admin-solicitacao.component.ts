@@ -20,7 +20,7 @@ export class AdminSolicitacaoComponent implements OnInit {
 
     this.menus = [
       new Menu("Listar Solicitações Abertas", "", "aberta"),
-      new Menu("Listar Solicitações Fechadas", "", "")
+      new Menu("Listar Solicitações Fechadas", "", "fechada")
     ];
 
     this.userService.getLoggedUser().subscribe(

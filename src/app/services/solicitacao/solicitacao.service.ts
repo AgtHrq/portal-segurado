@@ -47,7 +47,7 @@ export class SolicitacaoService {
 
   responderSolicitacaoAdmin(data) {
 
-    return this.backendService.protectedRequest('usuarios/responderSolicitacao', 'post', data)
+    return this.backendService.protectedRequest('usuarios/responderSolicitacao', 'post', data);
 
   }
 

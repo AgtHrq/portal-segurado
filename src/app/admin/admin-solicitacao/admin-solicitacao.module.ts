@@ -8,6 +8,8 @@ import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
 import { ListarSolicitacaoComponent } from './listar-solicitacao/listar-solicitacao.component';
 import { ResponderSolicitacaoComponent } from './responder-solicitacao/responder-solicitacao.component';
 import { LoaderModule } from 'src/app/loader/loader.module';
+import { ListaSolicitacaoFechedaComponent } from './lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
+import { SolicitacaoModule } from 'src/app/home/solicitacao/solicitacao.module';
 
 @NgModule({
   imports: [
@@ -16,12 +18,14 @@ import { LoaderModule } from 'src/app/loader/loader.module';
     AdminSubmenuModule,
     FormsModule,
     ReactiveFormsModule,
-    LoaderModule
+    LoaderModule,
+    SolicitacaoModule
   ],
   declarations: [
     AdminSolicitacaoComponent,
     ListarSolicitacaoComponent,
-    ResponderSolicitacaoComponent
+    ResponderSolicitacaoComponent,
+    ListaSolicitacaoFechedaComponent
   ]
 })
 export class AdminSolicitacaoModule { }
