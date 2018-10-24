@@ -1,5 +1,6 @@
 <div class="ui dimmer modals page active">
   <div class="ui modal active">
+    <app-loader *ngIf="showLoader"></app-loader>
     <i class="close icon" (click)="toggleState()"></i>
     <div class="header">
       Responder Solicitação
@@ -20,7 +21,14 @@
         </div>
         <div class="field">
           <label>Resposta:</label>
-          <textarea formControlName="resposta"></textarea>
+          <textarea formControlName="resposta" (keyup)="totalCaracteres = 255 - $event.target.value.length" maxlength="255"></textarea>
+        </div>
+        <div class="ui basic right aligned segment">
+          <p [class.attention]="totalCaracteres <= 50">Caracteres restantes: {{ totalCaracteres }}</p>
+        </div>
+        <div *ngIf="showMessage" class="ui negative message">
+          <i class="close icon" (click)="showMessage = false"></i>
+          <p>{{ message }}</p>
         </div>
         <button class="ui teal button" [disabled]="formResponder.invalid" type="submit">Responder</button>
       </form>

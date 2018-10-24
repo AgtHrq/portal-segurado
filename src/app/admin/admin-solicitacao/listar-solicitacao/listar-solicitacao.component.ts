@@ -15,6 +15,8 @@ export class ListarSolicitacaoComponent implements OnInit {
   solicitacoes: Solicitacao[];
   solicitacao: Solicitacao = null;
   showModal: boolean = false;
+  message: string = '';
+  showMessage: boolean = false;
 
   constructor(private solicitacaoService: SolicitacaoService, private userService: UserService, private router: Router) { }
 
@@ -24,11 +26,20 @@ export class ListarSolicitacaoComponent implements OnInit {
     this.showModal = true;
 
   }
+
+  success(message: string) {
+
+    this.message = message;
+    this.showMessage = true;
+    this.solicitacoes.splice(this.solicitacoes.indexOf(this.solicitacao), 1);
+
+  }
   
   ngOnInit() {
 
     this.solicitacaoService.getSolicitacaosAbertasAdmin().subscribe(res => {
       this.solicitacoes = res.json() as Solicitacao[];
+      this.solicitacoes.sort((a, b) => a.dataCriacao > b.dataCriacao ? 1 : -1);
     },
     error => {
       if(error.json().message == 'Login expirado, efetue o login novamente!'){

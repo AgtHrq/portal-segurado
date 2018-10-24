@@ -17,6 +17,8 @@ export class ResponderSolicitacaoComponent implements OnInit {
   formResponder: FormGroup;
   message: string = '';
   showMessage: boolean = false;
+  showLoader: boolean = false;
+  totalCaracteres: number = 255;
 
   constructor(private fb: FormBuilder, private solicitacaoService: SolicitacaoService) { }
 
@@ -32,10 +34,19 @@ export class ResponderSolicitacaoComponent implements OnInit {
   responderSolicitacao(event, data){
 
     event.preventDefault();
+    this.showLoader = true;
     data.id = this.solicitacao.id;
     this.solicitacaoService.responderSolicitacaoAdmin(data).subscribe(
-      () => this.success.emit('Solicitação respondida com sucesso'),
-      () => this.message = 'Erro ao responder! Tente novamente em caso de persistir o error entre em contato com a informática.'
+      () => {
+        this.showLoader  = false;
+        this.success.emit('Solicitação respondida com sucesso');
+        this.toggle.emit(false);
+      },
+      () => {
+        this.showMessage = true;
+        this.message = 'Erro ao responder! Tente novamente em caso de persistir o error entre em contato com a informática.';
+        this.showLoader  = false;
+      }
     )
 
   }

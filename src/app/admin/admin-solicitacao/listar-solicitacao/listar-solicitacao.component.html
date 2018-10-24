@@ -1,4 +1,11 @@
-<app-responder-solicitacao *ngIf="showModal" [solicitacao]="solicitacao" (toggle)="showModal = $event"></app-responder-solicitacao>
+<app-responder-solicitacao *ngIf="showModal" [solicitacao]="solicitacao" (toggle)="showModal = $event" (success)="success($event)"></app-responder-solicitacao>
+<div *ngIf="showMessage" class="ui positive message">
+  <i class="close icon" (click)="showMessage = false"></i>
+  <div class="header">
+    Sucesso
+  </div>
+  <p>{{ message }}</p>
+</div>
 <table class="ui very basic table">
   <thead>
     <tr>
