@@ -18,6 +18,7 @@ export class ResponderSolicitacaoComponent implements OnInit {
   message: string = '';
   showMessage: boolean = false;
   showLoader: boolean = false;
+  showConfirmModal: boolean = false;
   totalCaracteres: number = 255;
 
   constructor(private fb: FormBuilder, private solicitacaoService: SolicitacaoService) { }
@@ -31,10 +32,23 @@ export class ResponderSolicitacaoComponent implements OnInit {
 
   }
 
-  responderSolicitacao(event, data){
+  confirm(){
 
     event.preventDefault();
+    this.showConfirmModal = true;
+
+  }
+
+  cancel() {
+
+    this.showConfirmModal = false;
+
+  }
+
+  responderSolicitacao(event, data){
+
     this.showLoader = true;
+    this.showConfirmModal = false;
     data.id = this.solicitacao.id;
     this.solicitacaoService.responderSolicitacaoAdmin(data).subscribe(
       () => {

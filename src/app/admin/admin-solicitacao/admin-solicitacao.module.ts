@@ -10,6 +10,7 @@ import { ResponderSolicitacaoComponent } from './responder-solicitacao/responder
 import { LoaderModule } from 'src/app/loader/loader.module';
 import { ListaSolicitacaoFechedaComponent } from './lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
 import { SolicitacaoModule } from 'src/app/home/solicitacao/solicitacao.module';
+import { ConfirmacaoRepostaComponent } from './responder-solicitacao/confirmacao-reposta/confirmacao-reposta.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { SolicitacaoModule } from 'src/app/home/solicitacao/solicitacao.module';
     AdminSolicitacaoComponent,
     ListarSolicitacaoComponent,
     ResponderSolicitacaoComponent,
-    ListaSolicitacaoFechedaComponent
+    ListaSolicitacaoFechedaComponent,
+    ConfirmacaoRepostaComponent
   ]
 })
 export class AdminSolicitacaoModule { }
