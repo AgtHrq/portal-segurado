@@ -39,12 +39,6 @@ export class ResponderSolicitacaoComponent implements OnInit {
 
   }
 
-  cancel() {
-
-    this.showConfirmModal = false;
-
-  }
-
   responderSolicitacao(event, data){
 
     this.showLoader = true;
