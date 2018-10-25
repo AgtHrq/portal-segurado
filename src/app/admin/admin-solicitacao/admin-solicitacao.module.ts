@@ -28,6 +28,7 @@ import { ConfirmacaoRepostaComponent } from './responder-solicitacao/confirmacao
     ResponderSolicitacaoComponent,
     ListaSolicitacaoFechedaComponent,
     ConfirmacaoRepostaComponent
-  ]
+  ],
+  exports: [ConfirmacaoRepostaComponent]
 })
 export class AdminSolicitacaoModule { }
