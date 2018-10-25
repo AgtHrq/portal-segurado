@@ -1,7 +1,7 @@
 <div class="ui dimmer modals page active">
   <div class="ui modal active">
     <app-confirmacao-reposta [header]="'Confirmação de resposta.'" 
-      [message]="'Uma vez confirmarda a resposta da solicitação, não será permitida sua edição. Antes de confirmar verifique sua reposta.'"
+      [message]="'Uma vez confirmada a resposta da solicitação, não será permitida sua edição. Antes de confirmar verifique sua reposta.'"
       [showModal]="showConfirmModal" (cancel)="showConfirmModal = false" (confirm)="responderSolicitacao($event, formResponder.value)"></app-confirmacao-reposta>
     <app-loader *ngIf="showLoader"></app-loader>
     <i class="close icon" (click)="toggleState()"></i>
