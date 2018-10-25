@@ -46,7 +46,7 @@ export class ListaSolicitacaoFechedaComponent implements OnInit {
           this.router.navigate(['/']);
         }
       }
-    )
+    );
 
   }
 
