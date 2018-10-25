@@ -1,10 +1,10 @@
-import { DirectivesModule } from './../../directives/directives.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlterarDadosComponent } from './alterar-dados.component';
+import { AlterarSenhaComponent } from './alterar-senha.component';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 import { LoaderModule } from 'src/app/loader/loader.module';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { LoaderModule } from 'src/app/loader/loader.module';
     DirectivesModule,
     LoaderModule
   ],
-  declarations: [AlterarDadosComponent],
-  exports: [AlterarDadosComponent]
+  declarations: [AlterarSenhaComponent],
+  exports: [AlterarSenhaComponent]
 })
-export class AlterarDadosModule { }
+export class AlterarSenhaModule { }

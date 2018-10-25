@@ -19,8 +19,8 @@ export class AdminSolicitacaoComponent implements OnInit {
   ngOnInit() {
 
     this.menus = [
-      new Menu("Responder solicitação", "", ""),
-      new Menu("Fechar solicitação", "", "")
+      new Menu("Listar Solicitações Abertas", "", "aberta"),
+      new Menu("Listar Solicitações Fechadas", "", "fechada")
     ];
 
     this.userService.getLoggedUser().subscribe(

@@ -1,10 +1,37 @@
-<div [@flyInOut]="state" class="ui dimmer modals page transition active">
+<div class="ui dimmer modals page transition active">
     <div class="ui modal transition active">
-      <i class="close icon" (click)="toggleState('inactive')"></i>
+      <i class="close icon" (click)="toggleState()"></i>
       <div class="header">
         Alterar Dados
       </div>
       <div class="content">
-        <form class="ui form">
-          
+        <form class="ui form" [formGroup]="formResponder" (submit)="responderOuvidoria($event, formResponder.value)">
+          <div class="disabled field">
+              <label>Segurado:</label>
+              <input type="text" value="{{ ouvidoria.usuario.name }}">
+            </div>
+            <div class="disabled field">
+              <label>Tipo de ouvidoria:</label>
+              <input type="text" value="{{ ouvidoria.ouvidoriaTipo.descricao }}">
+            </div>
+            <div class="disabled field">
+              <label>Descrição:</label>
+              <textarea>{{ ouvidoria.descricao }}</textarea>
+            </div>
+            <div class="field">
+              <label>Resposta:</label>
+              <textarea formControlName="resposta" (keyup)="totalCaracteres = 255 - $event.target.value.length" maxlength="255"></textarea>
+            </div>
+            <div class="ui basic right aligned segment">
+              <p [class.attention]="totalCaracteres <= 50">Caracteres restantes: {{ totalCaracteres }}</p>
+            </div>
+            <!-- <div *ngIf="showMessage" class="ui negative message">
+              <i class="close icon" (click)="showMessage = false"></i>
+              <p>{{ message }}</p>
+            </div> -->
+            <button class="ui teal button" [disabled]="formResponder.invalid" type="submit">Responder</button>
         </form>
+      </div>
+    </div>
+  </div>
+      

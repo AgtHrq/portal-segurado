@@ -27,71 +27,73 @@ import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notif
 import { CadastroNotificacaoComponent } from './admin/admin-notificacao/cadastro-notificacao/cadastro-notificacao.component';
 import { ExcluirNotificacaoComponent } from './admin/admin-notificacao/excluir-notificacao/excluir-notificacao.component';
 import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
+import { ListarSolicitacaoComponent } from './admin/admin-solicitacao/listar-solicitacao/listar-solicitacao.component';
+import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
 
 const APP_ROUTES: Routes = [
 
     { 
-        path: "", component: LoginComponent 
+        path: '', component: LoginComponent 
     },
     {
-        path: "cadastro", component: CadastroComponent 
+        path: 'cadastro', component: CadastroComponent 
     },
     { 
-        path: "esqueci/senha", component: ForgotPasswordComponent 
+        path: 'esqueci/senha', component: ForgotPasswordComponent 
     },
     { 
-        path: "home/segurado", component: HomeComponent, canActivate: [AuthGuard], children: [
+        path: 'home/segurado', component: HomeComponent, canActivate: [AuthGuard], children: [
             { 
-                path: "", component: WelcomeComponent
+                path: '', component: WelcomeComponent
             },
             {
-                path: "processos", component: ProcessoComponent
+                path: 'processos', component: ProcessoComponent
             },
             {
-                path: "ficha-financeira", component: FichaFinanceiraComponent, children: [
+                path: 'ficha-financeira', component: FichaFinanceiraComponent, children: [
                     {
-                        path: "visualizar/ficha", component: VizualizaFichaComponent
+                        path: 'visualizar/ficha', component: VizualizaFichaComponent
                     },
                     {
-                        path: "imprimir/ficha", component: ImprimirFichaComponent
+                        path: 'imprimir/ficha', component: ImprimirFichaComponent
                     }
                 ]
             },
             {
-                path: "solicitacoes", component: SolicitacaoComponent
+                path: 'solicitacoes', component: SolicitacaoComponent
             },
             {
-                path: "ouvidoria", component: OuvidoriaComponent, children: [
+                path: 'ouvidoria', component: OuvidoriaComponent, children: [
                     {
-                        path:"", component: InitialComponent
+                        path:'', component: InitialComponent
                     },
                     {
-                        path: "respostas", component: RespostaComponent
+                        path: 'respostas', component: RespostaComponent
                     },
                     {
-                        path:"add/ouvidoria", component: AddOuvidoriaComponent
+                        path:'add/ouvidoria', component: AddOuvidoriaComponent
                     },
                     {
-                        path:"**", redirectTo: ""
+                        path:'**', redirectTo: ''
                     }
                 ]
             },
             {
-                path: "contracheque", component: ContrachequeComponent
+                path: 'contracheque', component: ContrachequeComponent
             },
             {
-                path: "**", redirectTo: ""
+                path: '**', redirectTo: ''
             }
         ]
     },
     {
-        path: "admin", component: AdminComponent, canActivate: [AdminGuard], 
-        children: [
+        path: 'admin', component: AdminComponent, canActivate: [AdminGuard], children:
+        [
             { 
-                path: "", component: AdminHomeComponent, children: 
+                path: '', component: AdminHomeComponent, children: 
                 [
                     { 
-                        path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
+                        path: 'usuarios/cadastro', component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
                     }
                 ]
             },
@@ -104,25 +106,36 @@ const APP_ROUTES: Routes = [
                 ]
             },
             {
-                path: "solicitacao", component: AdminSolicitacaoComponent
-            },
-            {
                 path: "notificacao", component: AdminNotificacaoComponent, children:
-                [
+                [   
                     {
                         path: "cadastrar", component: CadastroNotificacaoComponent
                     },
                     {
                         path: "excluir", component: ExcluirNotificacaoComponent
+                    },
+                ]
+            },
+            {
+                path: 'solicitacao', component: AdminSolicitacaoComponent, children: 
+                [
+                    {
+                        path: 'aberta', component: ListarSolicitacaoComponent
+                    },
+                    {
+                        path: 'fechada', component: ListaSolicitacaoFechedaComponent
+                    },
+                    {
+                        path: '**', redirectTo: ''
                     }
                 ]
+            },
+            { 
+                path: '**', redirectTo: '' 
             }
-        ]
-    },
-    { 
-        path: "**", redirectTo: "" 
-    }
 
+        ]
+    }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

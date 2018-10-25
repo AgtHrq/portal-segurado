@@ -54,7 +54,19 @@ export class UserService {
 
   authenticate(credentials: Object) {
 
-    return this.backendService.unprotectedRequest("usuarios/autenticar", "post", credentials);
+    return this.backendService.unprotectedRequest('usuarios/autenticar', 'post', credentials);
+
+  }
+
+  alterarDados(dados: any) {
+
+    return this.backendService.protectedRequest('usuarios/alterarDadosSegurado', 'post', dados);
+
+  }
+
+  updateUser(dados: any){
+
+    return this.backendService.protectedRequest('usuarios/editar', 'post', dados)
 
   }
 

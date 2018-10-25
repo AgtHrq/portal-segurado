@@ -19,7 +19,8 @@ export class HomeComponent implements AfterViewInit {
   numNotificacoes: number = 0;
   filter: string = "";
   user$: Observable<User>;
-  state: string = 'inactive';
+  stateDados: string = 'inactive';
+  stateSenha: string = 'inactive';
 
   constructor(private userService : UserService, private utils: HomeUtils, private router: Router) {
 
@@ -28,9 +29,10 @@ export class HomeComponent implements AfterViewInit {
 
    }
 
-   toggleState() {
+   toggleState(senha: boolean) {
 
-    this.state.trim() === "inactive" ? this.state = "active" : this.state = "inactive";
+    senha ? this.stateSenha.trim() === "inactive" ? this.stateSenha = "active" : this.stateSenha = "inactive" : 
+      this.stateDados.trim() === "inactive" ? this.stateDados = "active" : this.stateDados = "inactive";
 
    }
 

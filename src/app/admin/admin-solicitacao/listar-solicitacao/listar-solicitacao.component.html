@@ -1,0 +1,26 @@
+<app-responder-solicitacao *ngIf="showModal" [solicitacao]="solicitacao" (toggle)="showModal = $event" (success)="success($event)"></app-responder-solicitacao>
+<div *ngIf="showMessage" class="ui positive message">
+  <i class="close icon" (click)="showMessage = false"></i>
+  <div class="header">
+    Sucesso
+  </div>
+  <p>{{ message }}</p>
+</div>
+<table class="ui very basic table">
+  <thead>
+    <tr>
+      <th>SEGURADO</th>
+      <th>DATA DE CRIAÇÃO</th>
+      <th>TIPO</th>
+      <th>RESPONDER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of solicitacoes">
+      <td>{{ s.idUsuario.name }}</td>
+      <td>{{ s.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ s.tipoSolicitacao.descricao}}</td>
+      <td><i class="icon link edit" (click)="toggleState(s)"></i></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Ouvidoria } from 'src/app/models/ouvidoria';
 
 @Component({
   selector: 'app-detail-ouvidoria',
@@ -8,15 +9,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DetailOuvidoriaComponent implements OnInit {
 
   @Input() listarOuvidoria;
-  state: string = 'inactive';
+  showModal:boolean = false;
+  ouvidoria:Ouvidoria = null;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  responderOuvidoria(event, id){
-    this.state.trim() === "inactive" ? this.state = "active" : this.state = "inactive";
+  responderOuvidoria(ouvidoria: Ouvidoria){
+    this.showModal = true;
+    this.ouvidoria = ouvidoria;
+    console.log(ouvidoria);
   }
 
 }

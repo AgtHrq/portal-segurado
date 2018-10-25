@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminOuvidoriaComponent } from './admin-ouvidoria.component';
 import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
@@ -14,7 +15,9 @@ import { ResponderOuvidoriaComponent } from './listar-ouvidoria/detail-ouvidoria
     CommonModule,
     AdminSubmenuModule,
     RouterModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdminOuvidoriaComponent,

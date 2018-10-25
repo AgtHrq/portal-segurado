@@ -1,0 +1,17 @@
+<table class="ui selectable very basic table">
+  <thead>
+    <tr>
+      <th>SEGURADO</th>
+      <th>DATA DE ENCERRAMENTO</th>
+      <th>TIPO</th>
+    </tr>
+    <tr *ngFor="let s of solicitacoes" (click)="toggleState(s)">
+      <td class="{{ s.showTd }}">{{ s.idUsuario.name }}</td>
+      <td class="{{ s.showTd }}">{{ s.dataEncerramento | date: 'dd/MM/yyyy' }}</td>
+      <td class="{{ s.showTd }}">{{ s.tipoSolicitacao.descricao }}</td>
+      <td colspan="3" class="{{ s.showDetail }}">
+          <app-detail-solicitacao [solicitacao]="s"></app-detail-solicitacao>
+      </td>
+    </tr>
+  </thead>
+</table>
