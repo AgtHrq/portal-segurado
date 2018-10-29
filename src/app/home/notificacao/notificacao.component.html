@@ -10,7 +10,14 @@
     <div class="ui card ntf" *ngFor="let notificacao of notificacoes">
         <div class="content">
             <div class="ui small feed">
-                {{ notificacao.descricao }}
+                {{ notificacao?.descricao | uppercase}}
+            </div>
+        </div>
+    </div>
+    <div class="ui card ntf" *ngIf="numNotificacoes == 0">
+        <div class="content">
+            <div class="ui small feed">
+                SEM NOTIFICAÇÕES ATIVAS.
             </div>
         </div>
     </div>
