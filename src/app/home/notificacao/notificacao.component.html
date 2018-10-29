@@ -10,6 +10,11 @@
     <div class="ui card ntf" *ngFor="let notificacao of notificacoes">
         <div class="content">
             <div class="ui small feed">
+                <div class="ui circular labels">
+                    <a class="ui label">
+                        {{ notificacao?.dataCriacao | date: 'dd/MM/yyyy' }}
+                    </a>
+                </div>
                 {{ notificacao?.descricao | uppercase}}
             </div>
         </div>
