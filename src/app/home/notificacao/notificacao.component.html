@@ -1,7 +1,7 @@
 <div class="ui card cab">
     <div class="content">
         <div class="ui left floated header">Notificações</div>
-        <div class="ui left pointing label">{{ numNotificacoes }}</div>
+        <div class="ui left pointing green label">{{ numNotificacoes }}</div>
         <i class="caret down icon"></i>
     </div>
 </div>
@@ -10,7 +10,7 @@
     <div class="ui card ntf" *ngFor="let notificacao of notificacoes">
         <div class="content">
             <div class="ui small feed">
-                <div class="ui circular labels">
+                <div class="ui circular green labels">
                     <a class="ui label">
                         {{ notificacao?.dataCriacao | date: 'dd/MM/yyyy' }}
                     </a>
