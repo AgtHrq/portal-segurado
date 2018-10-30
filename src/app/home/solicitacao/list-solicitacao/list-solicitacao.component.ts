@@ -60,6 +60,7 @@ export class ListSolicitacaoComponent implements OnInit, OnChanges {
     if(this.solicitacoes != null){
 
       this.solicitacoes.sort((a, b) => a.dataCriacao > b.dataCriacao ? -1 : 1);
+      this.solicitacoes.sort((a, b) => a.status === true ? -1 : 1);
 
     }
 
