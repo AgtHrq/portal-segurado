@@ -24,6 +24,7 @@ import { LoaderModule } from '../../loader/loader.module';
     NewSolicitacaoComponent,
     ListSolicitacaoComponent,
     DetailSolicitacaoComponent
-  ]
+  ],
+  exports:[DetailSolicitacaoComponent]
 })
 export class SolicitacaoModule { }

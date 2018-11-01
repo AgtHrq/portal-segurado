@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlterardadosUsuarioComponent } from './alterardados-usuario/alterardados-usuario.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { LoaderModule } from 'src/app/loader/loader.module';
+import { ModalListaUsuariosComponent } from './lista-usuarios/modal-lista-usuarios/modal-lista-usuarios.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LoaderModule } from 'src/app/loader/loader.module';
     AdminHomeComponent,
     CadastroUsuarioComponent,
     AlterardadosUsuarioComponent,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    ModalListaUsuariosComponent
   ]
 })
 export class AdminHomeModule { }

@@ -21,7 +21,7 @@ export class LoginComponent {
     formGroup: FormGroup;
     showLoader: boolean = false;
     type: string = "password";
-    icon: string = "eye slash link icon";
+    icon: string = "eye link icon";
 
     ngOnInit(){ }
 

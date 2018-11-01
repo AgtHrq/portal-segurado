@@ -14,7 +14,7 @@ import { AuthGuard } from './services/guards/auth.guard';
 import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { FichaFinanceiraComponent } from './home/ficha-financeira/ficha-financeira.component';
 import { VizualizaFichaComponent } from './home/ficha-financeira/vizualiza-ficha/vizualiza-ficha.component';
-import { RespotaComponent } from './home/ouvidoria/respota/respota.component';
+import { RespostaComponent } from './home/ouvidoria/resposta/resposta.component';
 import { ContrachequeComponent } from './home/contracheque/contracheque.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
@@ -25,68 +25,70 @@ import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/i
 import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
 import { AlterardadosUsuarioComponent } from './admin/admin-home/alterardados-usuario/alterardados-usuario.component';
 import { ListaUsuariosComponent } from './admin/admin-home/lista-usuarios/lista-usuarios.component';
+import { ListarSolicitacaoComponent } from './admin/admin-solicitacao/listar-solicitacao/listar-solicitacao.component';
+import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
 
 const APP_ROUTES: Routes = [
 
     { 
-        path: "", component: LoginComponent 
+        path: '', component: LoginComponent 
     },
     {
-        path: "cadastro", component: CadastroComponent 
+        path: 'cadastro', component: CadastroComponent 
     },
     { 
-        path: "esqueci/senha", component: ForgotPasswordComponent 
+        path: 'esqueci/senha', component: ForgotPasswordComponent 
     },
     { 
-        path: "home/segurado", component: HomeComponent, canActivate: [AuthGuard], children: [
+        path: 'home/segurado', component: HomeComponent, canActivate: [AuthGuard], children: [
             { 
-                path: "", component: WelcomeComponent
+                path: '', component: WelcomeComponent
             },
             {
-                path: "processos", component: ProcessoComponent
+                path: 'processos', component: ProcessoComponent
             },
             {
-                path: "ficha-financeira", component: FichaFinanceiraComponent, children: [
+                path: 'ficha-financeira', component: FichaFinanceiraComponent, children: [
                     {
-                        path: "visualizar/ficha", component: VizualizaFichaComponent
+                        path: 'visualizar/ficha', component: VizualizaFichaComponent
                     },
                     {
-                        path: "imprimir/ficha", component: ImprimirFichaComponent
+                        path: 'imprimir/ficha', component: ImprimirFichaComponent
                     }
                 ]
             },
             {
-                path: "solicitacoes", component: SolicitacaoComponent
+                path: 'solicitacoes', component: SolicitacaoComponent
             },
             {
-                path: "ouvidoria", component: OuvidoriaComponent, children: [
+                path: 'ouvidoria', component: OuvidoriaComponent, children: [
                     {
-                        path:"", component: InitialComponent
+                        path:'', component: InitialComponent
                     },
                     {
-                        path: "respostas", component: RespotaComponent
+                        path: 'respostas', component: RespostaComponent
                     },
                     {
-                        path:"add/ouvidoria", component: AddOuvidoriaComponent
+                        path:'add/ouvidoria', component: AddOuvidoriaComponent
                     },
                     {
-                        path:"**", redirectTo: ""
+                        path:'**', redirectTo: ''
                     }
                 ]
             },
             {
-                path: "contracheque", component: ContrachequeComponent
+                path: 'contracheque', component: ContrachequeComponent
             },
             {
-                path: "**", redirectTo: ""
+                path: '**', redirectTo: ''
             }
         ]
     },
     {
-        path: "admin", component: AdminComponent, canActivate: [AdminGuard], 
+        path: 'admin', component: AdminComponent, canActivate: [AdminGuard], 
         children: [
             { 
-                path: "", component: AdminHomeComponent, children: 
+                path: '', component: AdminHomeComponent, children: 
                 [
                     { 
                         path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
@@ -100,15 +102,25 @@ const APP_ROUTES: Routes = [
                 ]
             },
             {
-                path: "ouvidoria", component: AdminOuvidoriaComponent
+                path: 'ouvidoria', component: AdminOuvidoriaComponent
             },
             {
-                path: "solicitacao", component: AdminSolicitacaoComponent
+                path: 'solicitacao', component: AdminSolicitacaoComponent, children: [
+                    {
+                        path: 'aberta', component: ListarSolicitacaoComponent
+                    },
+                    {
+                        path: 'fechada', component: ListaSolicitacaoFechedaComponent
+                    },
+                    {
+                        path: '**', redirectTo: ''
+                    }
+                ]
             }
         ]
     },
     { 
-        path: "**", redirectTo: "" 
+        path: '**', redirectTo: '' 
     }
 
 ];

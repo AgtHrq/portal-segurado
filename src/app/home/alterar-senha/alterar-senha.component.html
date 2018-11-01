@@ -1,0 +1,79 @@
+<div [@flyInOut]="state" class="ui dimmer modals page transition active">
+  <div class="ui modal transition active">
+    <app-loader *ngIf="showLoader"></app-loader>
+    <i class="close icon" (click)="toggleState('inactive')"></i>
+    <div class="header">
+      Alterar Senha
+    </div>
+    <div class="content">
+      <form class="ui form" [class.error]="formAlterarSenha.invalid" [formGroup]="formAlterarSenha" (submit)="alterarSenha($event, formAlterarSenha.value)">
+        <div class="field" [class.error]="formAlterarSenha.controls.newPassword.value != ''
+          && formAlterarSenha.controls.confirmPassword.value != '' && formAlterarSenha.controls.senhaAntiga.value == ''">
+          <label>Senha atual:</label>
+          <div class="ui icon input">
+            <i [class]="iconOld" (mousedown)="typeOldPass='text'; iconOld='eye slash link icon'" (mouseleave)="typeOldPass='password'; iconOld='eye link icon'"
+             (mouseup)="typeOldPass='password'; iconOld='eye link icon'"></i>
+            <input (keyup)="showMessage = false" [type]="typeOldPass" formControlName="senhaAntiga">
+          </div>
+          <div *ngIf="formAlterarSenha.controls.newPassword.value != ''
+            && formAlterarSenha.controls.confirmPassword.value != '' && formAlterarSenha.controls.senhaAntiga.value == ''" class="ui error message">
+            <p>O campo 'Senha antiga' é obrigatório.</p>
+        </div>
+        </div>
+        <div class="field" [class.error]="formAlterarSenha.controls.newPassword.errors && formAlterarSenha.controls.newPassword.touched">
+          <label>Nova senha:</label>
+          <div class="ui icon input">
+            <i [class]="iconNew" (mousedown)="typeNewPass='text'; iconNew='eye slash link icon'" (mouseleave)="typeNewPass='password'; iconNew='eye link icon'" 
+            (mouseup)="typeNewPass='password'; iconNew='eye link icon'"></i>
+            <input (keyup)="showMessage = false" [type]="typeNewPass" formControlName="newPassword">
+          </div>
+        </div>
+        <div class="field" [class.error]="formAlterarSenha.errors?.equal && formAlterarSenha.controls.confirmPassword.touched">
+          <label>Confirmar senha:</label>
+          <div class="ui icon input">
+            <i [class]="iconConfirm" (mousedown)="typeConfirmPass='text'; iconConfirm='eye slash link icon'" 
+             (mouseleave)="typeConfirmPass='password'; iconConfirm='eye link icon'"
+             (mouseup)="typeConfirmPass='password'; iconConfirm='eye link icon'"></i>
+            <input (keyup)="showMessage = false" [type]="typeConfirmPass" formControlName="confirmPassword">
+          </div>
+        </div>
+        <div class="actions">
+          <button type="submit" [disabled]="formAlterarSenha.invalid" class="ui teal button">Confirmar</button>
+        </div>
+      </form>
+      <div *ngIf="showMessage" class="ui {{ typeMessage }} message">
+        <p>{{ message }}</p>
+      </div>
+      <p [class.error]="formAlterarSenha.controls.newPassword.errors?.minlength || formAlterarSenha.controls.newPassword.errors?.required"
+        [class.success]="!formAlterarSenha.controls.newPassword.errors?.minlength && !formAlterarSenha.controls.newPassword.errors?.required">
+        <i class="icon" [class.attention]="formAlterarSenha.controls.newPassword.errors?.minlength || formAlterarSenha.controls.newPassword.errors?.required"
+         [class.checkmark]="!formAlterarSenha.controls.newPassword.errors?.minlength && !formAlterarSenha.controls.newPassword.errors?.required">
+          </i>A nova senha deve conter no mínimo 6 caracteres.</p>
+      <p [class.error]="formAlterarSenha.controls.newPassword.errors?.maxlength || formAlterarSenha.controls.newPassword.errors?.required"
+        [class.success]="!formAlterarSenha.controls.newPassword.errors?.maxlength && !formAlterarSenha.controls.newPassword.errors?.required">
+        <i class="icon" [class.attention]="formAlterarSenha.controls.newPassword.errors?.maxlength || formAlterarSenha.controls.newPassword.errors?.required"
+           [class.checkmark]="!formAlterarSenha.controls.newPassword.errors?.maxlength && !formAlterarSenha.controls.newPassword.errors?.required">
+            </i>A nova senha deve conter no máximo 14 caracteres.</p>
+      <p [class.error]="formAlterarSenha.controls.newPassword.errors?.upperCase || formAlterarSenha.controls.newPassword.errors?.required"
+        [class.success]="!formAlterarSenha.controls.newPassword.errors?.upperCase && !formAlterarSenha.controls.newPassword.errors?.required">
+        <i class="icon" [class.attention]="formAlterarSenha.controls.newPassword.errors?.upperCase || formAlterarSenha.controls.newPassword.errors?.required"
+         [class.checkmark]="!formAlterarSenha.controls.newPassword.errors?.upperCase && !formAlterarSenha.controls.newPassword.errors?.required">
+          </i>A nova senha deve conter pelo menos uma letra maiúscula.</p>
+      <p [class.error]="formAlterarSenha.controls.newPassword.errors?.lowerCase || formAlterarSenha.controls.newPassword.errors?.required"
+        [class.success]="!formAlterarSenha.controls.newPassword.errors?.lowerCase && !formAlterarSenha.controls.newPassword.errors?.required">
+        <i class="icon" [class.attention]="formAlterarSenha.controls.newPassword.errors?.lowerCase || formAlterarSenha.controls.newPassword.errors?.required"
+         [class.checkmark]="!formAlterarSenha.controls.newPassword.errors?.lowerCase && !formAlterarSenha.controls.newPassword.errors?.required">
+          </i>A nova senha deve conter pelo menos uma letra minúscula.</p>
+      <p [class.error]="formAlterarSenha.controls.newPassword.errors?.containNumber || formAlterarSenha.controls.newPassword.errors?.required"
+        [class.success]="!formAlterarSenha.controls.newPassword.errors?.containNumber && !formAlterarSenha.controls.newPassword.errors?.required">
+        <i class="icon" [class.attention]="formAlterarSenha.controls.newPassword.errors?.containNumber || formAlterarSenha.controls.newPassword.errors?.required"
+         [class.checkmark]="!formAlterarSenha.controls.newPassword.errors?.containNumber && !formAlterarSenha.controls.newPassword.errors?.required">
+          </i>A nova senha deve conter pelo menos um número.</p>
+      <p [class.error]="formAlterarSenha.errors?.equal || formAlterarSenha.controls.confirmPassword.errors?.required"
+        [class.success]="!formAlterarSenha.errors?.equal && !formAlterarSenha.controls.confirmPassword.errors?.required">
+        <i class="icon" [class.attention]="formAlterarSenha.errors?.equal || formAlterarSenha.controls.confirmPassword.errors?.required"
+         [class.checkmark]="!formAlterarSenha.errors?.equal && !formAlterarSenha.controls.confirmPassword.errors?.required">
+          </i>Os campos 'senha' e 'Confirmação de senha' devem ser iguais.</p>
+    </div>
+  </div>
+</div>

@@ -85,10 +85,10 @@ export class AlterardadosUsuarioComponent implements OnInit {
         this.showLoader = false;
         this.showMessage = true;
         this.success = false;
-        // if (error.json() != null) {
-        //   this.message = error.json().message;
-        // } else {
-        //   this.message = error._body;
+          if (error.json().message.trim() === "Invalid Token") {
+            this.userService.logoffUser();
+            this.router.navigate(['/']);
+          }
         }
     )
   }

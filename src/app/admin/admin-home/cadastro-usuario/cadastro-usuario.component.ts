@@ -6,6 +6,7 @@ import { CadastrarAdmService } from '../../../services/cadastrarAdm/cadastrarAdm
 import { upperCase, lowerCase, containNumber} from '../../../validators/password.validator';
 import { equal } from '../../../validators/createPassword.validator';
 import { MaskUtils } from '../../../utils/mask-utils';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class CadastroUsuarioComponent implements OnInit {
   message: string = "";
 
   constructor(private formBuilder: FormBuilder, private maskUtils: MaskUtils,
-    private cadastrarAdmService: CadastrarAdmService, private router: Router) {}
+    private cadastrarAdmService: CadastrarAdmService, private router: Router,
+    private userService: UserService) {}
 
   ngOnInit() {
 
@@ -73,12 +75,11 @@ export class CadastroUsuarioComponent implements OnInit {
         this.showLoader = false;
         this.showMessage = true;
         this.success = false;
-        /*if (error.json().message != null) {
-          this.message = error.json().message;
-        } else {
-          FAÇA ISSO FUNCIONAR
-        }*/
         this.message = error._body;
+          if (error.json().message.trim() === "Invalid Token") {
+            this.userService.logoffUser();
+            this.router.navigate(['/']);
+          }
       }
     )
   }

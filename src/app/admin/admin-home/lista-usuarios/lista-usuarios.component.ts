@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -15,27 +15,26 @@ import { AlterarDadosAdminService } from 'src/app/services/alterarDados/alterar-
 })
 export class ListaUsuariosComponent implements OnInit {
   meuForm: FormGroup;
-  nome: string;
-  cpf: string;
-  email: string;
-  usuarios: User;
-  showLoader: boolean = true;
+  usuarios: any;
+  usuario: User = null;
   showMessage: boolean = false;
-  success: boolean = false;
+  scss: boolean = false;
   message: string = null;
-  
+  showModal: boolean = false;
+
   constructor(private formBuilder: FormBuilder, private listarUsuariosAdminService: ListaUsuariosService, 
     private router: Router, private userService: UserService, private alterarDados: AlterarDadosAdminService) { }
 
   ngOnInit() {
-      
+    
     this.listarUsuariosAdminService.listarUsuariosAdmin(null).subscribe(
       data => {
         this.usuarios = data.json();
       },
       error => {
         if (error._body === "Não existem usuarios (admin) cadastrados no sistema"){
-          this.showLoader = false;
+          this.scss = false;
+          this.message = error._body;
         } else if (error.json().message.trim() === "Invalid Token") {
           this.userService.logoffUser();
           this.router.navigate(['/']);
@@ -45,6 +44,18 @@ export class ListaUsuariosComponent implements OnInit {
       
   }
 
+  toggleState(usuario: User){
+    console.log(usuario);
+    this.usuario = usuario;
+    this.showModal = true;
+  }
+
+  success(message: string) {
+    
+    this.message = message;
+    this.showMessage = true;
+  }
+  
   bloquearDesbloquearUsuario(event, usuario){
 
       event.preventDefault();
@@ -53,19 +64,27 @@ export class ListaUsuariosComponent implements OnInit {
         .subscribe(data => {
           if (data.json().blocked == true) {
             this.showMessage = true;
-            this.success = true;
+            this.scss = true;
             this.message = "Usuario bloqueado com sucesso!"
           } else {
               this.showMessage = true;
-              this.success = true;
+              this.scss = true;
               this.message = "Usuario desbloqueado com sucesso!"
           }
         },
         error => {
           this.showMessage = true;
-          this.success = false;
+          this.scss = false;
           this.message = "Não foi possível desbloquear o usuário!"
         }
       )
+  }
+
+  getListaAtualizada(event){
+    this.listarUsuariosAdminService.listarUsuariosAdmin(null).subscribe(
+      data => {
+        this.usuarios = data.json();
+      },
+    )
   }
 }

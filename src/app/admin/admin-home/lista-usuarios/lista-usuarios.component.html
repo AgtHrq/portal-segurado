@@ -1,3 +1,4 @@
+<app-modal-lista-usuarios *ngIf="showModal" (altr)="getListaAtualizada($event)" [user]="usuario" (toggle)="showModal = $event" (success)="success($event)"></app-modal-lista-usuarios>
 <div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
   <i class="close icon" (click)="showMessage = false"></i>
   <div class="header">
@@ -17,11 +18,11 @@
   </thead>
   <tbody *ngFor="let u of usuarios">
     <tr>
-      <td>{{ u.id }}</td>
-      <td>{{ u.name }}</td>
-      <td>{{ u.email }}</td>
-      <td>{{ u.cpf }}</td>
-      <td>{{ u.role }}</td>
+      <td (click)="toggleState(u)">{{ u.id }}</td>
+      <td (click)="toggleState(u)">{{ u.name }}</td>
+      <td (click)="toggleState(u)">{{ u.email }}</td>
+      <td (click)="toggleState(u)">{{ u.cpf }}</td>
+      <td (click)="toggleState(u)">{{ u.role }}</td>
       <td>
         <div class="ui toggle checkbox">
             <input [checked]="u.blocked == true" type="checkbox" name="checkboxBloq" (change)="bloquearDesbloquearUsuario($event, u)">

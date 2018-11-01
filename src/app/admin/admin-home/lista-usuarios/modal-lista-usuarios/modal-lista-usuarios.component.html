@@ -1,0 +1,92 @@
+<div class="ui dimmer modals page active">
+  <div class="ui modal active">
+    <app-loader *ngIf="showLoader"></app-loader>
+    <i class="close icon" (click)="toggleState()"></i>
+    <div class="header">
+      Alterar dados administrador
+    </div>
+    <div class="content">
+      <form class="ui form" [formGroup]="formResponder" (submit)="alterarDadosUserAdm($event, formResponder.value)">
+        <div class="field">
+          <label>Nome:</label>
+          <input type="text"
+            name="name"
+            id="name"
+            formControlName="name">
+        </div>
+        <div class="field">
+          <label>Email:</label>
+          <input 
+            type="email"
+            name="email"
+            id="email"
+            formControlName="email">
+          <div class="ui red message" 
+            *ngIf="formResponder.controls.email.invalid && (formResponder.controls.email.touched)">
+            <p *ngIf="formResponder.controls.email.errors?.email">E-mail informado inválido!</p>
+          </div>
+        </div>
+        <div class="field">
+          <label>Nova Senha:</label>
+          <input 
+            [type]="type"
+            name="senha"
+            id="senha"
+            placeholder="Nova Senha"
+            #senha1
+            formControlName="password">
+        </div>
+        <div class="field">
+          <label>Confirmar Senha:</label>
+          <input
+            [type]="type"
+            name="confirmeSenha"
+            id="confirmeSenha"
+            placeholder="Confirmar Senha"
+            formControlName="confirmeSenha">
+        </div>
+        <div class="ui red message"
+            *ngIf="formResponder.controls.password.invalid && (formResponder.controls.password.touched)">
+            <ul>
+              <li *ngIf="formResponder.controls.password.errors?.upperCase">
+                  A senha deve conter pelo menos uma letra maiúscula.  
+              </li>
+    
+              <li *ngIf="formResponder.controls.password.errors?.lowerCase">
+                A senha deve conter pelo menos uma letra minúscula.
+              </li>
+    
+              <li *ngIf="formResponder.controls.password.errors?.containNumber">
+                  A senha deve conter pelo menos um número.
+              </li>
+
+              <li *ngIf="formResponder.controls.password.errors?.minlength">
+                A senha deve conter no mínimo 6 caracteres.
+              </li>
+
+              <li *ngIf="formResponder.controls.password.errors?.maxlength">
+                  A senha deve conter no máximo 14 caracteres.
+              </li>
+
+              <li *ngIf="formResponder.controls.password.errors?.required">
+                Campos de senha obrigatórios
+              </li>
+            </ul>
+          </div>
+          <div class="ui red message" 
+            *ngIf="formResponder.errors?.equal && (formResponder.controls.password.touched)">
+            <ul>
+              <li>
+                  Senhas divergentes.
+              </li>
+            </ul>
+          </div>
+        <div *ngIf="showMessage" class="ui negative message">
+          <i class="close icon" (click)="showMessage = false"></i>
+          <p>{{ message }}</p>
+        </div>
+        <button class="ui teal button" [disabled]="formResponder.invalid" type="submit">Alterar dados</button>
+      </form>
+    </div>
+  </div>
+</div>

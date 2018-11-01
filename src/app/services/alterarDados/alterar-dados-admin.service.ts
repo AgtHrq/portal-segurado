@@ -18,4 +18,9 @@ export class AlterarDadosAdminService {
 
         return this.backendService.protectedRequest("usuarios/bloquear-desbloquear-usuario", "post", credentials);
     }
+
+    alterarDadosUsuarioAdmin(credentials: object) {
+
+        return this.backendService.protectedRequest("usuarios/editarAdm", "post", credentials)
+    }
 }
