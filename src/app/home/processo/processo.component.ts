@@ -53,7 +53,7 @@ export class ProcessoComponent implements OnInit {
       error=> {
         if (error._body === "O cpf informado não possui processos abertos e/ou fechados!") {
           this.showLoader = false;
-        } else if (error.json().message.trim() === "Invalid Token") {
+        } else if (error.json().message.trim() === "Login expirado, efetue o login novamente!") {
           this.userService.logoffUser();
           this.router.navigate(['/']);
         }

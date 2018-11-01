@@ -41,12 +41,15 @@ export class ListaSolicitacaoFechedaComponent implements OnInit {
           );
       },
       error => {
-        if(error.json().message == 'Login expirado, efetue o login novamente!'){
+        if (error.json().message != 'Login expirado, efetue o login novamente!'){
+  
+        }
+        else if(error.json().message == 'Login expirado, efetue o login novamente!'){
           this.userService.logoffUser();
           this.router.navigate(['/']);
         }
       }
-    )
+    );
 
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -14,10 +14,10 @@ import { HomeUtils } from './../utils/home-utils';
 })
 export class HomeComponent implements AfterViewInit {
 
-  menus: Menu[] = [new Menu("Meus Processos", "book", "processos"), new Menu("Contracheque", "money bill alternate", "contracheque"), new Menu("Ficha Financeira", "newspaper", "ficha-financeira"),
-    new Menu("PBConsig", "dollar", ""), new Menu("Solicitações", "paper plane outline", "solicitacoes"), new Menu("Ouvidoria", "users", "ouvidoria")];
+  menus: Menu[] = [new Menu('Meus Processos', 'book', 'processos'), new Menu('Contracheque', 'money bill alternate', 'contracheque'), new Menu('Ficha Financeira', 'newspaper', 'ficha-financeira'),
+    new Menu('PBConsig', 'dollar', ''), new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), new Menu('Ouvidoria', 'users', 'ouvidoria')];
   numNotificacoes: number = 0;
-  filter: string = "";
+  filter: string = '';
   user$: Observable<User>;
   stateDados: string = 'inactive';
   stateSenha: string = 'inactive';
@@ -31,8 +31,8 @@ export class HomeComponent implements AfterViewInit {
 
    toggleState(senha: boolean) {
 
-    senha ? this.stateSenha.trim() === "inactive" ? this.stateSenha = "active" : this.stateSenha = "inactive" : 
-      this.stateDados.trim() === "inactive" ? this.stateDados = "active" : this.stateDados = "inactive";
+    senha ? this.stateSenha.trim() === 'inactive' ? this.stateSenha = 'active' : this.stateSenha = 'inactive' : 
+      this.stateDados.trim() === 'inactive' ? this.stateDados = 'active' : this.stateDados = 'inactive';
 
    }
 
