@@ -42,8 +42,8 @@ export class ListarSolicitacaoComponent implements OnInit {
       this.solicitacoes.sort((a, b) => a.dataCriacao > b.dataCriacao ? 1 : -1);
     },
     error => {
-      if (error.json().message != 'Login expirado, efetue o login novamente!'){
-
+      if (error._body != 'Login expirado, efetue o login novamente!' || error.json().message != 'Login expirado, efetue o login novamente!'){
+  
       }
       else if(error.json().message == 'Login expirado, efetue o login novamente!'){
         this.userService.logoffUser();
