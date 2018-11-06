@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllOuvidoriaService } from 'src/app/services/get-all-ouvidoria/get-all-ouvidoria.service';
 import { Ouvidoria } from 'src/app/models/ouvidoria';
+import { GetAllOuvidoriaAtivaService } from 'src/app/services/get-all-ouvidoria-ativa/get-all-ouvidoria-ativa.service';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-listar-ouvidoria',
@@ -10,40 +12,47 @@ import { Ouvidoria } from 'src/app/models/ouvidoria';
 export class ListarOuvidoriaComponent implements OnInit {
 
   listarOuvidoria: Ouvidoria[] = [];
-  constructor(private getAllOuvidoria: GetAllOuvidoriaService) { }
+  ouvidoria:Ouvidoria = null;
+  showModal:boolean = false;
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
+  msgInfo: string = '';
+  
+  constructor(private getAllOuvidoriaAtiva: GetAllOuvidoriaAtivaService, private router: Router,
+    private userService: UserService) { }
 
   ngOnInit() {
-    this.getAllOuvidoria.getOuvidoria().subscribe(
+    this.getAllOuvidoriaAtiva.getOuvidoriasAtiva().subscribe(
       ouvidorias => {
         this.listarOuvidoria = ouvidorias.json();
         console.log(this.listarOuvidoria);
-        this.listarOuvidoria.forEach(
-          ouvidoria =>{
-            ouvidoria.showTd = "show";
-            ouvidoria.showDetail = "hidden";
-          }
-        )
+      },
+      error => {
+        if(error._body === 'Não existem processos de ouvidoria abertos!'){
+          this.msgInfo = error._body;
+        }else {
+          this.msgInfo = error.json().message;
+        }
+
+        this.showConfirmModal = true;
       }
     );
+
   }
 
-  showDetail(event) {
-
-    if (!(event.showDetail.trim() === "show")){
-      this.listarOuvidoria.forEach(ouvidoria => {
-        ouvidoria.showDetail = "hidden";
-        ouvidoria.showTd = "show";
-      });
+  buttonModal(msg: string){
+    if(msg === 'Login expirado, efetue o login novamente!'){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else{
+      this.showConfirmModal = false;
     }
+  }
 
-    if (event.showTd.trim() === "show"){
-      event.showTd = "hidden";
-      event.showDetail = "show";
-    } else {
-      event.showTd = "show";
-      event.showDetail = "hidden";
-    }
-
+  responderOuvidoria(ouvidoria: Ouvidoria){
+    this.showModal = true;
+    this.ouvidoria = ouvidoria;
+    console.log(ouvidoria);
   }
 
 }

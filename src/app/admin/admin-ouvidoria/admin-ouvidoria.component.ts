@@ -19,7 +19,8 @@ export class AdminOuvidoriaComponent implements OnInit {
   ngOnInit() {
 
     this.menus = [
-      new Menu("Listagem de ouvidoria", "", "listar/ouvidoria")
+      new Menu("Ouvidorias Abertas", "", "listar/ouvidoria/aberta"),
+      new Menu("Ouvidorias Respondidas", "", "listar/ouvidoria/repondida")
     ];
     this.userService.getLoggedUser().subscribe(user => {
       this.user = user;

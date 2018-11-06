@@ -4,6 +4,14 @@
 
     <div class="ui very padded red segment">
 
+      <app-confirmacao-reposta [header]="'AVISO!'"
+      [message]="msgInfo"
+      [showModal]="showConfirmModal" 
+      [messageSucess]="showSucess" 
+      (confirm)="buttonModal()">
+      </app-confirmacao-reposta>
+      
+
       <form class="ui large form"  [formGroup]="meuForm"  (submit)="verifica($event, meuForm.value)" *ngIf="cadastro">
         
         <div class="fields"> <!--Inicio Campo CPF e DTNascimento-->

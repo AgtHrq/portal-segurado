@@ -9,6 +9,8 @@ import { CadastroNotificacaoComponent } from './cadastro-notificacao/cadastro-no
 import { ExcluirNotificacaoComponent } from './excluir-notificacao/excluir-notificacao.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailExcluirNotificacaoComponent } from './excluir-notificacao/detail-excluir-notificacao/detail-excluir-notificacao.component';
+import { LoaderModule } from 'src/app/loader/loader.module';
+import { AdminSolicitacaoModule } from '../admin-solicitacao/admin-solicitacao.module';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { DetailExcluirNotificacaoComponent } from './excluir-notificacao/detail-
     AdminSubmenuModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    LoaderModule,
+    AdminSolicitacaoModule
   ],
   declarations: [
     AdminNotificacaoComponent, 

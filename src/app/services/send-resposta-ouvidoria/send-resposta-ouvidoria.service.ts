@@ -4,11 +4,11 @@ import { BackendService } from '../backend.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GetAllOuvidoriaService {
+export class SendRespostaOuvidoriaService {
 
   constructor(private backendService: BackendService) { }
 
-  getOuvidoria(){
-    return this.backendService.protectedRequest("usuarios/sendAllOuvidoria", "get");
+  sendResposta(resposta){
+    return this.backendService.protectedRequest("usuarios/responderOuvidoria", "post", resposta);
   }
 }

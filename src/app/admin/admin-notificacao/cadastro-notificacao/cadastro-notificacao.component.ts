@@ -5,6 +5,8 @@ import { Orgao } from 'src/app/models/orgao';
 import { SendIdOrgaoService } from 'src/app/services/send-id-orgao/send-id-orgao.service';
 import { OrgaosFilterService } from 'src/app/services/orgaos-filter/orgaos-filter.service';
 import { checkOrgaoCargo } from 'src/app/validators/createPassword.validator';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-notificacao',
@@ -17,9 +19,16 @@ export class CadastroNotificacaoComponent implements OnInit {
   orgaos: Orgao[] = [];
   cargos = [];
   element:boolean = true;
+  showConfirmModal: boolean = false;
+  showLoader:boolean = false;
+  showMessage: boolean = false;
+  messageInfo: string = '';
+  infoSucess:boolean = false;
+
 
   constructor(private formBuilder: FormBuilder, private notificacaoService: CadastraNotificacaoService,
-      private orgaosfilterService: OrgaosFilterService, private sendIdOrgaoService: SendIdOrgaoService) { }
+      private orgaosfilterService: OrgaosFilterService, private sendIdOrgaoService: SendIdOrgaoService,
+      private userService: UserService, private router: Router) { }
 
   ngOnInit() {
 
@@ -63,23 +72,34 @@ export class CadastroNotificacaoComponent implements OnInit {
     this.formNotificacao.get('tempoExpiracao').setValue("");
     this.formNotificacao.get('idOrgao').setValue("");
     this.formNotificacao.get('idCargo').setValue("");
+    this.showConfirmModal = false;
+  }
+
+  buttonModal(msg: string){
+    if(msg != "Notificação cadastrada com sucesso!"){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else {
+      this.limpaCampos();
+    }
   }
   
 
   sendNotificacao(event, notificacao){
     event.preventDefault();
-
+    this.showLoader = true;
     console.log(notificacao);
 
     this.notificacaoService.sendNotificacao(notificacao).subscribe(
       notificacao => {
-        console.log(notificacao);
-        alert("Notificação cadastrada com sucesso!");
-        this.limpaCampos();
+        this.showLoader = false;
+        this.showConfirmModal = true;
+        this.messageInfo = "Notificação cadastrada com sucesso!";
       },
       error => {
-        console.log(error._body);
-        alert(error._body);
+        this.showLoader = false;
+        this.showConfirmModal = true;
+        this.messageInfo = error.json().message;
       }
     );
 

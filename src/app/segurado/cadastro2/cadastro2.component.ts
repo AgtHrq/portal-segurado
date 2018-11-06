@@ -17,6 +17,9 @@ export class Cadastro2Component implements OnInit {
   type = "password";
   @Input() nomeSegurado;
   @Input() cpfSegurado;
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
+  msgInfo: string = '';
   
   constructor(private formBuilder: FormBuilder, private service: PerguntaService,
        private cadastraService2: Cadastrar2Service, private router: Router) {  }
@@ -66,53 +69,50 @@ export class Cadastro2Component implements OnInit {
       this.meuForm.setValidators([ equal, checkContato ]);
 
 
-  this.service.getPerguntas().subscribe(
-    perguntas => {
-      this.perguntas = perguntas.json();
-      console.log(perguntas.json());
+    this.service.getPerguntas().subscribe(
+      perguntas => {
+        this.perguntas = perguntas.json();
+        console.log(perguntas.json());
+      }
+    );
+
+  }
+
+  setDescricao(event){
+    this.perguntas.forEach(
+      element => {
+        if(element.id == event.target.value){
+          this.meuForm.get('idPergunta').get('descricao').setValue(element.descricao);
+        }
+      }
+    )
+  }
+
+  buttonModal(msg: string) {
+    if(msg === 'Cadastro Realizado com sucesso!'){
+      this.router.navigate([""]);
+    }else {
+      this.showConfirmModal = false;
     }
-  );
-
-}
-
-// setDescricao(event){
-//   this.perguntas.forEach(
-//     element => {
-//       if(element.id == event.target.value){
-//         this.meuForm.get('idPergunta').get('descricao').setValue(element.descricao);
-//       }
-//     }
-//   )
-// }
+  }
 
   cadastra(event, usuario){
 
     event.preventDefault();
     
-    // usuario.cpf = usuario.cpf.replace(/\.|\-/gi, "");
-    // usuario.ddd = usuario.ddd.substr(1, 2);
-    // usuario.telefone = usuario.telefone.replace(/\-/, "");
-    // delete(usuario.confirmeSenha);
-
-    usuario.name = 'ABDIAS FREIRE BARRETO';
-    usuario.cpf = '02343541434';
-    usuario.Pergunta = 'Qual seu primeiro time?';
-    usuario.idPergunta = '2';
-    usuario.resposta = 'qualquer coisa';
-    usuario.password = 'Aa123123'
-
-
+    usuario.cpf = usuario.cpf.replace(/\.|\-/gi, "");
+    usuario.ddd = usuario.ddd.substr(1, 2);
+    usuario.telefone = usuario.telefone.replace(/\-/, "");
+    delete(usuario.confirmeSenha);
 
     this.cadastraService2.cadastrarSegurado(usuario).subscribe(
-      user => {
-        this.router.navigate([""]);
-        console.log(user.json());
-        alert("Cadastro Realizado com sucesso!");
-        
+      () => {
+        this.msgInfo = "Cadastro Realizado com sucesso!";
+        this.showConfirmModal = true;        
       },
       error => {
-        console.log(error._body);
-        alert(error._body);
+        this.msgInfo = error._body;
+        this.showConfirmModal = true;
       }
     
     );

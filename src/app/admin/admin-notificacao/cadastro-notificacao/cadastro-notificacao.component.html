@@ -1,5 +1,12 @@
 <form class="ui form" [formGroup]="formNotificacao" (submit)="sendNotificacao($event, formNotificacao.value)">
 
+  <app-confirmacao-reposta [header]="'Confirmação de cadastro.'"
+    [message]="messageInfo"
+    [showModal]="showConfirmModal"
+    [messageSucess]="infoSucess" (confirm)="buttonModal(messageInfo)"></app-confirmacao-reposta>
+  <app-loader *ngIf="showLoader"></app-loader>
+
+
   <h3>Cadastrar Notificação</h3>
  
   <div class="field">

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetNotificacoesService } from 'src/app/services/get-notificacoes/get-notificacoes.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { Notificacao } from 'src/app/models/notificacao';
 
 @Component({
   selector: 'app-excluir-notificacao',
@@ -8,41 +11,49 @@ import { GetNotificacoesService } from 'src/app/services/get-notificacoes/get-no
 })
 export class ExcluirNotificacaoComponent implements OnInit {
 
-  listNotificacoes = [];
+  listNotificacoes: Notificacao[];
+  messageInfo: string = '';
+  infoSucess:boolean = false;
+  showMessage: boolean = false;
+  showConfirmModal: boolean = false;
+  datail: any;
 
-  constructor(private getNotificacoesService: GetNotificacoesService) { }
+  constructor(private getNotificacoesService: GetNotificacoesService, 
+    private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-
+    this.listNotificacoes = [];
     this.getNotificacoesService.getNotificoes().subscribe(
       notificacoes => {
-        this.listNotificacoes = notificacoes.json();
+        this.listNotificacoes = notificacoes.json() as Notificacao[];
         console.log(this.listNotificacoes);
         this.listNotificacoes.forEach(
           s => {
             s.showTd = "show";
             s.showDetail = "hidden";
           }
-        )
+        );
+      },
+      error => {
+        this.showConfirmModal = true;
+        this.messageInfo = error.json().message;
       }
-    );
-  }
-
-  showDetail(event) {
-
-    if (!(event.showDetail.trim() === "show")){
-      this.listNotificacoes.forEach(notificacoes => {
-        notificacoes.showDetail = "hidden";
-        notificacoes.showTd = "show";
-      });
+      );
+    }
+    
+    buttonModal(){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
     }
 
-    if (event.showTd.trim() === "show"){
-      event.showTd = "hidden";
-      event.showDetail = "show";
+  toggleState(notificacao: Notificacao) {
+
+    if (notificacao.showDetail === 'hidden'){
+      notificacao.showDetail = 'show';
+      notificacao.showTd = 'hidden';
     } else {
-      event.showTd = "show";
-      event.showDetail = "hidden";
+      notificacao.showDetail = 'hidden';
+      notificacao.showTd = 'show';
     }
 
   }

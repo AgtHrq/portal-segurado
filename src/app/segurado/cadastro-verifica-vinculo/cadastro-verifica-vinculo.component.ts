@@ -23,6 +23,9 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
   //@Input() vinculosValidacao = [];
   @Output() respostaCadastro2 = new EventEmitter();
   @Output() respostaVerificaVinculos = new EventEmitter();
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
+  msgInfo: string = '';
 
   constructor(private formBuilder: FormBuilder, private orgaosService: OrgaosService,
     private verificaVinculosService: VerificaVinculosService, private router:Router) { }
@@ -83,18 +86,21 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
     console.log(vinculosList);
 
     this.verificaVinculosService.verificarVinculoSegurado(vinculosList).subscribe(
-      proximo => {
-        console.log("aqui", proximo.json());
-        this.nomeSegurado = proximo.json().segurado.nome;
-        console.log("segurado back" + this.nomeSegurado);
+      () => {
         this.respostaVerificaVinculos.emit(false);
         this.respostaCadastro2.emit(true);
       },
       error => {
-        alert(error._body);
+        this.msgInfo = error._body;
+        this.showConfirmModal = true;
       }
 
     );
   }
+
+  buttonModal(){
+    this.showConfirmModal = false;
+  }
+  
 
 }

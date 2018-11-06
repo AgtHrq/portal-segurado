@@ -1,50 +1,32 @@
     <table  class="ui selectable very basic table" >
+        <app-confirmacao-reposta [header]="'AVISO!'"
+        [message]="messageInfo"
+        [showModal]="showConfirmModal"
+        [messageSucess]="infoSucess" (confirm)="buttonModal()">
+        </app-confirmacao-reposta>
 
-      <thead>
+        <thead>
           <tr>
-            <th>Tipo</th>
-            <th>Status</th>
-            <th>Data de Criação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let n of listNotificacoes | paginate: { itemsPerPage: 10, currentPage: page }">
-            <td (click)="showDetail(n)" class="{{ n.showTd }}">{{ n.descricao }}</td>
-            <td (click)="showDetail(n)" class="{{ n.showTd }}" *ngIf="n.status">
-              <i class="yellow attention icon"></i>
-              Aberto
-            </td>
-            <td (click)="showDetail(n)" class="{{ n.showTd }}" *ngIf="!n.status">
-              <i class="green checkmark icon"></i>
-              Concluído
-            </td>
-            <td (click)="showDetail(n)" class="{{ n.showTd }}">{{ n.dataCriacao | date: 'dd/MM/yyyy' }}</td>
-            <td (click)="showDetail(n)" colspan="3" class="{{ n.showDetail }}">
-              <app-detail-excluir-notificacao [listNotificacoes]="n"></app-detail-excluir-notificacao>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-            <div class="ui right floated pagination menu">
-              <pagination-template #p="paginationApi" (pageChange)="page = ($event)">
-                <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
-                  <a (click)="p.previous()" class="icon item">
-                    <i class="left chevron icon"></i>
-                  </a>
-                </div>
-                <div class="current-page" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-                  <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value" class="item">
-                    {{ page.label }}
-                  </a>
-                  <div class="current-page" *ngIf="p.getCurrent() === page.value">
-                    <a class="item active">{{ page.label }}</a>
-                  </div>
-                </div>
-                <div class="pagination-next" [class.disabled]="p.isLastPage()">
-                  <a (click)="p.next()" class="icon item"><i class="right chevron icon"></i></a>
-                </div>
-              </pagination-template>
-            </div>
-        </tfoot>
-    
+              <th>DATA DE CRIAÇÃO</th>
+              <th>STATUS</th>
+              <th>TEMPO EXPIRAÇÃO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let n of listNotificacoes" >
+              <td (click)="toggleState(n)" class="{{ n.showTd }}">{{ n.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+              <td (click)="toggleState(n)" class="{{ n.showTd }}" *ngIf="n.status">
+                <i class="yellow attention icon"></i>
+                Aberto
+              </td>
+              <td class="{{ n.showTd }}" *ngIf="!n.status">
+                <i class="green checkmark icon"></i>
+                Concluído
+              </td>
+              <td (click)="toggleState(n)" class="{{ n.showTd }}">{{ n.tempoExpiracao }} Dias</td>
+              <td colspan="3" class="{{ n.showDetail }}">
+                <app-detail-excluir-notificacao (listUpdate)="ngOnInit()" (detail)="toggleState(n)" [listNotificacoes]="n"></app-detail-excluir-notificacao>
+              </td>
+            </tr>
+          </tbody>
       </table>

@@ -26,9 +26,10 @@ import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solic
 import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notificacao.component';
 import { CadastroNotificacaoComponent } from './admin/admin-notificacao/cadastro-notificacao/cadastro-notificacao.component';
 import { ExcluirNotificacaoComponent } from './admin/admin-notificacao/excluir-notificacao/excluir-notificacao.component';
-import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
 import { ListarSolicitacaoComponent } from './admin/admin-solicitacao/listar-solicitacao/listar-solicitacao.component';
 import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
+import { ListarOuvidoriaRespondidaComponent } from './admin/admin-ouvidoria/listar-ouvidoria-respondida/listar-ouvidoria-respondida.component';
+import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
 
 const APP_ROUTES: Routes = [
 
@@ -101,7 +102,10 @@ const APP_ROUTES: Routes = [
                 path: "ouvidoria", component: AdminOuvidoriaComponent, children: 
                 [
                     {
-                        path: "listar/ouvidoria", component: ListarOuvidoriaComponent
+                        path: "listar/ouvidoria/aberta", component: ListarOuvidoriaComponent
+                    },
+                    {
+                        path: "listar/ouvidoria/repondida", component: ListarOuvidoriaRespondidaComponent
                     }
                 ]
             },

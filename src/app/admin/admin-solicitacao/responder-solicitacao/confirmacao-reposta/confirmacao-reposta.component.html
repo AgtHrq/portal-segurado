@@ -6,7 +6,7 @@
     <div class="content">
       <p>{{ message }}</p>
     </div>
-    <div class="actions">
+    <div *ngIf="messageSucess" class="actions">
       <div class="ui negative button" (click)="cancelar()">
         Cancelar
       </div>
@@ -15,5 +15,11 @@
         <i class="icon checkmark"></i>
       </div>
     </div>
+
+    <div *ngIf="!messageSucess" class="actions">
+      <div class="ui positive rigth labeled icon button" (click)="confirmar()">
+          Ok
+          <i class="icon checkmark"></i>
+      </div>
   </div>
 </div>
