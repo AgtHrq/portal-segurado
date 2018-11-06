@@ -7,7 +7,7 @@ export class NomePipePipe implements PipeTransform {
 
   transform(nome: string): string {
     
-    return nome.split(' ')[0];
+    return nome.trim().split(' ')[0].toLocaleUpperCase();
 
   }
 
