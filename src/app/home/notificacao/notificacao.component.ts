@@ -27,7 +27,7 @@ export class NotificacaoComponent implements OnInit {
       this.utils.notificacoes();
     }
       ), error => {
-        if (error.json().message.trim() === 'Login expirado, efetue o login novamente!'){
+        if (error.json().message.trim() === "Invalid Token") {
           this.userService.logoffUser();
           this.router.navigate(['/']);
         }

@@ -83,10 +83,7 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
     console.log(vinculosList);
 
     this.verificaVinculosService.verificarVinculoSegurado(vinculosList).subscribe(
-      proximo => {
-        console.log("aqui", proximo.json());
-        this.nomeSegurado = proximo.json().segurado.nome;
-        console.log("segurado back" + this.nomeSegurado);
+      () => {
         this.respostaVerificaVinculos.emit(false);
         this.respostaCadastro2.emit(true);
       },

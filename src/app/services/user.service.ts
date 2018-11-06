@@ -70,4 +70,10 @@ export class UserService {
 
   }
 
+  changePasswordSegurado(dados: any) {
+
+    return this.backendService.protectedRequest('usuarios/changePassword', 'post', dados)
+
+  }
+
 }

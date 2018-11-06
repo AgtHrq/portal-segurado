@@ -57,7 +57,7 @@ export class AlterarSenhaComponent implements OnInit {
 
     event.preventDefault();
     this.showLoader = true;
-    this.userService.updateUser({ senhaAtual: data.senhaAntiga, password: data.newPassword, email: this.user.user_email })
+    this.userService.changePasswordSegurado(data)
       .subscribe(() => {
         this.showLoader = false;
         this.message = 'Senha alterada com sucesso!';

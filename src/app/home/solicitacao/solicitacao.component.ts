@@ -50,7 +50,7 @@ export class SolicitacaoComponent implements OnInit {
         this.numSolicitacoes = this.solicitacoes.length;
       },
       error=> {
-         if (error.json().message.trim() === "Login expirado, efetue o login novamente!") {
+        if (error.json().message.trim() === "Invalid Token") {
           this.userService.logoffUser();
           this.router.navigate(['/']);
         }
