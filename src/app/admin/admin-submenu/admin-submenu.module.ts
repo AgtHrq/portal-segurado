@@ -8,8 +8,7 @@ import { HomeModule } from '../../home/home.module';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    HomeModule
+    RouterModule
   ],
   declarations: [
     AdminSubmenuComponent

@@ -26,9 +26,6 @@ import { AdminNotificacaoModule } from './admin-notificacao/admin-notificacao.mo
   declarations: [
     AdminComponent, 
     AdminMenuComponent
-  ],
-  exports: [
-    AdminSubmenuComponent
   ]
 })
 export class AdminModule { }
