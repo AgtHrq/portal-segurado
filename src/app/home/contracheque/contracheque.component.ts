@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { Response } from '@angular/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { HomeUtils } from '../../utils/home-utils';
 import { ContrachequeService } from '../../services/contracheque/contracheque.service';
@@ -9,6 +11,7 @@ import { VinculoModel } from '../../models/vinculo-model';
 import { User } from './../../models/user';
 import { UserService } from '../../services/user.service';
 import { Periodo } from '../../models/periodo';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-contracheque',
@@ -33,14 +36,35 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   private vinculos: VinculoModel[];
   private periodos: Periodo[];
   showLoader: boolean = true;
+  fileUrl;
 
-  constructor(private utils: HomeUtils, private contrachequeService: ContrachequeService, private userService: UserService, private router: Router) { }
+  constructor(private utils: HomeUtils, private contrachequeService: ContrachequeService, 
+    private userService: UserService, private router: Router, private sanitizer: DomSanitizer) { }
 
   deactivate(vinculo) {
 
     this.vinculo = vinculo;
     this.vinculos.forEach(v => v.activate = false);
 
+  }
+
+  getPdf(){
+
+    this.contrachequeService.getPdf({ 
+    matricula: "0003166",
+    anoInicial: "2012",
+    anoFinal: "2018",
+    idVinculo: "000157864200031666",
+    cargo: "PENSIONISTA",
+    orgao: "DER",
+    tipoVinculo: "Aposentado"
+     }).subscribe(r => {
+      
+      r as Response
+      let pdf = new Blob([r.blob()], { type: 'application/pdf; ficha_financeira' });
+      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(pdf));
+
+     });
   }
 
   ngOnInit() {

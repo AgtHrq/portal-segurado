@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from "@angular/http";
+import { Http, Headers, ResponseContentType } from "@angular/http";
 
 import { Authorization } from './jwt.service';
 
@@ -73,6 +73,13 @@ export class BackendService {
 
     }
 
+  }
+
+  protectedDowloadRequest(url: string, params){
+
+    let headers = new Headers();
+    headers.append('Authorization', `Bearer ${this.auth.getToken()}`);
+    return this.http.post(`http://${this.url}/protegido/${url}`, params, { headers: headers, responseType: ResponseContentType.Blob });
   }
 
 }
