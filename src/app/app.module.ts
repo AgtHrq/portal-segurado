@@ -26,6 +26,8 @@ import { AuthGuard } from './services/guards/auth.guard';
 import { LoaderModule } from './loader/loader.module';
 import { AdminModule } from './admin/admin.module';
 import { DirectivesModule } from './directives/directives.module';
+import { ValidarPdfComponent } from './segurado/validar-pdf/validar-pdf.component';
+import { TokenMaskDirective } from './segurado/validar-pdf/token-mask.directive';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { DirectivesModule } from './directives/directives.module';
     ChangePasswordComponent, 
     CadastroVerificaVinculo,
     SendEmailComponent,
+    ValidarPdfComponent,
+    TokenMaskDirective
   ],
   imports: [
     BrowserModule,

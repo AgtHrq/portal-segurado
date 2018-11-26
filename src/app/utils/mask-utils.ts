@@ -11,6 +11,13 @@ export class MaskUtils {
 
     }
 
+    public tokenMask(id: string){
+
+        $(`#${id}`).mask('AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA', {'translation' : {
+        A: { pattern: /[A-Za-z0-9]/}
+    }});
+    }
+
     public dtMask(id: string): void{
 
         $(`#${id}`).mask("00/00/0000");

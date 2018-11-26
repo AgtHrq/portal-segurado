@@ -1,0 +1,44 @@
+<app-loader *ngIf="showLoader"></app-loader>
+<div class="painel">
+
+  <div class="ui very padded green segment">
+      
+      <h1 class="ui center aligned header">Recuperação de senha</h1>
+
+      <form *ngIf="!showContent" class="ui large form error" [formGroup]="formToken" (submit)="validarPDF($event, formToken.value)">
+
+        <div class="fields">
+          
+          <div class="inline fields">
+
+            <div class="field">
+
+              <label>Token:</label>
+              <input id="token" appTokenMask name="token" placeholder="" type="text" formControlName="token">
+
+              <!-- Erros do campo -->
+              <div *ngIf="formToken.controls.token.invalid && (formToken.controls.token.touched)" class="ui error message">
+                            
+                  <p *ngIf="formToken.controls.token.errors.minlength">O campo Token deve conter 36 dígitos.</p>
+                  <p *ngIf="formToken.controls.token.errors.required">O campo Token é obrigatório.</p>
+                      
+              </div>
+
+            </div>
+
+          </div>
+          
+        </div>
+        
+        <div *ngIf="showErrorMessage" class="ui negative message">
+          <app-error-message title="Erro!" message="{{ errorMessage }}"></app-error-message>
+        </div>
+
+        <button class="ui right floated teal button" type="submit" [disabled]="formToken.invalid">Consultar</button>
+        <a [routerLink]="['']" class="ui right floated button">Voltar</a>
+            
+      </form>
+    
+  </div>
+
+</div>
