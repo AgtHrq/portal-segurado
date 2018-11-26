@@ -5,6 +5,14 @@
   (cancel)="showConfirmModal = false">
 </app-confirmacao-reposta>
 
+<app-confirmacao-reposta [header]="'AVISO!'"
+  [message]="messageInfo"
+  [showModal]="showAviso"
+  (confirm)="buttonModal(messageInfo)"
+  (cancel)="showConfirmModal = false"
+  [messageSucess]="showConfirmModal">
+</app-confirmacao-reposta>
+
 <app-loader *ngIf="showLoader"></app-loader>
 
 

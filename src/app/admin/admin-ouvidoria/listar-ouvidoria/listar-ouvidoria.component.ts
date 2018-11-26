@@ -28,8 +28,11 @@ export class ListarOuvidoriaComponent implements OnInit {
         console.log(this.listarOuvidoria);
       },
       error => {
+
         if(error._body === 'Não existem processos de ouvidoria abertos!'){
           this.msgInfo = error._body;
+        }else if(error.json().message.trim() === 'Invalid Token') {
+          this.msgInfo = 'Login expirado, efetue o login novamente!';
         }else {
           this.msgInfo = error.json().message;
         }

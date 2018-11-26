@@ -17,6 +17,7 @@ import { ProcessoModule } from './processo/processo.module';
 import { FichaFinanceiraModule } from './ficha-financeira/ficha-financeira.module';
 import { LoaderModule } from '../loader/loader.module';
 import { ContrachequeModule } from './contracheque/contracheque.module';
+import { AdminSubmenuModule } from '../admin/admin-submenu/admin-submenu.module';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { ContrachequeModule } from './contracheque/contracheque.module';
     LoaderModule,
     ContrachequeModule,
     LoaderModule,
-    RouterModule
+    RouterModule,
+    AdminSubmenuModule
   ],
   declarations: [ 
     HomeComponent, 

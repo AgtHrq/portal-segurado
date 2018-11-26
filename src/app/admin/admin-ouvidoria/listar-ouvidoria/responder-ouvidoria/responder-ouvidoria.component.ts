@@ -63,8 +63,8 @@ export class ResponderOuvidoriaComponent implements OnInit {
         this.toggle.emit(false);
       },
       error => {
-        if(error.json().message == 'Login expirado, efetue o login novamente!'){
-          this.msgInfo = error.json().message;
+        if(error.json().message.trim() === 'Invalid Token'){
+          this.msgInfo = 'Login expirado, efetue o login novamente!';
           this.showAviso = true;
         }
         this.showMessage = true;

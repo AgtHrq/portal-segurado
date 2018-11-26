@@ -65,7 +65,6 @@ export class CadastroComponent implements OnInit {
         this.verificaVinculos = true;
       },
       error => {
-        console.log('error ' + error);
         this.msgInfo = error._body;
         this.showConfirmModal = true;
       }

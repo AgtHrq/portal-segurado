@@ -15,3 +15,13 @@ input, select, .ui.form input, .ui.form select {
     border-color: steelblue;
 
 }
+
+button {
+    position: relative;
+    left: 665px;
+}
+
+.eye {
+    position: absolute;
+    left: 740px;
+}

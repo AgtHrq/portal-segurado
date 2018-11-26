@@ -25,7 +25,9 @@ import { AdminSolicitacaoModule } from '../admin-solicitacao/admin-solicitacao.m
   ],
   declarations: [
     AdminNotificacaoComponent, 
-    CadastroNotificacaoComponent, ExcluirNotificacaoComponent, DetailExcluirNotificacaoComponent
+    CadastroNotificacaoComponent,
+    ExcluirNotificacaoComponent, 
+    DetailExcluirNotificacaoComponent
   ]
 })
 export class AdminNotificacaoModule { }

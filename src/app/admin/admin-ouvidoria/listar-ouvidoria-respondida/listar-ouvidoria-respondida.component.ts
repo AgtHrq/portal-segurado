@@ -32,11 +32,12 @@ export class ListarOuvidoriaRespondidaComponent implements OnInit {
         );
       },
       error => {
-        console.log("oi");
         if(error._body === 'Não existem processos de ouvidoria respondidos!'){
           this.msgInfo = error._body;
-        }else {
-          this.msgInfo = error.json().message;
+        }else if(error.json().message === 'Invalid Token'){
+          this.msgInfo = 'Login expirado, efetue o login novamente!';
+        }else{
+          this.msgInfo = error._body;
         }
 
         this.showConfirmModal = true;

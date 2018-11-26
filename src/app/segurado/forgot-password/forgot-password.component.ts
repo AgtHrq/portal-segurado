@@ -22,6 +22,7 @@ export class ForgotPasswordComponent implements OnInit {
   utils: MaskUtils = new MaskUtils();
   cpf: string = "";
   usuario: any;
+  avisoOK: boolean = false;
   
   ngOnInit() { }
 
@@ -30,7 +31,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.formSearch = this.formBuilder.group({
       cpf: ["", Validators.compose([
         Validators.required, Validators.minLength(14)
-            ])
+        ])
       ]
     });
 

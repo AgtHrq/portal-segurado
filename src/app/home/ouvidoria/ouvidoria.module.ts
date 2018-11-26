@@ -10,6 +10,8 @@ import { RespostaComponent } from './resposta/resposta.component';
 import { AddOuvidoriaComponent } from './add-ouvidoria/add-ouvidoria.component';
 import { InitialComponent } from './initial/initial.component';
 import { DatailOuvidoriaComponent } from './datail-ouvidoria/datail-ouvidoria.component';
+import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-solicitacao.module';
+import { LoaderModule } from 'src/app/loader/loader.module';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { DatailOuvidoriaComponent } from './datail-ouvidoria/datail-ouvidoria.co
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AdminSolicitacaoModule,
+    LoaderModule
   ],
   declarations: [
     OuvidoriaComponent, 

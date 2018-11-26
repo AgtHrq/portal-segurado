@@ -1,0 +1,135 @@
+<div class="ui attached geral">
+  <div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
+    <i class="close icon" (click)="showMessage = false"></i>
+    <div class="header">
+      {{ message }}
+    </div>
+  </div>
+  <form class="ui form" [formGroup]="meuForm" (submit)="alterarDadosAdm($event, meuForm.value)">
+    <h4 class="ui dividing header">Alterar dados</h4>
+    <div class="field">
+      <label>EMAIL:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        formControlName="email">
+          <!--Mensagens de validação-->
+        <div class="ui red message" 
+            *ngIf="meuForm.controls.email.invalid && (meuForm.controls.email.touched)">
+            <p *ngIf="meuForm.controls.email.errors?.email">E-mail informado inválido!</p>
+        </div>
+    </div>
+    <div class="field">
+      <div class="eight wide field">
+        <label>Senha atual</label>
+        <div class="ui icon input">
+        <input
+          [type]="type"
+          name="senhaAtual"
+          id="senhaAtual"
+          placeholder="Senha atual"
+          formControlName="senhaAtual">
+          <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="eight wide field">
+        <label>Nova Senha</label>
+        <div class="ui icon input">
+        <input
+          [type]="type"
+          name="senha"
+          id="senha"
+          placeholder="Nova Senha"
+          #senha1
+          formControlName="password">
+          <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="eight wide field">
+        <label>Confirmar senha</label>
+        <div class="ui icon input">
+        <input
+          [type]="type"
+          name="confirmeSenha"
+          id="confirmeSenha"
+          placeholder="Confirmar Senha"
+          formControlName="confirmeSenha">
+          <i class="eye link icon" (mouseleave)="type = 'password'" (mouseup)="type = 'password'" (mousedown)="type = 'text'"></i>
+        </div>
+          <!-- Mensagend de validação -->
+          <div class="ui red message"
+            *ngIf="meuForm.controls.password.invalid && (meuForm.controls.password.touched)">
+            <ul>
+              <li *ngIf="meuForm.controls.password.errors?.upperCase">
+                  A senha deve conter pelo menos uma letra maiúscula.  
+              </li>
+    
+              <li *ngIf="meuForm.controls.password.errors?.lowerCase">
+                A senha deve conter pelo menos uma letra minúscula.
+              </li>
+    
+              <li *ngIf="meuForm.controls.password.errors?.containNumber">
+                  A senha deve conter pelo menos um número.
+              </li>
+
+              <li *ngIf="meuForm.controls.password.errors?.minlength">
+                A senha deve conter no mínimo 6 caracteres.
+              </li>
+
+              <li *ngIf="meuForm.controls.password.errors?.maxlength">
+                  A senha deve conter no máximo 14 caracteres.
+              </li>
+
+              <li *ngIf="meuForm.controls.password.errors?.required">
+                Campos de senha obrigatórios
+              </li>
+            </ul>
+          </div>
+            <div class="ui red message" 
+              *ngIf="meuForm.errors?.equal && (meuForm.controls.password.touched)">
+              <ul>
+                <li>
+                    Senhas divergentes.
+                </li>
+              </ul>
+            </div>
+      </div>
+    </div>
+    <div class="ui red message"
+            *ngIf="meuForm.controls.senhaAtual.invalid && (meuForm.controls.senhaAtual.touched)">
+            <ul>
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.upperCase">
+                  A senha deve conter pelo menos uma letra maiúscula.  
+              </li>
+    
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.lowerCase">
+                A senha deve conter pelo menos uma letra minúscula.
+              </li>
+    
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.containNumber">
+                  A senha deve conter pelo menos um número.
+              </li>
+
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.minlength">
+                A senha deve conter no mínimo 6 caracteres.
+              </li>
+
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.maxlength">
+                  A senha deve conter no máximo 14 caracteres.
+              </li>
+
+              <li *ngIf="meuForm.controls.senhaAtual.errors?.required">
+                Campos de senha obrigatórios
+              </li>
+            </ul>
+          </div>
+      <button class="ui blue button" type="submit">
+        Salvar alterações
+      </button>
+  </form>
+</div>

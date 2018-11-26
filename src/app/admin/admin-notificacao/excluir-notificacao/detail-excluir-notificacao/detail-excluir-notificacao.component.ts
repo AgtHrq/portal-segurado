@@ -18,7 +18,7 @@ export class DetailExcluirNotificacaoComponent implements OnInit {
   showLoader:boolean = false;
   showMessage: boolean = false;
   messageInfo: string = '';
-  infoSucess:boolean = false;
+  showAviso:boolean = false;
   showFeedBack:boolean = false;
   showConfirm:boolean = false;
 
@@ -33,10 +33,14 @@ export class DetailExcluirNotificacaoComponent implements OnInit {
     this.detail.emit();
   }
 
-  buttonModal(){
-    this.showLoader = false;
-    this.showConfirmModal = true;
-    this.messageInfo = "Confima que desejas relamente excluir essa notificação?";
+  buttonModal(msg: string){
+    if(msg === 'Login expirado, efetue o login novamente!'){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else {
+      this.showConfirmModal = true;
+      this.messageInfo = "Confima que desejas relamente excluir essa notificação?";
+    }
   }
 
   deleteNotificacao(idNotificacao){
@@ -49,9 +53,16 @@ export class DetailExcluirNotificacaoComponent implements OnInit {
         this.listUpdate.emit();
       },
       error =>{
+
+        if(error.json().message.trim() === 'Invalid Token'){
+          this.messageInfo = 'Login expirado, efetue o login novamente!';
+        }else {
+          this.messageInfo = error.json().message;
+        }
         this.showLoader = false;
-        this.showConfirmModal = true;
-        this.messageInfo = error.json().message;
+        this.showConfirmModal = false;
+        this.showAviso = true;
+        
       }
     );
 

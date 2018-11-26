@@ -76,7 +76,7 @@ export class CadastroNotificacaoComponent implements OnInit {
   }
 
   buttonModal(msg: string){
-    if(msg != "Notificação cadastrada com sucesso!"){
+    if(msg === "Login expirado, efetue o login novamente!"){
       this.userService.logoffUser();
       this.router.navigate(['/']);
     }else {
@@ -98,8 +98,12 @@ export class CadastroNotificacaoComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
+        if(error.json().message.trim() === 'Invalid Token'){
+          this.messageInfo = 'Login expirado, efetue o login novamente!';
+        }else {
+          this.messageInfo = error.json().message;
+        }
         this.showConfirmModal = true;
-        this.messageInfo = error.json().message;
       }
     );
 

@@ -1,7 +1,7 @@
 
 <div class="ui segment bottom" >
 
-    <div class="ui grid">
+  <div class="ui grid">
       <div class="doubling four wide column">
         <div class="ui vertical fluid tabular menu">
           <ng-template ngFor let-v [ngForOf]="vinculos">
@@ -11,10 +11,14 @@
               {{ v.idVinculo | idVinculo }} | {{ v.orgao | orgaoAbv }}
             </a>
             <ng-template #elseBlock>
-              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="sendIdVinculo(v.idVinculo)">
+              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v.idVinculo)">
                 {{ v.idVinculo | idVinculo }} | {{ v.orgao | orgaoAbv }}
               </a>
             </ng-template>
+            <div class="ui red message"
+              *ngIf="meuForm.controls.idVinculo.invalid && (meuForm.controls.idVinculo.pristine)">
+                Selecione o vínculo desejado
+            </div>
           </ng-template>
         </div>
       </div>
@@ -54,3 +58,10 @@
     </div>
   
   </div>
+
+<app-confirmacao-reposta [header]="'AVISO!'"
+  [message]="msgInfo"
+  [showModal]="showConfirmModal" 
+  [messageSucess]="showSucess" 
+  (confirm)="buttonModal(msgInfo)">
+</app-confirmacao-reposta>

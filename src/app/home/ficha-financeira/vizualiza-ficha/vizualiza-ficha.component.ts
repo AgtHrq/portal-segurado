@@ -5,6 +5,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { ConsultaVinculoService } from '../../../services/consulta-vinculo/consulta-vinculo-service.service';
 import { HomeUtils } from '../../../utils/home-utils';
 import { VisualizarFichaFinanaceiraService } from '../../../services/visualizar-ficha-financeira/visualizar-ficha-finanaceira.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-visualiza-ficha',
@@ -28,37 +30,14 @@ export class VizualizaFichaComponent implements OnInit {
   detail: boolean = false;
   @Output() pageFicha = new EventEmitter();
   vinculoFicha: any;
-  vinculos = [
-    // { orgao: "Vinculo 1", idVinculo: "1236811", activate: true, contracheques: 
-    //   [
-    //     { mes: "04", ano: "2018", activate: true }, 
-    //     { mes: "05", ano: "2018", activate: false },
-    //     { mes: "06", ano: "2018", activate: false },
-    //     { mes: "07", ano: "2018", activate: false },
-    //     { mes: "08", ano: "2018", activate: false },
-    //     { mes: "09", ano: "2018", activate: false }
-    //   ] }, 
-    // { orgao: "Vinculo 2", idVinculo: "1236812", activate: false, contracheques:
-    //   [
-    //     { mes: "04", ano: "2018", activate: true }, 
-    //     { mes: "05", ano: "2018", activate: false },
-    //     { mes: "06", ano: "2018", activate: false },
-    //     { mes: "07", ano: "2018", activate: false },
-    //     { mes: "08", ano: "2018", activate: false },
-    //     { mes: "09", ano: "2018", activate: false }
-    //   ] }, 
-    // { orgao: "Vinculo", idVinculo: "1236813", activate: false, contracheques: 
-    //   [
-    //     { mes: "04", ano: "2018", activate: true }, 
-    //     { mes: "05", ano: "2018", activate: false },
-    //     { mes: "06", ano: "2018", activate: false },
-    //     { mes: "07", ano: "2018", activate: false },
-    //     { mes: "08", ano: "2018", activate: false },
-    //     { mes: "09", ano: "2018", activate: false }
-    //   ] }
-  ];
+  vinculos = [];
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
+  msgInfo: string = '';
+
   constructor(private formBuilder: FormBuilder, private consultaVinculoService: ConsultaVinculoService,
-     private utils: HomeUtils, private visualizarFichaService: VisualizarFichaFinanaceiraService) { }
+     private utils: HomeUtils, private visualizarFichaService: VisualizarFichaFinanaceiraService,
+     private userService: UserService, private router: Router) { }
   
   deactivate(vinculo) {
     
@@ -91,6 +70,15 @@ export class VizualizaFichaComponent implements OnInit {
       user => {
         this.vinculos = user.json();
         console.log(this.vinculos);
+      },
+      error => {
+        if(error.json().message === 'Invalid Token'){
+          this.msgInfo = 'Login expirado, efetue o login novamente!';
+        }else{
+          this.msgInfo = error.json().message;
+        }
+
+        this.showConfirmModal = true;
       }
     );
 
@@ -101,18 +89,26 @@ export class VizualizaFichaComponent implements OnInit {
     console.log("send!", ano);
     
     this.visualizarFichaService.getFichaFinanceira(ano).subscribe(
-      element => {
+      () => {
         this.pageVisualizar = false;
         this.detail = true;
-        console.log("estar aqui!" + element);
       },
       error => {
-        alert(error._body);
-        console.log(error._body);
+        this.msgInfo = error._body;
+        this.showConfirmModal = true;
       }
     );
 
 
+  }
+
+  buttonModal(msg: string){
+    if(msg === 'Login expirado, efetue o login novamente!'){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else{
+      this.showConfirmModal = false;
+    }
   }
 
   voltar(){

@@ -106,7 +106,7 @@ export class AlterarDadosComponent implements OnInit {
     this.formAlterarDados = this.formBuilder.group({
       
       cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
-      nome:[this.user.user_name, Validators.required],
+      nome:[this.user.user_name.toLocaleUpperCase(), Validators.required],
       email: [this.user.user_email, Validators.email],
       telefone: [this.user.user_tel, Validators.minLength(16)],
     });

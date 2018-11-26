@@ -26,10 +26,13 @@ import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solic
 import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notificacao.component';
 import { CadastroNotificacaoComponent } from './admin/admin-notificacao/cadastro-notificacao/cadastro-notificacao.component';
 import { ExcluirNotificacaoComponent } from './admin/admin-notificacao/excluir-notificacao/excluir-notificacao.component';
+import { AlterardadosUsuarioComponent } from './admin/admin-home/alterardados-usuario/alterardados-usuario.component';
+import { ListaUsuariosComponent } from './admin/admin-home/lista-usuarios/lista-usuarios.component';
 import { ListarSolicitacaoComponent } from './admin/admin-solicitacao/listar-solicitacao/listar-solicitacao.component';
 import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
 import { ListarOuvidoriaRespondidaComponent } from './admin/admin-ouvidoria/listar-ouvidoria-respondida/listar-ouvidoria-respondida.component';
 import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
+import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 
 const APP_ROUTES: Routes = [
 
@@ -41,6 +44,9 @@ const APP_ROUTES: Routes = [
     },
     { 
         path: 'esqueci/senha', component: ForgotPasswordComponent 
+    },
+    {
+        path: 'changePassword/:hashBack', component: ChangePasswordComponent
     },
     { 
         path: 'home/segurado', component: HomeComponent, canActivate: [AuthGuard], children: [
@@ -94,7 +100,13 @@ const APP_ROUTES: Routes = [
                 path: '', component: AdminHomeComponent, children: 
                 [
                     { 
-                        path: 'usuarios/cadastro', component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
+                        path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
+                    },
+                    {
+                        path: "usuarios/alterardados", component: AlterardadosUsuarioComponent
+                    },
+                    {
+                        path: "usuarios/lista", component: ListaUsuariosComponent
                     }
                 ]
             },

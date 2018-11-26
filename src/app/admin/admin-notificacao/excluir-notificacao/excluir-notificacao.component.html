@@ -1,12 +1,7 @@
     <table  class="ui selectable very basic table" >
-        <app-confirmacao-reposta [header]="'AVISO!'"
-        [message]="messageInfo"
-        [showModal]="showConfirmModal"
-        [messageSucess]="infoSucess" (confirm)="buttonModal()">
-        </app-confirmacao-reposta>
-
-        <thead>
-          <tr>
+      
+      <thead>
+        <tr>
               <th>DATA DE CRIAÇÃO</th>
               <th>STATUS</th>
               <th>TEMPO EXPIRAÇÃO</th>
@@ -29,4 +24,13 @@
               </td>
             </tr>
           </tbody>
-      </table>
+        
+        </table>
+
+
+        <app-confirmacao-reposta [header]="'AVISO!'"
+        [message]="messageInfo"
+        [showModal]="showConfirmModal"
+        [messageSucess]="infoSucess" 
+        (confirm)="buttonModal(messageInfo)">
+        </app-confirmacao-reposta>

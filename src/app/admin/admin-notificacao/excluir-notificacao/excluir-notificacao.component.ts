@@ -35,15 +35,25 @@ export class ExcluirNotificacaoComponent implements OnInit {
         );
       },
       error => {
+        if(error._body === 'Não existe noticações para serem excluidas'){
+          this.messageInfo = error._body;
+        }else if(error.json().message.trim() === 'Invalid Token'){
+          this.messageInfo = 'Login expirado, efetue o login novamente!';
+        }else {
+          this.messageInfo = error.json().message;
+        }
         this.showConfirmModal = true;
-        this.messageInfo = error.json().message;
       }
       );
     }
     
-    buttonModal(){
-      this.userService.logoffUser();
-      this.router.navigate(['/']);
+    buttonModal(msg: string){
+      if(msg === "Login expirado, efetue o login novamente!"){
+        this.userService.logoffUser();
+        this.router.navigate(['/']);
+      }else {
+        this.showConfirmModal= false;
+      }
     }
 
   toggleState(notificacao: Notificacao) {

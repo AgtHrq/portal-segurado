@@ -3,7 +3,8 @@
   <app-confirmacao-reposta [header]="'Confirmação de cadastro.'"
     [message]="messageInfo"
     [showModal]="showConfirmModal"
-    [messageSucess]="infoSucess" (confirm)="buttonModal(messageInfo)"></app-confirmacao-reposta>
+    [messageSucess]="infoSucess" (confirm)="buttonModal(messageInfo)">
+  </app-confirmacao-reposta>
   <app-loader *ngIf="showLoader"></app-loader>
 
 
