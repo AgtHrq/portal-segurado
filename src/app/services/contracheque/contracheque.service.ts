@@ -11,20 +11,25 @@ export class ContrachequeService {
 
   gerarContracheque() {
 
-    return this.backendService.protectedRequest("usuarios/gerarContraCheque", "get");
+    return this.backendService.protectedRequest('usuarios/gerarContraCheque', 'get');
 
   }
 
   consultarVinculos() {
 
-    return this.backendService.protectedRequest("usuarios/consultaVinculosUsuario", "get");
+    return this.backendService.protectedRequest('usuarios/consultaVinculosUsuario', 'get');
 
   }
 
   consultarPeriodos(idVinculo: string) {
 
-    return this.backendService.protectedRequest("usuarios/consultaPeriodosUsuario", "post", { idVinculo: idVinculo });
+    return this.backendService.protectedRequest('usuarios/consultaPeriodosUsuario', 'post', { idVinculo: idVinculo });
   
+  }
+
+  getPdf(data){
+
+    return this.backendService.protectedDowloadRequest('usuarios/gerarRelatorio/fichaFinanceira', data);
   }
 
 }

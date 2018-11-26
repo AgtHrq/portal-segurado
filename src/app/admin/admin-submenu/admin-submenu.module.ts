@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { AdminSubmenuComponent } from './admin-submenu.component';
+import { NomeUserPipe } from './nome-user.pipe';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { AdminSubmenuComponent } from './admin-submenu.component';
     RouterModule
   ],
   declarations: [
-    AdminSubmenuComponent
+    AdminSubmenuComponent,
+    NomeUserPipe
   ],
   exports: [
     AdminSubmenuComponent

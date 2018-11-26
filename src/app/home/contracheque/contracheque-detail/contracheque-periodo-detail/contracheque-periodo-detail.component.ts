@@ -25,7 +25,7 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
     this.contracheques.sort(a => a.descricao.toUpperCase().trim() === ContrachequeEnum.vencimento ? -1 : 1);
     this.contracheques.forEach(c => {
       this.totalBruto += parseFloat(c.valor.toString());
-      if(c.descricao.trim() === ContrachequeEnum.desconto){
+      if(c.descricao.trim().toUpperCase() === ContrachequeEnum.desconto){
         this.totalDesconto += parseFloat(c.valor.toString());
       }
     });

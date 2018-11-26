@@ -24,6 +24,8 @@
         </div>
       </div>
       <div class="doubling twelve wide stretched column">
+        <p (click)="getPdf()">DOWNLOAD pdf</p>
+        <a *ngIf="fileUrl" [href]="fileUrl" target="_blank">open</a>
         <app-contracheque-detail [vinculo]="vinculo"></app-contracheque-detail>
       </div>
     </div>
