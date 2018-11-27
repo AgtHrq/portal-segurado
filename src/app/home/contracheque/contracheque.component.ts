@@ -1,7 +1,6 @@
 import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
-import { Response } from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { HomeUtils } from '../../utils/home-utils';
@@ -11,7 +10,6 @@ import { VinculoModel } from '../../models/vinculo-model';
 import { User } from './../../models/user';
 import { UserService } from '../../services/user.service';
 import { Periodo } from '../../models/periodo';
-import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-contracheque',

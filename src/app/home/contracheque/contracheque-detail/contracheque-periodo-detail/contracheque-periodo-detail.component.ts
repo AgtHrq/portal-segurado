@@ -35,7 +35,6 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
 
     this.cabecalho = new Cabecalho(this.getMatricula(this.vinculo.idVinculo), this.contracheques[0].ano_referencia, 
       this.contracheques[0].mes_referencia, this.vinculo.idVinculo, this.vinculo.cargo, this.vinculo.orgao, this.vinculo.tipoVinculo);
-    console.log(this.cabecalho);
 
     this.contrachequeService.getPdf(this.cabecalho).subscribe(
       r => {
