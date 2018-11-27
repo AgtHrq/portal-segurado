@@ -1,10 +1,11 @@
-<table *ngIf="contracheques.length >= 1; else elseBlock" class="ui very basic fixed table">
+<table *ngIf="contracheques.length >= 1; else elseBlock" class="ui very basic table">
   <thead>
     <tr>
       <th>Evento</th>
       <th>Descrição</th>
       <th>Valor(R$)</th>
       <th>Prazo</th>
+      <th><i (click)="gerarPdf()" class="black file pdf link icon"></i></th>
     </tr>
   </thead>
   <tbody>
@@ -12,14 +13,14 @@
       <td>{{ c?.evento }}</td>
       <td>{{ c?.descricao }}</td>
       <td>{{ c?.valor | number: '1.2-2' }}</td>
-      <td>{{ c?.prazo }}</td>
+      <td colspan="2">{{ c?.prazo }}</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
       <th colspan="2"><strong>Total Bruto:</strong> {{ totalBruto | number: '1.2-2' }}</th>
       <th><strong>Total Desconto:</strong> {{ totalDesconto | number: '1.2-2' }}</th>
-      <th><strong>Total Líquido:</strong> {{ totalLiquido | number: '1.2-2' }}</th>
+      <th colspan="2"><strong>Total Líquido:</strong> {{ totalLiquido | number: '1.2-2' }}</th>
     </tr>
   </tfoot>
 </table>

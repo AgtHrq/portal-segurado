@@ -48,25 +48,6 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
 
   }
 
-  getPdf(){
-
-    this.contrachequeService.getPdf({ 
-    matricula: "0003166",
-    anoInicial: "2012",
-    anoFinal: "2018",
-    idVinculo: "000157864200031666",
-    cargo: "PENSIONISTA",
-    orgao: "DER",
-    tipoVinculo: "Aposentado"
-     }).subscribe(r => {
-      
-      r as Response
-      let pdf = new Blob([r.blob()], { type: 'application/pdf; ficha_financeira' });
-      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(pdf));
-
-     });
-  }
-
   ngOnInit() {
 
     this.userService.getLoggedUser().subscribe(user => this.user = user);
