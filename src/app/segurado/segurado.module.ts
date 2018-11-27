@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { TokenMaskDirective } from './validar-pdf/token-mask.directive';
+import { ValidarPdfComponent } from './validar-pdf/validar-pdf.component';
 import { AdminSolicitacaoModule } from '../admin/admin-solicitacao/admin-solicitacao.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { Cadastro2Component } from './cadastro2/cadastro2.component';
@@ -36,7 +39,9 @@ import { DirectivesModule } from '../directives/directives.module';
     LoginComponent,
     ChangePasswordComponent,
     FirstVerificationComponent,
-    SendEmailComponent
+    SendEmailComponent,
+    ValidarPdfComponent,
+    TokenMaskDirective
   ]
 })
 export class SeguradoModule { }
