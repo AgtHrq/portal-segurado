@@ -3,9 +3,9 @@
 
   <div class="ui very padded green segment">
       
-      <h1 class="ui center aligned header">Recuperação de senha</h1>
+      <h1 class="ui center aligned header">Validação de doumento</h1>
 
-      <form *ngIf="!showContent" class="ui large form error" [formGroup]="formToken" (submit)="validarPDF($event, formToken.value)">
+      <form *ngIf="!showContent" [class.success]="successMessage" class="ui large form error" [formGroup]="formToken" (submit)="validarPDF($event, formToken.value)">
 
         <div class="fields">
           
@@ -29,15 +29,19 @@
           </div>
           
         </div>
-        
-        <div *ngIf="showErrorMessage" class="ui negative message">
-          <app-error-message title="Erro!" message="{{ errorMessage }}"></app-error-message>
+        <div *ngIf="successMessage || errorMessage" class="ui message val" [class.success]="successMessage" [class.negative]="errorMessage">
+          <div *ngIf="successMessage">
+            <app-error-message title="{{ successMessage }}"></app-error-message>
+            <p><a [href]="fileUrl" target="_blank">Abrir documento</a></p>
+          </div>
+          <app-error-message *ngIf="errorMessage" title="{{ errorMessage }}"></app-error-message>
         </div>
-
+        
         <button class="ui right floated teal button" type="submit" [disabled]="formToken.invalid">Consultar</button>
         <a [routerLink]="['']" class="ui right floated button">Voltar</a>
-            
+        
       </form>
+
     
   </div>
 
