@@ -25,6 +25,9 @@ export class RespostaComponent implements OnInit {
   user: User;
   respOuvidoria: RespostaOuvidoria[] = [];
   aux: any;
+  msgInfo: string = '';
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
 
 
   constructor(private respostaOuvidoriaService: RespostaOuvidoriaService, 
@@ -46,16 +49,27 @@ export class RespostaComponent implements OnInit {
             r.showTd = "show";
             r.showDetail = "hidden";
           },
-          error=> {
-            if (error.json().message.trim() === "Invalid Token") {
-             this.userService.logoffUser();
-             this.router.navigate(['/']);
-            }
-          }
         );
-        console.log("respostas", this.aux);
+      },
+      error => {
+        if(error.json().message.trim() === 'Invalid Token'){
+          this.msgInfo = 'Login expirado, efetue o login novamente!'
+        }else{
+          this.msgInfo = error.json().message;
+          console.log(this.msgInfo);
+        }
+        this.showConfirmModal = true;
       }
-    )
+    );
+  }
+
+  buttonModal(msg: string){
+    if(msg === 'Login expirado, efetue o login novamente!'){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else{
+      this.showConfirmModal = false;
+    }
   }
 
   showDetail(event) {

@@ -2,7 +2,7 @@
   <app-loader message="Enviando..."></app-loader>
 </div>
 
-<div *ngIf="!showContent; else elseBlock">
+<div *ngIf="!showContent">
 
   <h3>Deseja enviar a senha para o e-mail?</h3>
   <h4>{{ email }}</h4>
@@ -22,6 +22,13 @@
 
 </div>
 
-<ng-template #elseBlock>
+
+<div *ngIf="showContent">
+  <h3>Pronto!</h3>
+  <h5>Foi enviado um link para seu e-mail cadastrado, verfique sua caixa de entrada</h5>
+  <a [routerLink]="['']" class="ui right floated button">Voltar</a>
+</div>
+
+<div *ngIf="showFirstVerification">
   <app-first-verification cpf="{{ cpf }}"></app-first-verification>
-</ng-template>
+</div>

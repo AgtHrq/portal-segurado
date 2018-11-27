@@ -1,0 +1,36 @@
+    <table  class="ui selectable very basic table" >
+      
+      <thead>
+        <tr>
+              <th>DATA DE CRIAÇÃO</th>
+              <th>STATUS</th>
+              <th>TEMPO EXPIRAÇÃO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let n of listNotificacoes" >
+              <td (click)="toggleState(n)" class="{{ n.showTd }}">{{ n.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+              <td (click)="toggleState(n)" class="{{ n.showTd }}" *ngIf="n.status">
+                <i class="yellow attention icon"></i>
+                Aberto
+              </td>
+              <td class="{{ n.showTd }}" *ngIf="!n.status">
+                <i class="green checkmark icon"></i>
+                Concluído
+              </td>
+              <td (click)="toggleState(n)" class="{{ n.showTd }}">{{ n.tempoExpiracao }} Dias</td>
+              <td colspan="3" class="{{ n.showDetail }}">
+                <app-detail-excluir-notificacao (listUpdate)="ngOnInit()" (detail)="toggleState(n)" [listNotificacoes]="n"></app-detail-excluir-notificacao>
+              </td>
+            </tr>
+          </tbody>
+        
+        </table>
+
+
+        <app-confirmacao-reposta [header]="'AVISO!'"
+        [message]="messageInfo"
+        [showModal]="showConfirmModal"
+        [messageSucess]="infoSucess" 
+        (confirm)="buttonModal(messageInfo)">
+        </app-confirmacao-reposta>

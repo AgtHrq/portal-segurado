@@ -12,6 +12,7 @@ export class ConfirmacaoRepostaComponent implements OnInit {
   @Input() showModal: boolean = false;
   @Output() cancel = new EventEmitter();
   @Output() confirm = new EventEmitter();
+  @Input() messageSucess:boolean = true;
 
   constructor() { }
 

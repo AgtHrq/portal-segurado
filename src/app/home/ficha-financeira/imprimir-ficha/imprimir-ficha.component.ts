@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConsultaVinculoService } from '../../../services/consulta-vinculo/consulta-vinculo-service.service';
 import { ImprimirFichaPeriodoService } from '../../../services/imprimir-ficha-periodo/imprimir-ficha-periodo.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-imprimir-ficha',
@@ -19,9 +21,13 @@ export class ImprimirFichaComponent implements OnInit {
   @Output() pageFicha = new EventEmitter();
   pageImprimir: boolean = true;
   detail: boolean = false;
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
+  msgInfo: string = '';
 
   constructor(private formBuilder: FormBuilder, private consultaVinculoService: ConsultaVinculoService,
-    private imprimirFichaService: ImprimirFichaPeriodoService) { }
+    private imprimirFichaService: ImprimirFichaPeriodoService, private userService: UserService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -38,8 +44,26 @@ export class ImprimirFichaComponent implements OnInit {
     this.consultaVinculoService.getVinculos().subscribe(
       user => {
         this.vinculos = user.json();
+      },
+      error => {
+        if(error.json().message === 'Invalid Token'){
+          this.msgInfo = 'Login expirado, efetue o login novamente!';
+        }else{
+          this.msgInfo = error.json().message;
+        }
+
+        this.showConfirmModal = true;
       }
     )
+  }
+
+  buttonModal(msg: string){
+    if(msg === 'Login expirado, efetue o login novamente!'){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else{
+      this.showConfirmModal = false;
+    }
   }
 
   setIdVinculo(evento){
@@ -74,12 +98,12 @@ export class ImprimirFichaComponent implements OnInit {
     console.log(periodo);
 
     this.imprimirFichaService.getPeriodoFichaFinanceira(periodo).subscribe(
-      resp => {
-        console.log(resp);
+      () => {
+        
       },
       error => {
-        alert(error._body);
-        console.log(error._body);
+        this.msgInfo = error._body;
+        this.showConfirmModal = true;
       }
     )
   }

@@ -1,0 +1,28 @@
+<div class="ui very center aligned basic segment">
+  <h3 class="ui header">Detalhamento</h3>
+</div>
+<table class="ui very basic table">
+  <tbody>
+    <tr>
+      <td><h4 class="ui header">Segurado:</h4></td>
+      <td>{{ detailOuvidoria.usuario.name }}</td>
+    </tr>
+    <tr>
+      <td><h4 class="ui header">Assunto:</h4></td>
+      <td>{{ detailOuvidoria.assunto }}</td>
+    </tr>
+    <tr>
+      <td><h4 class="ui header">Descrição:</h4></td>
+      <td>{{ detailOuvidoria.descricao }}</td>
+    </tr>
+    <tr>
+      <td><h4 class="ui header">Resposta:</h4></td>
+      <td>{{ detailOuvidoria.resposta }}</td>
+    </tr>
+    <tr>
+      <td><h4 class="ui header">Data de criação:</h4></td>
+      <td>{{ detailOuvidoria.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+    </tr>
+
+  </tbody>
+</table>

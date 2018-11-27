@@ -67,3 +67,10 @@
   </button>
 
 </form>
+
+<app-confirmacao-reposta [header]="'AVISO!'"
+  [message]="msgInfo"
+  [showModal]="showConfirmModal" 
+  [messageSucess]="showSucess" 
+  (confirm)="buttonModal()">
+</app-confirmacao-reposta>

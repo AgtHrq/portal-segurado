@@ -19,9 +19,10 @@ export class AdminNotificacaoComponent implements OnInit {
   ngOnInit() {
 
     this.menus = [
-      new Menu("Cadastrar notificação", "", ""),
-      new Menu("Excluir notificação", "", "")
+      new Menu("Cadastrar notificação", "", "cadastrar"),
+      new Menu("Excluir notificação", "", "excluir")
     ];
+
     this.userService.getLoggedUser().subscribe(
       u => this.user = u as User
     );

@@ -1,9 +1,9 @@
 export class Orgao {
-    private idOrgao: any;    
-    private descricao: any;
-    private codigo: any;
+    private idOrgao: number;    
+    private descricao: string;
+    private codigo: number;
 
-    constructor(idOrgao: any, descricao: any, codigo: any){
+    constructor(idOrgao: number, descricao: string, codigo: number){
         this.idOrgao = idOrgao;
         this.descricao = descricao;
         this.codigo = codigo;

@@ -18,6 +18,9 @@ export class CadastroComponent implements OnInit {
   nomeSegurado: string;
   cpfSegurado: string;
   vinculos = [];
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
+  msgInfo: string = '';
 
   constructor(private formBuilder: FormBuilder, private cadastrarService: CadastrarService) { 
 
@@ -49,7 +52,7 @@ export class CadastroComponent implements OnInit {
 
   verifica(event, segurado){
     event.preventDefault();
-    this.nomeSegurado = segurado.nome;
+    this.nomeSegurado = segurado.nome.toUpperCase();
     this.cpfSegurado = segurado.cpf;
     segurado.cpf = this.formatCpf(segurado.cpf);
     segurado.dataNascimento = this.formatData(segurado.dataNascimento);
@@ -60,13 +63,16 @@ export class CadastroComponent implements OnInit {
         this.numVinculos = proximo.json();
         this.cadastro = false;
         this.verificaVinculos = true;
-        
       },
       error => {
-        console.log('error ' + error)
-        alert(error._body);
+        this.msgInfo = error._body;
+        this.showConfirmModal = true;
       }
     );
+  }
+
+  buttonModal(){
+    this.showConfirmModal = false;
   }
 
   formatCpf(cpf: string): string {

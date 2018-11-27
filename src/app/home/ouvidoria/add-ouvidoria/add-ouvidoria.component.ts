@@ -1,10 +1,11 @@
-import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '../../../../../node_modules/@angular/forms';
 import { AddOuvidoriaService } from '../../../services/add-ouvidoria/add-ouvidoria.service';
 import { UserService } from '../../../services/user.service';
 import { TipoOuvidoriaService } from '../../../services/tipo-ouvidoria/tipo-ouvidoria.service';
 import { User } from '../../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-ouvidoria',
@@ -25,8 +26,14 @@ export class AddOuvidoriaComponent implements OnInit {
   formOuvidoria: FormGroup;
   user: User;
   tiposOuvidoria = [];
+  msgInfo: string = '';
+  showConfirmModal: boolean = false;
+  showSucess: boolean = false;
+  showLoader: boolean = false;
+
   constructor(private formBuilder: FormBuilder, private addOuvidoriaService: AddOuvidoriaService,
-    private userService: UserService, private tipoOuvidoriaService: TipoOuvidoriaService) {  }
+    private userService: UserService, private tipoOuvidoriaService: TipoOuvidoriaService,
+    private router: Router) {  }
   
   ngOnInit() {
 
@@ -65,9 +72,28 @@ export class AddOuvidoriaComponent implements OnInit {
       tipo => {
         this.tiposOuvidoria = tipo.json();
         console.log("Tipos: " , this.tiposOuvidoria);
-      }
+      },
+      error => {
+        if(error.json().message.trim() === 'Invalid Token'){
+          this.msgInfo = 'Login expirado, efetue o login novamente!'
+        }else{
+          this.msgInfo = error.json().message;
+          console.log(this.msgInfo);
+        }
+        this.showConfirmModal = true;
 
+      }
     );
+  }
+
+  buttonModal(msg: string){
+    if(msg === 'Login expirado, efetue o login novamente!'){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else{
+      this.showConfirmModal = false;
+      this.limpaCampos();
+    }
   }
 
   setId(event){
@@ -82,15 +108,22 @@ export class AddOuvidoriaComponent implements OnInit {
   sendOuvidoria(event, ouvidoria){
     event.preventDefault();
     console.log(ouvidoria);
+    this.showLoader = true;
 
    this.addOuvidoriaService.sendBackOuvidoria(ouvidoria).subscribe(
-     respOuvidoria => {
-       console.log("respOuvidoria " + respOuvidoria);
-       alert("Ouvidoria enviada com Sucesso")
-       this.limpaCampos();
+     () => {
+       this.showLoader = false;
+       this.msgInfo = "Ouvidoria enviada com Sucesso";
+       this.showConfirmModal = true;
      },
      error => {
-       alert(error._body);
+      if(error.json().message === 'Invalid Token'){
+        this.msgInfo = 'Login expirado, efetue o login novamente!'
+      }else{
+        this.msgInfo = error.json().message;
+        console.log(this.msgInfo);
+      }
+      this.showConfirmModal = true;
      }
    );
 

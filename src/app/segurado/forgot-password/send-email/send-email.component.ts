@@ -1,5 +1,5 @@
 import { ForgotPasswordService } from '../../../services/forgot-password/forgot-password.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { MaskUtils } from '../../../utils/mask-utils';
 
 @Component({
@@ -15,6 +15,7 @@ export class SendEmailComponent implements OnInit {
   utils: MaskUtils = new MaskUtils();
   errorMessage: boolean = false;
   showLoader: boolean = false;
+  showFirstVerification: boolean = false
 
   constructor(private service: ForgotPasswordService) {  }
 
@@ -37,6 +38,7 @@ export class SendEmailComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.showLoader = false;
+        this.showContent = true;
       },
       erro => {
         this.showLoader = false;
@@ -48,7 +50,7 @@ export class SendEmailComponent implements OnInit {
 
   showQuestion(){
 
-    this.showContent = true;
+    this.showFirstVerification = true;
     this.cpf = this.utils.addMascara(this.cpf);
 
   }

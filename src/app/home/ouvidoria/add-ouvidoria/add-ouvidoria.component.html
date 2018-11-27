@@ -54,3 +54,10 @@
   </div>
   <button class="ui teal button" type="submit" [disabled]="formOuvidoria.invalid">Cadastrar</button>
 </form>
+<app-loader *ngIf="showLoader"></app-loader>
+<app-confirmacao-reposta [header]="'AVISO!'"
+  [message]="msgInfo"
+  [showModal]="showConfirmModal" 
+  [messageSucess]="showSucess" 
+  (confirm)="buttonModal(msgInfo)">
+</app-confirmacao-reposta>

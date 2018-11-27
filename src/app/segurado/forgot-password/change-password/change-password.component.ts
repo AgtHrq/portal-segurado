@@ -1,17 +1,21 @@
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ForgotPasswordService } from '../../../services/forgot-password/forgot-password.service';
 import { upperCase, lowerCase, containNumber, equal } from '../../../validators/password.validator';
+import { GetUserHashService } from 'src/app/services/get-user-hash/get-user-hash.service';
+import { User } from 'src/app/models/user';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.css']
 })
-export class ChangePasswordComponent implements OnInit, OnChanges {
+export class ChangePasswordComponent implements OnInit {
 
-  @Input() hash: string = "";
+  @Input() hash: any = "";
+  user: User;
   formNewPassword: FormGroup;
   classMin: string = "error";
   classLetraMin: string = "error";
@@ -19,7 +23,8 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
   showSuccessMessage: boolean = false;
   showLoader: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private forgotService: ForgotPasswordService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private forgotService: ForgotPasswordService, 
+    private router: Router, private activatedRoute: ActivatedRoute, private userHash: GetUserHashService) {
 
     this.formNewPassword = formBuilder.group({
       hash: "",
@@ -42,6 +47,8 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
 
     delete data.confirmPassword;
 
+    console.log(data);
+
     this.forgotService.novaSenha(data).subscribe(
       data => {
         this.showLoader = false;
@@ -51,11 +58,24 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
 
    }
 
-  ngOnInit() { console.log(this.activatedRoute.outlet)}
+  ngOnInit() { 
+    console.log(this.activatedRoute.outlet);
 
-  ngOnChanges(){
-
+    this.hash = this.activatedRoute.snapshot.paramMap.get('hashBack');
+    
     this.formNewPassword.get("hash").setValue(this.hash);
+
+    console.log(this.hash);
+
+    this.userHash.getUserHash(this.hash).subscribe(
+      h => {
+        this.user = h.json() as User;
+        console.log(this.user);
+      },
+      error => {
+        this.router.navigate(['/']);
+      }
+    );
 
   }
 

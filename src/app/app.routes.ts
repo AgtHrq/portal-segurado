@@ -24,10 +24,16 @@ import { SuperAdminGuard } from './services/guards/super-admin.guard';
 import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
 import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/imprimir-ficha.component';
 import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
+import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notificacao.component';
+import { CadastroNotificacaoComponent } from './admin/admin-notificacao/cadastro-notificacao/cadastro-notificacao.component';
+import { ExcluirNotificacaoComponent } from './admin/admin-notificacao/excluir-notificacao/excluir-notificacao.component';
 import { AlterardadosUsuarioComponent } from './admin/admin-home/alterardados-usuario/alterardados-usuario.component';
 import { ListaUsuariosComponent } from './admin/admin-home/lista-usuarios/lista-usuarios.component';
 import { ListarSolicitacaoComponent } from './admin/admin-solicitacao/listar-solicitacao/listar-solicitacao.component';
 import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
+import { ListarOuvidoriaRespondidaComponent } from './admin/admin-ouvidoria/listar-ouvidoria-respondida/listar-ouvidoria-respondida.component';
+import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
+import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 
 const APP_ROUTES: Routes = [
 
@@ -42,6 +48,9 @@ const APP_ROUTES: Routes = [
     },
     { 
         path: 'esqueci/senha', component: ForgotPasswordComponent 
+    },
+    {
+        path: 'changePassword/:hashBack', component: ChangePasswordComponent
     },
     { 
         path: 'home/segurado', component: HomeComponent, canActivate: [AuthGuard], children: [
@@ -89,8 +98,8 @@ const APP_ROUTES: Routes = [
         ]
     },
     {
-        path: 'admin', component: AdminComponent, canActivate: [AdminGuard], 
-        children: [
+        path: 'admin', component: AdminComponent, canActivate: [AdminGuard], children:
+        [
             { 
                 path: '', component: AdminHomeComponent, children: 
                 [
@@ -106,10 +115,30 @@ const APP_ROUTES: Routes = [
                 ]
             },
             {
-                path: 'ouvidoria', component: AdminOuvidoriaComponent
+                path: "ouvidoria", component: AdminOuvidoriaComponent, children: 
+                [
+                    {
+                        path: "listar/ouvidoria/aberta", component: ListarOuvidoriaComponent
+                    },
+                    {
+                        path: "listar/ouvidoria/repondida", component: ListarOuvidoriaRespondidaComponent
+                    }
+                ]
             },
             {
-                path: 'solicitacao', component: AdminSolicitacaoComponent, children: [
+                path: "notificacao", component: AdminNotificacaoComponent, children:
+                [   
+                    {
+                        path: "cadastrar", component: CadastroNotificacaoComponent
+                    },
+                    {
+                        path: "excluir", component: ExcluirNotificacaoComponent
+                    },
+                ]
+            },
+            {
+                path: 'solicitacao', component: AdminSolicitacaoComponent, children: 
+                [
                     {
                         path: 'aberta', component: ListarSolicitacaoComponent
                     },
@@ -120,13 +149,13 @@ const APP_ROUTES: Routes = [
                         path: '**', redirectTo: ''
                     }
                 ]
+            },
+            { 
+                path: '**', redirectTo: '' 
             }
-        ]
-    },
-    { 
-        path: '**', redirectTo: '' 
-    }
 
+        ]
+    }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
