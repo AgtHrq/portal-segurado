@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations'
 
+import { saveAs } from 'file-saver'
 import { DocumentoProcesso } from './../../models/documento-processo';
 import { UserService } from './../../services/user.service';
 import { ProcessoService } from './../../services/processos/processo.service';
@@ -35,7 +36,9 @@ export class ProcessoComponent implements OnInit {
   resumoProcesso: Processo = null;
   tramitacoes: Tramitacao[];
   documentos: DocumentoProcesso[];
-  url_docs: string = "file:///\\\\10.10.1.6/digitalizados/541811/";
+  url_docs: string;
+  showModal: boolean = false;
+  message: string;
 
   constructor(private utils: HomeUtils, private processoService: ProcessoService, private userService: UserService, private router: Router) { }
   
@@ -62,12 +65,38 @@ export class ProcessoComponent implements OnInit {
 
   }
 
+  getDocumento(arq: string, name: string) {
+
+    this.showLoader = true;
+    this.message = '';
+    this.url_docs = this.getNumeroInt(this.url_docs) + '/' + arq;
+    this.processoService.getDocumento(this.url_docs).subscribe(r => {
+
+      this.message = 'Download concluido';
+      this.showLoader = false;
+      this.showModal = true;
+      let doc = new Blob([r.blob()], {  type: 'application/pdf' });
+      saveAs(doc, name);
+    },
+    error => {
+      this.message = 'Erro! tente novamente. Caso o erro persista entre em contato com a PBPrev.';
+      this.showLoader = false;
+      this.showModal = true;
+    });
+  }
+
   selectedProcesso(event) {
 
     this.resumoProcesso = this.processos[event.target.selectedIndex - 1].resumoProcesso as Processo;
     this.documentos = this.processos[event.target.selectedIndex - 1].documentoProcesso as DocumentoProcesso[];
     this.tramitacoes = this.processos[event.target.selectedIndex - 1].tramitacaoProcesso as Tramitacao[];
     this.tramitacoes.sort((a, b) => a.dataTramitacao > b.dataTramitacao ? -1 : 1);
+    this.url_docs = this.resumoProcesso.numeroProcesso;
+  }
+
+  getNumeroInt(numero: string): string {
+
+    return Number.parseInt(numero.replace('-', '')).toString();
   }
 
 }

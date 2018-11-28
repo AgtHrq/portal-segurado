@@ -8,6 +8,7 @@ import { ProcessoComponent } from './processo.component';
 import { MaskCpfPipe } from './mask-cpf.pipe';
 import { LoaderModule } from '../../loader/loader.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-solicitacao.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserAnimationsModule,
     RouterModule,
     LoaderModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AdminSolicitacaoModule
   ],
   declarations: [
     ProcessoComponent,

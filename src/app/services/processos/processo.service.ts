@@ -14,4 +14,9 @@ export class ProcessoService {
 
   }
 
+  getDocumento(path) {
+
+    return this.backenService.protectedDowloadRequest('/usuarios/getDocumentoProcesso', { path: path });
+  }
+
 }
