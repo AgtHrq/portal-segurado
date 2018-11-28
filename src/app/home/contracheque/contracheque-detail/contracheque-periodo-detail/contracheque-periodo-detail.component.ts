@@ -2,6 +2,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { saveAs } from 'file-saver';
+import { HomeUtils } from './../../../../utils/home-utils';
 import { ContrachequeService } from './../../../../services/contracheque/contracheque.service';
 import { Cabecalho } from './../../../../models/cabecalho';
 import { Contracheque } from '../../../../models/contracheque';
@@ -23,11 +24,12 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
   cabecalho: Cabecalho;
   fileUrl;
   showLoader: boolean = false;
+  showModal: boolean = false;
+  message: string;
 
-  constructor(private contrachequeService: ContrachequeService, private sanitizer: DomSanitizer) { }
+  constructor(private contrachequeService: ContrachequeService, private utils: HomeUtils) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   gerarPdf(){
 
@@ -38,11 +40,14 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
 
     this.contrachequeService.getPdf(this.cabecalho).subscribe(
       r => {
+        this.message = 'Documento gerado com sucesso.'
         this.showLoader = false;
         let pdf = new Blob([r.blob()], { type: 'aplication/pdf; attachement=contracheque.pdf' });
         saveAs(pdf, 'contracheque.pdf');
+        this.showModal = true;
       },
-      error => {
+      () => {
+        this.message = 'Erro ao gerar documento.'
         this.showLoader = false;
       }
     );

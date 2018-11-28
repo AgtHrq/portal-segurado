@@ -1,3 +1,11 @@
+<app-confirmacao-reposta
+  [header]="'Geração de documento'"
+  [message]="message"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
+<app-loader *ngIf="showLoader"></app-loader>
 <table *ngIf="contracheques.length >= 1; else elseBlock" class="ui very basic table">
   <thead>
     <tr>
@@ -5,7 +13,11 @@
       <th>Descrição</th>
       <th>Valor(R$)</th>
       <th>Prazo</th>
-      <th><i (click)="gerarPdf()" class="black file pdf link icon"></i></th>
+      <th>
+        <a data-tooltip="Gerar PDF" data-variation="wide" data-position="bottom center">
+          <i (click)="gerarPdf()" class="black file pdf link icon"></i>
+        </a>
+      </th>
     </tr>
   </thead>
   <tbody>
