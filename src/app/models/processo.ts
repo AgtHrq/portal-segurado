@@ -9,5 +9,6 @@ export interface Processo {
     numeroPortaria: number;
     numeroProcesso: string;
     turnoAgendamento: string;
+    status: string;
 
 }
