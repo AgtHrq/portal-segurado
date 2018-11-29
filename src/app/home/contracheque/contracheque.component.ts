@@ -1,7 +1,6 @@
 import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
-import { Response } from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { HomeUtils } from '../../utils/home-utils';
@@ -35,6 +34,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   private vinculos: VinculoModel[];
   private periodos: Periodo[];
   showLoader: boolean = true;
+  showModal: boolean = false;
   fileUrl;
 
   constructor(private utils: HomeUtils, private contrachequeService: ContrachequeService, 
@@ -45,24 +45,6 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
     this.vinculo = vinculo;
     this.vinculos.forEach(v => v.activate = false);
 
-  }
-
-  getPdf(){
-
-    this.contrachequeService.getPdf({ 
-    matricula: "0003166",
-    anoInicial: "2012",
-    anoFinal: "2018",
-    idVinculo: "000157864200031666",
-    cargo: "PENSIONISTA",
-    orgao: "DER",
-    tipoVinculo: "Aposentado"
-     }).subscribe(r => {
-      
-      let pdf = new Blob([r.blob()], { type: 'application/pdf; ficha_financeira' });
-      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(pdf));
-
-     });
   }
 
   ngOnInit() {
@@ -82,7 +64,14 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
       this.vinculos.forEach(v => v.activate = false);
       this.vinculos[0].activate = true;
       this.contrachequeService.gerarContracheque().subscribe(c => {
-        this.contracheques = c.json().financeiro as Contracheque[];
+        try {
+
+          this.contracheques = c.json().financeiro as Contracheque[];
+        } catch(e){
+          this.showLoader = false;
+          this.showModal = true;
+          return;
+        }
         this.contracheques.forEach(c => c.activate = false);
         this.contracheques[0].activate = true;
         this.utils.contracheque();
@@ -114,9 +103,9 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
               }
               i++;
             });
-          });
+          }, () => this.showLoader = false);
         });
-      });
+      }, () => this.showLoader = false);
     },
     error=> {
       this.showLoader = false;

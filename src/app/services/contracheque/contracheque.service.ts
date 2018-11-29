@@ -29,7 +29,7 @@ export class ContrachequeService {
 
   getPdf(data){
 
-    return this.backendService.protectedDowloadRequest('usuarios/gerarRelatorio/fichaFinanceira', data);
+    return this.backendService.protectedDowloadRequest('usuarios/gerarRelatorio/contracheque', data);
   }
 
 }

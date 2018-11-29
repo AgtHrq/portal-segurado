@@ -10,6 +10,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ContrachequePeriodoDetailComponent } from './contracheque-detail/contracheque-periodo-detail/contracheque-periodo-detail.component';
 import { LoaderModule } from '../../loader/loader.module';
 import { IdVinculoPipe } from './id-vinculo.pipe';
+import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-solicitacao.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { IdVinculoPipe } from './id-vinculo.pipe';
     BrowserModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    LoaderModule
+    LoaderModule,
+    AdminSolicitacaoModule
   ],
   declarations: [
     ContrachequeComponent,

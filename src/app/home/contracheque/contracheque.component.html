@@ -1,3 +1,10 @@
+<app-confirmacao-reposta
+  [header]="'Contracheque'"
+  [message]="'Nenhum contracheque encontrado'"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
 <div [@flyInOut]="'in'" class="ui segments">
   <app-loader *ngIf="showLoader"></app-loader>
 
@@ -24,7 +31,6 @@
         </div>
       </div>
       <div class="doubling twelve wide stretched column">
-        <p (click)="getPdf()">DOWNLOAD pdf</p>
         <a *ngIf="fileUrl" [href]="fileUrl" target="_blank">open</a>
         <app-contracheque-detail [vinculo]="vinculo"></app-contracheque-detail>
       </div>

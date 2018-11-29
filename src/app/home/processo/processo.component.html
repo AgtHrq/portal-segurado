@@ -1,3 +1,10 @@
+<app-confirmacao-reposta
+  [header]="'Geração de documento'"
+  [message]="message"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
 <div [@flyInOut]="'in'" class="ui segments">
   
   <app-loader *ngIf="showLoader"></app-loader>
@@ -70,6 +77,10 @@
               <td><h4>ASSUNTO:</h4></td>
               <td>{{ resumoProcesso?.assuntoProcesso }}</td>
             </tr>
+            <tr>
+              <td><h4>STATUS:</h4></td>
+              <td>{{ resumoProcesso?.status }}</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -135,7 +146,7 @@
           <tbody>
             <tr *ngFor="let d of documentos | paginate: { id: 'docs', itemsPerPage: 5, currentPage: pageDoc }">
               <td>{{ d?.descricaoArquivo }}</td>
-              <td><a *ngIf="d?.caminhoArquivo" class="icon item" target="_blank" href="http://{{ url_docs }}{{ d?.caminhoArquivo }}">
+              <td><a *ngIf="d?.caminhoArquivo" class="icon item" target="_blank" (click)="getDocumento(d.caminhoArquivo, d.descricaoArquivo)">
                 <i class="black file pdf link icon"></i>
               </a></td>
             </tr>

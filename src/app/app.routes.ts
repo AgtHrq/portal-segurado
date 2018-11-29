@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 
+import { ValidarPdfComponent } from './segurado/validar-pdf/validar-pdf.component';
 import { AdminGuard } from './services/guards/admin.guard';
 import { InitialComponent } from './home/ouvidoria/initial/initial.component';
 import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
@@ -41,6 +42,9 @@ const APP_ROUTES: Routes = [
     },
     {
         path: 'cadastro', component: CadastroComponent 
+    },
+    {
+        path: 'validar', component:  ValidarPdfComponent
     },
     { 
         path: 'esqueci/senha', component: ForgotPasswordComponent 

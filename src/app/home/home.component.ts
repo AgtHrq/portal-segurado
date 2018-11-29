@@ -15,7 +15,8 @@ import { HomeUtils } from './../utils/home-utils';
 export class HomeComponent implements AfterViewInit {
 
   menus: Menu[] = [new Menu('Meus Processos', 'book', 'processos'), new Menu('Contracheque', 'money bill alternate', 'contracheque'), new Menu('Ficha Financeira', 'newspaper', 'ficha-financeira'),
-    new Menu('PBConsig', 'dollar', ''), new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), new Menu('Ouvidoria', 'users', 'ouvidoria')];
+    // new Menu('PBConsig', 'dollar', ''),  será desenvolvido na segunda versao
+    new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), new Menu('Ouvidoria', 'users', 'ouvidoria')];
   numNotificacoes: number = 0;
   filter: string = '';
   user$: Observable<User>;
