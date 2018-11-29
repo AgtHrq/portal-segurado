@@ -34,6 +34,7 @@ export class VizualizaFichaComponent implements OnInit {
   showConfirmModal: boolean = false;
   showSucess: boolean = false;
   msgInfo: string = '';
+  showLoader: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private consultaVinculoService: ConsultaVinculoService,
      private utils: HomeUtils, private visualizarFichaService: VisualizarFichaFinanaceiraService,
@@ -87,15 +88,19 @@ export class VizualizaFichaComponent implements OnInit {
   sendAno(event, ano){
     event.preventDefault();
     console.log("send!", ano);
+    this.showLoader = true;
     
     this.visualizarFichaService.getFichaFinanceira(ano).subscribe(
-      () => {
+      dadosFicha => {
+        this.vinculoFicha = dadosFicha.json();
+        this.showLoader = false;
         this.pageVisualizar = false;
         this.detail = true;
       },
       error => {
         this.msgInfo = error._body;
         this.showConfirmModal = true;
+        this.showLoader = true;
       }
     );
 
@@ -123,7 +128,6 @@ export class VizualizaFichaComponent implements OnInit {
   }
 
   setIdVinculo(evento){
-    evento = evento.substr(10, 16);
     this.meuForm.get('idVinculo').setValue(evento);
   }
 

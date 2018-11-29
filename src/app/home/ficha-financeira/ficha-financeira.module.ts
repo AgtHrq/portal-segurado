@@ -7,9 +7,10 @@ import { RouterModule } from '@angular/router';
 import { FichaFinanceiraComponent } from './ficha-financeira.component';
 import { VizualizaFichaComponent } from './vizualiza-ficha/vizualiza-ficha.component';
 import { ContrachequeModule } from '../contracheque/contracheque.module';
-import { FichaFinanceiraDetailComponent } from './ficha-financeira-detail/ficha-financeira-detail.component';
 import { ImprimirFichaComponent } from './imprimir-ficha/imprimir-ficha.component';
 import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-solicitacao.module';
+import { FichaFinanceiraDetailComponent } from './vizualiza-ficha/ficha-financeira-detail/ficha-financeira-detail.component';
+import { LoaderModule } from 'src/app/loader/loader.module';
 
 @NgModule({
   imports: [
@@ -19,13 +20,14 @@ import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-so
     BrowserAnimationsModule,
     RouterModule,
     ContrachequeModule,
-    AdminSolicitacaoModule
+    AdminSolicitacaoModule,
+    LoaderModule
   ],
   declarations: [
     FichaFinanceiraComponent,
     VizualizaFichaComponent,
-    FichaFinanceiraDetailComponent,
-    ImprimirFichaComponent
+    ImprimirFichaComponent,
+    FichaFinanceiraDetailComponent
   ]
 })
 export class FichaFinanceiraModule { }

@@ -7,11 +7,11 @@
           <ng-template ngFor let-v [ngForOf]="vinculos">
             <a *ngIf="v.orgao.length > 7; else elseBlock" [attr.data-content]="v.orgao | uppercase" 
               data-variation="wide" data-position="right center" class="item" 
-              [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v.idVinculo)">
+              [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v)">
               {{ v.idVinculo | idVinculo }} | {{ v.orgao | orgaoAbv }}
             </a>
             <ng-template #elseBlock>
-              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v.idVinculo)">
+              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" (click)="setIdVinculo(v)">
                 {{ v.idVinculo | idVinculo }} | {{ v.orgao | orgaoAbv }}
               </a>
             </ng-template>
@@ -27,41 +27,38 @@
           <div class="fields">
             <div class="eight wide field">
               <label>Ano Inicio</label>
-              <select class="ui fluid dropdown" name="anoInicio" formControlName="anoReferencia" (change)="setAnosFim($event.target.value)">
+              <select class="ui fluid dropdown" name="anoInicio" formControlName="anoInicial" (change)="setAnosFim($event.target.value)">
                 <option value="" selected disabled>Selecione</option>
                 <option *ngFor="let ano of anosInicio" value="{{ano}}">{{ano}}</option>
               </select>
             </div>
             <div class="eight wide field">
               <label>Ano Fim</label>
-              <select class="ui fluid dropdown" name="anoFim" formControlName="anoReferenciaFim" [class.disabled]="element">
+              <select class="ui fluid dropdown" name="anoFim" formControlName="anoFinal" [class.disabled]="element">
                 <option value="" selected disabled>Selecione</option>
                 <option *ngFor="let ano1 of anosFim" value="{{ano1}}">{{ano1}}</option>
               </select>
             </div>
           </div>
+          <input type="hidden" formControlName="matricula"/>
           <input type="hidden" formControlName="idVinculo"/>
+          <input type="hidden" formControlName="cargo"/>
+          <input type="hidden" formControlName="orgao"/>
+          <input type="hidden" formControlName="tipoVinculo"/>
           <button class="ui right floated button" type="submit" [disabled]="meuForm.invalid">
-            Visualizar
+            Gerar
           </button>
           <a class="ui right floated button" (click)="voltar()">
-              Voltar
+            Voltar
           </a>
         </form>
       </div>
     </div>
-    <div class="" *ngIf="detail">
-      <app-ficha-financeira-detail [ficha]="vinculoFicha"></app-ficha-financeira-detail>
-      <a class="ui right floated button" (click)="voltar()">
-          Voltar
-      </a>
-    </div>
-  
   </div>
-
-<app-confirmacao-reposta [header]="'AVISO!'"
-  [message]="msgInfo"
-  [showModal]="showConfirmModal" 
-  [messageSucess]="showSucess" 
-  (confirm)="buttonModal(msgInfo)">
-</app-confirmacao-reposta>
+  <app-loader *ngIf="showLoader"></app-loader>
+  <app-confirmacao-reposta [header]="'AVISO!'"
+    [message]="msgInfo"
+    [showModal]="showConfirmModal" 
+    [messageSucess]="showSucess" 
+    (confirm)="buttonModal(msgInfo)">
+  </app-confirmacao-reposta>

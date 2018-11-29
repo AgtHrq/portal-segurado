@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { HomeUtils } from '../../../utils/home-utils';
+import { HomeUtils } from '../../../../utils/home-utils';
 
 @Component({
   selector: 'app-ficha-financeira-detail',
@@ -13,6 +13,7 @@ export class FichaFinanceiraDetailComponent implements OnInit {
   constructor(private utils: HomeUtils) { }
 
   ngOnInit() {
+    console.log(this.ficha);
   }
 
   deactivate(){
@@ -22,11 +23,5 @@ export class FichaFinanceiraDetailComponent implements OnInit {
       }
     );
   }
-
-  // ngAfterViewInit() {
-
-  //   this.utils.contracheque();
-
-  // }
 
 }

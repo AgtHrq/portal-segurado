@@ -9,6 +9,6 @@ export class ImprimirFichaPeriodoService {
   constructor(private backendService: BackendService) { }
 
   getPeriodoFichaFinanceira(credentials: object){
-    return this.backendService.protectedRequest("usuarios/imprimirFichaFinanceira", "post", credentials);
+    return this.backendService.protectedDowloadRequest("/usuarios/gerarRelatorio/fichaFinanceira", credentials);
   }
 }
