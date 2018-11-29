@@ -11,7 +11,6 @@ import { VinculoModel } from '../../models/vinculo-model';
 import { User } from './../../models/user';
 import { UserService } from '../../services/user.service';
 import { Periodo } from '../../models/periodo';
-import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-contracheque',
@@ -60,7 +59,6 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
     tipoVinculo: "Aposentado"
      }).subscribe(r => {
       
-      r as Response
       let pdf = new Blob([r.blob()], { type: 'application/pdf; ficha_financeira' });
       this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(pdf));
 

@@ -49,7 +49,7 @@
   </div>
 
 </div>
-
+<app-loader *ngIf="showLoader"></app-loader>
 <app-confirmacao-reposta [header]="'AVISO!'"
   [message]="msgInfo"
   [showModal]="showConfirmModal" 
