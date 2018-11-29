@@ -1,3 +1,10 @@
+<app-confirmacao-reposta
+  [header]="'Contracheque'"
+  [message]="'Nenhum contracheque encontrado'"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
 <div [@flyInOut]="'in'" class="ui segments">
   <app-loader *ngIf="showLoader"></app-loader>
 

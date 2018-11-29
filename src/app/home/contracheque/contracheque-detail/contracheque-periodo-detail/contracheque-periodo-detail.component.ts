@@ -40,15 +40,16 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
 
     this.contrachequeService.getPdf(this.cabecalho).subscribe(
       r => {
-        this.message = 'Documento gerado com sucesso.'
+        this.message = 'Documento gerado com sucesso.';
         this.showLoader = false;
         let pdf = new Blob([r.blob()], { type: 'aplication/pdf; attachement=contracheque.pdf' });
         saveAs(pdf, 'contracheque.pdf');
         this.showModal = true;
       },
       () => {
-        this.message = 'Erro ao gerar documento.'
+        this.message = 'Erro ao gerar documento.';
         this.showLoader = false;
+        this.showModal = true;
       }
     );
   }

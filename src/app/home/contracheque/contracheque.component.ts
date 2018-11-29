@@ -34,6 +34,7 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
   private vinculos: VinculoModel[];
   private periodos: Periodo[];
   showLoader: boolean = true;
+  showModal: boolean = false;
   fileUrl;
 
   constructor(private utils: HomeUtils, private contrachequeService: ContrachequeService, 
@@ -63,7 +64,14 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
       this.vinculos.forEach(v => v.activate = false);
       this.vinculos[0].activate = true;
       this.contrachequeService.gerarContracheque().subscribe(c => {
-        this.contracheques = c.json().financeiro as Contracheque[];
+        try {
+
+          this.contracheques = c.json().financeiro as Contracheque[];
+        } catch(e){
+          this.showLoader = false;
+          this.showModal = true;
+          return;
+        }
         this.contracheques.forEach(c => c.activate = false);
         this.contracheques[0].activate = true;
         this.utils.contracheque();
@@ -95,9 +103,9 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
               }
               i++;
             });
-          });
+          }, () => this.showLoader = false);
         });
-      });
+      }, () => this.showLoader = false);
     },
     error=> {
       this.showLoader = false;
