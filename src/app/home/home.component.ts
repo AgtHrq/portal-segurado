@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { HomeUtils } from './../utils/home-utils';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnInit {
 
   menus: Menu[] = [new Menu('Meus Processos', 'book', 'processos'), new Menu('Contracheque', 'money bill alternate', 'contracheque'), new Menu('Ficha Financeira', 'newspaper', 'ficha-financeira'),
     // new Menu('PBConsig', 'dollar', ''),  será desenvolvido na segunda versao
@@ -22,6 +22,8 @@ export class HomeComponent implements AfterViewInit {
   user$: Observable<User>;
   stateDados: string = 'inactive';
   stateSenha: string = 'inactive';
+  mobile: boolean = false;
+  activeMenu: boolean = true;
 
   constructor(private userService : UserService, private utils: HomeUtils, private router: Router) {
 
@@ -42,6 +44,17 @@ export class HomeComponent implements AfterViewInit {
     this.userService.logoffUser();
     this.router.navigate(['/']);
 
+   }
+
+   @HostListener('window.resize')
+   windowSize(){
+
+    window.innerWidth <= 767 && (this.mobile = true);
+   }
+
+   ngOnInit(){
+
+    this.windowSize();
    }
 
   ngAfterViewInit() {

@@ -1,17 +1,20 @@
 <div class="ui segment cab">
+    
+    <div [class.desktop]="!activeMenu" class="ui header cab">
         
-  <div class="ui header cab">
-      
-      <a [routerLink]="['/']" class="ui small image">
-          <img src="../../assets/img/logo.png">
-      </a>
-      <h3>Portal do segurado</h3>
+        <a [routerLink]="['/']" class="ui small image">
+            <img src="../../assets/img/logo.png">
+        </a>
+        <h3>Portal do segurado</h3>
 
-  </div>
+    </div>
+    <div [class.desktop]="activeMenu" (click)="mobile && (activeMenu = true)" class="ui header cab mobile">
+            <i class="bars icon"></i>
+    </div>
   
   <div *ngIf="(user$ | async) as user" class="logout">
       <i class="user icon"></i>
-      Bem vindo(a)!
+      <span [class.desktop]="mobile">Bem vindo(a)!</span>
       <div class="ui inline pointing dropdown">
             {{ user.user_name | nomePipe }}
             <i class="dropdown icon"></i>
@@ -24,7 +27,7 @@
   </div>
 </div>
 <!-- MENU -->
-<div class="menu">
+<div [class.desktop]="!activeMenu" class="menu">
 
 <div class="ui category search">
   <div class="ui left icon input">
@@ -33,18 +36,18 @@
   </div>
 </div>
 
-<app-menu [menus]="menus | filterByDescricao: filter"></app-menu>
+<app-menu (click)="mobile && (activeMenu = false)" [menus]="menus | filterByDescricao: filter"></app-menu>
   
 </div>
 <!-- NOTIFICAÇÃO -->
-<div class="notificacao">
+<div [class.desktop]="!activeMenu" class="notificacao">
 
   <app-notificacao></app-notificacao>
 
 </div>
 <!-- CONTEÚDO -->
 
-<div class="conteudo">
+<div [class.desktop]="activeMenu" class="conteudo">
     <router-outlet></router-outlet>
 </div>
 

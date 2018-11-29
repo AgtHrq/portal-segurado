@@ -18,6 +18,11 @@ body {
 
 @media (min-width: 1176px) and (max-width: 2455px){
 
+    .mobile {
+
+        display: none;
+    }
+
     .ui.segment.cab {
     
         background-color: #2E8B57;
@@ -137,6 +142,11 @@ body {
 /* TABLETS GRNADES */
 
 @media (min-width: 768px) and (max-width: 1175px){
+
+    .mobile {
+
+        display: none;
+    }
 
     .ui.segment.cab {
     
@@ -270,6 +280,11 @@ body {
 
 @media (max-width: 767px){
 
+    .desktop {
+
+        display: none;
+    }
+
     .ui.segment.cab {
     
         background-color: #2E8B57;
@@ -278,6 +293,7 @@ body {
         height: 60px;
         width: 100%;
         position: fixed;
+        top: 0;
         z-index: 1;
     
     }
@@ -289,7 +305,7 @@ body {
     
     }
     
-    .segment.cab .header h3 {
+    .segment.cab .header h3, .ui.header.cab.mobile {
     
         margin-top: 0px;
     
@@ -380,6 +396,15 @@ body {
         visibility: hidden;
 
     }
+
+    .conteudo {
+
+        position: absolute;
+        top: 70px;
+        left: 5vw;
+        margin-bottom: 5vw;
+        width: 90vw;
+    }
     
     .notificacao {
         
@@ -430,12 +455,6 @@ body {
     
         width: 40%;
     
-    }
-
-    .conteudo {
-
-        display: none;
-
     }
     
     /* #008000 */
