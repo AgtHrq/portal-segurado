@@ -1,6 +1,69 @@
 <div class="ui top attached tabular menu">
-    <a *ngFor="let f of " class="item" [class.active]="c.activate" (click)="deactivate();c.activate = true">{{ c.mes }}/{{ c.ano }}</a>
-  </div>
-  <div *ngFor="let c of ficha.contracheques" class="ui bottom attached tab segment" [class.active]="c.activate">
-    {{ ficha.orgao }} - {{ c.mes }}/{{ c.ano }}
-  </div>
+  <a *ngFor="let m of meses" class="item" [class.active]="m.activate" (click)="deactivate();m.activate = true; mes = m.nomeMes; somaFicha()">{{m.nomeMes}}</a>
+</div>
+<div class="ui bottom attached tab segment" class="active">
+  
+  <table class="ui very basic table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Evento</th>
+        <th>Tipo Evento</th>
+        <th>Valor(R$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let ficha of fichas" >
+        <td>{{ ficha.codigoEvento }}</td>
+        <td>{{ ficha.evento }}</td>
+        <td>{{ ficha.tipoEvento }}</td>
+        <td [ngSwitch]="mes">
+          <span *ngSwitchCase="'Jan'">
+            {{ ficha.janeiro }}
+          </span>
+          <span *ngSwitchCase="'Fev'">
+            {{ ficha.fevereiro }}
+          </span>
+          <span *ngSwitchCase="'Mar'">
+            {{ ficha.marco }}
+          </span>
+          <span *ngSwitchCase="'Abr'">
+            {{ ficha.abril }}
+          </span>
+          <span *ngSwitchCase="'Mai'">
+            {{ ficha.maio }}
+          </span>
+          <span *ngSwitchCase="'Jun'">
+            {{ ficha.junho }}
+          </span>
+          <span *ngSwitchCase="'Jul'">
+            {{ ficha.julho }}
+          </span>
+          <span *ngSwitchCase="'Ago'">
+            {{ ficha.agosto }}
+          </span>
+          <span *ngSwitchCase="'Set'">
+            {{ ficha.setembro }}
+          </span>
+          <span *ngSwitchCase="'Out'">
+            {{ ficha.outubro }}
+          </span>
+          <span *ngSwitchCase="'Nov'">
+            {{ ficha.novembro }}
+          </span>
+          <span *ngSwitchCase="'Dez'">
+            {{ ficha.dezembro }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="2"><strong>Total Bruto:</strong> {{ totalBruto | number: '1.2-2' }}</th>
+        <th><strong>Total Desconto:</strong> {{ totalDesconto | number: '1.2-2' }}</th>
+        <th colspan="2"><strong>Total Líquido:</strong> {{ totalLiquido | number: '1.2-2' }}</th>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>

@@ -7,6 +7,7 @@ import { HomeUtils } from '../../../utils/home-utils';
 import { VisualizarFichaFinanaceiraService } from '../../../services/visualizar-ficha-financeira/visualizar-ficha-finanaceira.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { FichaFinanceira } from 'src/app/models/FichaFinanceira';
 
 @Component({
   selector: 'app-visualiza-ficha',
@@ -29,7 +30,7 @@ export class VizualizaFichaComponent implements OnInit {
   pageVisualizar: boolean = true;
   detail: boolean = false;
   @Output() pageFicha = new EventEmitter();
-  vinculoFicha: any;
+  vinculoFicha: FichaFinanceira[];
   vinculos = [];
   showConfirmModal: boolean = false;
   showSucess: boolean = false;
@@ -92,7 +93,7 @@ export class VizualizaFichaComponent implements OnInit {
     
     this.visualizarFichaService.getFichaFinanceira(ano).subscribe(
       dadosFicha => {
-        this.vinculoFicha = dadosFicha.json();
+        this.vinculoFicha = dadosFicha.json() as FichaFinanceira[];
         this.showLoader = false;
         this.pageVisualizar = false;
         this.detail = true;
