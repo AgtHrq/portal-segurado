@@ -1,6 +1,7 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { PdfTokenService } from './../../services/pdf-token/pdf-token.service';
 
@@ -14,18 +15,22 @@ export class ValidarPdfComponent implements OnInit {
   formToken: FormGroup;
   showLoader = false;
   fileUrl;
+  token: string;
   successMessage: string;
   errorMessage: string;
 
-  constructor(private fb: FormBuilder, private pdfService: PdfTokenService, private sanitizer: DomSanitizer) { }
+  constructor(private fb: FormBuilder, private pdfService: PdfTokenService, private sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
+    this.token = this.activatedRoute.snapshot.paramMap.get('token');
+
     this.formToken = this.fb.group({
-      token: ['', Validators.compose(
+      token: [this.token, Validators.compose(
         [Validators.required, Validators.minLength(36), Validators.maxLength(36)]
       )]
-    })
+    });
+
   }
 
   validarPDF(event, token){
