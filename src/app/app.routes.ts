@@ -44,6 +44,9 @@ const APP_ROUTES: Routes = [
         path: 'cadastro', component: CadastroComponent 
     },
     {
+        path: 'validar/:token', component:  ValidarPdfComponent
+    },
+    {
         path: 'validar', component:  ValidarPdfComponent
     },
     { 
