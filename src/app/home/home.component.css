@@ -31,7 +31,6 @@ body {
         height: 90px;
         position: fixed;
         width: 100%;
-        z-index: 1;
     
     }
     
@@ -84,7 +83,6 @@ body {
         margin-right: 15px;
         position: fixed;
         right: 0%;
-        z-index: 1;
 
     }
     
@@ -120,11 +118,11 @@ body {
 
     .conteudo {
 
-        margin-left: 385px;
         width: 100%;
-        padding-right: 705px;
         position: fixed;
         top: 150px;
+        left: 390px;
+        width: calc(100vw - 720px);
 
     }
 
@@ -156,7 +154,6 @@ body {
         height: 90px;
         position: fixed;
         width: 100%;
-        z-index: 1;
     
     }
     
@@ -258,9 +255,8 @@ body {
 
         position: fixed;
         top: 130px;
-        margin-left: 360px;
-        width: 100%;
-        padding-right: 380px;
+        left: 390px;
+        width: calc(100vw - 400px);
 
     }
 
@@ -285,14 +281,14 @@ body {
         display: none;
     }
 
-    .ui.segment.cab {
+    .ui.segment.cab, .ui.segment.cab.mobile {
     
+        position: fixed;
         background-color: #2E8B57;
         border-radius: 0%;
         color: #FFFFFF;
         height: 60px;
         width: 100%;
-        position: fixed;
         top: 0;
         z-index: 1;
     
@@ -356,7 +352,6 @@ body {
     
         margin: 0 4% 0 4%;
         padding-top: 70px;
-        z-index: 2;
     
     }
     
@@ -399,11 +394,11 @@ body {
 
     .conteudo {
 
-        position: absolute;
+        position: relative;
         top: 70px;
         left: 5vw;
         margin-bottom: 5vw;
-        width: 90vw;
+        width: 90vw; z-index: -1;
     }
     
     .notificacao {
