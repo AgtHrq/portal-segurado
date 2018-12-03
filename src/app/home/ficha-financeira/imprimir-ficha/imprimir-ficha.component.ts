@@ -53,7 +53,6 @@ export class ImprimirFichaComponent implements OnInit {
     this.consultaVinculoService.getVinculos().subscribe(
       user => {
         this.vinculos = user.json();
-        console.log("vinculos: " , this.vinculos);
       },
       error => {
         if(error.json().message === 'Invalid Token'){
@@ -110,7 +109,6 @@ export class ImprimirFichaComponent implements OnInit {
 
   sendPeriodo(event, periodo){
     event.preventDefault();
-    console.log(periodo);
     this.showLoader = true;
     this.imprimirFichaService.getPeriodoFichaFinanceira(periodo).subscribe(
       arquivo => {

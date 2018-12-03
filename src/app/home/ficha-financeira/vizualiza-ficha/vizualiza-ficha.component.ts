@@ -71,7 +71,6 @@ export class VizualizaFichaComponent implements OnInit {
     this.consultaVinculoService.getVinculos().subscribe(
       user => {
         this.vinculos = user.json();
-        console.log(this.vinculos);
       },
       error => {
         if(error.json().message === 'Invalid Token'){
@@ -88,7 +87,6 @@ export class VizualizaFichaComponent implements OnInit {
 
   sendAno(event, ano){
     event.preventDefault();
-    console.log("send!", ano);
     this.showLoader = true;
     
     this.visualizarFichaService.getFichaFinanceira(ano).subscribe(

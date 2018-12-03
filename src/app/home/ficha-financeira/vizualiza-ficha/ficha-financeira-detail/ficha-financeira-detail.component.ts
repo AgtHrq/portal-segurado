@@ -32,7 +32,6 @@ export class FichaFinanceiraDetailComponent implements OnInit {
   constructor(private utils: HomeUtils) { }
 
   ngOnInit() {
-    console.log(this.fichas);
     this.somaFicha();
   }
 

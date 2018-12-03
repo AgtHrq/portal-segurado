@@ -71,14 +71,12 @@ export class AddOuvidoriaComponent implements OnInit {
     this.tipoOuvidoriaService.getTipoOuvidoria().subscribe(
       tipo => {
         this.tiposOuvidoria = tipo.json();
-        console.log("Tipos: " , this.tiposOuvidoria);
       },
       error => {
         if(error.json().message.trim() === 'Invalid Token'){
           this.msgInfo = 'Login expirado, efetue o login novamente!'
         }else{
           this.msgInfo = error.json().message;
-          console.log(this.msgInfo);
         }
         this.showConfirmModal = true;
 
@@ -107,7 +105,6 @@ export class AddOuvidoriaComponent implements OnInit {
 
   sendOuvidoria(event, ouvidoria){
     event.preventDefault();
-    console.log(ouvidoria);
     this.showLoader = true;
 
    this.addOuvidoriaService.sendBackOuvidoria(ouvidoria).subscribe(
@@ -121,7 +118,6 @@ export class AddOuvidoriaComponent implements OnInit {
         this.msgInfo = 'Login expirado, efetue o login novamente!'
       }else{
         this.msgInfo = error.json().message;
-        console.log(this.msgInfo);
       }
       this.showConfirmModal = true;
      }

@@ -48,7 +48,6 @@ export class ChangePasswordComponent implements OnInit {
     data.hash = this.hash;
     delete data.confirmPassword;
 
-    console.log(data);
 
     this.forgotService.novaSenha(data).subscribe(
       data => {
@@ -60,20 +59,16 @@ export class ChangePasswordComponent implements OnInit {
    }
 
   ngOnInit() { 
-    console.log(this.activatedRoute.outlet);
 
-    console.log(this.hash);
     if (this.activatedRoute.snapshot.paramMap.get('hashBack')){
       this.hashUrl = this.activatedRoute.snapshot.paramMap.get('hashBack');
       this.hash = this.hashUrl;
       this.formNewPassword.get("hash").setValue(this.hash);
   
-      console.log(this.hash);
   
       this.userHash.getUserHash(this.hash).subscribe(
         h => {
           this.user = h.json() as User;
-          console.log(this.user);
         },
         error => {
           this.router.navigate(['/']);

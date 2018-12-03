@@ -56,7 +56,6 @@ export class RespostaComponent implements OnInit {
           this.msgInfo = 'Login expirado, efetue o login novamente!'
         }else{
           this.msgInfo = error.json().message;
-          console.log(this.msgInfo);
         }
         this.showConfirmModal = true;
       }
