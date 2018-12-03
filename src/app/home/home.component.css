@@ -396,9 +396,10 @@ body {
 
         position: relative;
         top: 70px;
-        left: 5vw;
         margin-bottom: 5vw;
-        width: 90vw; z-index: -1;
+        width: 100vw; 
+        height: calc(100vh - 80px);
+        z-index: -1;
     }
     
     .notificacao {
