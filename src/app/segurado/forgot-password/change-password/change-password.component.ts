@@ -15,6 +15,7 @@ import { TouchSequence } from 'selenium-webdriver';
 export class ChangePasswordComponent implements OnInit {
 
   @Input() hash: any = "";
+  hashUrl;
   user: User;
   formNewPassword: FormGroup;
   classMin: string = "error";
@@ -44,7 +45,7 @@ export class ChangePasswordComponent implements OnInit {
 
     event.preventDefault();
     this.showLoader = true;
-
+    data.hash = this.hash;
     delete data.confirmPassword;
 
     console.log(data);
@@ -61,21 +62,24 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit() { 
     console.log(this.activatedRoute.outlet);
 
-    this.hash = this.activatedRoute.snapshot.paramMap.get('hashBack');
-    
-    this.formNewPassword.get("hash").setValue(this.hash);
-
     console.log(this.hash);
-
-    this.userHash.getUserHash(this.hash).subscribe(
-      h => {
-        this.user = h.json() as User;
-        console.log(this.user);
-      },
-      error => {
-        this.router.navigate(['/']);
-      }
-    );
+    if (this.activatedRoute.snapshot.paramMap.get('hashBack')){
+      this.hashUrl = this.activatedRoute.snapshot.paramMap.get('hashBack');
+      this.hash = this.hashUrl;
+      this.formNewPassword.get("hash").setValue(this.hash);
+  
+      console.log(this.hash);
+  
+      this.userHash.getUserHash(this.hash).subscribe(
+        h => {
+          this.user = h.json() as User;
+          console.log(this.user);
+        },
+        error => {
+          this.router.navigate(['/']);
+        }
+      );
+    }
 
   }
 
