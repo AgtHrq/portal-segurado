@@ -19,40 +19,40 @@
         <td>{{ ficha.tipoEvento }}</td>
         <td [ngSwitch]="mes">
           <span *ngSwitchCase="'Jan'">
-            {{ ficha.janeiro }}
+            {{ ficha.janeiro | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Fev'">
-            {{ ficha.fevereiro }}
+            {{ ficha.fevereiro | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Mar'">
-            {{ ficha.marco }}
+            {{ ficha.marco | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Abr'">
-            {{ ficha.abril }}
+            {{ ficha.abril | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Mai'">
-            {{ ficha.maio }}
+            {{ ficha.maio | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Jun'">
-            {{ ficha.junho }}
+            {{ ficha.junho | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Jul'">
-            {{ ficha.julho }}
+            {{ ficha.julho | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Ago'">
-            {{ ficha.agosto }}
+            {{ ficha.agosto | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Set'">
-            {{ ficha.setembro }}
+            {{ ficha.setembro | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Out'">
-            {{ ficha.outubro }}
+            {{ ficha.outubro | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Nov'">
-            {{ ficha.novembro }}
+            {{ ficha.novembro | number: '1.2-2' }}
           </span>
           <span *ngSwitchCase="'Dez'">
-            {{ ficha.dezembro }}
+            {{ ficha.dezembro | number: '1.2-2' }}
           </span>
         </td>
       </tr>
