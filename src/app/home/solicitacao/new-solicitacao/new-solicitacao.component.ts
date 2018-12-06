@@ -70,6 +70,7 @@ export class NewSolicitacaoComponent implements OnInit {
   newSolicitacao(event, data) {
 
     event.preventDefault();
+    !data.email && (data.email = '');
     this.showLoader = true;
     this.solicitacaoService.addSolicitacao(data)
       .subscribe(() => {

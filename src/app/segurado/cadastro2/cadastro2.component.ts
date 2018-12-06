@@ -64,6 +64,8 @@ export class Cadastro2Component implements OnInit {
         
         confirmeSenha: [],
         
+      termo: [false, Validators.requiredTrue]
+        
       });
       
       this.meuForm.setValidators([ equal, checkContato ]);

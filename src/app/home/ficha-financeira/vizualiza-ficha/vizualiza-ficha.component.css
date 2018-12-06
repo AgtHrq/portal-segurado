@@ -1,50 +1,31 @@
-@media (min-width: 1176px) and (max-width: 2455px){
+.ui.segments {
 
-    .ui.segments {
+    border-radius: 0%;
 
-        border-radius: 0%;
+}
 
-    }
+.ui.segments .ui.segment:not(.stacked.segment) {
 
-    .ui.segments .ui.segment:not(.stacked.segment) {
+    border-radius: 0%;
+    max-height: 80vmin;
+    overflow: auto;
 
-        border-radius: 0%;
-        max-height: 80vmin;
-        overflow: auto;
+}
 
-    }
+.bottom.segment {
 
-    .bottom.segment {
+    height: 70vmin;
 
-        height: 70vmin;
+}
 
-    }
+.stacked.segment {
 
-    .stacked.segment {
+    width: 100%;
 
-        width: 100%;
+}
 
-    }
+.grid:last-child {
 
-    .grid:last-child {
-
-        height: 100%;
-
-    }
-    
-    .new {
-
-        width: 60%;
-        position: absolute;
-        right: 0%;
-        bottom: 0%;
-
-    }
-
-    .hidden {
-        
-        display: none;
-
-    }
+    height: 100%;
 
 }

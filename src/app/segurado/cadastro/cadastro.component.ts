@@ -59,7 +59,6 @@ export class CadastroComponent implements OnInit {
 
     this.cadastrarService.verificarSegurado(segurado).subscribe(
       proximo => {
-        console.log('verifica ' , proximo.json());
         this.numVinculos = proximo.json();
         this.cadastro = false;
         this.verificaVinculos = true;

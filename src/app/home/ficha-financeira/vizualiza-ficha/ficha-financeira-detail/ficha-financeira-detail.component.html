@@ -1,7 +1,7 @@
 <div class="ui top attached tabular menu">
   <a *ngFor="let m of meses" class="item" [class.active]="m.activate" (click)="deactivate();m.activate = true; mes = m.nomeMes; somaFicha()">{{m.nomeMes}}</a>
 </div>
-<div class="ui bottom attached tab segment" class="active">
+<div class="ui bottom attached tab segment active">
   
   <table class="ui very basic table">
     <thead>

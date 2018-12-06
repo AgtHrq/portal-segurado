@@ -1,0 +1,31 @@
+.ui.segments {
+
+    border-radius: 0%;
+
+}
+
+.ui.segments .ui.segment:not(.stacked.segment) {
+
+    border-radius: 0%;
+    max-height: 80vmin;
+    overflow: auto;
+
+}
+
+.bottom.segment {
+
+    height: 70vmin;
+
+}
+
+.stacked.segment {
+
+    width: 100%;
+
+}
+
+.grid:last-child {
+
+    height: 100%;
+
+}
