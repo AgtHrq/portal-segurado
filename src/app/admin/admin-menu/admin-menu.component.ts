@@ -14,11 +14,11 @@ export class AdminMenuComponent implements OnInit {
 
   user: User;
   menus: Menu[] = [
-    new Menu("Home", "home icon", ""), 
-    new Menu("Ouvidoria", "users icon", "ouvidoria"),
-    new Menu("Solicitação", "paper plane icon", "solicitacao"),
-    new Menu("Notificação", "comment alternate icon", "notificacao"),
-    new Menu("Upload Termo", "cloud upload icon", "termo")
+    new Menu('Home', 'home icon', ''), 
+    new Menu('Ouvidoria', 'users icon', 'ouvidoria'),
+    new Menu('Solicitação', 'paper plane icon', 'solicitacao'),
+    new Menu('Notificação', 'comment alternate icon', 'notificacao'),
+    new Menu('Upload Termo', 'cloud upload icon', 'termo')
   ];
 
   constructor(private userService: UserService, private router: Router) { }
@@ -34,7 +34,7 @@ export class AdminMenuComponent implements OnInit {
   logOut() {
 
     this.userService.logoffUser();
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
 
   }
 

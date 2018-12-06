@@ -34,6 +34,8 @@ import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/list
 import { ListarOuvidoriaRespondidaComponent } from './admin/admin-ouvidoria/listar-ouvidoria-respondida/listar-ouvidoria-respondida.component';
 import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
 import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
+import { AdminUploadComponent } from './admin/admin-upload/admin-upload.component';
+import { UploadComponent } from './admin/admin-upload/upload/upload.component';
 
 const APP_ROUTES: Routes = [
 
@@ -151,6 +153,12 @@ const APP_ROUTES: Routes = [
                     {
                         path: '**', redirectTo: ''
                     }
+                ]
+            },
+            {
+                path: 'termo', component: AdminUploadComponent, children:
+                [
+                    { path: 'upload', component: UploadComponent}
                 ]
             },
             { 
