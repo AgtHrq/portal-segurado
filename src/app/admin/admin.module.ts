@@ -10,6 +10,7 @@ import { AdminHomeModule } from './admin-home/admin-home.module';
 import { AdminSubmenuModule } from './admin-submenu/admin-submenu.module';
 import { AdminSolicitacaoModule } from './admin-solicitacao/admin-solicitacao.module';
 import { AdminNotificacaoModule } from './admin-notificacao/admin-notificacao.module';
+import { AdminUploadModule } from './admin-upload/admin-upload.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { AdminNotificacaoModule } from './admin-notificacao/admin-notificacao.mo
     AdminOuvidoriaModule,
     AdminSubmenuModule,
     AdminSolicitacaoModule,
-    AdminNotificacaoModule
+    AdminNotificacaoModule,
+    AdminUploadModule
   ],
   declarations: [
     AdminComponent, 
