@@ -12,7 +12,7 @@ export class UploadComponent implements OnInit {
 
   file: any;
   uploadForm: FormGroup;
-  showLoader: boolean = false;
+  showLoader: boolean = true;
   versao: number;
   dataGeracao = new Date();
 
@@ -20,7 +20,10 @@ export class UploadComponent implements OnInit {
 
   ngOnInit() {
 
-    this.uploadService.getLatestVersion().subscribe(h => this.versao = h.json() as number);
+    this.uploadService.getLatestVersion().subscribe(h => {
+      this.versao = h.json() as number;
+      this.showLoader = false;
+    });
 
     this.uploadForm = this.fb.group({
 
@@ -40,6 +43,8 @@ export class UploadComponent implements OnInit {
     this.uploadService.uploadTermo(this.file).subscribe(
       () => {
         this.showLoader = false;
+        this.versao ++;
+        this.dataGeracao = new Date();
       }, erro => {
         this.showLoader = false;
         console.log(erro);
