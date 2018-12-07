@@ -13,7 +13,9 @@ export class UploadComponent implements OnInit {
   file: any;
   uploadForm: FormGroup;
   showLoader: boolean = true;
+  showModal: boolean = false;
   versao: number;
+  message: string;
   dataGeracao = new Date();
 
   constructor(private fb: FormBuilder, private uploadService: AdminUploadService) { }
@@ -45,9 +47,12 @@ export class UploadComponent implements OnInit {
         this.showLoader = false;
         this.versao ++;
         this.dataGeracao = new Date();
-      }, erro => {
+        this.showModal = true;
+        this.message = 'Upload realizado com sucesso.';
+      }, () => {
         this.showLoader = false;
-        console.log(erro);
+        this.showModal = true;
+        this.message = 'Ocorreu um erro ao realizar o upload.';
       }
     );
   }

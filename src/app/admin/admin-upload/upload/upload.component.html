@@ -1,4 +1,11 @@
 <app-loader *ngIf="showLoader"></app-loader>
+<app-confirmacao-reposta
+  [header]="'Geração de documento'"
+  [message]="message"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
 <form class="ui form" [formGroup]="uploadForm" (submit)="sendArchive($event)">
   <div class="two fields">
     <div class="field">
