@@ -1,3 +1,18 @@
-<p>
-  upload works!
-</p>
+<app-loader *ngIf="showLoader"></app-loader>
+<form class="ui form" [formGroup]="uploadForm" (submit)="sendArchive($event)">
+  <div class="two fields">
+    <div class="field">
+      <label>Versão</label>
+      <input readonly="" type="text" [value]="versao">
+    </div>
+    <div class="field">
+      <label>Data Geração</label>
+      <input type="text" readonly="" [value]="dataGeracao | date:'dd/MM/yyyy'">
+    </div>
+  </div>
+  <div class="field">
+    <button type="button" (click)="inputFile.click()" class="massive ui blue button"> {{ file ? file.name : 'SELECIONAR ARQUIVO' }}</button>
+    <input formControlName="file" accept=".pdf" hidden type="file" (change)="upload($event.target.files[0])" #inputFile>
+  </div>
+  <button type="submit" class="ui positive button" [disabled]="!uploadForm.valid">Enviar</button>
+</form>

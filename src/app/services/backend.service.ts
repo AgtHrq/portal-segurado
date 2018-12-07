@@ -88,4 +88,10 @@ export class BackendService {
     return this.http.get(`http://${this.url}/${url}/${params.token}`, { responseType: ResponseContentType.Blob });
   }
 
+  
+  getHost(): string {
+    
+    return 'http://' + this.url;
+  }
+
 }

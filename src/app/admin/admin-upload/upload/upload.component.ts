@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { AdminUploadService } from './../../../services/admin-upload/admin-upload.service';
 
 @Component({
   selector: 'app-upload',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  file: any;
+  uploadForm: FormGroup;
+  showLoader: boolean = false;
+  versao: number;
+  dataGeracao = new Date();
+
+  constructor(private fb: FormBuilder, private uploadService: AdminUploadService) { }
 
   ngOnInit() {
+
+    this.uploadService.getLatestVersion().subscribe(h => this.versao = h.json() as number);
+
+    this.uploadForm = this.fb.group({
+
+      file: ['', Validators.required]
+    });
+  }
+
+  upload(file){
+
+    this.file = file;
+  }
+
+  sendArchive(event){
+
+    event.preventDefault();
+    this.showLoader = true;
+    this.uploadService.uploadTermo(this.file).subscribe(
+      () => {
+        this.showLoader = false;
+      }, erro => {
+        this.showLoader = false;
+        console.log(erro);
+      }
+    );
   }
 
 }
