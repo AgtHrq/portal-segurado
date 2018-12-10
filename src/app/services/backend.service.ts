@@ -76,7 +76,7 @@ export class BackendService {
 
   }
 
-  protectedDowloadRequest(url: string, params){
+  protectedDowloadRequest(url: string, params?){
 
     let headers = new Headers();
     headers.append('Authorization', `Bearer ${this.auth.getToken()}`);

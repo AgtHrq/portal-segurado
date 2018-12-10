@@ -1,0 +1,33 @@
+<app-loader *ngIf="showLoader"></app-loader>
+<app-confirmacao-reposta
+  [header]="'Geração de documento'"
+  [message]="message"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
+<table class="ui very basic table">
+  <thead>
+    <tr>
+      <th>VERSÃO</th>
+      <th>NOME DOCUMENTO</th>
+      <th>DATA DE CRIAÇÃO</th>
+      <th>CRIADO POR:</th>
+      <th>VISUALIZAR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of docs">
+      <td>{{ d.versao }}</td>
+      <td>termo_uso_versao_{{ d.versao }}</td>
+      <td>{{ d.data_criacao | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ d.usuario.name }}</td>
+      <td>
+        <a data-tooltip="Abrir documento" data-variation="wide" data-position="bottom center">
+          <i (click)="abrirDoc(pdfUrl, d.versao)" class="black file pdf link icon"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a target="_blank" hidden #pdfUrl></a>

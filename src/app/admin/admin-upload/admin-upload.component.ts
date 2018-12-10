@@ -19,7 +19,8 @@ export class AdminUploadComponent implements OnInit {
   ngOnInit() {
 
     this.menus = [
-      new Menu('Upload Termo', '', 'upload')
+      new Menu('Upload Termo', '', 'upload'),
+      new Menu('Lista de Documentos', '', 'lista/documentos')
     ];
 
     this.userService.getLoggedUser().subscribe(

@@ -9,6 +9,7 @@ import { UploadComponent } from './upload/upload.component';
 import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminSolicitacaoModule } from '../admin-solicitacao/admin-solicitacao.module';
+import { ListaDocsComponent } from './lista-docs/lista-docs.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,10 @@ import { AdminSolicitacaoModule } from '../admin-solicitacao/admin-solicitacao.m
     HttpClientModule,
     AdminSolicitacaoModule
   ],
-  declarations: [AdminUploadComponent, UploadComponent]
+  declarations: [
+    AdminUploadComponent, 
+    UploadComponent, 
+    ListaDocsComponent
+  ]
 })
 export class AdminUploadModule { }

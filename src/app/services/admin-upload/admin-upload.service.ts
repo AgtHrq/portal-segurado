@@ -23,4 +23,14 @@ export class AdminUploadService {
 
     return this.backendService.protectedRequest('usuarios/latestVersion', 'get');
   }
+
+  getDocs(){
+
+    return this.backendService.protectedRequest('usuarios/getDocs', 'get');
+  }
+
+  getDocPdf(versao: number){
+
+    return this.backendService.protectedDowloadRequest('usuarios/getDocumentoTermoPdf/' + versao);
+  }
 }

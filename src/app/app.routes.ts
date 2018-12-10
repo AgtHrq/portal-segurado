@@ -36,6 +36,7 @@ import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidor
 import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 import { AdminUploadComponent } from './admin/admin-upload/admin-upload.component';
 import { UploadComponent } from './admin/admin-upload/upload/upload.component';
+import { ListaDocsComponent } from './admin/admin-upload/lista-docs/lista-docs.component';
 
 const APP_ROUTES: Routes = [
 
@@ -158,7 +159,8 @@ const APP_ROUTES: Routes = [
             {
                 path: 'termo', component: AdminUploadComponent, children:
                 [
-                    { path: 'upload', component: UploadComponent}
+                    { path: 'upload', component: UploadComponent},
+                    { path: 'lista/documentos', component: ListaDocsComponent }
                 ]
             },
             { 
