@@ -7,6 +7,7 @@ import { ConsultaVinculoService } from '../../../services/consulta-vinculo/consu
 import { ImprimirFichaPeriodoService } from '../../../services/imprimir-ficha-periodo/imprimir-ficha-periodo.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators'
 
 @Component({
   selector: 'app-imprimir-ficha',
@@ -16,6 +17,7 @@ import { Router } from '@angular/router';
 export class ImprimirFichaComponent implements OnInit {
 
   meuForm: FormGroup;
+  periodo: any;
   anosInicio = [];
   anosFim = [];
   vinculos = [];
@@ -46,10 +48,6 @@ export class ImprimirFichaComponent implements OnInit {
       tipoVinculo: ["", Validators.compose([Validators.required])]
     });
 
-    for(let i = 1994; i <= new Date().getFullYear(); i++){
-      this.anosInicio.push(i);
-    }
-
     this.consultaVinculoService.getVinculos().subscribe(
       user => {
         this.vinculos = user.json();
@@ -77,11 +75,31 @@ export class ImprimirFichaComponent implements OnInit {
 
   setIdVinculo(evento){
 
+    this.showLoader = true;
     this.meuForm.get('matricula').setValue(evento.idVinculo.substr(11, 18));
     this.meuForm.get('idVinculo').setValue(evento.idVinculo);
     this.meuForm.get('cargo').setValue(evento.cargo);
     this.meuForm.get('orgao').setValue(evento.orgao);
     this.meuForm.get('tipoVinculo').setValue(evento.tipoVinculo);
+    this.imprimirFichaService.getAnoFichaFinanceira(evento.idVinculo).pipe(
+      finalize(() => this.showLoader = false)
+    ).subscribe(p => {
+      this.periodo = p.json();
+      if (this.periodo.menorAno < this.periodo.maiorAno || this.periodo.menorAno == this.periodo.maiorAno){
+
+        for(let i = this.periodo.menorAno; i <= this.periodo.maiorAno; i++){
+          this.anosInicio.push(i);
+        }
+      } else {
+
+        for(let i = this.periodo.maiorAno; i <= this.periodo.menorAno; i++){
+          this.anosInicio.push(i);
+        }
+      }
+    }, err => {
+      this.msgInfo = err.json().message;
+      this.showConfirmModal = true;
+    });
 
   }
 
@@ -90,8 +108,16 @@ export class ImprimirFichaComponent implements OnInit {
     if(this.anosFim.length != 0){
       this.anosFim = []
     }
-    for(let i = evento; i <= new Date().getFullYear(); i++){
-      this.anosFim.push(i);
+    if (this.periodo.menorAno < this.periodo.maiorAno || this.periodo.menorAno == this.periodo.maiorAno){
+
+      for(let i = evento; i <= this.periodo.maiorAno; i++){
+        this.anosFim.push(i);
+      }
+    } else {
+
+      for(let i = evento; i <= this.periodo.menorAno; i++){
+        this.anosFim.push(i);
+      }
     }
     
   }

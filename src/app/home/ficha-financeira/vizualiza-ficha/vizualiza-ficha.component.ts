@@ -8,6 +8,8 @@ import { VisualizarFichaFinanaceiraService } from '../../../services/visualizar-
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { FichaFinanceira } from 'src/app/models/FichaFinanceira';
+import { ImprimirFichaPeriodoService } from 'src/app/services/imprimir-ficha-periodo/imprimir-ficha-periodo.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-visualiza-ficha',
@@ -36,10 +38,11 @@ export class VizualizaFichaComponent implements OnInit {
   showSucess: boolean = false;
   msgInfo: string = '';
   showLoader: boolean = false;
+  periodo: any;
 
   constructor(private formBuilder: FormBuilder, private consultaVinculoService: ConsultaVinculoService,
      private utils: HomeUtils, private visualizarFichaService: VisualizarFichaFinanaceiraService,
-     private userService: UserService, private router: Router) { }
+     private userService: UserService, private router: Router, private imprimirFicharService: ImprimirFichaPeriodoService) { }
   
   deactivate(vinculo) {
     
@@ -58,10 +61,6 @@ export class VizualizaFichaComponent implements OnInit {
         this.vinculoFicha = v;
       }
     });
-  
-    for(let i = 1994; i <= new Date().getFullYear(); i++){
-      this.anos.push(i);
-    }
 
     this.meuForm = this.formBuilder.group({
       anoReferencia: ["", Validators.compose([Validators.required])],
@@ -127,7 +126,24 @@ export class VizualizaFichaComponent implements OnInit {
   }
 
   setIdVinculo(evento){
+    this.showLoader = true;
     this.meuForm.get('idVinculo').setValue(evento);
+    this.imprimirFicharService.getAnoFichaFinanceira(evento).pipe(
+      finalize(() => this.showLoader = false)
+    ).subscribe(p => {
+      this.periodo = p.json();
+      if (this.periodo.menorAno < this.periodo.maiorAno || this.periodo.menorAno == this.periodo.maiorAno){
+        
+        for(let i = this.periodo.menorAno; i <= this.periodo.maiorAno; i++){
+          this.anos.push(i);
+        }
+      } else {
+
+        for(let i = this.periodo.maiorAno; i <= this.periodo.menorAno; i++){
+          this.anos.push(i);
+        }
+      }
+    });
   }
 
 
