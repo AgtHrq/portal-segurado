@@ -86,12 +86,14 @@ export class ImprimirFichaComponent implements OnInit {
     ).subscribe(p => {
       this.periodo = p.json();
       if (this.periodo.menorAno < this.periodo.maiorAno || this.periodo.menorAno == this.periodo.maiorAno){
-
+        
+        this.anosInicio = [];
         for(let i = this.periodo.menorAno; i <= this.periodo.maiorAno; i++){
           this.anosInicio.push(i);
         }
       } else {
 
+        this.anosInicio = [];
         for(let i = this.periodo.maiorAno; i <= this.periodo.menorAno; i++){
           this.anosInicio.push(i);
         }

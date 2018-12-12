@@ -134,11 +134,13 @@ export class VizualizaFichaComponent implements OnInit {
       this.periodo = p.json();
       if (this.periodo.menorAno < this.periodo.maiorAno || this.periodo.menorAno == this.periodo.maiorAno){
         
+        this.anos = [];
         for(let i = this.periodo.menorAno; i <= this.periodo.maiorAno; i++){
           this.anos.push(i);
         }
       } else {
 
+        this.anos = [];
         for(let i = this.periodo.maiorAno; i <= this.periodo.menorAno; i++){
           this.anos.push(i);
         }
