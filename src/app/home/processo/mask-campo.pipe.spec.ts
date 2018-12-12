@@ -1,4 +1,4 @@
-import { MaskCampoPipe } from './campo-cpf.pipe';
+import { MaskCampoPipe } from './mask-campo.pipe';
 
 describe('MaskCampoPipe', () => {
   it('create an instance', () => {
