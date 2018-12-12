@@ -16,4 +16,5 @@ export interface FichaFinanceira {
     outubro: number;
     novembro: number;
     dezembro: number;
+    hidden: boolean;
 }

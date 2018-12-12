@@ -1,5 +1,5 @@
 <div class="ui top attached tabular menu">
-  <a *ngFor="let m of meses" class="item" [class.active]="m.activate" (click)="deactivate();m.activate = true; mes = m.nomeMes; somaFicha()">{{m.nomeMes}}</a>
+  <a *ngFor="let m of meses" class="item" [class.active]="m.activate" (click)="deactivate();m.activate = true; mes = m.nomeMes; somaFicha(); hidden(m.nomeMes)">{{m.nomeMes}}</a>
 </div>
 <div class="ui bottom attached tab segment active">
   
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let ficha of fichas" >
+      <tr *ngFor="let ficha of fichas" [class.hidden]="ficha.hidden">
         <td>{{ ficha.codigoEvento }}</td>
         <td>{{ ficha.evento }}</td>
         <td>{{ ficha.tipoEvento }}</td>

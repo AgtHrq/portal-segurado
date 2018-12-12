@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { HomeUtils } from '../../../../utils/home-utils';
 import { FichaFinanceira } from 'src/app/models/FichaFinanceira';
 
@@ -7,7 +7,7 @@ import { FichaFinanceira } from 'src/app/models/FichaFinanceira';
   templateUrl: './ficha-financeira-detail.component.html',
   styleUrls: ['./ficha-financeira-detail.component.css']
 })
-export class FichaFinanceiraDetailComponent implements OnInit {
+export class FichaFinanceiraDetailComponent implements OnInit, OnChanges {
 
   @Input() fichas: FichaFinanceira[];
   mes: string = 'Jan';
@@ -33,6 +33,101 @@ export class FichaFinanceiraDetailComponent implements OnInit {
 
   ngOnInit() {
     this.somaFicha();
+  }
+
+  ngOnChanges() {
+
+    this.hidden('Jan');
+  }
+
+  hidden(mes) {
+    this.allFalse();
+    switch(mes){
+      case 'Jan': {
+        
+        this.fichas.forEach(f => {
+          !f.janeiro && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Fev': {
+        
+        this.fichas.forEach(f => {
+          !f.fevereiro && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Mar': {
+
+        this.fichas.forEach(f => {
+          !f.marco && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Abr': {
+
+        this.fichas.forEach(f => {
+          !f.abril && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Mai': {
+
+        this.fichas.forEach(f => {
+          !f.maio && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Jun': {
+
+        this.fichas.forEach(f => {
+          !f.junho && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Jul': {
+
+        this.fichas.forEach(f => {
+          !f.julho && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Ago': {
+
+        this.fichas.forEach(f => {
+          !f.agosto && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Set': {
+
+        this.fichas.forEach(f => {
+          !f.setembro && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Out': {
+
+        this.fichas.forEach(f => {
+          !f.outubro && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Nov': {
+
+        this.fichas.forEach(f => {
+          !f.novembro && (f.hidden = true);
+        });
+        break;
+      }
+      case 'Dez': {
+
+        this.fichas.forEach(f => {
+          !f.dezembro && (f.hidden = true);
+        });
+        break;
+      }
+    }
   }
 
   deactivate() {
@@ -126,6 +221,11 @@ export class FichaFinanceiraDetailComponent implements OnInit {
 
     });
   
+  }
+
+  allFalse() {
+
+    this.fichas.forEach(f => f.hidden = false);
   }
 
 }
