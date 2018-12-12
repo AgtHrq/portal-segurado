@@ -47,11 +47,11 @@
             </tr>
             <tr>
               <td><h4>CPF:</h4></td>
-              <td>{{ resumoProcesso?.cpf | maskCpf }}</td>
+              <td>{{ resumoProcesso?.cpf | maskCampo: 'cpf' }}</td>
             </tr>
             <tr>
               <td><h4>MATRÍCULA:</h4></td>
-              <td>{{ resumoProcesso?.matricula }}</td>
+              <td>{{ resumoProcesso?.matricula | maskCampo: 'matricula' }}</td>
             </tr>
             <tr>
               <td><h4>PORTARIA:</h4></td>

@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { ProcessoComponent } from './processo.component';
-import { MaskCpfPipe } from './mask-cpf.pipe';
+import { MaskCampoPipe } from './campo-cpf.pipe';
 import { LoaderModule } from '../../loader/loader.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-solicitacao.module';
@@ -23,7 +23,7 @@ import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-so
   ],
   declarations: [
     ProcessoComponent,
-    MaskCpfPipe
+    MaskCampoPipe
   ]
 })
 export class ProcessoModule { }
