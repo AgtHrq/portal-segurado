@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { PerguntaService } from '../../services/perguntas/pergunta.service';
 import { upperCase, lowerCase, containNumber } from '../../validators/password.validator';
 import { Cadastrar2Service } from '../../services/cadastrar2/cadastrar2.service';
 import { equal, checkContato } from '../../validators/createPassword.validator';
-import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-cadastro2',
@@ -120,6 +122,14 @@ export class Cadastro2Component implements OnInit {
     );
 
 
+  }
+
+  getTermo(){
+
+    this.cadastraService2.getTermo().subscribe(doc => {
+      let docTermo = new Blob([doc.blob()], { type: 'application/pdf' });
+      saveAs(docTermo, 'termo_uso.pdf');
+    });
   }
 
 }

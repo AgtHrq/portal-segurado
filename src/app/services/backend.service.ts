@@ -83,9 +83,10 @@ export class BackendService {
     return this.http.post(`http://${this.url}/protegido/${url}`, params, { headers: headers, responseType: ResponseContentType.Blob });
   }
 
-  unprotectedDowloadRequest(url: string, params){
+  unprotectedDowloadRequest(url: string, params?){
 
-    return this.http.get(`http://${this.url}/${url}/${params.token}`, { responseType: ResponseContentType.Blob });
+    return params ? this.http.get(`http://${this.url}/${url}/${params.token}`, { responseType: ResponseContentType.Blob }) : 
+    this.http.get(`http://${this.url}/${url}`, { responseType: ResponseContentType.Blob });
   }
 
   

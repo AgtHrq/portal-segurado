@@ -199,7 +199,7 @@
 
     <div class="ui checkbox">
       <input type="checkbox" formControlName="termo">
-      <label>Li e aceito os termos. (<a herf="#" target="_blank">Ler termos.</a>)</label>
+      <label>Li e aceito os termos. (<a herf="#" (click)="getTermo()">Ler termos.</a>)</label>
     </div>
     <div *ngIf="meuForm.controls.termo.errors && meuForm.controls.termo.touched" class="ui red message">
       <ul>

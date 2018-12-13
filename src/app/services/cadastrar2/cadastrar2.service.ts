@@ -16,4 +16,9 @@ export class Cadastrar2Service {
     return this.backendService.unprotectedRequest("usuarios/salvarSegurado", "post", credentials);
 
   }
+  
+  getTermo(){
+
+    return this.backendService.unprotectedDowloadRequest('getDocumentoTermoPdf');
+  }
 }

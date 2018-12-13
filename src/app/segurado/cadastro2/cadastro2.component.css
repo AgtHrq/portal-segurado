@@ -8,6 +8,11 @@
 
 }
 
+label a:hover {
+
+    cursor: pointer;
+}
+
 .ui.form input:focus {
 
     border-color: #72B5A4; 
