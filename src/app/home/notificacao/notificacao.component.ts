@@ -25,13 +25,12 @@ export class NotificacaoComponent implements OnInit {
       this.notificacoes = n.json()
       this.numNotificacoes = this.notificacoes.length;
       this.utils.notificacoes();
-    }
-      ), error => {
+    }, error => {
         if (error.json().message.trim() === "Invalid Token") {
           this.userService.logoffUser();
           this.router.navigate(['/']);
         }
-      };
+      });
 
   }
   
