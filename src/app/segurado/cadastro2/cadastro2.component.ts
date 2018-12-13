@@ -76,7 +76,6 @@ export class Cadastro2Component implements OnInit {
     this.service.getPerguntas().subscribe(
       perguntas => {
         this.perguntas = perguntas.json();
-        console.log(perguntas.json());
       }
     );
 

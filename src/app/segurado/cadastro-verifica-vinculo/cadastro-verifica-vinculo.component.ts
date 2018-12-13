@@ -59,7 +59,6 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
       this.orgaosService.getOrgaos().subscribe(
         orgaos => {
           this.orgaos = orgaos.json();
-          console.log("orgaos back", this.orgaos);
         }
       );
 
@@ -83,7 +82,6 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
       vinculosList.push(pessoaVinculo);
     }
 
-    console.log(vinculosList);
 
     this.verificaVinculosService.verificarVinculoSegurado(vinculosList).subscribe(
       () => {
