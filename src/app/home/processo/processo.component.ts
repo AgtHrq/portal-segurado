@@ -79,6 +79,8 @@ export class ProcessoComponent implements OnInit {
       saveAs(doc, name);
     },
     error => {
+      let err = new Blob([error]);
+      console.log(err);
       this.message = 'Erro! tente novamente. Caso o erro persista entre em contato com a PBPrev.';
       this.showLoader = false;
       this.showModal = true;

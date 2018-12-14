@@ -1,0 +1,24 @@
+<div *ngIf="showModal" class="ui dimmer modals page visible active">
+    <div [formGroup]="formConfirm" class="ui mini modal visible active">
+      <app-loader *ngIf="showLoader"></app-loader>
+      <div class="header">
+        Atualizar Termos
+      </div>
+      <div class="content">
+        <p>Os termos foram atualizados, para continuar você aceitar novamente os termos.</p>
+        <div class="ui checkbox">
+          <input type="checkbox" formControlName="accepted">
+          <label>Li e aceito os termos. (<a herf="#" (click)="getTermo()">Ler termos.</a>)</label>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui negative left button" (click)="cancelar()">
+            Cancelar
+        </div>
+        <div [class.disabled]="formConfirm.invalid" class="ui positive rigth labeled icon button" (click)="confirmar()">
+          Confirmar
+          <i class="icon checkmark"></i>
+        </div>
+      </div>
+  </div>
+</div>

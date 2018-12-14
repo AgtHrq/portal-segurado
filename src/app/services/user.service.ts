@@ -76,4 +76,9 @@ export class UserService {
 
   }
 
+  aceitaTermos(dados) {
+
+    return this.backendService.unprotectedRequest('aceitaTermos', 'post', dados);
+  }
+
 }

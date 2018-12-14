@@ -1,5 +1,5 @@
 <app-loader *ngIf="showLoader"></app-loader>
-
+<app-atualizar-termos [showModal]="showModal" (cancel)="showModal = $event" (success)="termAccepted($event)"></app-atualizar-termos>
 <div class="painel">
         
     <div class="ui horizontal segments">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             
-            <form appCpfMask class="ui large form error" (submit)="login($event, formGroup.value)" [formGroup]="formGroup">
+            <form appCpfMask class="ui large form error" (submit)="login(formGroup.value, $event)" [formGroup]="formGroup">
 
                 <div class="field">
                     <label>CPF:</label>

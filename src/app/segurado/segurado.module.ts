@@ -18,6 +18,7 @@ import { SendEmailComponent } from './forgot-password/send-email/send-email.comp
 import { ErrorMessageModule } from '../error-message/error-message.module';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { DirectivesModule } from '../directives/directives.module';
+import { AtualizarTermosComponent } from './atualizar-termos/atualizar-termos.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { DirectivesModule } from '../directives/directives.module';
     FirstVerificationComponent,
     SendEmailComponent,
     ValidarPdfComponent,
-    TokenMaskDirective
+    TokenMaskDirective,
+    AtualizarTermosComponent
   ]
 })
 export class SeguradoModule { }
