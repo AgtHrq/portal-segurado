@@ -2,7 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { UserService } from 'src/app/services/user.service';
+import { Cadastrar2Service } from './../../services/cadastrar2/cadastrar2.service';
 import { finalize } from 'rxjs/operators';
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-atualizar-termos',
@@ -18,7 +21,7 @@ export class AtualizarTermosComponent implements OnInit {
   formConfirm: FormGroup;
   reponse: boolean = false;
 
-  constructor(private attService: UserService, private fb: FormBuilder) { }
+  constructor(private attService: UserService, private fb: FormBuilder, private cadastraService2: Cadastrar2Service) { }
 
   ngOnInit() {
 
@@ -46,6 +49,14 @@ export class AtualizarTermosComponent implements OnInit {
         this.success.emit(this.reponse);
       })
     ).subscribe(() => this.reponse = true);
+  }
+
+  getTermo(){
+
+    this.cadastraService2.getTermo().subscribe(doc => {
+      let docTermo = new Blob([doc.blob()], { type: 'application/pdf' });
+      saveAs(docTermo, 'termo_uso.pdf');
+    });
   }
 
 }

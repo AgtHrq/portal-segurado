@@ -49,10 +49,15 @@ export class UploadComponent implements OnInit {
         this.dataGeracao = new Date();
         this.showModal = true;
         this.message = 'Upload realizado com sucesso.';
-      }, () => {
+      }, e => {
         this.showLoader = false;
         this.showModal = true;
         this.message = 'Ocorreu um erro ao realizar o upload.';
+        if (e._body){
+          if(e._body.includes('file exceeds its maximum')){
+            this.message = 'O arquivo enviando tem mais de 2MB.'
+          }
+        }
       }
     );
   }
