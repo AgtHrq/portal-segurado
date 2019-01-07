@@ -26,6 +26,7 @@ export class LoginComponent {
     showModal: boolean = false;
     @ViewChild(AtualizarTermosComponent)
     termos: AtualizarTermosComponent;
+    imgUrl = 'http://10.10.1.3:6070/portalsegurado/assets/img/logo.png';
 
     ngOnInit(){ }
 

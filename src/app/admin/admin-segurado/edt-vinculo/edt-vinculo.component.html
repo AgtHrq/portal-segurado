@@ -1,0 +1,37 @@
+<div *ngIf="!vinculos; else elseBlock" class="ui action input" [formGroup]="segForm">
+  <input appCpfMask id="cpf" type="text" placeholder="CPF..." formControlName="cpf">
+  <button class="ui button" (click)="consultaVinculos(segForm.get('cpf').value)" [disabled]="segForm.invalid">Consultar</button>
+</div>
+<ng-template #elseBlock>
+  <div [formGroup]="vincForm" class="ui form">
+    <div formArrayName="items" *ngFor="let form of vincForm.get('items').controls; index as i">
+      <div [formGroupName]="i">
+        <div class="field">
+          <label>CPF</label>
+          <input readonly="" type="text" formControlName="cpf">
+        </div>
+        <div formGroupName="idOrgao" class="field">
+          <label>ORGÃO</label>
+          <select formControlName="id" (change)="selectOrgao()" class="ui fluid dropdown">
+            <option *ngFor="let o of orgaos" [value]="o.id" >{{ o.descricao }}</option>
+          </select>
+        </div>
+        <div class="field" formGroupName="idCargo">
+          <label>CARGO</label>
+          <select formControlName="id" class="ui fluid dropdown">
+            <option *ngFor="let c of cargos" [value]="c.id">{{ c.descricao }}</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>TIPO</label>
+          <input type="text">
+        </div>
+        <div class="field">
+          <label>MATRICULA</label>
+          <input type="text" formControlName="matricula">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="ui button" (click)="vinculos = null">Consultar outro</button>
+</ng-template>

@@ -5,7 +5,7 @@
       
       <h1 class="ui center aligned header">Validação de doumento</h1>
 
-      <form *ngIf="!showContent" [class.success]="successMessage" class="ui large form error" [formGroup]="formToken" (submit)="validarPDF($event, formToken.value)">
+      <form [class.success]="successMessage" class="ui large form error" [formGroup]="formToken" (submit)="validarPDF($event, formToken.value)">
 
         <div class="fields">
           

@@ -11,8 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AdminUploadComponent implements OnInit {
 
-  private menus: Menu[];
-  private user: User;
+  menus: Menu[];
+  user: User;
 
   constructor(private userService: UserService) { }
 

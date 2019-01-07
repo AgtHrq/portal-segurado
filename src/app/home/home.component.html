@@ -3,7 +3,7 @@
     <div [class.desktop]="!activeMenu" class="ui header cab">
         
         <a [routerLink]="['/']" class="ui small image">
-            <img src="../../assets/img/logo.png">
+            <img *ngIf="imgUrl" [src]="imgUrl">
         </a>
         <h3>Portal do segurado</h3>
 

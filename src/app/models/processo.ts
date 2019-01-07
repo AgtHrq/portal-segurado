@@ -3,6 +3,7 @@ export interface Processo {
     assuntoProcesso: string;
     cpf: string;
     dataAgendamento: Date;
+    dataRequerimento: Date;
     dataPublicacao: Date;
     matricula: string;
     nome: string;

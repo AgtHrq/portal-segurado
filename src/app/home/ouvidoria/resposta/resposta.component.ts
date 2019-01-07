@@ -25,6 +25,7 @@ export class RespostaComponent implements OnInit {
   user: User;
   respOuvidoria: RespostaOuvidoria[] = [];
   aux: any;
+  page = 1;
   msgInfo: string = '';
   showConfirmModal: boolean = false;
   showSucess: boolean = false;

@@ -29,10 +29,10 @@ export class ContrachequeComponent implements OnInit, OnChanges, AfterViewInit {
 
   title: string = "contracheque";
   vinculo: any = [];
-  private user: User;
-  private contracheques: Contracheque[];
-  private vinculos: VinculoModel[];
-  private periodos: Periodo[];
+  user: User;
+  contracheques: Contracheque[];
+  vinculos: VinculoModel[];
+  periodos: Periodo[];
   showLoader: boolean = true;
   showModal: boolean = false;
   fileUrl;

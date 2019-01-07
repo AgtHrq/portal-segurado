@@ -5,7 +5,7 @@ export interface RespostaOuvidoria {
     id: number;
     assunto: string;
     dataCriacao: Date;
-    descrica: string;
+    descricao: string;
     ouvidoriaTipo: TipoSolicitacao; //usando a mesma interface de tipoSolicitação
     resposta: string;
     status: boolean;

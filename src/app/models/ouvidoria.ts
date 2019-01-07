@@ -7,5 +7,7 @@ export interface Ouvidoria {
     status: boolean;
     showTd: string;
     showDetail: string; 
+    usuario: any;
+    ouvidoriaTipo: any;
 
 }

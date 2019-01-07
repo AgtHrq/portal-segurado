@@ -6,7 +6,7 @@
 
         <div class="ui very padded green segment desk">
 
-            <img src="../../../assets/img/logo.png" alt="PBPrev" class="ui medium centered image">
+            <img *ngIf="imgUrl" [src]="imgUrl" alt="PBPrev" class="ui medium centered image">
             <div class="ui sizer vertical segment">
                 <div class="ui centered huge header">Portal do Segurado</div>
             </div>
@@ -16,7 +16,7 @@
         <div class="ui very padded green segment">
 
             <div class="mobile">
-                <img src="../../../assets/img/logo.png" alt="PBPrev" class="ui small centered image">
+                <img *ngIf="imgUrl" [src]="imgUrl" alt="PBPrev" class="ui small centered image">
                 <div class="ui sizer vertical segment">
                     <div class="ui centered huge header">Portal do Segurado</div>
                 </div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="field">
-                    <ngx-recaptcha2 [hl]="pt-BR" (expire)="handleExpire()" (success)="handleSuccess($event)"></ngx-recaptcha2>
+                    <ngx-recaptcha2 [hl]="'pt-BR'" (expire)="handleExpire()" (success)="handleSuccess($event)"></ngx-recaptcha2>
                     <input type="hidden" value="" formControlName="cap">
                 </div>
                 

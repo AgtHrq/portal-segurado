@@ -24,6 +24,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   stateSenha: string = 'inactive';
   mobile: boolean = false;
   activeMenu: boolean = true;
+  imgUrl = 'http://10.10.1.3:6070/portalsegurado/assets/img/logo.png';
 
   constructor(private userService : UserService, private utils: HomeUtils, private router: Router) {
 

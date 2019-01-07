@@ -10,7 +10,7 @@ export interface Solicitacao {
     descricao: string;
     resposta: string;
     tipoSolicitacao: TipoSolicitacao;
-    idUsuario: User
+    idUsuario: any
     showTd: string;
     showDetail: string;
 

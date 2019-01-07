@@ -18,7 +18,8 @@ export class AdminMenuComponent implements OnInit {
     new Menu('Ouvidoria', 'users icon', 'ouvidoria'),
     new Menu('Solicitação', 'paper plane icon', 'solicitacao'),
     new Menu('Notificação', 'comment alternate icon', 'notificacao'),
-    new Menu('Termo de Uso', 'cloud upload icon', 'termo')
+    new Menu('Termo de Uso', 'cloud upload icon', 'termo'),
+    new Menu('Segurado', 'user icon', 'segurado')
   ];
 
   constructor(private userService: UserService, private router: Router) { }

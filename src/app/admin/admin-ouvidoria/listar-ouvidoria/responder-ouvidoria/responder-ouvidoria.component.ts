@@ -22,6 +22,7 @@ export class ResponderOuvidoriaComponent implements OnInit {
   showMessage: boolean = false;
   msgInfo: string = '';
   message = '';
+  totalCaracteres: number = 255;
   
   constructor(private formBuilder: FormBuilder, private sendRespostaOuvidoriaService: SendRespostaOuvidoriaService,
               private router: Router, private userService: UserService) { }
