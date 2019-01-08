@@ -11,19 +11,14 @@ import { EdtVinculoService } from './edt-vinculo.service';
 export class EdtVinculoComponent implements OnInit {
 
   segForm: FormGroup;
-  vincForm: FormGroup;
   items: FormArray;
   cpf: string;
   vinculos: any;
-  orgaos: any[];
-  cargos: any[];
+  selectedVinculo: any;
 
   constructor(private edtService: EdtVinculoService, private fb: FormBuilder) { }
 
   ngOnInit() {
-
-    this.edtService.getOrgaos().subscribe(orgaos => this.orgaos.push(orgaos.json()));
-    this.edtService.getCargos().subscribe(cargos => this.cargos.push(cargos.json()));
 
     this.segForm = new FormGroup({
       'cpf': new FormControl('', [
@@ -31,76 +26,40 @@ export class EdtVinculoComponent implements OnInit {
         Validators.minLength(14)
       ])
     });
-
-    this.vincForm = new FormGroup({
-      items: this.fb.array([this.createItem()])
-    });
   }
 
   consultaVinculos(cpf: string){
 
     this.edtService.getVinculos(cpf.replace(/\.|\-/g, '')).subscribe(vinculos => {
 
-      this.vinculos = vinculos.json();
-      if(this.vinculos.length > 1){
-
-        for (let i = 0; i < this.vinculos.length - 1; i++) {
-          
-          this.edtService.getOrgaos().subscribe(orgaos => this.orgaos.push(orgaos.json()));
-          this.edtService.getCargos().subscribe(cargos => this.cargos.push(cargos.json()));
-          this.addItem();
-        }
-      }
-      this.vinculos.forEach((vinc, index) => {
-        this.items = this.vincForm.get('items') as FormArray;
-        this.items.controls[index].get('cpf').setValue(vinc.cpf);
-        this.items.controls[index].get('id').setValue(vinc.id);
-        this.items.controls[index].get('matricula').setValue(vinc.matricula);
-        this.items.controls[index].get('idOrgao').get('id').setValue(vinc.idOrgao.id);
-        this.items.controls[index].get('idOrgao').get('codigo').setValue(vinc.idOrgao.codigo);
-        this.items.controls[index].get('idOrgao').get('descricao').setValue(vinc.idOrgao.descricao);
-        this.items.controls[index].get('idCargo').get('id').setValue(vinc.idCargo.id);
-        this.items.controls[index].get('idCargo').get('codigo').setValue(vinc.idCargo.codigo);
-        this.items.controls[index].get('idCargo').get('descricao').setValue(vinc.idCargo.descricao);
-        this.items.controls[index].get('idTipoVinculo').get('id').setValue(vinc.idTipoVinculo.id);
-        this.items.controls[index].get('idTipoVinculo').get('descricao').setValue(vinc.idTipoVinculo.descricao);
+      this.vinculos = vinculos.json() as any[];
+      this.vinculos.forEach(vinculo => {
+        
+        vinculo.active = false;
+        vinculo.cpf = this.maksCpf(vinculo.cpf);
+        vinculo.matricula = this.maskMatricula(vinculo.matricula);
       });
+      
+      this.vinculos[0].active = true;
+      this.selectedVinculo = this.vinculos[0];
     });
   }
 
-  selectOrgao(idOrgao: number){
-
-    this.cargos = null;
-    this.edtService.getCargosFilter(idOrgao).subscribe(cargos => this.cargos = cargos.json());
-  }
-
-  createItem(): FormGroup{ 
-
-    return this.fb.group({
-      'cpf': new FormControl('', [ Validators.required ]),
-      'id': new FormControl('', [ Validators.required ]),
-      'idOrgao': new FormGroup({
-        'id': new FormControl('', [ Validators.required ]),
-        'codigo': new FormControl('', [ Validators.required ]),
-        'descricao': new FormControl('', [ Validators.required ])
-      }),
-      'idCargo': new FormGroup({
-        'id': new FormControl('', [ Validators.required ]),
-        'codigo': new FormControl('', [ Validators.required ]),
-        'descricao': new FormControl('', [ Validators.required ])
-      }),
-      'idTipoVinculo': new FormGroup({
-        'id': new FormControl('', [ Validators.required ]),
-        'descricao': new FormControl('', [ Validators.required ])
-      }),
-      'matricula': new FormControl('', [ Validators.required ])
+  deactive() {
+    
+    this.vinculos.forEach(vinculo => {
+      
+      vinculo.active = false;
     });
   }
 
-  addItem(){
+  maksCpf(cpf: string): string{
 
-    this.items = this.vincForm.get('items') as FormArray;
-    this.items.push(this.createItem());
+    return `${cpf.substr(0, 3)}.${cpf.substr(3, 3)}.${cpf.substr(6, 3)}-${cpf.substr(9)}`;
   }
 
+  maskMatricula(matricula: string): string{
+
+    return `${matricula.substr(0, 3)}.${matricula.substr(3, 3)}-${matricula.substr(6)}`;
+  }
 }

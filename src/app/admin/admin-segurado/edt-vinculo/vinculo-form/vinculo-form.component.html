@@ -1,0 +1,23 @@
+<div class="ui form" [formGroup]="vinculoForm">
+    <div class="field">
+      <label>CPF</label>
+      <input readonly type="text" formControlName="cpf">
+    </div>
+    <div class="field">
+      <label>Matrícula</label>
+      <input type="text" formControlName="matricula">
+    </div>
+    <div class="field" formGroupName="idOrgao">
+      <label>Orgão</label>
+      <select class="ui fluid dropdown" formControlName="id">
+        <option *ngFor="let o of orgaos" [value]="o.id">{{ o.descricao }}</option>
+      </select>
+    </div>
+    <div class="field" formGroupName="idCargo">
+      <label>Cargo</label>
+      <select class="ui fluid dropdown" formControlName="id">
+        <option *ngFor="let c of cargos" [value]="c.id">{{ c.descricao }}</option>
+      </select>
+  </div>
+  <button class="ui submit primary button">Alterar</button>
+</div>

@@ -8,6 +8,7 @@ import { AddVinculoComponent } from './add-vinculo/add-vinculo.component';
 import { EdtVinculoComponent } from './edt-vinculo/edt-vinculo.component';
 import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { VinculoFormComponent } from './edt-vinculo/vinculo-form/vinculo-form.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
   declarations: [
     AdminSeguradoComponent, 
     AddVinculoComponent, 
-    EdtVinculoComponent
+    EdtVinculoComponent, 
+    VinculoFormComponent, 
   ]
 })
 export class AdminSeguradoModule { }

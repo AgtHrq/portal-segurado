@@ -8,8 +8,8 @@ import { Authorization } from './jwt.service';
 })
 export class BackendService {
   
-  url = "10.10.1.3:6070/portal-api";
-  // url = "localhost:8080"
+  // url = "10.10.1.3:6070/portal-api";
+  url = "localhost:8080"
   
   constructor(private http: Http, private auth: Authorization) { }
   
