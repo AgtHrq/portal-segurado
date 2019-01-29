@@ -28,4 +28,9 @@ export class EdtVinculoService {
 
     return this.backendService.unprotectedRequest('usuarios/cargos', 'get');
   }
+
+  alterVinculo(vinculo){
+
+    return this.backendService.protectedRequest('usuarios/alterVinculo', 'post', vinculo);
+  }
 }

@@ -1,23 +1,35 @@
-<div class="ui form" [formGroup]="vinculoForm">
-    <div class="field">
+<app-loader *ngIf="showLoader"></app-loader>
+<app-confirmacao-reposta [header]="'Confirmar alteração.'" 
+      [message]="'Você tem certeza que deseja alterar este vínculo?'"
+      [showModal]="showConfirmModal" (cancel)="showConfirmModal = false" (confirm)="sendDados(vinculoForm.value)"></app-confirmacao-reposta>
+<div class="ui form" [class.success]="message" [class.error]="messageError" [formGroup]="vinculoForm">
+    <div class="disabled field">
       <label>CPF</label>
       <input readonly type="text" formControlName="cpf">
     </div>
     <div class="field">
       <label>Matrícula</label>
-      <input type="text" formControlName="matricula">
+      <input type="text" formControlName="matricula" class="matricula">
     </div>
     <div class="field" formGroupName="idOrgao">
       <label>Orgão</label>
-      <select class="ui fluid dropdown" formControlName="id">
+      <select (change)="recarregaCargos(id.value)" class="ui fluid dropdown" formControlName="idOrgao" #id>
+        <option value="">SELECTIONE...</option>
         <option *ngFor="let o of orgaos" [value]="o.id">{{ o.descricao }}</option>
       </select>
     </div>
     <div class="field" formGroupName="idCargo">
       <label>Cargo</label>
-      <select class="ui fluid dropdown" formControlName="id">
-        <option *ngFor="let c of cargos" [value]="c.id">{{ c.descricao }}</option>
+      <select class="ui fluid dropdown" formControlName="idCargo">
+        <option value="">SELECTIONE...</option>
+        <option *ngFor="let c of cargos" [value]="c.id_cargo">{{ c.descricao }}</option>
       </select>
   </div>
-  <button class="ui submit primary button">Alterar</button>
+  <div class="ui success message">
+    <p>{{ message }}</p>
+  </div>
+  <div class="ui error message">
+    <p>{{ messageError }}</p>
+  </div>
+  <button (click)="showConfirmModal = true" [disabled]="vinculoForm.invalid" class="ui submit primary button">Alterar</button>
 </div>

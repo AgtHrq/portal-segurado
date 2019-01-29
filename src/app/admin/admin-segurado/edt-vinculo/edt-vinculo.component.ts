@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { EdtVinculoService } from './edt-vinculo.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-edt-vinculo',
   templateUrl: './edt-vinculo.component.html',
   styleUrls: ['./edt-vinculo.component.css']
 })
-export class EdtVinculoComponent implements OnInit {
+export class EdtVinculoComponent implements OnInit, AfterViewInit {
 
   segForm: FormGroup;
   items: FormArray;
@@ -16,7 +18,7 @@ export class EdtVinculoComponent implements OnInit {
   vinculos: any;
   selectedVinculo: any;
 
-  constructor(private edtService: EdtVinculoService, private fb: FormBuilder) { }
+  constructor(private edtService: EdtVinculoService, private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
 
@@ -26,6 +28,11 @@ export class EdtVinculoComponent implements OnInit {
         Validators.minLength(14)
       ])
     });
+  }
+  
+  ngAfterViewInit(){
+
+    
   }
 
   consultaVinculos(cpf: string){
@@ -42,7 +49,17 @@ export class EdtVinculoComponent implements OnInit {
       
       this.vinculos[0].active = true;
       this.selectedVinculo = this.vinculos[0];
-    });
+    },
+      error=> {
+        console.log(error);
+        if (error._body === "O cpf informado não possui processos abertos e/ou fechados!") {
+          // this.showLoader = false;
+        } else if (error.json().message.trim() === "Invalid Token") {
+          this.userService.logoffUser();
+          this.router.navigate(['/']);
+        }
+      }
+    );
   }
 
   deactive() {
