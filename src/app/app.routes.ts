@@ -38,7 +38,6 @@ import { AdminUploadComponent } from './admin/admin-upload/admin-upload.componen
 import { UploadComponent } from './admin/admin-upload/upload/upload.component';
 import { ListaDocsComponent } from './admin/admin-upload/lista-docs/lista-docs.component';
 import { AdminSeguradoComponent } from './admin/admin-segurado/admin-segurado.component';
-import { AddVinculoComponent } from './admin/admin-segurado/add-vinculo/add-vinculo.component';
 import { EdtVinculoComponent } from './admin/admin-segurado/edt-vinculo/edt-vinculo.component';
 
 const APP_ROUTES: Routes = [
@@ -169,7 +168,6 @@ const APP_ROUTES: Routes = [
             {
                 path: 'segurado', component: AdminSeguradoComponent, children:
                 [
-                    { path: 'add/vinculo', component: AddVinculoComponent },
                     { path: 'edt/vinculo', component: EdtVinculoComponent }
                 ]
             },

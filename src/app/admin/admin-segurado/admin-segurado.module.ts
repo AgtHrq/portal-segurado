@@ -5,7 +5,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { LoaderModule } from './../../loader/loader.module';
 import { AdminSeguradoComponent } from './admin-segurado.component';
-import { AddVinculoComponent } from './add-vinculo/add-vinculo.component';
 import { EdtVinculoComponent } from './edt-vinculo/edt-vinculo.component';
 import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
@@ -25,7 +24,6 @@ import { AdminSolicitacaoModule } from '../admin-solicitacao/admin-solicitacao.m
   ],
   declarations: [
     AdminSeguradoComponent, 
-    AddVinculoComponent, 
     EdtVinculoComponent, 
     VinculoFormComponent, 
   ]

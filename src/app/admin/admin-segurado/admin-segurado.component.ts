@@ -20,7 +20,6 @@ export class AdminSeguradoComponent implements OnInit {
 
     this.menus = [
 
-      new Menu('Adcionar vínculo', '', 'add/vinculo'),
       new Menu('Editar Vínculo', '', 'edt/vinculo')
     ];
 

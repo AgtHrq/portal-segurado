@@ -23,7 +23,7 @@ export class AdminHomeComponent implements OnInit {
     });
 
     if (this.user.user_role === UserRole.admin){
-      this.menus = [new Menu("Alterar dados", "", "")];
+      this.menus = [new Menu("Alterar dados", "", "usuarios/alterardados")];
     } else if(this.user.user_role === UserRole.super_admin) {
       this.menus = [
         new Menu("Alterar dados", "", "usuarios/alterardados"),
