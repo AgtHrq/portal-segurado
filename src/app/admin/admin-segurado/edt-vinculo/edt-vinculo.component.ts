@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { EdtVinculoService } from './edt-vinculo.service';
 import { UserService } from 'src/app/services/user.service';
+import { finalize } from 'rxjs/operators'
 
 @Component({
   selector: 'app-edt-vinculo',
@@ -17,6 +18,7 @@ export class EdtVinculoComponent implements OnInit, AfterViewInit {
   cpf: string;
   vinculos: any;
   selectedVinculo: any;
+  showLoader: boolean = false;
 
   constructor(private edtService: EdtVinculoService, private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
@@ -37,7 +39,12 @@ export class EdtVinculoComponent implements OnInit, AfterViewInit {
 
   consultaVinculos(cpf: string){
 
-    this.edtService.getVinculos(cpf.replace(/\.|\-/g, '')).subscribe(vinculos => {
+    this.showLoader = true;
+    this.edtService.getVinculos(cpf.replace(/\.|\-/g, ''))
+      .pipe(
+        finalize(() => this.showLoader = false)
+      )
+      .subscribe(vinculos => {
 
       this.vinculos = vinculos.json() as any[];
       this.vinculos.forEach(vinculo => {

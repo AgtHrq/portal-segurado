@@ -79,13 +79,13 @@ export class VinculoFormComponent implements OnInit, OnChanges, AfterViewInit {
 
   sendDados(dados){
 
+    this.showConfirmModal = false;
     this.showLoader = true;
     dados.cpf = this.unmask(dados.cpf);
     dados.matricula = this.unmask(dados.matricula);
     this.edtService.alterVinculo(dados).pipe(
       finalize(() => this.showLoader = false)
     ).subscribe((r: any) => {
-      this.showConfirmModal = false;
       this.message = r._body;
       this.messageError = '';
     },
