@@ -17,6 +17,7 @@ import { AdminModule } from './admin/admin.module';
 import { DirectivesModule } from './directives/directives.module';
 import { SeguradoModule } from './segurado/segurado.module';
 import { ErrorMessageModule } from './error-message/error-message.module';
+import { GoogleAnalyticsModule } from 'angular-ga';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ErrorMessageModule } from './error-message/error-message.module';
   ],
   imports: [
     BrowserModule,
+    GoogleAnalyticsModule.forRoot(),
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
