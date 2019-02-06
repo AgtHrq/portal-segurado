@@ -1,0 +1,38 @@
+<div *ngIf="showModal" class="ui dimmer modals page visible active">
+  <div class="ui mini modal visible active">
+    <div class="header">
+      Recomendações
+    </div>
+    <div class="content">
+      <table class="ui very basic collapsing celled table">
+        <thead>
+          <tr>
+            <th>Browser</th>
+            <th>Versão Suportada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of browsers">
+            <td>
+              <h4>
+                <div class="content">
+                  <p>{{ b.nome }}</p>
+                </div>
+              </h4>
+            </td>
+            <td *ngIf="b.nome == 'IE' || b.nome == 'Android'; else elseBlock">
+              <p *ngFor="let v of b.versao">{{ v }}</p>
+            </td>
+            <ng-template #elseBlock>
+              <td><p>{{ b.versao }}</p></td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    <div *ngIf="!messageSucess" class="actions">
+      <div class="ui positive rigth labeled icon button" (click)="confirmar()">
+          Ok
+          <i class="icon checkmark"></i>
+      </div>
+  </div>
+</div>

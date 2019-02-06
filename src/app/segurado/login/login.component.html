@@ -1,4 +1,5 @@
 <app-loader *ngIf="showLoader"></app-loader>
+<app-recomendacoes [showModal]="showRecomendacao" (okButton)="showRecomendacao = $target"></app-recomendacoes>
 <app-atualizar-termos [showModal]="showModal" (cancel)="showModal = $event" (success)="termAccepted($event)"></app-atualizar-termos>
 <div class="painel">
         
@@ -81,6 +82,10 @@
                 
                 <div class="content">
                     <p>Para validação de documento clique <a [routerLink]="['validar']">aqui</a>.</p>
+                </div>
+                
+                <div class="content">
+                    <p>Recomendações do browser <a (click)="showRecomendacao = true">aqui</a>.</p>
                 </div>
 
             </div>

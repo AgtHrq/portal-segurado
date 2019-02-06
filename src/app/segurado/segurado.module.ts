@@ -19,6 +19,7 @@ import { ErrorMessageModule } from '../error-message/error-message.module';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { DirectivesModule } from '../directives/directives.module';
 import { AtualizarTermosComponent } from './atualizar-termos/atualizar-termos.component';
+import { RecomendacoesComponent } from './recomendacoes/recomendacoes.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { AtualizarTermosComponent } from './atualizar-termos/atualizar-termos.co
     SendEmailComponent,
     ValidarPdfComponent,
     TokenMaskDirective,
-    AtualizarTermosComponent
+    AtualizarTermosComponent,
+    RecomendacoesComponent
   ]
 })
 export class SeguradoModule { }

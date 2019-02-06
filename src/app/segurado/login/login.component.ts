@@ -18,6 +18,7 @@ export class LoginComponent {
     erroTitle: string = 'Erro ao realizar login';
     erroMessage: string = 'Erro ao realizar login';
     showMessage: boolean = false;
+    showRecomendacao: boolean = false;
     utils: MaskUtils = new MaskUtils();
     formGroup: FormGroup;
     showLoader: boolean = false;
@@ -26,7 +27,8 @@ export class LoginComponent {
     showModal: boolean = false;
     @ViewChild(AtualizarTermosComponent)
     termos: AtualizarTermosComponent;
-    imgUrl = 'http://10.10.1.3:6070/portalsegurado/assets/img/logo.png';
+    // imgUrl = 'http://10.10.1.3:6070/portalsegurado/assets/img/logo.png';
+    imgUrl = 'http://localhost/assets/img/logo.png';
 
     ngOnInit(){ }
 
