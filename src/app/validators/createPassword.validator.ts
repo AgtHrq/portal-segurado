@@ -1,16 +1,16 @@
-import {FormGroup, ValidationErrors } from "@angular/forms";
+import {FormGroup, ValidationErrors } from '@angular/forms';
 
 export function equal(control: FormGroup): ValidationErrors | null {
     
-    return control.get("password").value === control.get("confirmeSenha").value ? null : { equal: true };
+    return control.get('password').value === control.get('confirmeSenha').value ? null : { equal: true };
 
 }
 
 export function checkContato(control: FormGroup): ValidationErrors | null {
 
-    if (control.get("ddd").value === "" && control.get("telefone").value != ""){
+    if (control.get('ddd').value === '' && control.get('telefone').value != ''){
         return {checkContato: false};
-    }else if (control.get("ddd").value != "" && control.get("telefone").value === ""){
+    }else if (control.get('ddd').value != '' && control.get('telefone').value === ''){
         return {checkContato: false};
     }else{
         return null;
@@ -18,9 +18,9 @@ export function checkContato(control: FormGroup): ValidationErrors | null {
 }
 
 export function checkOrgaoCargo(control: FormGroup): ValidationErrors | null {
-    if(control.get("idOrgao").value === "" && control.get("idCargo").value != ""){
+    if(control.get('idFiltro').get('codigoOrgao').value === '' && control.get('idFiltro').get('codigoCargo').value != ''){
         return {checkOrgaoCargo: false};
-    }else if(control.get("idOrgao").value != "" && control.get("idCargo").value === ""){
+    }else if(control.get('idFiltro').get('codigoOrgao').value != '' && control.get('idFiltro').get('codigoCargo').value === ''){
         return {checkContato: false};
     }else {
         return null;

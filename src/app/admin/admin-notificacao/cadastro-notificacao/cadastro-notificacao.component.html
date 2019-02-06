@@ -32,23 +32,27 @@
       </select>
     </div>
 
-    <div class="field">
-        <label>Orgão:</label>
-        <select class="ui fluid dropdown five wide field" formControlName="idOrgao" (change)="sendIdOrgao($event.target.value)">
-          <option value="" selected disabled>Selecione</option>
-          <option *ngFor="let orgao of orgaos" value="{{orgao.idOrgao}}">
-            {{orgao.descricao}}
-          </option>
-        </select>
-      </div>
+    <div formGroupName="idFiltro">
 
       <div class="field">
+          <label>Orgão:</label>
+          <select class="ui fluid dropdown five wide field" formControlName="codigoOrgao" (change)="sendIdOrgao($event.target.value)">
+            <option value="" selected disabled>Selecione</option>
+            <option *ngFor="let orgao of orgaos" value="{{orgao.idOrgao}}">
+              {{orgao.descricao}}
+            </option>
+          </select>
+        </div>
+  
+        <div class="field">
           <label>Cargo:</label>
-          <select class="ui fluid dropdown five wide field" formControlName="idCargo" [class.disabled]="element">
+          <select class="ui fluid dropdown five wide field" formControlName="codigoCargo" [class.disabled]="element">
             <option value="" selected disabled>Selecione</option>
             <option *ngFor="let cargo of cargos" value="{{cargo.id_cargo}}">{{cargo.descricao}}</option>
           </select>
         </div>
+
+    </div>
 
     <button class="ui teal button" type="submit" [disabled]="formNotificacao.invalid">Cadastrar</button>
 </form>

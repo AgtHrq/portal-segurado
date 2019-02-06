@@ -39,10 +39,13 @@ export class CadastroNotificacaoComponent implements OnInit {
       tempoExpiracao: ["", Validators.compose(
         [Validators.required]
       )],
+      
+      idFiltro: this.formBuilder.group({
 
-      idOrgao: [""],
-
-      idCargo: [""]
+        codigoOrgao: [""],
+  
+        codigoCargo: [""]
+      })
     });
 
     this.formNotificacao.setValidators([ checkOrgaoCargo ]);
@@ -50,7 +53,6 @@ export class CadastroNotificacaoComponent implements OnInit {
     this.orgaosfilterService.getFilterOrgaos().subscribe(
       orgaos => {
         this.orgaos = orgaos.json();
-        console.log(this.orgaos);
       }
     );
   }
@@ -59,19 +61,17 @@ export class CadastroNotificacaoComponent implements OnInit {
 
     this.sendIdOrgaoService.getListCargos(evento).subscribe(
       cargos => {
-        console.log(cargos.json());
         this.cargos = cargos.json();
         this.element = false;
-      }, erro => console.log(erro)
-    )
+      });
 
   }
 
   limpaCampos(){
     this.formNotificacao.get('descricao').setValue("");
     this.formNotificacao.get('tempoExpiracao').setValue("");
-    this.formNotificacao.get('idOrgao').setValue("");
-    this.formNotificacao.get('idCargo').setValue("");
+    this.formNotificacao.get('idFiltro').get('codigoOrgao').setValue("");
+    this.formNotificacao.get('idFiltro').get('codigoCargo').setValue("");
     this.showConfirmModal = false;
   }
 
@@ -80,6 +80,7 @@ export class CadastroNotificacaoComponent implements OnInit {
       this.userService.logoffUser();
       this.router.navigate(['/']);
     }else {
+      this.showConfirmModal = false;
       this.limpaCampos();
     }
   }
@@ -88,10 +89,9 @@ export class CadastroNotificacaoComponent implements OnInit {
   sendNotificacao(event, notificacao){
     event.preventDefault();
     this.showLoader = true;
-    console.log(notificacao);
 
     this.notificacaoService.sendNotificacao(notificacao).subscribe(
-      notificacao => {
+      () => {
         this.showLoader = false;
         this.showConfirmModal = true;
         this.messageInfo = "Notificação cadastrada com sucesso!";
