@@ -14,9 +14,13 @@ import { HomeUtils } from './../utils/home-utils';
 })
 export class HomeComponent implements AfterViewInit, OnInit {
 
-  menus: Menu[] = [new Menu('Meus Processos', 'book', 'processos'), new Menu('Contracheque', 'money bill alternate', 'contracheque'), new Menu('Ficha Financeira', 'newspaper', 'ficha-financeira'),
+  menus: Menu[] = [
+    new Menu('Meus Processos', 'book', 'processos'), 
+    new Menu('Contracheque', 'money bill alternate', 'contracheque'), 
+    new Menu('Ficha Financeira', 'newspaper', 'ficha-financeira'),
     // new Menu('PBConsig', 'dollar', ''),  será desenvolvido na segunda versao
-    new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), new Menu('Ouvidoria', 'users', 'ouvidoria')];
+    new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), new Menu('Ouvidoria', 'users', 'ouvidoria')
+  ];
   numNotificacoes: number = 0;
   filter: string = '';
   user$: Observable<User>;
@@ -24,7 +28,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
   stateSenha: string = 'inactive';
   mobile: boolean = false;
   activeMenu: boolean = true;
-  imgUrl = 'http://10.10.1.3:6070/portalsegurado/assets/img/logo.png';
+  // imgUrl = 'http://10.10.1.3:6070/portalsegurado/assets/img/logo.png';
+  imgUrl = 'http://localhost/assets/img/logo.png';
 
   constructor(private userService : UserService, private utils: HomeUtils, private router: Router) {
 
