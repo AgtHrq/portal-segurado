@@ -21,20 +21,18 @@ export class BackendService {
 
     } else if (method.toLowerCase() === "get") {
 
-      let sParams: URLSearchParams = new URLSearchParams();
+      // let sParams: URLSearchParams = new URLSearchParams();
 
-      for (let p in params){
+      // for (let p in params){
 
-        if (params.hasOwnProperty(p)){
-          sParams.set(p, params[p]);
-        }
+      //   if (params.hasOwnProperty(p)){
+      //     sParams.set(p, params[p]);
+      //   }
 
-      }
+      // }
       
       if(paramHeader) return this.http.get(`http://${this.url}/${url}`, { params:  params });
-      return this.http.get(`http://${this.url}/${url}`, {
-        search: sParams
-      });
+      return this.http.get(`http://${this.url}/${url}`);
 
     }
 
@@ -52,15 +50,15 @@ export class BackendService {
     
     } else if (method.toLowerCase() === 'get') {
 
-      let sParams: URLSearchParams = new URLSearchParams();
+      // let sParams: URLSearchParams = new URLSearchParams();
 
-      for(let p in params) {
+      // for(let p in params) {
 
-        if(params.hasOwnProperty(p)) {
-          sParams.set(p, params[p]);
-        }
+      //   if(params.hasOwnProperty(p)) {
+      //     sParams.set(p, params[p]);
+      //   }
 
-      }
+      // }
 
       if(paramsHeader != null){
 
@@ -69,7 +67,7 @@ export class BackendService {
       }
 
       return this.http.get(`http://${this.url}/protegido/${url}`, {
-        search: sParams,
+        // search: sParams,
         headers: headers
       });
 

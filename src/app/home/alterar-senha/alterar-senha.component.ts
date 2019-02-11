@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -41,12 +41,13 @@ export class AlterarSenhaComponent implements OnInit {
   message: string = '';
   typeMessage: string = '';
   showMessage: boolean = false;
-
+  event: any;
   constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils, private userService: UserService) { }
 
   toggleState(state: string){
 
     this.toggle.emit(state);
+    this.event = '';
     this.limpaCampos();
     this.state = state;
     this.showMessage = false;

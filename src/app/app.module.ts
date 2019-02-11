@@ -18,11 +18,12 @@ import { DirectivesModule } from './directives/directives.module';
 import { SeguradoModule } from './segurado/segurado.module';
 import { ErrorMessageModule } from './error-message/error-message.module';
 import { GoogleAnalyticsModule } from 'angular-ga';
+import { CloseModalDirective } from './directives/close-modal.directive';
 
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent
   ],
   imports: [
     BrowserModule,

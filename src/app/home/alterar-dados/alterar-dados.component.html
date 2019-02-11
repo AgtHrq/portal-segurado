@@ -1,4 +1,4 @@
-<div [@flyInOut]="state" class="ui dimmer modals page transition active">
+<div [@flyInOut]="state" (click)="event = $event.target.className" [appCloseModal]="event" (toggleDirective)="toggleState($event)" class="ui dimmer modals page transition active">
   <div class="ui modal transition active">
     <app-loader *ngIf="showLoader"></app-loader>
     <i class="close icon" (click)="toggleState('inactive')"></i>

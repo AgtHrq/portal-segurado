@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CpfMaskDirective } from './cpf-mask.directive';
 import { TelefoneMaskDirective } from './telefone-mask.directive';
+import { CloseModalDirective } from './close-modal.directive';
 
 @NgModule({
   imports: [
@@ -10,11 +11,13 @@ import { TelefoneMaskDirective } from './telefone-mask.directive';
   ],
   declarations: [
     CpfMaskDirective,
-    TelefoneMaskDirective
+    TelefoneMaskDirective,
+    CloseModalDirective
   ],
   exports: [
     CpfMaskDirective,
-    TelefoneMaskDirective
+    TelefoneMaskDirective,
+    CloseModalDirective
   ]
 })
 export class DirectivesModule { }

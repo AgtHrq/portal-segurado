@@ -35,6 +35,7 @@ export class AlterarDadosComponent implements OnInit {
   message: string = '';
   typeMessage: string = '';
   tel: string = '';
+  event: any;
 
   constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils, private userService: UserService) { }
   
@@ -53,6 +54,7 @@ export class AlterarDadosComponent implements OnInit {
     this.formAlterarDados.markAsUntouched();
     this.message = '';
     this.showMessage = false;
+    this.event = '';
 
   }
 
