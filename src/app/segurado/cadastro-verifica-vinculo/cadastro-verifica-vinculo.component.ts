@@ -46,9 +46,9 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
 
         this.meuForm2.addControl(`matricula${i}`, new FormControl('', [Validators.required, Validators.minLength(9)]));
         this.meuForm2.addControl(`idOrgao${i}`, new FormGroup({
-          idOrgao: new FormControl(''),
-          codigo: new FormControl(''),
-          descricao: new FormControl('')
+          idOrgao: new FormControl('', Validators.required),
+          codigo: new FormControl('', Validators.required),
+          descricao: new FormControl('', Validators.required)
         }));
       }
 
