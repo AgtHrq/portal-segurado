@@ -1,5 +1,5 @@
 <app-loader *ngIf="showLoader"></app-loader>
-<app-recomendacoes [showModal]="showRecomendacao" (okButton)="showRecomendacao = $target"></app-recomendacoes>
+<app-recomendacoes [showModal]="showRecomendacao" (okButton)="showRecomendacao = $event"></app-recomendacoes>
 <app-atualizar-termos [showModal]="showModal" (cancel)="showModal = $event" (success)="termAccepted($event)"></app-atualizar-termos>
 <div class="painel">
         
