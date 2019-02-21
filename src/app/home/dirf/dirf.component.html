@@ -1,0 +1,29 @@
+<app-confirmacao-reposta
+  [header]="'Dirf'"
+  [message]="message"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
+<div [@flyInOut]="'in'" class="ui segments">
+  <app-loader *ngIf="showLoader"></app-loader>
+
+  <div class="ui secondary segment">
+    <h1 class="header">{{ title | uppercase }}</h1>
+  </div>
+
+  <div class="ui segment bottom">
+
+      <form class="ui form" [formGroup]="formDirf" (submit)="getDirf($event, formDirf.value)">
+        <div class="field">
+          <label>ANO</label>
+          <select class="ui dropdown" formControlName="ano">
+            <option value="">SELECIONE</option>
+            <option *ngFor="let y of years">{{ y }}</option>
+          </select>
+        </div>
+        <button class="ui primary button" type="submit" [disabled]="formDirf.invalid">Gerar DIRF</button>
+      </form>
+  </div>
+
+</div>

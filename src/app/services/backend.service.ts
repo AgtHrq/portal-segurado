@@ -75,10 +75,13 @@ export class BackendService {
 
   }
 
-  protectedDowloadRequest(url: string, params?){
+  protectedDowloadRequest(url: string, params?, method?){
 
     let headers = new Headers();
     headers.append('Authorization', `Bearer ${this.auth.getToken()}`);
+    if (method === 'get'){
+      return this.http.get(`http://${this.url}/protegido/${url}`, { headers: headers, params: params, responseType: ResponseContentType.Blob });  
+    }
     return this.http.post(`http://${this.url}/protegido/${url}`, params, { headers: headers, responseType: ResponseContentType.Blob });
   }
 

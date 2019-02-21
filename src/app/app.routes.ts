@@ -1,4 +1,3 @@
-import { UploadDirfComponent } from './admin/admin-dirf/upload-dirf/upload-dirf.component';
 import { AdminDirfComponent } from './admin/admin-dirf/admin-dirf.component';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -41,6 +40,8 @@ import { UploadComponent } from './admin/admin-upload/upload/upload.component';
 import { ListaDocsComponent } from './admin/admin-upload/lista-docs/lista-docs.component';
 import { AdminSeguradoComponent } from './admin/admin-segurado/admin-segurado.component';
 import { EdtVinculoComponent } from './admin/admin-segurado/edt-vinculo/edt-vinculo.component';
+import { DirfComponent } from './home/dirf/dirf.component';
+import { UploadDirfComponent } from './admin/admin-dirf/upload-dirf/upload-dirf.component';
 
 const APP_ROUTES: Routes = [
 
@@ -101,6 +102,9 @@ const APP_ROUTES: Routes = [
             },
             {
                 path: 'contracheque', component: ContrachequeComponent
+            },
+            {
+                path: 'dirf', component: DirfComponent
             },
             {
                 path: '**', redirectTo: ''

@@ -1,4 +1,3 @@
-import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { saveAs } from 'file-saver';
@@ -27,7 +26,7 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
   showModal: boolean = false;
   message: string;
 
-  constructor(private contrachequeService: ContrachequeService, private utils: HomeUtils) { }
+  constructor(private contrachequeService: ContrachequeService) { }
 
   ngOnInit() { }
 
@@ -42,7 +41,7 @@ export class ContrachequePeriodoDetailComponent implements OnInit, OnChanges {
       r => {
         this.message = 'Documento gerado com sucesso.';
         this.showLoader = false;
-        let pdf = new Blob([r.blob()], { type: 'aplication/pdf; attachement=contracheque.pdf' });
+        let pdf = new Blob([r.blob()], { type: 'application/pdf; attachement=contracheque.pdf' });
         saveAs(pdf, 'contracheque.pdf');
         this.showModal = true;
       },

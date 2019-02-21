@@ -1,3 +1,4 @@
+import { DirfModule } from './dirf/dirf.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -34,7 +35,8 @@ import { AdminSubmenuModule } from '../admin/admin-submenu/admin-submenu.module'
     ContrachequeModule,
     LoaderModule,
     RouterModule,
-    AdminSubmenuModule
+    AdminSubmenuModule,
+    DirfModule
   ],
   declarations: [ 
     HomeComponent, 

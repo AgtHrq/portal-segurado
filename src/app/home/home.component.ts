@@ -18,8 +18,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
     new Menu('Meus Processos', 'book', 'processos'), 
     new Menu('Contracheque', 'money bill alternate', 'contracheque'), 
     new Menu('Ficha Financeira', 'newspaper', 'ficha-financeira'),
-    // new Menu('PBConsig', 'dollar', ''),  será desenvolvido na segunda versao
-    new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), new Menu('Ouvidoria', 'users', 'ouvidoria')
+    new Menu('DIRF', 'laptop', 'dirf'), 
+    new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), 
+    new Menu('Ouvidoria', 'users', 'ouvidoria')
   ];
   numNotificacoes: number = 0;
   filter: string = '';
