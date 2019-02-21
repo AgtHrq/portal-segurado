@@ -12,6 +12,7 @@ import { AdminSolicitacaoModule } from './admin-solicitacao/admin-solicitacao.mo
 import { AdminNotificacaoModule } from './admin-notificacao/admin-notificacao.module';
 import { AdminUploadModule } from './admin-upload/admin-upload.module';
 import { AdminSeguradoModule } from './admin-segurado/admin-segurado.module';
+import { AdminDirfModule } from './admin-dirf/admin-dirf.module';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { AdminSeguradoModule } from './admin-segurado/admin-segurado.module';
     AdminSolicitacaoModule,
     AdminNotificacaoModule,
     AdminUploadModule,
-    AdminSeguradoModule
+    AdminSeguradoModule,
+    AdminDirfModule
   ],
   declarations: [
     AdminComponent, 

@@ -1,0 +1,21 @@
+<app-loader *ngIf="showLoader"></app-loader>
+<app-confirmacao-reposta
+  [header]="'Geração de documento'"
+  [message]="message"
+  [showModal]="showModal"
+  [messageSucess]="false"
+  (confirm)="showModal = false">
+</app-confirmacao-reposta>
+<form class="ui form" [formGroup]="uploadForm" (submit)="sendArchive($event, uploadForm.value)">
+  <div class="fields">
+    <div class="field">
+      <label>Ano Documento</label>
+      <input type="text" id="ano" formControlName="ano" placeholder="YYYY">
+    </div>
+  </div>
+  <div class="field">
+    <button type="button" (click)="inputFile.click()" class="massive ui blue button"> {{ file ? file.name : 'SELECIONAR ARQUIVO' }}</button>
+    <input formControlName="file" accept=".jrprint" hidden type="file" (change)="upload($event.target.files[0])" #inputFile>
+  </div>
+  <button type="submit" class="ui positive button" [disabled]="!uploadForm.valid">Enviar</button>
+</form>

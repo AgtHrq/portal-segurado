@@ -10,10 +10,13 @@
       [messageSucess]="showSucess" 
       (confirm)="buttonModal()">
       </app-confirmacao-reposta>
+
       
 
       <form class="ui large form"  [formGroup]="meuForm"  (submit)="verifica($event, meuForm.value)" *ngIf="cadastro">
         
+        <!-- <app-timeout></app-timeout> -->
+
         <div class="fields"> <!--Inicio Campo CPF e DTNascimento-->
 
           <div class="eight wide field"> 

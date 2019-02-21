@@ -20,6 +20,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { DirectivesModule } from '../directives/directives.module';
 import { AtualizarTermosComponent } from './atualizar-termos/atualizar-termos.component';
 import { RecomendacoesComponent } from './recomendacoes/recomendacoes.component';
+import { TimeoutComponent } from './timeout/timeout.component';
+import { NumberPipe } from './timeout/number.pipe';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import { RecomendacoesComponent } from './recomendacoes/recomendacoes.component'
     ValidarPdfComponent,
     TokenMaskDirective,
     AtualizarTermosComponent,
-    RecomendacoesComponent
+    RecomendacoesComponent,
+    TimeoutComponent,
+    NumberPipe
   ]
 })
 export class SeguradoModule { }

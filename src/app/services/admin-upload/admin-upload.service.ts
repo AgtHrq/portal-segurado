@@ -19,6 +19,15 @@ export class AdminUploadService {
     
   }
 
+  uploadDirf(file: File, payload: any){
+
+    const dataForm = new FormData();
+    dataForm.append('file', file);
+    dataForm.append('ano', payload.ano);
+    return this.backendService.protectedRequest('usuarios/uploadDirfFile', 'post', dataForm);
+    
+  }
+
   getLatestVersion(){
 
     return this.backendService.protectedRequest('usuarios/latestVersion', 'get');

@@ -1,3 +1,5 @@
+import { UploadDirfComponent } from './admin/admin-dirf/upload-dirf/upload-dirf.component';
+import { AdminDirfComponent } from './admin/admin-dirf/admin-dirf.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ValidarPdfComponent } from './segurado/validar-pdf/validar-pdf.component';
@@ -169,6 +171,12 @@ const APP_ROUTES: Routes = [
                 path: 'segurado', component: AdminSeguradoComponent, children:
                 [
                     { path: 'edt/vinculo', component: EdtVinculoComponent }
+                ]
+            },
+            {
+                path: 'dirf', component: AdminDirfComponent, children:
+                [
+                    { path: 'upload', component: UploadDirfComponent }
                 ]
             },
             { 

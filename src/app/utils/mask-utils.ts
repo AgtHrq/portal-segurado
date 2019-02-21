@@ -54,4 +54,8 @@ export class MaskUtils {
         $('#' + id).mask('(00) 0 0000-0000');
 
     }
+
+    public yearMask(id: string): void {
+        $('#' + id).mask('0000');
+    }
 }
