@@ -54,7 +54,6 @@ export class DirfComponent implements OnInit {
     this.dirfService.getDirfSegurado(ano).pipe(
       finalize(() => this.showLoader = false)
     ).subscribe(dirf => {
-      console.log(dirf);
       let pdf = new Blob([dirf.blob()], { type: 'application/pdf; attachement=contracheque.pdf' });
       saveAs(pdf, 'dirf.pdf');
     }, ()=> {
