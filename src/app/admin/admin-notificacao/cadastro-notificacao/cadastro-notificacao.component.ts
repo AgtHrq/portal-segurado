@@ -72,7 +72,6 @@ export class CadastroNotificacaoComponent implements OnInit {
     this.formNotificacao.get('tempoExpiracao').setValue("");
     this.formNotificacao.get('idFiltro').get('codigoOrgao').setValue("");
     this.formNotificacao.get('idFiltro').get('codigoCargo').setValue("");
-    this.showConfirmModal = false;
   }
 
   buttonModal(msg: string){
@@ -81,17 +80,17 @@ export class CadastroNotificacaoComponent implements OnInit {
       this.router.navigate(['/']);
     }else {
       this.showConfirmModal = false;
-      this.limpaCampos();
     }
   }
   
-
+  
   sendNotificacao(event, notificacao){
     event.preventDefault();
     this.showLoader = true;
-
+    
     this.notificacaoService.sendNotificacao(notificacao).subscribe(
       () => {
+        this.limpaCampos();
         this.showLoader = false;
         this.showConfirmModal = true;
         this.messageInfo = "Notificação cadastrada com sucesso!";
