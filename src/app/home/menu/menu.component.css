@@ -2,13 +2,13 @@
     
     .cards .small {
     
-        background-color: #008000;
+        background-color: #F0E68C;
     
     }
     
     .cards .card i {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
     
@@ -18,53 +18,53 @@
     
     }
 
-    .green.cards .card {
+    .yellow.cards .card {
 
         border-radius: 0%;
 
     }
     
-    .green.cards .card:hover {
+    .yellow.cards .card:hover {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #F0E68C;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .green.cards .card:focus {
+    .yellow.cards .card:focus {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #F0E68C;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .green.cards .card:hover .content .description span {
+    .yellow.cards .card:hover .content .description span {
     
-        color: #008000;
+        color: #000000;
     
     }
 
-    .green.cards .card:focus .content .description span {
+    .yellow.cards .card:focus .content .description span {
     
-        color: #008000;
+        color: #000000;
     
     }
     
     .search {
     
         margin-bottom: 25px;
-        color: #008000;
+        color: #F0E68C;
     
     }
     
     .items {
     
         float: right;
-        color: #008000;
+        color: #F0E68C;
         margin-top: 10px;
     
     }
@@ -76,7 +76,7 @@
         border-radius: 0;
         border: 0;
         border-bottom: 1px solid;
-        color: #008000; 
+        color: #F0E68C; 
     
     }
     
@@ -88,11 +88,11 @@
     
     .search .input input::placeholder {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
     
-    /* #008000 */
+    /* #F0E68C */
 
 }
 
@@ -102,13 +102,13 @@
 
     .cards .small {
     
-        background-color: #008000;
+        background-color: #F0E68C;
     
     }
     
     .cards .card i {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
     
@@ -118,53 +118,53 @@
     
     }
 
-    .green.cards .card {
+    .yellow.cards .card {
 
         border-radius: 0%;
 
     }
     
-    .green.cards .card:hover {
+    .yellow.cards .card:hover {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #F0E68C;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .green.cards .card:focus {
+    .yellow.cards .card:focus {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #F0E68C;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .green.cards .card:hover .content .description span {
+    .yellow.cards .card:hover .content .description span {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
 
-    .green.cards .card:focus .content .description span {
+    .yellow.cards .card:focus .content .description span {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
     
     .search {
     
         margin-bottom: 25px;
-        color: #008000;
+        color: #F0E68C;
     
     }
     
     .items {
     
         float: right;
-        color: #008000;
+        color: #F0E68C;
         margin-top: 10px;
     
     }
@@ -176,7 +176,7 @@
         border-radius: 0;
         border: 0;
         border-bottom: 1px solid;
-        color: #008000; 
+        color: #F0E68C; 
     
     }
     
@@ -188,12 +188,12 @@
     
     .search .input input::placeholder {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
     
     
-    /* #008000 */
+    /* #F0E68C */
     
 }
 
@@ -203,13 +203,13 @@
     
     .cards .small {
     
-        background-color: #008000;
+        background-color: #F0E68C;
     
     }
     
     .cards .card i {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
     
@@ -221,33 +221,33 @@
 
     }
     
-    .green.cards .card:hover {
+    .yellow.cards .card:hover {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #F0E68C;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .green.cards .card:focus {
+    .yellow.cards .card:focus {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #F0E68C;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .green.cards .card:hover .content .description span {
+    .yellow.cards .card:hover .content .description span {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
 
-    .green.cards .card:focus .content .description span {
+    .yellow.cards .card:focus .content .description span {
     
-        color: #008000;
+        color: #F0E68C;
     
     }
     
@@ -258,6 +258,6 @@
 
     }
     
-    /* #008000 */
+    /* #F0E68C */
     
 }

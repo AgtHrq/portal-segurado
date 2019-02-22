@@ -25,9 +25,9 @@ body {
 
     .ui.segment.cab {
     
-        background-color: #2E8B57;
+        background-image: linear-gradient(to left, #FFFACD, #DAA520);
         border-radius: 0%;
-        color: #FFFFFF;
+        color: #000000;
         height: 90px;
         position: fixed;
         width: 100%;
@@ -37,7 +37,7 @@ body {
     .segment.cab .header {
         
         margin-left: 3.5%;
-        color: #FFFFFF;
+        color: #000000;
     
     }
     
@@ -89,7 +89,7 @@ body {
     .menu .search {
     
         margin-bottom: 25px;
-        color: #008000;
+        color: #000000;
     
     }
     
@@ -100,7 +100,7 @@ body {
         border-radius: 0;
         border: 0;
         border-bottom: 1px solid;
-        color: #008000; 
+        color: #000000; 
     
     }
     
@@ -112,7 +112,7 @@ body {
     
     .menu .search .input input::placeholder {
     
-        color: #008000;
+        color: #000000;
     
     }
 
