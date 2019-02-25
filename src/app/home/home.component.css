@@ -148,9 +148,9 @@ body {
 
     .ui.segment.cab {
     
-        background-color: #2E8B57;
+        background-image: linear-gradient(to left, #FFFACD, #DAA520);
         border-radius: 0%;
-        color: #FFFFFF;
+        color: #000000;
         height: 90px;
         position: fixed;
         width: 100%;
@@ -160,7 +160,7 @@ body {
     .segment.cab .header {
         
         margin-left: 3.5%;
-        color: #FFFFFF;
+        color: #000000;
     
     }
     
@@ -216,14 +216,14 @@ body {
     .menu .search {
     
         margin-bottom: 25px;
-        color: #008000;
+        color: #000000;
     
     }
     
     .menu .items {
     
         float: right;
-        color: #008000;
+        color: #000000;
         margin-top: 10px;
     
     }
@@ -235,7 +235,7 @@ body {
         border-radius: 0;
         border: 0;
         border-bottom: 1px solid;
-        color: #008000; 
+        color: #000000; 
     
     }
     
@@ -247,7 +247,7 @@ body {
     
     .menu .search .input input::placeholder {
     
-        color: #008000;
+        color: #000000;
     
     }
 
@@ -284,9 +284,9 @@ body {
     .ui.segment.cab, .ui.segment.cab.mobile {
     
         position: fixed;
-        background-color: #2E8B57;
+        background-image: linear-gradient(to left, #FFFACD, #DAA520);
         border-radius: 0%;
-        color: #FFFFFF;
+        color: #000000;
         height: 60px;
         width: 100%;
         top: 0;
@@ -297,7 +297,7 @@ body {
     .segment.cab .header {
         
         margin-left: 3.5%;
-        color: #FFFFFF;
+        color: #000000;
     
     }
     
@@ -330,13 +330,13 @@ body {
     
     .menu .cards .small {
     
-        background-color: #008000;
+        background-color: #000000;
     
     }
     
     .menu .cards .card i {
     
-        color: #008000;
+        color: #000000;
     
     }
     
@@ -355,33 +355,33 @@ body {
     
     }
     
-    .menu .green.cards .card:hover {
+    .menu .yellow.cards .card:hover {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #000000;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .menu .green.cards .card:focus {
+    .menu .yellow.cards .card:focus {
     
         cursor: pointer;
-        box-shadow: 10px 10px 10px 0px #008000;
+        box-shadow: 10px 10px 10px 0px #000000;
         transform: scale(1.05);
         transition: 0.5s;
     
     }
 
-    .menu .green.cards .card:hover .content .description span {
+    .menu .yellow.cards .card:hover .content .description span {
     
-        color: #008000;
+        color: #000000;
     
     }
 
-    .menu .green.cards .card:focus .content .description span {
+    .menu .yellow.cards .card:focus .content .description span {
     
-        color: #008000;
+        color: #000000;
     
     }
     
