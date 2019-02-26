@@ -51,6 +51,7 @@ export class AlterardadosUsuarioComponent implements OnInit {
         senhaAtual: ["", [
             Validators.minLength(6),
             Validators.maxLength(14),
+            Validators.required,
             upperCase,
             lowerCase,
             containNumber
