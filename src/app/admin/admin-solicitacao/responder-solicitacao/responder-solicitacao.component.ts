@@ -32,7 +32,7 @@ export class ResponderSolicitacaoComponent implements OnInit {
 
   }
 
-  confirm(){
+  confirm(event){
 
     event.preventDefault();
     this.showConfirmModal = true;

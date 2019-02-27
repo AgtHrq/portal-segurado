@@ -39,7 +39,7 @@
 
       <br/>
 
-      <div class="field">
+        <div class="field">
           <label>Matrícula</label>
           <input type="text" 
             class="matricula" 
@@ -47,8 +47,13 @@
             formControlName="matricula{{i}}"
             appCpfMask>
 
+        </div>
+          <div class="field">
+              <label>Útimo salário recebido (R$)</label>
+              <input formControlName="salario{{i}}" type="text" class="salario" placeholder="Salário">
           </div>
         </div>
+
 
         <div class="ui red message" *ngIf="meuForm2.controls['matricula' + i].invalid && (meuForm2.controls['matricula' + i].touched)">
           <p *ngIf="meuForm2.controls['matricula' + i].errors.required">Inserir Matrícula</p>

@@ -50,6 +50,7 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
           codigo: new FormControl('', Validators.required),
           descricao: new FormControl('', Validators.required)
         }));
+        this.meuForm2.addControl(`salario${i}`, new FormControl('', Validators.required))
       }
 
       
@@ -78,7 +79,9 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
 
     for(let i = 0; i < this.numInputs; i++){
       vinculos[`matricula${i}`] = vinculos[`matricula${i}`].replace(/\.|\-/gi, "");
-      let pessoaVinculo = new Vinculo(vinculos[`idOrgao${i}`], vinculos[`matricula${i}`], vinculos.cpf);
+      let salario = vinculos[`salario${i}`].replace(/\D/gi, "");
+      salario = salario.replace(/(\d)(\d{2})$/, '$1,$2');
+      let pessoaVinculo = new Vinculo(vinculos[`idOrgao${i}`], vinculos[`matricula${i}`], vinculos.cpf, salario);
       vinculosList.push(pessoaVinculo);
     }
 

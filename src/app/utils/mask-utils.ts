@@ -58,4 +58,8 @@ export class MaskUtils {
     public yearMask(id: string): void {
         $('#' + id).mask('0000');
     }
+
+    public salarioMask(clazz: string){
+        $('.' + clazz).mask('#.##0,00', { reverse: true });
+    }
 }

@@ -51,6 +51,7 @@ export class RespostaComponent implements OnInit {
             r.showDetail = "hidden";
           },
         );
+        this.respOuvidoria.sort(r => r.status ? -1: 1);
       },
       error => {
         if(error.json().message.trim() === 'Invalid Token'){
