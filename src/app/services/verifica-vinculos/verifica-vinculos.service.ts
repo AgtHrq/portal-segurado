@@ -13,4 +13,8 @@ export class VerificaVinculosService {
   verificarVinculoSegurado(credentials: object){
     return this.backEndService.unprotectedRequest("usuarios/verificaInfoVinculo", "post", credentials);
   }
+
+  getAnoMes(cpf: string){
+    return this.backEndService.unprotectedRequest('usuarios/getAnoMesSalario', 'get', { cpf: cpf }, true);
+  }
 }

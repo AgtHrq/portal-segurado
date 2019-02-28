@@ -26,6 +26,7 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
   showConfirmModal: boolean = false;
   showSucess: boolean = false;
   msgInfo: string = '';
+  anoMes = [];
 
   constructor(private formBuilder: FormBuilder, private orgaosService: OrgaosService,
     private verificaVinculosService: VerificaVinculosService, private router:Router) { }
@@ -50,7 +51,9 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
           codigo: new FormControl('', Validators.required),
           descricao: new FormControl('', Validators.required)
         }));
-        this.meuForm2.addControl(`salario${i}`, new FormControl('', Validators.required))
+        this.meuForm2.addControl(`salario${i}`, new FormControl('', Validators.required));
+        this.meuForm2.addControl(`ano${i}`, new FormControl('', Validators.required));
+        this.meuForm2.addControl(`mes${i}`, new FormControl('', Validators.required));
       }
 
       
@@ -62,6 +65,16 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
           this.orgaos = orgaos.json();
         }
       );
+
+      this.verificaVinculosService.getAnoMes(this.cpfSeguradoValidacao.replace(/\.|\-/gi, '')).subscribe(r => {
+        
+        this.anoMes = r.json();
+
+        this.anoMes.forEach((a, index) => {
+          this.meuForm2.get(`ano${index}`).setValue(a.ano);
+          this.meuForm2.get(`mes${index}`).setValue(a.mes);
+        })
+      });
 
   }
 
@@ -80,8 +93,8 @@ export class CadastroVerificaVinculo implements OnInit, OnChanges {
     for(let i = 0; i < this.numInputs; i++){
       vinculos[`matricula${i}`] = vinculos[`matricula${i}`].replace(/\.|\-/gi, "");
       let salario = vinculos[`salario${i}`].replace(/\D/gi, "");
-      salario = salario.replace(/(\d)(\d{2})$/, '$1,$2');
-      let pessoaVinculo = new Vinculo(vinculos[`idOrgao${i}`], vinculos[`matricula${i}`], vinculos.cpf, salario);
+      salario = salario.replace(/(\d)(\d{2})$/, '$1.$2');
+      let pessoaVinculo = new Vinculo(vinculos[`idOrgao${i}`], vinculos[`matricula${i}`], vinculos.cpf, salario, vinculos[`ano${i}`], vinculos[`mes${i}`]);
       vinculosList.push(pessoaVinculo);
     }
 
