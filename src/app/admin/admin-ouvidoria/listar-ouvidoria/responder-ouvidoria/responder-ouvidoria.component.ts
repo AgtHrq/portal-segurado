@@ -41,7 +41,7 @@ export class ResponderOuvidoriaComponent implements OnInit {
     this.toggle.emit(false);
   }
 
-  confirm(){
+  confirm(event){
 
     event.preventDefault();
     this.msgInfo = 'Uma vez confirmada a resposta da Ouvidoria, não será permitida sua edição. Antes de confirmar verifique sua reposta.'

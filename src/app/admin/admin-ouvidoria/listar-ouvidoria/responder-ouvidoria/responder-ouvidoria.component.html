@@ -19,7 +19,7 @@
         Responder Ouvidoria
       </div>
       <div class="content">
-        <form class="ui form" [formGroup]="formResponder" (submit)="confirm()">
+        <form class="ui form" [formGroup]="formResponder" (submit)="confirm($event)">
           <div class="disabled field">
               <label>Segurado:</label>
               <input type="text" value="{{ ouvidoria.usuario.name }}">
