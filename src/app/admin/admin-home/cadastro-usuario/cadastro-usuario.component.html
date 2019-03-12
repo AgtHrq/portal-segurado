@@ -51,6 +51,7 @@
             *ngIf="meuForm.controls.email.invalid && (meuForm.controls.email.touched)">
             <p *ngIf="meuForm.controls.email.errors?.required">O campo Email é obrigatório!</p>
             <p *ngIf="meuForm.controls.email.errors?.email">E-mail informado inválido!</p>
+            <p *ngIf="meuForm.controls.email.errors?.uniqueEmail">E-mail já cadastrado!</p>
         </div>
     </div>
     <div class="field">

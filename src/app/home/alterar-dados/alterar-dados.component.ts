@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from './../../models/user';
 import { MaskUtils } from '../../utils/mask-utils';
 import { UserService } from 'src/app/services/user.service';
+import { EmailValidator } from 'src/app/validators/email.validator';
 
 @Component({
   selector: 'app-alterar-dados',
@@ -37,7 +38,7 @@ export class AlterarDadosComponent implements OnInit {
   tel: string = '';
   event: any;
 
-  constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private maskUltil: MaskUtils, private userService: UserService, private emailValidator: EmailValidator) { }
   
   toggleState(state: string){
 
@@ -109,7 +110,12 @@ export class AlterarDadosComponent implements OnInit {
       
       cpf: [this.maskUltil.addMascara(this.user.user_cpf.trim()), Validators.required],
       nome:[this.user.user_name.toLocaleUpperCase(), Validators.required],
-      email: [this.user.user_email, Validators.email],
+      email: [this.user.user_email, {
+        asyncValidators: [ this.emailValidator.validate.bind(this.emailValidator) ],
+        validators: [ Validators.email ],
+        updateOn: 'blur'
+      }
+      ],
       telefone: [this.user.user_tel, Validators.minLength(16)],
     });
 

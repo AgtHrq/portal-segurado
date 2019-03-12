@@ -52,7 +52,10 @@ export class UploadDirfComponent implements OnInit, AfterViewInit {
     delete form.file
     this.showLoader = true;
     this.uploadService.uploadDirf(this.file, form).pipe(
-      finalize(() => this.showLoader = false)
+      finalize(() => {
+        this.showLoader = false;
+        this.limpaForm();
+      })
     ).subscribe(() => {
       this.message = 'Upload realizado com sucesso!';
       this.showModal = true;
@@ -62,11 +65,17 @@ export class UploadDirfComponent implements OnInit, AfterViewInit {
       this.message = 'Ocorreu um erro ao realizar o upload.';
       if (e._body){
         if(e._body.includes('file exceeds its maximum')){
-          this.message = 'O arquivo enviando tem mais de 2MB.'
+          this.message = 'O arquivo enviando tem mais de 2MB.';
         }
       }
     }
     );
+  }
+
+  limpaForm(): void{
+
+    this.uploadForm.get('ano').setValue('');
+    this.file = null;
   }
 
 }

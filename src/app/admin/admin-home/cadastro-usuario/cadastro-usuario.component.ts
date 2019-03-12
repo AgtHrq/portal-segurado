@@ -7,6 +7,7 @@ import { upperCase, lowerCase, containNumber} from '../../../validators/password
 import { equal } from '../../../validators/createPassword.validator';
 import { MaskUtils } from '../../../utils/mask-utils';
 import { UserService } from 'src/app/services/user.service';
+import { EmailValidator } from 'src/app/validators/email.validator';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private maskUtils: MaskUtils,
     private cadastrarAdmService: CadastrarAdmService, private router: Router,
-    private userService: UserService) {}
+    private userService: UserService, private emailValidator: EmailValidator) {}
 
   ngOnInit() {
 
@@ -38,9 +39,13 @@ export class CadastroUsuarioComponent implements OnInit {
       name: ["", Validators.compose(
         [Validators.required]
       )],
-      email: ["", Validators.compose(
-        [Validators.email, Validators.required]
-      )],
+      email: ["", 
+        {
+          asyncValidators: [this.emailValidator.validate.bind(this.emailValidator)],
+          validators: [ Validators.required, Validators.email ],
+          updateOn: 'blur'
+        }
+      ],
       password: ["", [
         Validators.required,
         Validators.minLength(6),

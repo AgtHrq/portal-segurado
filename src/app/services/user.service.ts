@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Authorization } from './jwt.service';
 import { BackendService } from './backend.service';
 import { User } from '../models/user';
@@ -79,6 +79,11 @@ export class UserService {
   aceitaTermos(dados) {
 
     return this.backendService.unprotectedRequest('aceitaTermos', 'post', dados);
+  }
+
+  verificaEmail(email: string) {
+
+    return this.backendService.unprotectedHttpClientRequst('usuarios/verificaEmail', 'get', { email: email });
   }
 
 }

@@ -19,8 +19,14 @@
           <label>E-mail:</label>
           <input type="text" formControlName="email">
         </div>
+        <div *ngIf="formAlterarDados.controls.email.pending" class="ui error message">
+          <p>Checando...</p>
+        </div>
         <div *ngIf="formAlterarDados.controls.email.errors?.email && formAlterarDados.controls.email.touched" class="ui error message">
           <p>Informe um e-mail válido.</p>
+        </div>
+        <div *ngIf="formAlterarDados.controls.email.errors?.uniqueEmail" class="ui error message">
+          <p>E-mail já cadastrado.</p>
         </div>
         <div class="field error" [class.error]="formAlterarDados.controls.telefone.errors?.minlength && formAlterarDados.controls.telefone.touched">
             <label>Telefone:</label>

@@ -27,10 +27,13 @@
           name="email"
           formControlName="email">
 
+          <i *ngIf="meuForm.controls.email.pending" class="spinner icon"></i>
+
           <!--Mensagem de validação-->
         <div class="ui red message" 
           *ngIf="meuForm.controls.email.invalid && (meuForm.controls.email.touched)">
-          <p *ngIf="meuForm.controls.email.errors.email">E-mail não estar válido</p>
+          <p *ngIf="meuForm.controls.email.errors.uniqueEmail">E-mail já cadastrado</p>
+          <p *ngIf="meuForm.controls.email.errors.email">E-mail não está válido</p>
         </div>
     </div>
 
@@ -212,7 +215,7 @@
     </div>
   </div>
 
-  <button (click)="meuForm.get('termo').markAsTouched()" class="ui right floated button" type="submit" [disabled]="meuForm.invalid" >
+  <button (click)="meuForm.get('termo').markAsTouched()" class="ui right floated button" type="submit" [disabled]="meuForm.invalid || meuForm.controls.email.pending" >
       Cadastrar
   </button>
 

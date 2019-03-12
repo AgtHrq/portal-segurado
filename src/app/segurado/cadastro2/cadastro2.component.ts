@@ -7,6 +7,7 @@ import { upperCase, lowerCase, containNumber } from '../../validators/password.v
 import { Cadastrar2Service } from '../../services/cadastrar2/cadastrar2.service';
 import { equal, checkContato } from '../../validators/createPassword.validator';
 import { saveAs } from 'file-saver';
+import { EmailValidator } from 'src/app/validators/email.validator';
 
 @Component({
   selector: 'app-cadastro2',
@@ -24,7 +25,7 @@ export class Cadastro2Component implements OnInit {
   msgInfo: string = '';
   
   constructor(private formBuilder: FormBuilder, private service: PerguntaService,
-       private cadastraService2: Cadastrar2Service, private router: Router) {  }
+       private cadastraService2: Cadastrar2Service, private router: Router, private emailValidaor: EmailValidator) {  }
 
   ngOnInit() {
     
@@ -33,9 +34,12 @@ export class Cadastro2Component implements OnInit {
       
       name: [this.nomeSegurado],
       
-      email: ["", Validators.compose(
-        [Validators.email]
-        )],
+      email: ["",
+      {
+        asyncValidators: [ this.emailValidaor.validate.bind(this.emailValidaor) ],
+        validators:[ Validators.email ],
+        updateOn: 'blur'
+      }],
         
         password: ["", [
           Validators.required,

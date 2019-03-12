@@ -44,8 +44,8 @@ export class DetailExcluirNotificacaoComponent implements OnInit {
   }
 
   deleteNotificacao(idNotificacao){
+    
     this.showLoader = true;
-    console.log(idNotificacao);
     this.sendIdNotificacaoService.sendIdNotificacao({id: idNotificacao}).subscribe(
       () => {
         this.showLoader = false;
