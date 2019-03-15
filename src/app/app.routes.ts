@@ -1,29 +1,11 @@
-import { AdminDirfComponent } from './admin/admin-dirf/admin-dirf.component';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ValidarPdfComponent } from './segurado/validar-pdf/validar-pdf.component';
-import { AdminGuard } from './services/guards/admin.guard';
-import { InitialComponent } from './home/ouvidoria/initial/initial.component';
-import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
-import { SolicitacaoComponent } from './home/solicitacao/solicitacao.component';
-import { ProcessoComponent } from './home/processo/processo.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './segurado/login/login.component';
-import { CadastroComponent } from './segurado/cadastro/cadastro.component';
-import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
-import { WelcomeComponent } from './home/welcome/welcome.component';
-import { AuthGuard } from './services/guards/auth.guard';
-import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
-import { FichaFinanceiraComponent } from './home/ficha-financeira/ficha-financeira.component';
-import { VizualizaFichaComponent } from './home/ficha-financeira/vizualiza-ficha/vizualiza-ficha.component';
-import { RespostaComponent } from './home/ouvidoria/resposta/resposta.component';
-import { ContrachequeComponent } from './home/contracheque/contracheque.component';
+//AdminComponents
+import { AdminDirfComponent } from './admin/admin-dirf/admin-dirf.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CadastroUsuarioComponent } from './admin/admin-home/cadastro-usuario/cadastro-usuario.component';
-import { SuperAdminGuard } from './services/guards/super-admin.guard';
 import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
-import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/imprimir-ficha.component';
 import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
 import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notificacao.component';
 import { CadastroNotificacaoComponent } from './admin/admin-notificacao/cadastro-notificacao/cadastro-notificacao.component';
@@ -34,14 +16,39 @@ import { ListarSolicitacaoComponent } from './admin/admin-solicitacao/listar-sol
 import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
 import { ListarOuvidoriaRespondidaComponent } from './admin/admin-ouvidoria/listar-ouvidoria-respondida/listar-ouvidoria-respondida.component';
 import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
-import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
 import { AdminUploadComponent } from './admin/admin-upload/admin-upload.component';
 import { UploadComponent } from './admin/admin-upload/upload/upload.component';
 import { ListaDocsComponent } from './admin/admin-upload/lista-docs/lista-docs.component';
 import { AdminSeguradoComponent } from './admin/admin-segurado/admin-segurado.component';
-import { EdtVinculoComponent } from './admin/admin-segurado/edt-vinculo/edt-vinculo.component';
-import { DirfComponent } from './home/dirf/dirf.component';
 import { UploadDirfComponent } from './admin/admin-dirf/upload-dirf/upload-dirf.component';
+import { EdtVinculoComponent } from './admin/admin-segurado/edt-vinculo/edt-vinculo.component';
+
+//HomeComponents
+import { InitialComponent } from './home/ouvidoria/initial/initial.component';
+import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
+import { SolicitacaoComponent } from './home/solicitacao/solicitacao.component';
+import { ProcessoComponent } from './home/processo/processo.component';
+import { HomeComponent } from './home/home.component';
+import { WelcomeComponent } from './home/welcome/welcome.component';
+import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
+import { FichaFinanceiraComponent } from './home/ficha-financeira/ficha-financeira.component';
+import { VizualizaFichaComponent } from './home/ficha-financeira/vizualiza-ficha/vizualiza-ficha.component';
+import { RespostaComponent } from './home/ouvidoria/resposta/resposta.component';
+import { ContrachequeComponent } from './home/contracheque/contracheque.component';
+import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/imprimir-ficha.component';
+import { DirfComponent } from './home/dirf/dirf.component';
+
+//SeguradoComponents
+import { ValidarPdfComponent } from './segurado/validar-pdf/validar-pdf.component';
+import { LoginComponent } from './segurado/login/login.component';
+import { CadastroComponent } from './segurado/cadastro/cadastro.component';
+import { ForgotPasswordComponent } from './segurado/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './segurado/forgot-password/change-password/change-password.component';
+
+//Services
+import { AdminGuard } from './services/guards/admin.guard';
+import { AuthGuard } from './services/guards/auth.guard';
+import { SuperAdminGuard } from './services/guards/super-admin.guard';
 
 const APP_ROUTES: Routes = [
 

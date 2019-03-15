@@ -29,7 +29,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   stateSenha: string = 'inactive';
   mobile: boolean = false;
   activeMenu: boolean = true;
-  imgUrl = 'http://www.pbprev.pb.gov.br:8080/portalsegurado/assets/img/logo.png';
+  imgUrl = 'http://www.pbprev.pb.gov.br:6060/portalsegurado/assets/img/logo.png';
   // imgUrl = 'http://localhost/assets/img/logo.png';
 
   constructor(private userService : UserService, private utils: HomeUtils, private router: Router) {
