@@ -25,6 +25,8 @@
         </div>
         <div [ngClass]="class">
           <app-new-solicitacao (solicitacaoAdded)="atualizaLista()" (classEmitter)="class = $event" (stateEmitter)="state = $event" [state]="state"></app-new-solicitacao>
+
+        </div>
       </div>
     </div>
   </div>

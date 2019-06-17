@@ -1,7 +1,27 @@
-.ui.segment {
+@media (min-width: 1176px) and (max-width: 2455px){
+    .ui.segment {
 
-    border-radius: 0%;
-    overflow: auto;
-    height: 60vmin;
+        border-radius: 0%;
+        overflow: auto;
+        height: 60vmin;
+    }
 
+}
+
+
+   
+
+
+@media (max-width: 767px){
+    .ui.segment {
+        overflow: auto;
+        height: 65vmin;
+        border-radius: 0%;
+       
+        
+    }
+    #vai{
+        
+        font-size: 80%;
+    }
 }

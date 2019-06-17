@@ -1,31 +1,58 @@
-.ui.segments {
+@media (min-width: 1176px) and (max-width: 2455px){
 
-    border-radius: 0%;
+    .ui.segments {
+
+        border-radius: 0%;
+
+    }
+
+    .ui.segments .ui.segment:not(.stacked.segment) {
+
+        border-radius: 0%;
+        max-height: 80vmin;
+        overflow: auto;
+
+    }
+
+    .bottom.segment {
+
+        height: 70vmin;
+
+    }
+
+    .stacked.segment {
+
+        width: 100%;
+
+    }
+
+    .grid:last-child {
+
+        height: 100%;
+
+    }
 
 }
+@media (max-width: 1200px){
+    .ui.dropdown{
+        width: 60%;
+        margin-left: 8%;
 
-.ui.segments .ui.segment:not(.stacked.segment) {
+    }
+    #name{
+        margin-left: 20%;
+    }
+    .ui.vertical.tabular.menu{
+        font-size: 60%;
+    }
+    .uu{
+        width: 80%;
+        
+    }
+    .bottom.segment {
 
-    border-radius: 0%;
-    max-height: 80vmin;
-    overflow: auto;
+        height: 100vmin;
 
-}
-
-.bottom.segment {
-
-    height: 70vmin;
-
-}
-
-.stacked.segment {
-
-    width: 100%;
-
-}
-
-.grid:last-child {
-
-    height: 100%;
+    }
 
 }
