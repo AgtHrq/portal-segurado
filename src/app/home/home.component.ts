@@ -8,6 +8,7 @@ import { User } from '../models/user';
 import { HomeUtils } from './../utils/home-utils';
 
 @Component({
+  
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']

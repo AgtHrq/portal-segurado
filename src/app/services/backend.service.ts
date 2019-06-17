@@ -9,8 +9,8 @@ import { Authorization } from './jwt.service';
 })
 export class BackendService {
   
-  // url = "http://www.pbprev.pb.gov.br:6060/portal-api";
-  url = "http://localhost:8080"
+  url = "http://www.pbprev.pb.gov.br:6060/portal-api";
+  //url = "http://localhost:8080"
   
   constructor(private http: Http, private auth: Authorization, private httpClient: HttpClient) { }
   

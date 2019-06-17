@@ -32,7 +32,7 @@ import { NumberPipe } from './timeout/number.pipe';
     AdminSolicitacaoModule,
     LoaderModule,
     ErrorMessageModule,
-    NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6LdW42UUAAAAAAfI7C7ZzMRUy0cF6qr0YFgfA-3Q" }),
+    NgxCaptchaModule.forRoot({ reCaptcha2SiteKey: "6Ldj-KMUAAAAAF7zZ-FLSTuNUoM8yXL2Zv7h4DZ5" }),
     DirectivesModule
   ],
   declarations: [
