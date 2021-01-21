@@ -1,58 +1,31 @@
-@media (min-width: 1176px) and (max-width: 2455px){
+.ui.segments {
 
-    .ui.segments {
-
-        border-radius: 0%;
-
-    }
-
-    .ui.segments .ui.segment:not(.stacked.segment) {
-
-        border-radius: 0%;
-        max-height: 80vmin;
-        overflow: auto;
-
-    }
-
-    .bottom.segment {
-
-        height: 70vmin;
-
-    }
-
-    .stacked.segment {
-
-        width: 100%;
-
-    }
-
-    .grid:last-child {
-
-        height: 100%;
-
-    }
+    border-radius: 0%;
 
 }
-@media (max-width: 1200px){
-    .ui.dropdown{
-        width: 60%;
-        margin-left: 8%;
 
-    }
-    #name{
-        margin-left: 20%;
-    }
-    .ui.vertical.tabular.menu{
-        font-size: 60%;
-    }
-    .uu{
-        width: 80%;
-        
-    }
-    .bottom.segment {
+.ui.segments .ui.segment:not(.stacked.segment) {
 
-        height: 100vmin;
+    border-radius: 0%;
+    max-height: 80vmin;
+    overflow: auto;
 
-    }
+}
+
+.bottom.segment {
+
+    height: 70vmin;
+
+}
+
+.stacked.segment {
+
+    width: 100%;
+
+}
+
+.grid:last-child {
+
+    height: 100%;
 
 }

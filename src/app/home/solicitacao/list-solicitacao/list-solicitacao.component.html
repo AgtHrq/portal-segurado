@@ -21,8 +21,8 @@
         </div>
       </td>
       <td class="{{ s.showTd }}" *ngIf="!s.status"><i class="large green checkmark icon"></i>Solicitação fechada</td>
-      <td (click)="showDetail(s)" colspan="3" >
-        <app-detail-solicitacao class="{{ s.showDetail }}" [solicitacao]="s"></app-detail-solicitacao>
+      <td (click)="showDetail(s)" colspan="3" class="{{ s.showDetail }}">
+        <app-detail-solicitacao [solicitacao]="s"></app-detail-solicitacao>
       </td>
     </tr>
   </tbody>

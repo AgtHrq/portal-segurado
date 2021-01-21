@@ -1,69 +1,31 @@
-@media (min-width: 1176px) and (max-width: 2455px){
-    
-    .ui.segments {
+.ui.segments {
 
-        border-radius: 0%;
-
-    }
-
-    .ui.segments .ui.segment:not(.stacked.segment) {
-
-        border-radius: 0%;
-        max-height: 80vmin;
-        overflow: auto;
-
-    }
-
-    .bottom.segment {
-
-        height: 70vmin;
-
-    }
-
-    .stacked.segment {
-
-        width: 100%;
-
-    }
-
-    .grid:last-child {
-
-        height: 100%;
-
-    }
+    border-radius: 0%;
 
 }
 
-@media (max-width: 1200px){
-    
-    
-    .ui.vertical.menu{
-        font-size: 54%;
-    }
-    .bottom.segment {
+.ui.segments .ui.segment:not(.stacked.segment) {
 
-        width: 373px;
-        height: 35vmin;
+    border-radius: 0%;
+    max-height: 80vmin;
+    overflow: auto;
 
-    }
-    .stacked.segment {
+}
 
-        width: 80%;
-        margin-left: 20%;
-        height: 28vmin;
-        
-        
+.bottom.segment {
 
-    }
-    #visu{
-        height: 5vmin;
-    }
-    #impri{
-        height: 7vmin;
-    }
+    height: 70vmin;
 
+}
 
+.stacked.segment {
 
-    
+    width: 100%;
+
+}
+
+.grid:last-child {
+
+    height: 100%;
 
 }

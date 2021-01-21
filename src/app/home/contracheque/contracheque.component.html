@@ -16,21 +16,21 @@
 
     <div class="ui grid">
       <div class="doubling four wide column">
-        <div class="ui vertical fluid tabular menu" >
-          <ng-template ngFor let-v [ngForOf]="vinculos" >
+        <div class="ui vertical fluid tabular menu">
+          <ng-template ngFor let-v [ngForOf]="vinculos">
             <a *ngIf="v.orgao.length > 7; else elseBlock" [attr.data-content]="v.orgao | uppercase" data-variation="wide" data-position="right center" class="item" 
               [class.active]="v.activate" (click)="deactivate(v);v.activate = true">
               {{ v?.idVinculo | idVinculo }} | {{ v?.orgao | orgaoAbv }}
             </a>
             <ng-template #elseBlock>
-              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true" id="number">
+              <a class="item" [class.active]="v.activate" (click)="deactivate(v);v.activate = true">
                 {{ v?.idVinculo | idVinculo }} | {{ v?.orgao | orgaoAbv }}
               </a>
             </ng-template>
           </ng-template>
         </div>
       </div>
-      <div class="doubling twelve wide stretched column" id="pr">
+      <div class="doubling twelve wide stretched column">
         <a *ngIf="fileUrl" [href]="fileUrl" target="_blank">open</a>
         <app-contracheque-detail [vinculo]="vinculo"></app-contracheque-detail>
       </div>

@@ -27,7 +27,8 @@ export class LoginComponent {
     showModal: boolean = false;
     @ViewChild(AtualizarTermosComponent)
     termos: AtualizarTermosComponent;
-    imgUrl = 'http://www.pbprev.pb.gov.br:6060/portalsegurado/assets/img/logo.png';
+    // imgUrl = 'http://www.pbprev.pb.gov.br:6060/portalsegurado/assets/img/logo.png';
+    imgUrl = 'http://localhost:8080/';
     // imgUrl = 'http://localhost/assets/img/logo.png';
 
     ngOnInit(){ }

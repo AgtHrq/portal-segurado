@@ -1,21 +1,5 @@
+.attention {
 
-@media (min-width: 1176px) and (max-width: 2455px){
-
-    .attention {
-
-        color: red;
-    
-    }
-
-}
-
-@media (max-width: 1200px){
-    .ui.segments{
-        font-size: 10%;
-        margin-top: 10%;
-    }
-
-
-
+    color: red;
 
 }

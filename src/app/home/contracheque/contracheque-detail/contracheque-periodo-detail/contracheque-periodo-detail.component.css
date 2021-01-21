@@ -1,26 +1,17 @@
-@media (min-width: 1176px) and (max-width: 2455px){
+.pagination-previous{
 
-    .pagination-previous{
- 
-         float: left;
- 
-     }
- 
-     .current-page {
- 
-         float: left;
- 
-     }
- 
-     .pagination-next {
- 
-         float: left;
- 
-     }
- }
- @media (max-width: 767px){
-     #show{
-         font-size: 70%;
-     }
-     
- }
+    float: left;
+
+}
+
+.current-page {
+
+    float: left;
+
+}
+
+.pagination-next {
+
+    float: left;
+
+}

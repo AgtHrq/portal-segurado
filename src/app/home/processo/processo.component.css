@@ -67,41 +67,4 @@
         float: left;
 
     }
-
-}
-
-@media (max-width: 1200px){
-    .pagination-previous{
-        display: inline-block;
-        text-decoration: none;
-        font-size: small;
-    }
-    .current-page {
-        display: inline-block;
-        text-decoration: none;
-        font-size: small;
-
-    }
-
-    .pagination-next {
-        display: inline-block;
-        text-decoration: none;
-        font-size: small;
-    
-    }
-    .ui.segments .ui.segment .processos {
-
-        width: 100%;
-        float: left;
-
-    }
-    .ui.segments .ui.segment {
-
-        border-radius: 0%;
-        max-height: 100%;
-        max-width: 100%;
-        overflow: auto;
-        
-    }
-
 }

@@ -9,11 +9,11 @@
     <div class="ui grid">
       <div class="doubling four wide column">
         <div class="ui vertical fluid menu">
-          <a (click)="toggle('view')" [routerLink]="['visualizar/ficha']" class="{{activeView}}item" id= "visu">
+          <a (click)="toggle('view')" [routerLink]="['visualizar/ficha']" class="{{activeView}}item">
             Visualizar
             <i class="plus square outline icon"></i>
           </a>
-          <a (click)="toggle('rep')" [routerLink]="['imprimir/ficha']" class="{{ activeImprimir }}item" id= "impri">
+          <a (click)="toggle('rep')" [routerLink]="['imprimir/ficha']" class="{{ activeImprimir }}item">
             Imprimir por período
           </a>
         </div>

@@ -393,11 +393,12 @@ body {
     }
 
     .conteudo {
-        
+
+        position: relative;
         top: 70px;
-        margin-bottom: 10vw;
+        margin-bottom: 5vw;
         width: 100vw; 
-        height: calc(100vh - 50px);
+        height: calc(100vh - 80px);
         z-index: -1;
     }
     

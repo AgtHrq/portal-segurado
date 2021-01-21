@@ -23,7 +23,11 @@ export class AdminHomeComponent implements OnInit {
     });
 
     if (this.user.user_role === UserRole.admin){
-      this.menus = [new Menu("Alterar dados", "", "usuarios/alterardados")];
+      this.menus = [
+        new Menu("Alterar dados", "", "usuarios/alterardados"),
+        new Menu("Cadastro de usuários", "", "usuarios/cadastro"),
+        new Menu("Relação de usuários", "", "usuarios/lista")
+      ];
     } else if(this.user.user_role === UserRole.super_admin) {
       this.menus = [
         new Menu("Alterar dados", "", "usuarios/alterardados"),

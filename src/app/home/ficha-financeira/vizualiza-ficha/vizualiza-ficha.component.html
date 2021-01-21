@@ -25,7 +25,7 @@
     <div class="doubling twelve wide stretched column">
       <form class="ui large form" [formGroup]="meuForm" (submit)="sendAno($event, meuForm.value)">
         <div class="field">
-          <label id="name">Ano referente</label>
+          <label>Ano referente</label>
           <select class="ui fluid dropdown" name="anoFicha" formControlName="anoReferencia">
             <option value="" selected disabled>Selecione</option>
             <option *ngFor="let ano of anos" value="{{ano}}">{{ano}}</option>
@@ -41,7 +41,7 @@
       </form>
     </div>
   </div>
-  <div class="uu" *ngIf="detail">
+  <div class="" *ngIf="detail">
     <app-ficha-financeira-detail [fichas]="vinculoFicha"></app-ficha-financeira-detail>
     <a class="ui right floated button" (click)="voltar()">
         Voltar
