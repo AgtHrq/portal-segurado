@@ -10,6 +10,7 @@ import { AdminSubmenuModule } from '../admin-submenu/admin-submenu.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
 import { VinculoFormComponent } from './edt-vinculo/vinculo-form/vinculo-form.component';
 import { AdminSolicitacaoModule } from '../admin-solicitacao/admin-solicitacao.module';
+import { ErrorMessageModule } from 'src/app/error-message/error-message.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { AdminSolicitacaoModule } from '../admin-solicitacao/admin-solicitacao.m
     FormsModule,
     DirectivesModule,
     AdminSolicitacaoModule,
-    LoaderModule
+    LoaderModule,
+    ErrorMessageModule
   ],
   declarations: [
     AdminSeguradoComponent, 

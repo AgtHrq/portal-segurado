@@ -125,7 +125,7 @@ const APP_ROUTES: Routes = [
                 path: '', component: AdminHomeComponent, children: 
                 [
                     { 
-                        path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
+                        path: "usuarios/cadastro", component: CadastroUsuarioComponent//, canActivate: [SuperAdminGuard]
                     },
                     {
                         path: "usuarios/alterardados", component: AlterardadosUsuarioComponent
