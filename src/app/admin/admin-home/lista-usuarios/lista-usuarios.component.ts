@@ -32,7 +32,7 @@ export class ListaUsuariosComponent implements OnInit {
         this.usuarios = data.json();
       },
       error => {
-        if (error._body === "Não existem usuarios (admin) cadastrados no sistema"){
+        if (error._body === "Não existem usuarios cadastrados no sistema"){
           this.scss = false;
           this.message = error._body;
         } else if (error.json().message.trim() === "Invalid Token") {
@@ -45,17 +45,9 @@ export class ListaUsuariosComponent implements OnInit {
   }
 
   toggleState(usuario: User){
-    console.log(usuario);
     this.usuario = usuario;
-    this.showModal = true;
+    usuario.showDetail = !usuario.showDetail;
   }
-
-  success(message: string) {
-    
-    this.message = message;
-    this.showMessage = true;
-  }
-  
   bloquearDesbloquearUsuario(event, usuario){
 
       event.preventDefault();
@@ -80,11 +72,5 @@ export class ListaUsuariosComponent implements OnInit {
       )
   }
 
-  getListaAtualizada(event){
-    this.listarUsuariosAdminService.listarUsuariosAdmin(null).subscribe(
-      data => {
-        this.usuarios = data.json();
-      },
-    )
-  }
+  
 }

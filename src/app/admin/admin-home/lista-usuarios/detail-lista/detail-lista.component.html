@@ -1,0 +1,13 @@
+<div class="area">
+    <button class="ui blue button" type="submit" (click)="maisInfo(user)" >Mais informações</button>
+    <button class="ui blue button" type="submit" (click)="alteraDados(user)" >Alterar dados</button>
+    <app-modal-lista-usuarios *ngIf="showModal" (altr)="getListaAtualizada($event)" [user]="user" (toggle)="showModal = $event" (success)="success($event)"></app-modal-lista-usuarios>
+    
+    
+    <div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
+      <i class="close icon" (click)="showMessage = false"></i>
+      <div class="header">
+        {{ message }}
+      </div>
+    </div>
+</div>

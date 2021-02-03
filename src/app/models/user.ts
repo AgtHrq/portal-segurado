@@ -8,5 +8,6 @@ export interface User {
     user_blocked: boolean;
     user_tel: string;
     user_ddd: string;
+    showDetail: boolean;
 
 }

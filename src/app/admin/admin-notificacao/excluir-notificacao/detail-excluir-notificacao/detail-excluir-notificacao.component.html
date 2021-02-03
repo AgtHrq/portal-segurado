@@ -25,19 +25,19 @@
         <td><h4 class="ui header">Tipo:</h4></td>
         <td>{{ listNotificacoes.ouvidoriaTipo.descricao }}</td>
       </tr> -->
-      <tr>
-          <td><h4 class="ui header">Descrição:</h4></td>
-          <td>{{ listNotificacoes.descricao }}</td>
-        </tr>
-        <tr>
-          <td><h4 class="ui header">Data de criação:</h4></td>
-          <td>{{ listNotificacoes.dataCriacao | date: 'dd/MM/yyyy' }}</td>
-        </tr>
-        <tr>
-          <td><h4 class="ui header">Data de encerramento:</h4></td>
-          <td>{{ listNotificacoes.dataValidade | date: 'dd/MM/yyyy' }}</td>
-        </tr>
+    <tr>
+      <td><h4 class="ui header">Descrição:</h4></td>
+      <td>{{ listNotificacoes.descricao }}</td>
+    </tr>
+    <tr>
+      <td><h4 class="ui header">Data de criação:</h4></td>
+      <td>{{ listNotificacoes.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+    </tr>
+    <tr>
+      <td><h4 class="ui header">Data de encerramento:</h4></td>
+      <td>{{ listNotificacoes.dataValidade | date: 'dd/MM/yyyy' }}</td>
+    </tr>
 
-      </tbody>
-    </table>
-    <button class="ui right floated active button" (click)="buttonModal('')" type="submit" >Excluir</button>
+  </tbody>
+</table>
+<button class="ui right floated active button" (click)="buttonModal('')" type="submit" >Excluir</button>
