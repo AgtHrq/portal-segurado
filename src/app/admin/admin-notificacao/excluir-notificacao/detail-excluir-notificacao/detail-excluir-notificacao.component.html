@@ -16,7 +16,7 @@
 <app-loader *ngIf="showLoader"></app-loader>
 
 
-<div (click)="toggle()" class="ui very center aligned basic segment">
+<div (click)="toggle()" class="ui very left aligned basic segment">
   <h3 class="ui header">Detalhamento</h3>
 </div>
 <table class="ui very basic table" (click)="toggle()">
@@ -38,6 +38,10 @@
       <td>{{ listNotificacoes.dataValidade | date: 'dd/MM/yyyy' }}</td>
     </tr>
 
-  </tbody>
-</table>
-<button class="ui right floated active button" (click)="buttonModal('')" type="submit" >Excluir</button>
+      </tbody>
+    </table>
+
+    <!--utilizar como exemplo para fazer relação de usuários-->
+    <button class="ui right floated active button" (click)="buttonModal('')" type="submit" >Excluir</button>
+    
+    

@@ -39,7 +39,7 @@ export class DetailExcluirNotificacaoComponent implements OnInit {
       this.router.navigate(['/']);
     }else {
       this.showConfirmModal = true;
-      this.messageInfo = "Confima que desejas relamente excluir essa notificação?";
+      this.messageInfo = "Confima que desejas realmente excluir essa notificação?";
     }
   }
 

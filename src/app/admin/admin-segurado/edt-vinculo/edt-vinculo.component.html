@@ -3,6 +3,12 @@
   <input appCpfMask id="cpf" type="text" placeholder="CPF..." formControlName="cpf">
   <button class="ui button" (click)="consultaVinculos(segForm.get('cpf').value)" [disabled]="segForm.invalid">Consultar</button>
 </div>
+<!-- Erro de informaçoes incorretas -->
+<div *ngIf="showMessage" class="ui negative message">
+
+  <app-error-message title="{{ erroTitle }}" message="{{ erroMessage }}"></app-error-message>
+
+</div>
 <ng-template #elseBlock>
   <div class="ui segment">
     <div class="ui grid">
@@ -19,3 +25,4 @@
     <button (click)="vinculos = null" class="ui button">Consultar outro</button>
   </div>
 </ng-template>
+

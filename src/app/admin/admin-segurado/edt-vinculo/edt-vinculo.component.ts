@@ -19,6 +19,9 @@ export class EdtVinculoComponent implements OnInit, AfterViewInit {
   vinculos: any;
   selectedVinculo: any;
   showLoader: boolean = false;
+  showMessage: boolean = false;
+  erroTitle: string = 'Erro ao buscar CPF';
+  erroMessage: string = 'CPF não encontrado';
 
   constructor(private edtService: EdtVinculoService, private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
@@ -39,13 +42,14 @@ export class EdtVinculoComponent implements OnInit, AfterViewInit {
 
   consultaVinculos(cpf: string){
 
+    this.showMessage = false;
     this.showLoader = true;
     this.edtService.getVinculos(cpf.replace(/\.|\-/g, ''))
       .pipe(
         finalize(() => this.showLoader = false)
       )
       .subscribe(vinculos => {
-
+    
       this.vinculos = vinculos.json() as any[];
       this.vinculos.forEach(vinculo => {
         
@@ -59,7 +63,14 @@ export class EdtVinculoComponent implements OnInit, AfterViewInit {
     },
       error=> {
         console.log(error);
-        if (error._body === "O cpf informado não possui processos abertos e/ou fechados!") {
+        
+        if (error/*error._body === "O cpf informado não possui processos abertos e/ou fechados!"*/) {
+          console.log("entrou aqui");
+        
+        this.showLoader = false;
+        this.erroMessage = error._body;
+        this.showMessage = true;
+        
           // this.showLoader = false;
         } else if (error.json().message.trim() === "Invalid Token") {
           this.userService.logoffUser();
