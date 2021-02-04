@@ -5,11 +5,10 @@
   (cancel)="showConfirmModal = false">
 </app-confirmacao-reposta>
 
-<app-confirmacao-reposta [header]="'AVISO!'"
+<app-confirmacao-reposta [header]="'ERRO!'"
   [message]="messageInfo"
   [showModal]="showAviso"
-  (confirm)="buttonModal(messageInfo)"
-  (cancel)="showConfirmModal = false"
+  (confirm)="buttonModalNot(messageInfo)"
   [messageSucess]="showConfirmModal">
 </app-confirmacao-reposta>
 
