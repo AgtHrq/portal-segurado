@@ -30,6 +30,7 @@ export class DetailListaComponent implements OnInit {
   showModal: boolean = false;
   showMessage: boolean = false;
   
+  
 
   constructor(private formBuilder: FormBuilder, private listarUsuariosAdminService: ListaUsuariosService, 
     private router: Router, private userService: UserService, private alterarDados: AlterarDadosAdminService) { }
@@ -42,6 +43,13 @@ export class DetailListaComponent implements OnInit {
     maisInfo(user){
       console.log(this.user);
       this.showMaisInfo = !this.showMaisInfo;
+    }
+
+    eSegurado(user){
+      if(this.user.role == "Segurado"){
+        return true;
+      }
+      return false;
     }
 
     success(message: string) {
