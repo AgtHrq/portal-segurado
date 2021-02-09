@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AlterarDadosAdminService } from 'src/app/services/alterarDados/alterar-dados-admin.service';
 
 
+
 @Component({
   selector: 'app-lista-usuarios',
   templateUrl: './lista-usuarios.component.html',

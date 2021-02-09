@@ -8,6 +8,8 @@ import { ListaUsuariosService } from 'src/app/services/listaUsuarios/lista-usuar
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { UserRole } from '../../../../models/user-role.enum';
+
 
 
 @Component({
@@ -26,30 +28,38 @@ export class DetailListaComponent implements OnInit {
   formResponder: FormGroup;
   message: string = '';
   showMaisInfo: boolean = false;
-  showAlterarDados: boolean = false;
   showModal: boolean = false;
   showMessage: boolean = false;
-  
+  messageInfo: string = '';
+  showMessageInfo: boolean = false;
+  showButton: boolean = true;
 
   constructor(private formBuilder: FormBuilder, private listarUsuariosAdminService: ListaUsuariosService, 
     private router: Router, private userService: UserService, private alterarDados: AlterarDadosAdminService) { }
 
-    alteraDados(user){
-      console.log(this.user);
-      this.showModal = !this.showModal;
-    }
+  alteraDados(user){
+    console.log(this.user);
+    this.showModal = !this.showModal;
+  }
 
-    maisInfo(user){
-      console.log(this.user);
-      this.showMaisInfo = !this.showMaisInfo;
-    }
+  maisInfo(userRole){
+    this.showMaisInfo= !this.showMaisInfo;
+  }
 
-    success(message: string) {
-      
-      this.message = message;
-      this.showMessage = true;
+  showbutton(userRole){
+    // console.log(userRole);
+    if(userRole === UserRole.segurado){
+      return true;
+    }else{
+      return false;
     }
-  
+  }
+
+  success(message: string) {
+    
+    this.message = message;
+    this.showMessage = true;
+  }
 
   ngOnInit() {
     

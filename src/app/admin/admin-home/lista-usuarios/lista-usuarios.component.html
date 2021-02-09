@@ -4,7 +4,7 @@
     {{ message }}
   </div>
 </div>
-<table class="ui selectable table" >
+<table class="ui selectable table">
   <thead>
     <tr>
       <th>ID</th>
@@ -15,7 +15,7 @@
       <th>Bloqueado</th>
     </tr>
   </thead>
-  <tbody *ngFor="let u of usuarios" >
+  <tbody *ngFor="let u of usuarios">
     <tr>
       <td (click)="toggleState(u)">{{ u.id }}</td>
       <td (click)="toggleState(u)">{{ u.name }}</td>
