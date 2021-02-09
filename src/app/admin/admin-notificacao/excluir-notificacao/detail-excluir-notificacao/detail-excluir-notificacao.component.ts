@@ -43,6 +43,15 @@ export class DetailExcluirNotificacaoComponent implements OnInit {
     }
   }
 
+  buttonModalNot(msg: string){
+    if(msg === 'Login expirado, efetue o login novamente!'){
+      this.userService.logoffUser();
+      this.router.navigate(['/']);
+    }else {
+      this.showAviso = false;
+    }
+  }
+
   deleteNotificacao(idNotificacao){
     
     this.showLoader = true;
@@ -54,8 +63,14 @@ export class DetailExcluirNotificacaoComponent implements OnInit {
       },
       error =>{
 
-        if(error.json().message.trim() === 'Invalid Token'){
+        if(error._body === 'A notificação só pode ser excluída por seu criador ou pelo Super Adm!'){
+
+          this.messageInfo = error._body;
+
+        } else if(error.json().message.trim() === 'Invalid Token'){
+
           this.messageInfo = 'Login expirado, efetue o login novamente!';
+
         }else {
           this.messageInfo = error.json().message;
         }
