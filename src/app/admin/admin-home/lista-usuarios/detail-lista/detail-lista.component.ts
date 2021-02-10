@@ -30,14 +30,9 @@ export class DetailListaComponent implements OnInit {
   showMaisInfo: boolean = false;
   showModal: boolean = false;
   showMessage: boolean = false;
-<<<<<<< HEAD
   messageInfo: string = '';
   showMessageInfo: boolean = false;
   showButton: boolean = true;
-=======
-  
-  
->>>>>>> 6fc28b19dfcab7b50187e3972f457f6d40427532
 
   constructor(private formBuilder: FormBuilder, private listarUsuariosAdminService: ListaUsuariosService, 
     private router: Router, private userService: UserService, private alterarDados: AlterarDadosAdminService) { }
@@ -51,26 +46,12 @@ export class DetailListaComponent implements OnInit {
     this.showMaisInfo= !this.showMaisInfo;
   }
 
-<<<<<<< HEAD
   showbutton(userRole){
     // console.log(userRole);
     if(userRole === UserRole.segurado){
       return true;
     }else{
       return false;
-=======
-    eSegurado(user){
-      if(this.user.role == "Segurado"){
-        return true;
-      }
-      return false;
-    }
-
-    success(message: string) {
-      
-      this.message = message;
-      this.showMessage = true;
->>>>>>> 6fc28b19dfcab7b50187e3972f457f6d40427532
     }
   }
 
