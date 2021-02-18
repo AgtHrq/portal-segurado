@@ -20,8 +20,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     new Menu('Contracheque', 'money bill alternate', 'contracheque'), 
     new Menu('Ficha Financeira', 'newspaper', 'ficha-financeira'),
     new Menu('Decl. de Imposto de Renda', 'laptop', 'dirf'), 
-    new Menu('Solicitações', 'paper plane outline', 'solicitacoes'), 
-    new Menu('Ouvidoria', 'users', 'ouvidoria')
+    new Menu('Solicitações', 'paper plane outline', 'solicitacoes')
   ];
   numNotificacoes: number = 0;
   filter: string = '';

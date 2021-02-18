@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { HomeModule } from '../home/home.module';
-import { AdminOuvidoriaModule } from './admin-ouvidoria/admin-ouvidoria.module';
 import { AdminHomeModule } from './admin-home/admin-home.module';
 import { AdminSubmenuModule } from './admin-submenu/admin-submenu.module';
 import { AdminSolicitacaoModule } from './admin-solicitacao/admin-solicitacao.module';
@@ -20,7 +19,6 @@ import { AdminDirfModule } from './admin-dirf/admin-dirf.module';
     RouterModule,
     HomeModule,
     AdminHomeModule,
-    AdminOuvidoriaModule,
     AdminSubmenuModule,
     AdminSolicitacaoModule,
     AdminNotificacaoModule,

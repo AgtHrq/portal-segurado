@@ -21,7 +21,7 @@
       <select name="processos" class="ui fluid search dropdown" (change)="selectedProcesso($event)">
         <option value="">Processos</option>
         <option *ngFor="let p of processos" value="{{ p.resumoProcesso.numeroProcesso }}">
-          {{ p?.resumoProcesso.numeroProcesso }}
+          {{ p?.resumoProcesso.numeroProcesso }} 
         </option>
       </select>
 

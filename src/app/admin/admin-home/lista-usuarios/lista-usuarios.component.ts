@@ -1,13 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ListaUsuariosService } from 'src/app/services/listaUsuarios/lista-usuarios.service';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { AlterarDadosAdminService } from 'src/app/services/alterarDados/alterar-dados-admin.service';
-
-
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -49,6 +47,8 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuario = usuario;
     usuario.showDetail = !usuario.showDetail;
   }
+  
+
   bloquearDesbloquearUsuario(event, usuario){
 
       event.preventDefault();

@@ -13,7 +13,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { FilterByDescricaoPipe } from './menu/filter-by-descricao.pipe';
 import { NomePipePipe } from './nome-pipe.pipe';
 import { SolicitacaoModule } from './solicitacao/solicitacao.module';
-import { OuvidoriaModule } from './ouvidoria/ouvidoria.module';
 import { ProcessoModule } from './processo/processo.module';
 import { FichaFinanceiraModule } from './ficha-financeira/ficha-financeira.module';
 import { LoaderModule } from '../loader/loader.module';
@@ -28,7 +27,6 @@ import { AdminSubmenuModule } from '../admin/admin-submenu/admin-submenu.module'
     AlterarDadosModule,
     AlterarSenhaModule,
     RouterModule,
-    OuvidoriaModule,
     ProcessoModule,
     FichaFinanceiraModule,
     LoaderModule,

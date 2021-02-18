@@ -11,7 +11,6 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
 import { LoaderModule } from 'src/app/loader/loader.module';
 import { ModalListaUsuariosComponent } from './lista-usuarios/detail-lista/modal-lista-usuarios/modal-lista-usuarios.component';
 import { DetailListaComponent } from './lista-usuarios/detail-lista/detail-lista.component';
-import { InfoUsuarioComponent } from './lista-usuarios/detail-lista/info-usuario/info-usuario.component';
 // import { HomeComponent } from './lista-usuarios/modal-lista-usuarios/modal-lista-usuarios.component';
 
 
@@ -31,7 +30,6 @@ import { InfoUsuarioComponent } from './lista-usuarios/detail-lista/info-usuario
     ListaUsuariosComponent,
     ModalListaUsuariosComponent,
     DetailListaComponent,
-    InfoUsuarioComponent,
     // HomeComponent
   ]
 })

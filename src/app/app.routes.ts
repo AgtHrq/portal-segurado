@@ -5,7 +5,6 @@ import { AdminDirfComponent } from './admin/admin-dirf/admin-dirf.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CadastroUsuarioComponent } from './admin/admin-home/cadastro-usuario/cadastro-usuario.component';
-import { AdminOuvidoriaComponent } from './admin/admin-ouvidoria/admin-ouvidoria.component';
 import { AdminSolicitacaoComponent } from './admin/admin-solicitacao/admin-solicitacao.component';
 import { AdminNotificacaoComponent } from './admin/admin-notificacao/admin-notificacao.component';
 import { CadastroNotificacaoComponent } from './admin/admin-notificacao/cadastro-notificacao/cadastro-notificacao.component';
@@ -14,8 +13,6 @@ import { AlterardadosUsuarioComponent } from './admin/admin-home/alterardados-us
 import { ListaUsuariosComponent } from './admin/admin-home/lista-usuarios/lista-usuarios.component';
 import { ListarSolicitacaoComponent } from './admin/admin-solicitacao/listar-solicitacao/listar-solicitacao.component';
 import { ListaSolicitacaoFechedaComponent } from './admin/admin-solicitacao/lista-solicitacao-fecheda/lista-solicitacao-fecheda.component';
-import { ListarOuvidoriaRespondidaComponent } from './admin/admin-ouvidoria/listar-ouvidoria-respondida/listar-ouvidoria-respondida.component';
-import { ListarOuvidoriaComponent } from './admin/admin-ouvidoria/listar-ouvidoria/listar-ouvidoria.component';
 import { AdminUploadComponent } from './admin/admin-upload/admin-upload.component';
 import { UploadComponent } from './admin/admin-upload/upload/upload.component';
 import { ListaDocsComponent } from './admin/admin-upload/lista-docs/lista-docs.component';
@@ -24,16 +21,12 @@ import { UploadDirfComponent } from './admin/admin-dirf/upload-dirf/upload-dirf.
 import { EdtVinculoComponent } from './admin/admin-segurado/edt-vinculo/edt-vinculo.component';
 
 //HomeComponents
-import { InitialComponent } from './home/ouvidoria/initial/initial.component';
-import { AddOuvidoriaComponent } from './home/ouvidoria/add-ouvidoria/add-ouvidoria.component';
 import { SolicitacaoComponent } from './home/solicitacao/solicitacao.component';
 import { ProcessoComponent } from './home/processo/processo.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
-import { OuvidoriaComponent } from './home/ouvidoria/ouvidoria.component';
 import { FichaFinanceiraComponent } from './home/ficha-financeira/ficha-financeira.component';
 import { VizualizaFichaComponent } from './home/ficha-financeira/vizualiza-ficha/vizualiza-ficha.component';
-import { RespostaComponent } from './home/ouvidoria/resposta/resposta.component';
 import { ContrachequeComponent } from './home/contracheque/contracheque.component';
 import { ImprimirFichaComponent } from './home/ficha-financeira/imprimir-ficha/imprimir-ficha.component';
 import { DirfComponent } from './home/dirf/dirf.component';
@@ -92,22 +85,6 @@ const APP_ROUTES: Routes = [
                 path: 'solicitacoes', component: SolicitacaoComponent
             },
             {
-                path: 'ouvidoria', component: OuvidoriaComponent, children: [
-                    {
-                        path:'', component: InitialComponent
-                    },
-                    {
-                        path: 'respostas', component: RespostaComponent
-                    },
-                    {
-                        path:'add/ouvidoria', component: AddOuvidoriaComponent
-                    },
-                    {
-                        path:'**', redirectTo: ''
-                    }
-                ]
-            },
-            {
                 path: 'contracheque', component: ContrachequeComponent
             },
             {
@@ -132,17 +109,6 @@ const APP_ROUTES: Routes = [
                     },
                     {
                         path: "usuarios/lista", component: ListaUsuariosComponent
-                    }
-                ]
-            },
-            {
-                path: "ouvidoria", component: AdminOuvidoriaComponent, children: 
-                [
-                    {
-                        path: "listar/ouvidoria/aberta", component: ListarOuvidoriaComponent
-                    },
-                    {
-                        path: "listar/ouvidoria/repondida", component: ListarOuvidoriaRespondidaComponent
                     }
                 ]
             },

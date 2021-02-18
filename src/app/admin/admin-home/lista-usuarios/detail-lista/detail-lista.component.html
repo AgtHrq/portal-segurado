@@ -4,7 +4,7 @@
 
 
     <app-modal-lista-usuarios *ngIf="showModal" (altr)="getListaAtualizada($event)" [user]="user" (toggle)="showModal = $event" (success)="success($event)"></app-modal-lista-usuarios>
-    <app-info-usuario  *ngIf="showMaisInfo" [user]="user" (toggle)="showMaisInfo = $event"></app-info-usuario>
+    <!-- <app-info-usuario  *ngIf="showMaisInfo" [user]="user" (toggle)="showMaisInfo = $event"></app-info-usuario> -->
 
 
     <div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
