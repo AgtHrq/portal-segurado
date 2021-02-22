@@ -11,6 +11,7 @@ import { User } from '../models/user';
 export class UserService {
 
   private userSubject = new BehaviorSubject<User>(null);
+  private lastAdmCpf: String = null;
 
   constructor(private backendService: BackendService, private auth: Authorization) {
 
@@ -21,6 +22,18 @@ export class UserService {
   getLoggedUser() {
 
     return this.userSubject.asObservable();
+
+  }
+
+  getLastAdmin() {
+
+    return this.lastAdmCpf;
+
+  }
+
+  setLastAdmin(cpfAdmin: String) {
+
+    this.lastAdmCpf = cpfAdmin;
 
   }
 
@@ -55,6 +68,18 @@ export class UserService {
   authenticate(credentials: Object) {
 
     return this.backendService.unprotectedRequest('usuarios/autenticar', 'post', credentials);
+
+  }
+
+  authenticateByAdm(cpf: String) {
+
+    return this.backendService.protectedRequest('usuarios/autenticarPorAdmin', 'post', cpf);
+
+  }
+
+  authenticateAdmBySegurado(cpfAdmin: String) {
+
+    return this.backendService.protectedRequest('usuarios/autenticarAdminPorSegurado', 'post', cpfAdmin);
 
   }
 

@@ -21,7 +21,8 @@
             <div class="menu">
                 <div class="item" (click)="toggleState(false)">Alterar dados</div>
                 <div class="item" (click)="toggleState(true)">Alterar senha</div>
-                <div (click)="logout()" class="item"><i class="sign out alternate icon"></i><span>Sair.</span></div>
+                <div *ngIf = "veioDeAdmin()" class="item" (click)="voltarAdmin()">Voltar para perfil ADM</div>
+                <div *ngIf = "!veioDeAdmin()"(click)="logout()" class="item"><i class="sign out alternate icon"></i><span>Sair.</span></div>
             </div>
       </div>
   </div>
