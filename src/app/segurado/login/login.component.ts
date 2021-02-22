@@ -79,6 +79,7 @@ export class LoginComponent {
                 this.userService.getLoggedUser().subscribe(user => {
                     user as User;
                     if (user.user_role.trim() === UserRole.super_admin || user.user_role.trim() === UserRole.admin){
+                        this.userService.setLastAdmin(user.user_cpf);
                         this.route.navigate(['/admin']);
                     } else {
                         this.route.navigate(['/home/segurado']);
