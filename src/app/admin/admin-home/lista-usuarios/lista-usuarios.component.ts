@@ -43,6 +43,10 @@ export class ListaUsuariosComponent implements OnInit {
       
   }
 
+  buscarCpf(cpf: string){
+    console.log(cpf);
+  }
+
   toggleState(usuario: User){
     this.usuario = usuario;
     usuario.showDetail = !usuario.showDetail;
