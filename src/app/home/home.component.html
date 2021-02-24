@@ -14,7 +14,8 @@
   
   <div *ngIf="(user$ | async) as user" class="logout">
       <i class="user icon"></i>
-      <span [class.desktop]="mobile">Bem vindo(a)!</span>
+      <span *ngIf = "!veioDeAdmin()" [class.desktop]="mobile">Bem vindo(a)! </span>
+      <span *ngIf = "veioDeAdmin()" [class.desktop]="mobile">Perfil de </span>
       <div class="ui inline pointing dropdown">
             {{ user.user_name | nomePipe }}
             <i class="dropdown icon"></i>

@@ -34,7 +34,7 @@ export class AdminMenuComponent implements OnInit {
 
   logOut() {
 
-    this.userService.setLastAdmin(null);
+    this.userService.deleteIdAdmin();
     this.userService.logoffUser();
     this.router.navigate(['/']);
 

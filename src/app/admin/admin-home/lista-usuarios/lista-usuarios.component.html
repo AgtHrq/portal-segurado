@@ -3,7 +3,16 @@
   <div class="header">
     {{ message }}
   </div>
-</div><input type="text" placeholder="Digite CPF ou Nome..." (keyup)='search($event.target.value)'><table class="ui selectable table">
+</div>
+
+<div>
+  <div><b>Buscar</b></div>
+  <div class="ui action input">
+    <input type="text" placeholder="Digite CPF ou Nome..." (keyup)='search($event.target.value)'>
+  </div>
+</div>
+
+<table class="ui selectable table">
   <thead>
     <tr>
       <th>ID</th>
@@ -14,7 +23,7 @@
       <th>Bloqueado</th>
     </tr>
   </thead>
-  <tbody *ngFor="let u of usuarios">
+  <tbody *ngFor="let u of listaFiltrada">
     <tr>
       <td (click)="toggleState(u)">{{ u.id }}</td>
       <td (click)="toggleState(u)">{{ u.name }}</td>
