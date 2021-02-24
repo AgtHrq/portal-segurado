@@ -1,21 +1,17 @@
-<select id="segurado" >
-    <option  value="">Chose one</option>
-    <option  *ngFor="let us of usuarios" value={{us.name}}>{{us.name}}</option>
-</select>
-
-<form action="/action_page.php" method="get" autocomplete="on" >
-  <label for="cpf">Cpf:</label>
-  <input type="search" id="cpf" name="cpf"><br><br>
-  <input type="button" click="buscarCpf(cpf)" value="Go">
-</form>
-
-
 <div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
   <i class="close icon" (click)="showMessage = false"></i>
   <div class="header">
     {{ message }}
   </div>
 </div>
+
+<div>
+  <div><b>Buscar</b></div>
+  <div class="ui action input">
+    <input type="text" placeholder="Digite CPF ou Nome..." (keyup)='search($event.target.value)'>
+  </div>
+</div>
+
 <table class="ui selectable table">
   <thead>
     <tr>
@@ -27,7 +23,7 @@
       <th>Bloqueado</th>
     </tr>
   </thead>
-  <tbody *ngFor="let u of usuarios">
+  <tbody *ngFor="let u of listaFiltrada">
     <tr>
       <td (click)="toggleState(u)">{{ u.id }}</td>
       <td (click)="toggleState(u)">{{ u.name }}</td>
