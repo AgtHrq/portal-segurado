@@ -44,27 +44,4 @@
       </td>
     </tr>
   </tbody>
-<!-- 
-
-  <tbody >
-    <tr>
-      <td (click)="toggleState(u)">{{ u.id }}</td>
-      <td (click)="toggleState(u)">{{ u.name }}</td>
-      <td (click)="toggleState(u)">{{ u.email }}</td>
-      <td (click)="toggleState(u)">{{ u.cpf }}</td>
-      <td (click)="toggleState(u)">{{ u.role }}</td>
-      <td>
-        <div class="ui toggle checkbox">
-            <input [checked]="u.blocked == true" type="checkbox" name="checkboxBloq" (change)="bloquearDesbloquearUsuario($event, u)">
-            <label>{{ u.bloqueado }}</label>
-        </div>
-      </td>
-    </tr>
-    <tr  *ngIf="u.showDetail" >
-      <td  colspan="6" class="{{ u.showDetail }}" >
-        <app-detail-lista *ngIf="u.showDetail"  (detail)="toggleState(u)" [user]="u" (success)="success($event)"></app-detail-lista>
-  
-      </td>
-    </tr>
-  </tbody> -->
 </table>
