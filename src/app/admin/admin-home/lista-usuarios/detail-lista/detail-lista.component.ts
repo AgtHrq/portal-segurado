@@ -34,8 +34,8 @@ export class DetailListaComponent implements OnInit {
   showMessageInfo: boolean = false;
   showButton: boolean = true;
   erroMessage: string = '';
-  showBlockedMessage: boolean = false;
-  erroTitle: string = 'Usuario Bloqueado';
+  showErrorMessage: boolean = false;
+  erroTitle: string = 'Erro ao acessar perfil';
 
   constructor(private formBuilder: FormBuilder, private listarUsuariosAdminService: ListaUsuariosService, 
     private router: Router, private userService: UserService, private alterarDados: AlterarDadosAdminService) { }
@@ -71,7 +71,7 @@ export class DetailListaComponent implements OnInit {
           //     }
           //     this.showLoader = false;
                this.erroMessage = erro._body;
-               this.showBlockedMessage = true;
+               this.showErrorMessage = true;
           //     this.showMessage = true;
           // } else {
           //     this.showLoader = false;
