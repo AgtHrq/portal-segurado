@@ -14,14 +14,16 @@
   
   <div *ngIf="(user$ | async) as user" class="logout">
       <i class="user icon"></i>
-      <span [class.desktop]="mobile">Bem vindo(a)!</span>
+      <span *ngIf = "!veioDeAdmin()" [class.desktop]="mobile">Bem vindo(a)! </span>
+      <span *ngIf = "veioDeAdmin()" [class.desktop]="mobile">Perfil de </span>
       <div class="ui inline pointing dropdown">
             {{ user.user_name | nomePipe }}
             <i class="dropdown icon"></i>
             <div class="menu">
                 <div class="item" (click)="toggleState(false)">Alterar dados</div>
                 <div class="item" (click)="toggleState(true)">Alterar senha</div>
-                <div (click)="logout()" class="item"><i class="sign out alternate icon"></i><span>Sair.</span></div>
+                <div *ngIf = "veioDeAdmin()" class="item" (click)="voltarAdmin()">Voltar para perfil ADM</div>
+                <div *ngIf = "!veioDeAdmin()"(click)="logout()" class="item"><i class="sign out alternate icon"></i><span>Sair.</span></div>
             </div>
       </div>
   </div>

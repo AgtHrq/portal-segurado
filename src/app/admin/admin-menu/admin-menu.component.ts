@@ -19,7 +19,8 @@ export class AdminMenuComponent implements OnInit {
     new Menu('Notificação', 'comment alternate icon', 'notificacao'),
     new Menu('Termo de Uso', 'cloud upload icon', 'termo'),
     new Menu('Segurado', 'user icon', 'segurado'),
-    new Menu('Dirf', 'laptop icon', 'dirf')
+    new Menu('Dirf', 'laptop icon', 'dirf'),
+    new Menu('Dados', 'file icon', 'dados'),
   ];
 
   constructor(private userService: UserService, private router: Router) { }
@@ -34,6 +35,7 @@ export class AdminMenuComponent implements OnInit {
 
   logOut() {
 
+    this.userService.deleteIdAdmin();
     this.userService.logoffUser();
     this.router.navigate(['/']);
 

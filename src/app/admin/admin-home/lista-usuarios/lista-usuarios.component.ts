@@ -20,6 +20,7 @@ export class ListaUsuariosComponent implements OnInit {
   scss: boolean = false;
   message: string = null;
   showModal: boolean = false;
+  listaFiltrada: any;
 
   constructor(private formBuilder: FormBuilder, private listarUsuariosAdminService: ListaUsuariosService, 
     private router: Router, private userService: UserService, private alterarDados: AlterarDadosAdminService) { }
@@ -29,6 +30,7 @@ export class ListaUsuariosComponent implements OnInit {
     this.listarUsuariosAdminService.listarUsuariosAdmin(null).subscribe(
       data => {
         this.usuarios = data.json();
+        this.listaFiltrada = this.usuarios;
       },
       error => {
         if (error._body === "Não existem usuarios cadastrados no sistema"){

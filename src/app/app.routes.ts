@@ -19,6 +19,7 @@ import { ListaDocsComponent } from './admin/admin-upload/lista-docs/lista-docs.c
 import { AdminSeguradoComponent } from './admin/admin-segurado/admin-segurado.component';
 import { UploadDirfComponent } from './admin/admin-dirf/upload-dirf/upload-dirf.component';
 import { EdtVinculoComponent } from './admin/admin-segurado/edt-vinculo/edt-vinculo.component';
+import { UploadDadosComponent} from './admin/admin-carregar-dados/upload-dados/upload-dados.component';
 
 //HomeComponents
 import { SolicitacaoComponent } from './home/solicitacao/solicitacao.component';
@@ -42,6 +43,7 @@ import { ChangePasswordComponent } from './segurado/forgot-password/change-passw
 import { AdminGuard } from './services/guards/admin.guard';
 import { AuthGuard } from './services/guards/auth.guard';
 import { SuperAdminGuard } from './services/guards/super-admin.guard';
+import { AdminCarregarDadosComponent } from './admin/admin-carregar-dados/admin-carregar-dados.component';
 
 const APP_ROUTES: Routes = [
 
@@ -102,7 +104,7 @@ const APP_ROUTES: Routes = [
                 path: '', component: AdminHomeComponent, children: 
                 [
                     { 
-                        path: "usuarios/cadastro", component: CadastroUsuarioComponent//, canActivate: [SuperAdminGuard]
+                        path: "usuarios/cadastro", component: CadastroUsuarioComponent, canActivate: [SuperAdminGuard]
                     },
                     {
                         path: "usuarios/alterardados", component: AlterardadosUsuarioComponent
@@ -154,6 +156,12 @@ const APP_ROUTES: Routes = [
                 path: 'dirf', component: AdminDirfComponent, children:
                 [
                     { path: 'upload', component: UploadDirfComponent }
+                ]
+            },
+            {
+                path: 'dados', component: AdminCarregarDadosComponent, children:
+                [
+                    {path: 'uploadDados', component: UploadDadosComponent }
                 ]
             },
             { 

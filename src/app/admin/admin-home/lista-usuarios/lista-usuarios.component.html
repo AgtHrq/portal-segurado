@@ -27,7 +27,7 @@
       <th>Bloqueado</th>
     </tr>
   </thead>
-  <tbody *ngFor="let u of usuarios">
+  <tbody *ngFor="let u of listaFiltrada">
     <tr>
       <td (click)="toggleState(u)">{{ u.id }}</td>
       <td (click)="toggleState(u)">{{ u.name }}</td>

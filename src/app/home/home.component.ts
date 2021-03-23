@@ -54,6 +54,53 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
    }
 
+   veioDeAdmin(){
+
+    if(this.userService.getLastAdmin() == null){
+      return false;
+    }else{
+      return true;
+    }
+
+   }
+
+   voltarAdmin(){
+
+    this.userService.authenticateAdmBySegurado(this.userService.getLastAdmin()).subscribe(
+      data => {
+         // this.showLoader = false;
+          this.userService.updateLoggedUser(data.text());
+          this.userService.getLoggedUser().subscribe(user => {
+              user as User;
+              // if (user.user_role.trim() === UserRole.super_admin || user.user_role.trim() === UserRole.admin){
+                   this.router.navigate(['/admin']);
+              // } else {
+                  //this.router.navigate(['/home/segurado']);
+              //}
+          });
+      },
+      erro => {
+          // if(erro._body){
+          //     if(erro._body.trim().toUpperCase() == 'TERMOS ATUALIZADOS'){
+                  
+          //         this.termos.formConfirm.get('cpf').setValue(credentials.cpf);
+          //         this.showModal = true;
+          //         this.showLoader = false;
+          //         return;
+          //     }
+          //     this.showLoader = false;
+          //     this.erroMessage = erro._body;
+          //     this.showMessage = true;
+          // } else {
+          //     this.showLoader = false;
+          // }
+          
+      }
+  );
+
+
+   }
+
    @HostListener('window.resize')
    windowSize(){
 

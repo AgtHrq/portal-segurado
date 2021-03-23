@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Authorization } from './jwt.service';
 import { BackendService } from './backend.service';
 import { User } from '../models/user';
+import { LocalIdAdminService } from './local-id-admin.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserService {
 
   private userSubject = new BehaviorSubject<User>(null);
 
-  constructor(private backendService: BackendService, private auth: Authorization) {
+  constructor(private backendService: BackendService, private auth: Authorization, private lastAdmin: LocalIdAdminService) {
 
     this.auth.isLogged() && this.decodeAndNotify();
 
@@ -21,6 +22,24 @@ export class UserService {
   getLoggedUser() {
 
     return this.userSubject.asObservable();
+
+  }
+
+  getLastAdmin() {
+
+    return this.lastAdmin.getId();
+
+  }
+
+  deleteIdAdmin() {
+
+    this.lastAdmin.deleteId();
+
+  }
+
+  setLastAdmin(idAdmin: string) {
+
+    this.lastAdmin.setId(idAdmin);
 
   }
 
@@ -55,6 +74,18 @@ export class UserService {
   authenticate(credentials: Object) {
 
     return this.backendService.unprotectedRequest('usuarios/autenticar', 'post', credentials);
+
+  }
+
+  authenticateByAdm(cpf: String) {
+
+    return this.backendService.protectedRequest('usuarios/autenticarPorAdmin', 'post', cpf);
+
+  }
+
+  authenticateAdmBySegurado(idAdmin: String) {
+
+    return this.backendService.protectedRequest('usuarios/autenticarAdminPorSegurado', 'post', idAdmin);
 
   }
 

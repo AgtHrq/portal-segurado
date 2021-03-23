@@ -33,6 +33,9 @@ export class DetailListaComponent implements OnInit {
   messageInfo: string = '';
   showMessageInfo: boolean = false;
   showButton: boolean = true;
+  erroMessage: string = '';
+  showErrorMessage: boolean = false;
+  erroTitle: string = 'Erro ao acessar perfil';
 
   constructor(private formBuilder: FormBuilder, private listarUsuariosAdminService: ListaUsuariosService, 
     private router: Router, private userService: UserService, private alterarDados: AlterarDadosAdminService) { }
@@ -42,8 +45,42 @@ export class DetailListaComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
-  maisInfo(userRole){
-    this.showMaisInfo= !this.showMaisInfo;
+  acessarPerfilSegurado(cpf){
+
+    this.userService.authenticateByAdm(cpf).subscribe(
+      data => {
+         // this.showLoader = false;
+          this.userService.updateLoggedUser(data.text());
+          this.userService.getLoggedUser().subscribe(user => {
+              user as User;
+              // if (user.user_role.trim() === UserRole.super_admin || user.user_role.trim() === UserRole.admin){
+              //     this.route.navigate(['/admin']);
+              // } else {
+                  this.router.navigate(['/home/segurado']);
+              //}
+          });
+      },
+      erro => {
+           if(erro._body){
+          //     if(erro._body.trim().toUpperCase() == 'TERMOS ATUALIZADOS'){
+                  
+          //         this.termos.formConfirm.get('cpf').setValue(credentials.cpf);
+          //         this.showModal = true;
+          //         this.showLoader = false;
+          //         return;
+          //     }
+          //     this.showLoader = false;
+               this.erroMessage = erro._body;
+               this.showErrorMessage = true;
+          //     this.showMessage = true;
+          // } else {
+          //     this.showLoader = false;
+           }
+          
+      }
+  );
+
+
   }
 
   showbutton(userRole){

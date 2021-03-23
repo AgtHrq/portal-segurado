@@ -1,6 +1,14 @@
 <div class="area">
-    <button class="ui blue button" *ngIf="showbutton(user.role)" type="submit" (click)="maisInfo(user.role)" >Mais informações</button>
+    <button class="ui blue button" *ngIf="showbutton(user.role)" type="submit" (click)="acessarPerfilSegurado(user.cpf)" >Abrir Perfil</button>
     <button class="ui blue button" type="submit" (click)="alteraDados(user)" >Alterar dados</button>
+
+    <!-- Erro de Usuário Bloqueado -->
+    <div *ngIf="showErrorMessage" class="ui negative message">
+      <i class="close icon" (click)="showErrorMessage = false"></i>
+
+      <app-error-message title="{{ erroTitle }}" message="{{ erroMessage }}"></app-error-message>
+  
+  </div>
 
 
     <app-modal-lista-usuarios *ngIf="showModal" (altr)="getListaAtualizada($event)" [user]="user" (toggle)="showModal = $event" (success)="success($event)"></app-modal-lista-usuarios>
