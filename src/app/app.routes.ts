@@ -156,6 +156,12 @@ const APP_ROUTES: Routes = [
                     { path: 'upload', component: UploadDirfComponent }
                 ]
             },
+            {
+                path: 'carregar-dados', component: AdminDirfComponent, children:
+                [
+                    { path: 'upload', component: UploadDirfComponent }
+                ]
+            },
             { 
                 path: '**', redirectTo: '' 
             }

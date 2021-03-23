@@ -10,7 +10,7 @@ export class Menu {
 
     get icon() {
 
-        return this._icon;
+        return this._icon; 
 
     }
 

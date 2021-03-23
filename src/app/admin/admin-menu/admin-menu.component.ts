@@ -19,7 +19,8 @@ export class AdminMenuComponent implements OnInit {
     new Menu('Notificação', 'comment alternate icon', 'notificacao'),
     new Menu('Termo de Uso', 'cloud upload icon', 'termo'),
     new Menu('Segurado', 'user icon', 'segurado'),
-    new Menu('Dirf', 'laptop icon', 'dirf')
+    new Menu('Dirf', 'upload icon', 'dirf'),
+    new Menu('Dirf', 'server icon', 'dirf')
   ];
 
   constructor(private userService: UserService, private router: Router) { }
