@@ -15,7 +15,8 @@ export class SendEmailComponent implements OnInit {
   utils: MaskUtils = new MaskUtils();
   errorMessage: boolean = false;
   showLoader: boolean = false;
-  showFirstVerification: boolean = false
+  showFirstVerification: boolean = false;
+  outraOpcao: boolean = false;
 
   constructor(private service: ForgotPasswordService) {  }
 
@@ -50,6 +51,7 @@ export class SendEmailComponent implements OnInit {
 
   showQuestion(){
 
+    this.outraOpcao = true;
     this.showFirstVerification = true;
     this.cpf = this.utils.addMascara(this.cpf);
 

@@ -4,9 +4,11 @@
 
 <div *ngIf="!showContent">
 
-  <h3>Deseja enviar a senha para o e-mail?</h3>
-  <h4>{{ email }}</h4>
-  <h5>* O botão 'Outra Opção' redireciona para a recuperação de senha através da pergunta de segurança.</h5>
+  <h3 [hidden]="!outraOpcao">Outra Opção</h3>
+  <h3 [hidden]="outraOpcao">Deseja enviar a senha para o e-mail?</h3>
+  <h4 [hidden]="outraOpcao">{{ email }}</h4>
+  <h5 [hidden]="outraOpcao">* O botão 'Outra Opção' redireciona para a recuperação de senha através da pergunta de segurança.</h5>
+
 
   <div *ngIf="errorMessage" class="ui negative message">
 
@@ -17,8 +19,8 @@
 
   </div>
 
-  <button class="ui right floated teal button" type="submit" (click)="sendEmail()">Enviar</button>
-  <button type="button" class="ui right floated button" (click)="showQuestion()">Outra Opção</button>
+  <button  class="ui right floated teal button" *ngIf="!this.outraOpcao" type="submit" (click)="sendEmail()" >Enviar</button>
+  <button  type="button" class="ui right floated button" *ngIf="!this.outraOpcao" (click)="showQuestion()" >Outra Opção</button>
 
 </div>
 
