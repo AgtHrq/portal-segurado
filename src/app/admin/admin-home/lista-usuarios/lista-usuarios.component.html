@@ -1,17 +1,21 @@
-<div class="ui message" [class.positive]="scss" [class.negative]="!scss" [hidden]="!showMessage">
+<select id="segurado" >
+    <option  value="">Chose one</option>
+    <option  *ngFor="let us of usuarios" value={{us.name}}>{{us.name}}</option>
+</select>
+
+<form action="/action_page.php" method="get" autocomplete="on" >
+  <label for="cpf">Cpf:</label>
+  <input type="search" id="cpf" name="cpf"><br><br>
+  <input type="button" click="buscarCpf(cpf)" value="Go">
+</form>
+
+
+<div class="ui message" [class.positive]="success" [class.negative]="!success" [hidden]="!showMessage">
   <i class="close icon" (click)="showMessage = false"></i>
   <div class="header">
     {{ message }}
   </div>
 </div>
-
-<div>
-  <div><b>Buscar</b></div>
-  <div class="ui action input">
-    <input type="text" placeholder="Digite CPF ou Nome..." (keyup)='search($event.target.value)'>
-  </div>
-</div>
-
 <table class="ui selectable table">
   <thead>
     <tr>
@@ -44,4 +48,27 @@
       </td>
     </tr>
   </tbody>
+<!-- 
+
+  <tbody >
+    <tr>
+      <td (click)="toggleState(u)">{{ u.id }}</td>
+      <td (click)="toggleState(u)">{{ u.name }}</td>
+      <td (click)="toggleState(u)">{{ u.email }}</td>
+      <td (click)="toggleState(u)">{{ u.cpf }}</td>
+      <td (click)="toggleState(u)">{{ u.role }}</td>
+      <td>
+        <div class="ui toggle checkbox">
+            <input [checked]="u.blocked == true" type="checkbox" name="checkboxBloq" (change)="bloquearDesbloquearUsuario($event, u)">
+            <label>{{ u.bloqueado }}</label>
+        </div>
+      </td>
+    </tr>
+    <tr  *ngIf="u.showDetail" >
+      <td  colspan="6" class="{{ u.showDetail }}" >
+        <app-detail-lista *ngIf="u.showDetail"  (detail)="toggleState(u)" [user]="u" (success)="success($event)"></app-detail-lista>
+  
+      </td>
+    </tr>
+  </tbody> -->
 </table>

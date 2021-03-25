@@ -45,15 +45,8 @@ export class ListaUsuariosComponent implements OnInit {
       
   }
 
-  search(term: string) {
-    if(!term) {
-      this.ngOnInit();
-    } else {
-      //this.usuarios = null;
-      this.listaFiltrada = this.usuarios.filter(u => 
-         u.name.trim().toLowerCase().includes(term.trim().toLowerCase()) || u.cpf.trim().toLowerCase().includes(term.trim().toLowerCase())
-      );
-    }
+  buscarCpf(cpf: string){
+    console.log(cpf);
   }
 
   toggleState(usuario: User){
