@@ -19,7 +19,8 @@ export class AdminCarregarDadosComponent implements OnInit {
   ngOnInit() {
 
     this.menus = [
-      new Menu('Carregar Arquivo 1', '', 'uploadDados')
+      new Menu('Carregar Cad e VDs', '', 'uploadDados'),
+      new Menu('Carregar Demais Arquivos', '', 'uploadDados2')
     ];
     this.userService.getLoggedUser().subscribe(
       u => this.user = u as User

@@ -13,22 +13,9 @@ import { finalize } from 'rxjs/operators/';
 export class UploadDadosComponent implements OnInit {
 
   uploadForm: FormGroup;
-  uploadForm3: FormGroup;
-  uploadForm4: FormGroup;
-  uploadForm5: FormGroup;
-  uploadForm6: FormGroup;
-  uploadForm7: FormGroup;
-  uploadForm8: FormGroup;
-  uploadForm9: FormGroup;
-  file: any;
-  file2: any;
-  file3: any;
-  file4: any;
-  file5: any;
-  file6: any;
-  file7: any;
-  file8: any;
-  file9: any;
+  fileCad: any;
+  fileVds: any;
+  
   showLoader: boolean = false;
   showModal: boolean = false;
   //versao: number;
@@ -41,8 +28,8 @@ export class UploadDadosComponent implements OnInit {
 
     this.uploadForm = this.fb.group({
 
-      file: ['', Validators.required],
-      file2: ['', Validators.required],
+      fileCad: ['', Validators.required],
+      fileVds: ['', Validators.required],
       mes: ['', Validators.compose([
         Validators.required,
         Validators.minLength(2),
@@ -59,63 +46,16 @@ export class UploadDadosComponent implements OnInit {
         Validators.max(new Date().getFullYear())
       ])]
     });
-    this.uploadForm3 = this.fb.group({
-
-      file3: ['', Validators.required]
-    });
-    this.uploadForm4 = this.fb.group({
-
-      file4: ['', Validators.required]
-    });
-    this.uploadForm5 = this.fb.group({
-
-      file5: ['', Validators.required]
-    });
-    this.uploadForm6 = this.fb.group({
-
-      file6: ['', Validators.required]
-    });
-    this.uploadForm7 = this.fb.group({
-
-      file7: ['', Validators.required]
-    });
-    this.uploadForm8 = this.fb.group({
-
-      file8: ['', Validators.required]
-    });
-    this.uploadForm9 = this.fb.group({
-
-      file9: ['', Validators.required]
-    });
+    
   }
 
-  upload(file){
-    this.file = file;
+  uploadCad(file){
+    this.fileCad = file;
   }
-  upload2(file){
-    this.file2 = file;
+  uploadVds(file){
+    this.fileVds = file;
   }
-  upload4(file){
-    this.file4 = file;
-  }
-  upload5(file){
-    this.file5 = file;
-  }
-  upload6(file){
-    this.file6 = file;
-  }
-  upload7(file){
-    this.file7 = file;
-  }
-  upload3(file){
-    this.file3 = file;
-  }
-  upload8(file){
-    this.file8 = file;
-  }
-  upload9(file){
-    this.file9 = file;
-  }
+ 
 
   // sendArchive(event, form){
 
@@ -143,14 +83,16 @@ export class UploadDadosComponent implements OnInit {
   //   );
   // }
 
-  limpaForm(): void{
+  limpaForm(){
 
     this.uploadForm.get('ano').setValue('');
-    this.file = null;
+    this.fileCad = null;
+    this.fileVds = null;
+
   }
 
-  changeState(){
-    this.state = !this.state;
-  }
+  // changeState(){
+  //   this.state = !this.state;
+  // }
 
 }

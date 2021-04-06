@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminSolicitacaoModule } from 'src/app/admin/admin-solicitacao/admin-solicitacao.module';
 import { UploadDadosComponent } from './upload-dados/upload-dados.component';
+import { UploadDados2Component } from './upload-dados2/upload-dados2.component';
 
 
 @NgModule({
@@ -21,6 +22,6 @@ import { UploadDadosComponent } from './upload-dados/upload-dados.component';
     LoaderModule,
     AdminSolicitacaoModule
   ],
-  declarations: [AdminCarregarDadosComponent, UploadDadosComponent]
+  declarations: [AdminCarregarDadosComponent, UploadDadosComponent, UploadDados2Component]
 })
 export class AdminCarregarDadosModule { }
