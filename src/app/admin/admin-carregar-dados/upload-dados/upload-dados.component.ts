@@ -57,31 +57,31 @@ export class UploadDadosComponent implements OnInit {
   }
  
 
-  // sendArchive(event, form){
+  sendArchive(event, form){
 
-  //   event.preventDefault();
-  //   delete form.file
-  //   this.showLoader = true;
-  //   this.uploadService.uploadDirf(this.file, form).pipe(
-  //     finalize(() => {
-  //       this.showLoader = false;
-  //       this.limpaForm();
-  //     })
-  //   ).subscribe(() => {
-  //     this.message = 'Upload realizado com sucesso!';
-  //     this.showModal = true;
-  //   }, e => {
-  //     this.showLoader = false;
-  //     this.showModal = true;
-  //     this.message = 'Ocorreu um erro ao realizar o upload.';
-  //     if (e._body){
-  //       if(e._body.includes('file exceeds its maximum')){
-  //         this.message = 'O arquivo enviando tem mais de 2MB.';
-  //       }
-  //     }
-  //   }
-  //   );
-  // }
+    event.preventDefault();
+    delete form.file
+    this.showLoader = true;
+    this.uploadService.uploadDados(this.fileCad, this.fileVds, form).pipe(
+      finalize(() => {
+        this.showLoader = false;
+        this.limpaForm();
+      })
+    ).subscribe(() => {
+      this.message = 'Upload realizado com sucesso!';
+      this.showModal = true;
+    }, e => {
+      this.showLoader = false;
+      this.showModal = true;
+      this.message = 'Ocorreu um erro ao realizar o upload.';
+      if (e._body){
+        if(e._body.includes('file exceeds its maximum')){
+          this.message = 'O arquivo enviando tem mais de 2MB.';
+        }
+      }
+    }
+    );
+  }
 
   limpaForm(){
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AdminUploadService } from 'src/app/services/admin-upload/admin-upload.service';
+import { finalize } from 'rxjs/operators/';
 
 @Component({
   selector: 'app-upload-dados2',
@@ -33,7 +35,7 @@ export class UploadDados2Component implements OnInit {
   message: string;
   state: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private uploadService: AdminUploadService) { }
 
   ngOnInit() {
 
@@ -95,6 +97,32 @@ export class UploadDados2Component implements OnInit {
   }
   upload7(file){
     this.file7 = file;
+  }
+
+  sendArchive(event, form, file){
+
+    event.preventDefault();
+    delete form.file
+    this.showLoader = true;
+    this.uploadService.uploadDados2(file).pipe(
+      finalize(() => {
+        this.showLoader = false;
+        // this.limpaForm();
+      })
+    ).subscribe(() => {
+      this.message = 'Upload realizado com sucesso!';
+      this.showModal = true;
+    }, e => {
+      this.showLoader = false;
+      this.showModal = true;
+      this.message = 'Ocorreu um erro ao realizar o upload.';
+      if (e._body){
+        if(e._body.includes('file exceeds its maximum')){
+          this.message = 'O arquivo enviando tem mais de 2MB.';
+        }
+      }
+    }
+    );
   }
 
 }

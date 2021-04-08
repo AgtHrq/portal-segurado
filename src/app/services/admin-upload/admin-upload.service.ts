@@ -28,6 +28,25 @@ export class AdminUploadService {
     
   }
 
+  uploadDados(fileCad: File, fileVds: File, payload: any){
+
+    const dataForm = new FormData();
+    dataForm.append('fileCad', fileCad);
+    dataForm.append('fileVds', fileVds)
+    dataForm.append('ano', payload.ano);
+    dataForm.append('mes', payload.mes);
+    return this.backendService.protectedRequest('usuarios/uploadDadosFile', 'post', dataForm);
+    
+  }
+
+  uploadDados2(file: File){
+
+    const dataForm = new FormData();
+    dataForm.append('file', file);
+    return this.backendService.protectedRequest('usuarios/uploadDados2File', 'post', dataForm);
+    
+  }
+
   getLatestVersion(){
 
     return this.backendService.protectedRequest('usuarios/latestVersion', 'get');

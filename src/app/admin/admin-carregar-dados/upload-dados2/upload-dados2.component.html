@@ -9,7 +9,7 @@
 
 <b>Selecione o arquivo que deseja carregar e depois clique em Enviar</b>
 
-<form class="ui form" [formGroup]="uploadForm" (submit)="sendArchive($event, uploadForm.value)">
+<form class="ui form" [formGroup]="uploadForm" (submit)="sendArchive($event, uploadForm.value, file)">
   <div class="field">
     <button type="button" (click)="inputFile.click()" class="massive ui blue button"> {{ file ? file.name : 'SELECIONAR ARQUIVO 1' }}</button>
     <input formControlName="file" accept=".dbf" hidden type="file" (change)="upload($event.target.files[0])" #inputFile>
@@ -17,7 +17,7 @@
   </div>
 </form>
 
-<form class="ui form" [formGroup]="uploadForm2" (submit)="sendArchive($event, uploadForm2.value)">
+<form class="ui form" [formGroup]="uploadForm2" (submit)="sendArchive($event, uploadForm2.value, file2)">
   <div class="field">
     <button type="button" (click)="inputFile2.click()" class="massive ui blue button"> {{ file2 ? file2.name : 'SELECIONAR ARQUIVO 2' }}</button>
     <input formControlName="file2" accept=".dbf" hidden type="file" (change)="upload2($event.target.files[0])" #inputFile2>
@@ -25,7 +25,7 @@
   </div>
 </form>
 
-<form class="ui form" [formGroup]="uploadForm3" (submit)="sendArchive($event, uploadForm3.value)">
+<form class="ui form" [formGroup]="uploadForm3" (submit)="sendArchive($event, uploadForm3.value, file3)">
   <div class="field">
     <button type="button" (click)="inputFile3.click()" class="massive ui blue button"> {{ file3 ? file3.name : 'SELECIONAR ARQUIVO 3' }}</button>
     <input formControlName="file3" accept=".dbf" hidden type="file" (change)="upload3($event.target.files[0])" #inputFile3>
@@ -33,7 +33,7 @@
   </div>
 </form>
 
-<form class="ui form" [formGroup]="uploadForm4" (submit)="sendArchive($event, uploadForm4.value)">
+<form class="ui form" [formGroup]="uploadForm4" (submit)="sendArchive($event, uploadForm4.value, file4)">
   <div class="field">
     <button type="button" (click)="inputFile4.click()" class="massive ui blue button"> {{ file4 ? file4.name : 'SELECIONAR ARQUIVO 4' }}</button>
     <input formControlName="file4" accept=".dbf" hidden type="file" (change)="upload4($event.target.files[0])" #inputFile4>
@@ -41,7 +41,7 @@
   </div>
 </form>
 
-<form class="ui form" [formGroup]="uploadForm5" (submit)="sendArchive($event, uploadForm5.value)">
+<form class="ui form" [formGroup]="uploadForm5" (submit)="sendArchive($event, uploadForm5.value, file5)">
   <div class="field">
     <button type="button" (click)="inputFile5.click()" class="massive ui blue button"> {{ file5 ? file5.name : 'SELECIONAR ARQUIVO 5' }}</button>
     <input formControlName="file5" accept=".dbf" hidden type="file" (change)="upload5($event.target.files[0])" #inputFile5>
@@ -49,7 +49,7 @@
   </div>
 </form>
 
-<form class="ui form" [formGroup]="uploadForm6" (submit)="sendArchive($event, uploadForm6.value)">
+<form class="ui form" [formGroup]="uploadForm6" (submit)="sendArchive($event, uploadForm6.value, file6)">
   <div class="field">
     <button type="button" (click)="inputFile6.click()" class="massive ui blue button"> {{ file6 ? file6.name : 'SELECIONAR ARQUIVO 6' }}</button>
     <input formControlName="file6" accept=".dbf" hidden type="file" (change)="upload6($event.target.files[0])" #inputFile6>
@@ -57,7 +57,7 @@
   </div>
 </form>
 
-<form class="ui form" [formGroup]="uploadForm7" (submit)="sendArchive($event, uploadForm7.value)">
+<form class="ui form" [formGroup]="uploadForm7" (submit)="sendArchive($event, uploadForm7.value, file7)">
   <div class="field">
     <button type="button" (click)="inputFile7.click()" class="massive ui blue button"> {{ file7 ? file7.name : 'SELECIONAR ARQUIVO 7' }}</button>
     <input formControlName="file7" accept=".dbf" hidden type="file" (change)="upload7($event.target.files[0])" #inputFile7>
